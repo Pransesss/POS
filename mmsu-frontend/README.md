@@ -40,7 +40,7 @@ Sidebar (flush top-left, full-width glowing active bar), login, dashboard cards,
 2. Make the pages responsive (check 1024px and phone width).
 3. Add the missing screen states: loading, empty, error (see `components.html` for the style).
 4. Fill containers from `mock/*.json` using `api()` in `js/api.js` (start with the dashboard).
-5. POS logic: price calculation (client-side preview only — the server recomputes), cart, Dine in/Take out, e-wallet 4-digit check.
+5. POS logic: client-side price preview, signed per-cart price snapshots, server-side price and cash-tender validation, cart, Dine in/Take out, e-wallet 4-digit check.
 6. Forms: validation messages (login, delivery, account settings).
 7. Switch `USE_MOCK = false` when the backend endpoint is ready; fix any difference from the contract with the backend dev.
 

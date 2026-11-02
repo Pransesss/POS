@@ -40,15 +40,23 @@ const Sync = {
     const rows = await this.pending();
     if (!rows.length) return this.badge();
     this.busy = true;
+    let firstFailure = "";
     try {
       const res = await api("/api/sync/transactions", { method: "POST", body: { device_id: this.deviceId(), transactions: rows.map((r) => r.payload) } });
       for (const r of res.results) {
         if (r.status === "saved" || r.status === "duplicate") await Store.del("outbox", r.id);
-        else { const row = await Store.get("outbox", r.id); row.status = "rejected"; row.reason = r.reason; await Store.put("outbox", row); }   // kept, so nothing is lost
+        else {
+          const row = await Store.get("outbox", r.id);
+          row.status = "rejected";
+          row.reason = r.reason;
+          await Store.put("outbox", row);
+          firstFailure ||= r.reason || "Sale rejected";
+        }
       }
     } catch (e) { /* still offline / server down: stays in the outbox and we try again */ }
     this.busy = false;
     window.dispatchEvent(new Event("outbox-changed"));
+    if (firstFailure) UI.toast(`Sale not synced: ${firstFailure}. It remains saved on this device.`);
     return this.badge();
   },
 

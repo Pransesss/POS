@@ -2,7 +2,7 @@
 import os, re, uuid, secrets
 import threading
 from datetime import datetime, date, time, timedelta
-from decimal import Decimal
+from decimal import Decimal, InvalidOperation
 from functools import wraps
 from zoneinfo import ZoneInfo
 
@@ -39,11 +39,12 @@ app = Flask(__name__, static_folder=None)
 app.json = Provider(app)
 CORS(app)
 ser = URLSafeTimedSerializer(SECRET)
+pricing_ser = URLSafeTimedSerializer(SECRET, salt="pos-pricing-v1")
 _account_logo_schema_ready = False
 _account_logo_schema_lock = threading.Lock()
 
 
-# ---------------------------------------------------------------- database helpers
+# database helpers
 def conn():
     if "db" not in g:
         g.db = connect()
@@ -110,7 +111,7 @@ def parse_day(s, default=None):
         return default
 
 
-# ---------------------------------------------------------------- auth
+# auth
 def current_user():
     ensure_account_logo_schema()
     h = request.headers.get("Authorization", "")
@@ -218,7 +219,7 @@ def meal_prices():
     return jsonify({r["price_key"]: r["amount"] for r in q("SELECT price_key, amount FROM meal_prices")})
 
 
-# ---------------------------------------------------------------- auxiliaries
+# auxiliaries
 @app.get("/api/auxiliaries")
 @auth()
 def list_aux():
@@ -304,7 +305,7 @@ def upload_account_logo(aid):
     return jsonify({"logo_path": path})
 
 
-# ---------------------------------------------------------------- POS data (cached on the device for offline use)
+# POS data (cached on the device for offline use)
 @app.get("/api/pos/bootstrap")
 @auth("staff")
 def pos_bootstrap():
@@ -320,14 +321,20 @@ def pos_bootstrap():
     meals = {r["meal_key"]: r["qty_on_hand"] for r in q(
         "SELECT p.meal_key, i.qty_on_hand FROM products p JOIN inventory i ON i.product_id=p.product_id AND i.aux_id=%s WHERE p.category='Meals'", (aux,))}
     day = active_sales_day(aux)
+    meal_prices = {r["price_key"]: r["amount"] for r in q("SELECT price_key, amount FROM meal_prices")}
+    pricing_token = pricing_ser.dumps({
+        "aux_id": aux,
+        "meal_prices": {key: str(value) for key, value in meal_prices.items()},
+        "products": [{"product_id": p["product_id"], "name": p["name"], "price": str(p["price"])} for p in products],
+    })
     return jsonify({"products": products, "meal_stock": meals,
-                    "meal_prices": {r["price_key"]: r["amount"] for r in q("SELECT price_key, amount FROM meal_prices")},
+                    "meal_prices": meal_prices, "pricing_token": pricing_token,
                     "settings": settings(), "user": public_user(g.user), "server_time": datetime.now(TZ).isoformat(),
                     "sales_day": day})
 
 
-# ---------------------------------------------------------------- saving sales (also used when an offline outbox syncs)
-def save_transaction(user, t, mp, prods, meal_ids):
+# saving sales (also used when an offline outbox syncs)
+def save_transaction(user, t, meal_ids):
     """Returns 'saved' | 'duplicate'.  Raises SaleError for a sale that can never be valid."""
     try:
         tid = uuid.UUID(str(t["id"]))
@@ -335,6 +342,28 @@ def save_transaction(user, t, mp, prods, meal_ids):
         raise SaleError("bad transaction id")
     if q("SELECT 1 FROM transactions WHERE transaction_id=%s", (str(tid),), one=True):
         return "duplicate"            # already received before (connection dropped before the reply) -> safe to ignore
+    token = t.get("pricing_token")
+    if not isinstance(token, str):
+        raise SaleError("price snapshot missing; this queued sale needs manual review")
+    try:
+        snapshot = pricing_ser.loads(token)
+    except BadSignature:
+        raise SaleError("price snapshot invalid; this queued sale needs manual review")
+    if not isinstance(snapshot, dict) or snapshot.get("aux_id") != user["aux_id"]:
+        raise SaleError("price snapshot belongs to another outlet")
+    try:
+        mp = {key: D(value) for key, value in snapshot["meal_prices"].items()}
+        prods = {
+            int(p["product_id"]): {
+                "product_id": int(p["product_id"]),
+                "name": p["name"],
+                "price": D(p["price"]),
+                "is_active": True,
+            }
+            for p in snapshot["products"]
+        }
+    except (KeyError, TypeError, ValueError, InvalidOperation):
+        raise SaleError("price snapshot is invalid; this queued sale needs manual review")
     try:
         created = datetime.fromisoformat(t["created_at"])
     except (KeyError, ValueError):
@@ -366,7 +395,14 @@ def save_transaction(user, t, mp, prods, meal_ids):
     if not lines:
         raise SaleError("empty sale")
     total = sum(l["unit_price"] * l["qty"] for l in lines)
-    tendered = D(t["amount_tendered"]) if pay == "Cash" and t.get("amount_tendered") is not None else None
+    tendered = None
+    if pay == "Cash":
+        try:
+            tendered = D(t["amount_tendered"])
+        except (KeyError, TypeError, ValueError, InvalidOperation):
+            raise SaleError("cash tendered must be a valid amount")
+        if not tendered.is_finite() or tendered < total:
+            raise SaleError("cash tendered is less than the sale total")
 
     run("""INSERT INTO transactions (transaction_id, receipt_no, aux_id, cashier_id, device_id, created_at, business_date,
                                       payment_method, amount_tendered, ewallet_ref_last4, dine_type, total_amount)
@@ -396,13 +432,11 @@ def save_transaction(user, t, mp, prods, meal_ids):
 @auth("staff")
 def sync_transactions():
     d = request.get_json(silent=True) or {}
-    mp = {r["price_key"]: r["amount"] for r in q("SELECT price_key, amount FROM meal_prices")}
-    prods = {r["product_id"]: r for r in q("SELECT product_id, name, price, is_active FROM products")}
     meal_ids = {r["meal_key"]: r["product_id"] for r in q("SELECT product_id, meal_key FROM products WHERE category='Meals'")}
     results = []
     for t in d.get("transactions", []):
         try:
-            status = save_transaction(g.user, {**t, "device_id": t.get("device_id") or d.get("device_id")}, mp, prods, meal_ids)
+            status = save_transaction(g.user, {**t, "device_id": t.get("device_id") or d.get("device_id")}, meal_ids)
             conn().commit()
             results.append({"id": t.get("id"), "status": status})
         except (SaleError, KeyError, ValueError, TypeError) as e:
@@ -411,7 +445,7 @@ def sync_transactions():
     return jsonify({"results": results})
 
 
-# ---------------------------------------------------------------- sales-day closing
+# sales-day closing
 @app.post("/api/sales-day/close")
 @auth("staff")
 def close_sales_day():
@@ -432,7 +466,7 @@ def close_sales_day():
     return jsonify({"ok": True, "closed_date": day, "sales_day": day + timedelta(days=1)})
 
 
-# ---------------------------------------------------------------- inventory + products
+# inventory + products
 def stock_status(qty, level):
     return "out" if qty <= 0 else ("low" if qty < level else "in")
 
@@ -545,7 +579,7 @@ def set_product_prediction(pid):
     return jsonify({"ok": True})
 
 
-# ---------------------------------------------------------------- deliveries (admin lists what to send, staff counts and accepts)
+# deliveries (admin lists what to send, staff counts and accepts)
 MEAL_ORDER = ["rice", "pork", "beef", "chicken", "fish", "veg"]
 
 
@@ -629,7 +663,7 @@ def accept_delivery(did):
     return jsonify({"ok": True, "has_mismatch": mismatch})
 
 
-# ---------------------------------------------------------------- remittances + cash
+# remittances + cash
 def cash_summary(ids, day):
     t = q("""SELECT COALESCE(SUM(total_amount) FILTER (WHERE payment_method='Cash'),0) AS cash,
                     COALESCE(SUM(total_amount) FILTER (WHERE payment_method='E-Wallet'),0) AS ewallet
@@ -667,7 +701,7 @@ def add_remittance():
     return jsonify({"ok": True}), 201
 
 
-# ---------------------------------------------------------------- dashboard
+# dashboard
 @app.get("/api/forecast")
 @auth()
 def forecast_api():
@@ -678,7 +712,7 @@ def forecast_api():
     return jsonify({"aux": request.args.get("aux", "all"), **f})
 
 
-# ---------------------------------------------------------------- forecast for a chosen date (staff pick the date and the items)
+# forecast for a chosen date (staff pick the date and the items)
 def _forecast_target():
     """The canteen being forecast: staff = their own, admin = ?aux=<id>. Returns (aux_id, aux_code) or an error response."""
     ids = scope(request.args.get("aux") if request.method == "GET" else (request.get_json(silent=True) or {}).get("aux"))
@@ -801,7 +835,7 @@ def dashboard():
     return jsonify(out)
 
 
-# ---------------------------------------------------------------- transactions page + report slips
+# transactions page + report slips
 @app.get("/api/transactions")
 @auth()
 def transactions():
@@ -871,8 +905,9 @@ def transactions():
         if s["category"] == "Meals":
             ms["received"][s["meal_key"]], ms["sold"][s["meal_key"]], ms["left"][s["meal_key"]] = s["rcvd"], s["sold"], s["left"]
         elif s["sold"]:
+            sales = sales_by_product.get(s["product_id"], 0)
             summary.append({"name": s["name"], "beg": s["beg"], "rcvd": s["rcvd"], "total": s["beg"] + s["rcvd"], "sold": s["sold"], "left": s["left"],
-                            "price": s["price"], "sales": sales_by_product.get(s["product_id"], 0)})
+                            "avg_price": sales / s["sold"], "sales": sales})
     carried_sold = dict(zero)
     for r in meals_car:
         for k in MEAL_ORDER:
@@ -884,7 +919,7 @@ def transactions():
                                "regular_total": sum(r["total"] for r in snack_reg), "carried_total": sum(r["total"] for r in snack_car)}})
 
 
-# ---------------------------------------------------------------- events
+# events
 @app.get("/api/events")
 @auth()
 def list_events():
@@ -913,7 +948,7 @@ def delete_event(eid):
     return jsonify({"ok": True})
 
 
-# ---------------------------------------------------------------- accounts (admin password is required for every change)
+# accounts (admin password is required for every change)
 def _admin_ok(d):
     return check_password_hash(g.user["password_hash"], d.get("admin_password") or "")
 
@@ -964,7 +999,7 @@ def reset_account(aid):
     return jsonify({"temp_password": temp})
 
 
-# ---------------------------------------------------------------- frontend files
+# frontend files
 @app.get("/uploads/<path:p>")
 def uploads(p):
     return send_from_directory(UPLOADS, p)

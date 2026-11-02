@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     foot("table-meals-regular", 3, [money(m.regular_total)]);
     foot("table-meals-carried", 0, PARTS.map((p) => num(m.carried_sold[p]))); foot("table-meals-carried", 1, [money(m.carried_total)]);
     const s = d.snacks;
-    $("#table-snack-summary tbody").innerHTML = s.summary.map((r) => `<tr><td>${esc(r.name)}</td><td>${num(r.beg)}</td><td>${num(r.rcvd)}</td><td>${num(r.total)}</td><td>${num(r.sold)}</td><td>${num(r.left)}</td><td>${money(r.price)}</td><td>${money(r.sales)}</td></tr>`).join("") || empty(8);
+    $("#table-snack-summary tbody").innerHTML = s.summary.map((r) => `<tr><td>${esc(r.name)}</td><td>${num(r.beg)}</td><td>${num(r.rcvd)}</td><td>${num(r.total)}</td><td>${num(r.sold)}</td><td>${num(r.left)}</td><td>${money(r.avg_price)}</td><td>${money(r.sales)}</td></tr>`).join("") || empty(8);
     $("#table-snack-regular tbody").innerHTML = s.regular.map(snackRow).join("") || empty(admin ? 7 : 6);
     $("#table-snack-carried tbody").innerHTML = s.carried.map(snackRow).join("") || empty(admin ? 7 : 6);
   }
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   [["pay-filter-all", ""], ["pay-filter-cash", "cash"], ["pay-filter-ewallet", "ewallet"]].forEach(([id, v]) => { const el = $("#" + id); if (el) { el.value = v; el.addEventListener("change", load); } });
   $("#filter-from").addEventListener("change", load); $("#filter-to").addEventListener("change", load);
 
-  /* ---------- staff: record the remittance ---------- */
+  /* staff: record the remittance */
   if (!admin) {
     $("#btn-remit").addEventListener("click", async () => {
       let exp = { expected: 0 }; try { exp = await api("/api/remittances/expected"); } catch (e) { return UI.toast("You are offline — remit when the internet is back."); }
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  /* ---------- admin: slips (one Meals + one Snacks slip per outlet per day) ---------- */
+  /* admin: slips (one Meals + one Snacks slip per outlet per day) */
   async function buildReport() {
     const from = $("#filter-from").value, to = $("#filter-to").value, id = $("#filter-aux").value;
     const list = id && id !== "all" ? auxes.filter((a) => String(a.aux_id) === id) : auxes, days = [];
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   function slipSnacks(a, day, d) {
     const rows = [...d.snacks.regular, ...d.snacks.carried], sp = split(rows);
     return fillSlip(slipTemplates.snacks, a, day, (art) => {
-      art.querySelector("#slip-snacks-rows").innerHTML = d.snacks.summary.map((r) => `<tr><td>${esc(r.name)}</td><td>${num(r.beg)}</td><td>${num(r.rcvd)}</td><td>${num(r.total)}</td><td>${num(r.sold)}</td><td>${num(r.left)}</td><td>${num(r.price)}</td><td>${r.sold ? num(r.sales) : ""}</td></tr>`).join("");
+      art.querySelector("#slip-snacks-rows").innerHTML = d.snacks.summary.map((r) => `<tr><td>${esc(r.name)}</td><td>${num(r.beg)}</td><td>${num(r.rcvd)}</td><td>${num(r.total)}</td><td>${num(r.sold)}</td><td>${num(r.left)}</td><td>${num(r.avg_price)}</td><td>${r.sold ? num(r.sales) : ""}</td></tr>`).join("");
       const tf = art.querySelector("tfoot").rows;
       tf[0].cells[1].textContent = money(sp.cash + sp.ew); tf[1].cells[1].textContent = money(sp.cash); tf[2].cells[1].textContent = money(sp.ew);
     });

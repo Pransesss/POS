@@ -1,22 +1,37 @@
 /* pos.js — the cashier screen. Used by pos.html, pos-meal.html and pos-meat.html (they share ONE cart, kept in this device).
-   Prices are only a PREVIEW here. The server recomputes every meal from the meal_prices table when the sale is saved. */
+   Each cart keeps a signed price snapshot; the server recomputes and validates its lines from that snapshot on sync. */
 document.addEventListener("DOMContentLoaded", async () => {
   const $ = UI.$, load = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } }, save = (k, v) => localStorage.setItem(k, JSON.stringify(v));
   let boot = null, mp = {}, cart = load("pos_cart", []), held = load("pos_held", []);
+  let cartPricing = load("pos_cart_pricing", null), heldPricing = load("pos_held_pricing", []);
+  let legacyCartNeedsPriceConfirmation = false;
+  if (!Array.isArray(heldPricing)) heldPricing = [];
   const MEATS = ["beef", "chicken", "fish", "pork"], cap = (s) => s[0].toUpperCase() + s.slice(1);
+  const catalogFor = (data) => ({
+    aux_id: data.user.aux_id,
+    token: data.pricing_token,
+    meal_prices: data.meal_prices,
+    products: data.products.map(({ product_id, name, price, qty }) => ({ product_id, name, price, qty })),
+  });
+  const saveCart = () => { save("pos_cart", cart); save("pos_cart_pricing", cartPricing); };
+  const updateMealPrices = () => UI.$$("[data-price]").forEach((el) => {
+    el.textContent = UI.money(mp[el.dataset.price.replace("_only", "")]);
+  });
 
-  /* ---------- price preview (same rules as backend/pricing.py) ---------- */
+  /* price preview (same rules as backend/pricing.py, using the active cart's signed snapshot) */
   function priced(spec) {
     const t = spec.type;
-    if (t === "takeout_box") return { name: "Takeout box", unit: mp.take_out_box || 5, section: "Meals", parts: {} };
-    if (t === "product") { const p = boot.products.find((x) => x.product_id === spec.product_id) || { name: "(item no longer sold)", price: 0, product_id: spec.product_id }; return { name: p.name, unit: p.price, section: "Snacks", parts: {}, product: p.product_id }; }
-    if (t === "meat") return { name: cap(spec.meat), unit: mp[spec.meat], section: "Meals", parts: { [spec.meat]: 1 } };
-    if (t === "veg") return { name: "Veggy", unit: mp.veg, section: "Meals", parts: { veg: 1 } };
-    if (t === "rice") return { name: "Plain Rice", unit: mp.rice, section: "Meals", parts: { rice: 1 } };
-    if (t === "fried_rice") return { name: "Fried Rice", unit: mp.fried_rice, section: "Meals", parts: { rice: 1 } };
+    const prices = cartPricing ? cartPricing.meal_prices : mp;
+    const products = cartPricing ? cartPricing.products : boot.products;
+    if (t === "takeout_box") return { name: "Takeout box", unit: prices.take_out_box || 5, section: "Meals", parts: {} };
+    if (t === "product") { const p = products.find((x) => x.product_id === spec.product_id) || { name: "(item no longer sold)", price: 0, product_id: spec.product_id }; return { name: p.name, unit: p.price, section: "Snacks", parts: {}, product: p.product_id }; }
+    if (t === "meat") return { name: cap(spec.meat), unit: prices[spec.meat], section: "Meals", parts: { [spec.meat]: 1 } };
+    if (t === "veg") return { name: "Veggy", unit: prices.veg, section: "Meals", parts: { veg: 1 } };
+    if (t === "rice") return { name: "Plain Rice", unit: prices.rice, section: "Meals", parts: { rice: 1 } };
+    if (t === "fried_rice") return { name: "Fried Rice", unit: prices.fried_rice, section: "Meals", parts: { rice: 1 } };
     const { meat, meat_qty: mq, veg_qty: veg, rice_type: rt, rice_qty: rq } = spec;
     const budget = !!meat && mq === 1 && veg === 1 && rt === "plain" && rq === 1;
-    const unit = budget ? mp["budget_" + meat] : (meat ? mp[meat] * mq : 0) + mp.veg * veg + (rt === "fried" ? mp.fried_rice : mp.rice) * rq;
+    const unit = budget ? prices["budget_" + meat] : (meat ? prices[meat] * mq : 0) + prices.veg * veg + (rt === "fried" ? prices.fried_rice : prices.rice) * rq;
     const riceTxt = (rq === 0.5 ? "½ " : rq === 2 ? "Double " : "") + (rt === "fried" ? "Fried rice" : "Rice");
     const name = budget ? `Budget Meal (Rice, ${cap(meat)} & Vegetable)` : [riceTxt, meat && (mq === 2 ? "Double " : "") + cap(meat), veg && (veg === 2 ? "Double " : "") + "Vegetable"].filter(Boolean).join(" + ");
     const parts = { rice: rq }; if (meat) parts[meat] = mq; if (veg) parts.veg = veg;
@@ -28,19 +43,49 @@ document.addEventListener("DOMContentLoaded", async () => {
   const needOf = (lines) => { const n = {}; lines.forEach((l) => { const p = priced(l); Object.entries(p.parts).forEach(([k, v]) => (n["meal:" + k] = (n["meal:" + k] || 0) + v * l.qty)); if (p.product) n[p.product] = (n[p.product] || 0) + l.qty; }); return n; };
   function shortItem(lines) {          // returns the name of something we do not have enough of, or ""
     for (const [k, v] of Object.entries(needOf(lines))) {
-      const have = k.startsWith("meal:") ? boot.meal_stock[k.slice(5)] : (boot.products.find((p) => String(p.product_id) === k) || {}).qty;
-      if (v > (have ?? 0)) return k.startsWith("meal:") ? cap(k.slice(5)) + " servings" : boot.products.find((p) => String(p.product_id) === k).name;
+      const product = boot.products.find((p) => String(p.product_id) === k)
+        || (cartPricing && cartPricing.products.find((p) => String(p.product_id) === k));
+      const have = k.startsWith("meal:") ? boot.meal_stock[k.slice(5)] : product && product.qty;
+      if (v > (have ?? 0)) return k.startsWith("meal:") ? cap(k.slice(5)) + " servings" : product ? product.name : "Item";
     }
     return "";
   }
 
-  /* ---------- cart ---------- */
-  function addSpec(spec) {
+  /* cart */
+  async function addSpec(spec) {
+    if (!boot) return false;
+    if (cart.length && (!cartPricing || !cartPricing.token)) {
+      UI.toast("This saved cart has no locked prices. Cancel it or confirm current prices before continuing.");
+      return false;
+    }
+    if (!cart.length) {
+      if (navigator.onLine) {
+        try {
+          boot = await api("/api/pos/bootstrap");
+          await Store.put("cache", { key: "bootstrap", value: boot, at: Date.now() });
+        } catch (e) {
+          if (!isOffline(e)) { UI.toast(e.message); return false; }
+        }
+      }
+      if (!boot.pricing_token) {
+        UI.toast("Connect to refresh the signed price list before starting a sale.");
+        return false;
+      }
+      cartPricing = catalogFor(boot);
+      legacyCartNeedsPriceConfirmation = false;
+      mp = cartPricing.meal_prices;
+      save("pos_cart_pricing", cartPricing);
+      updateMealPrices();
+      refreshProductDisplays();
+    } else if (spec.type === "product" && !cartPricing.products.some((p) => p.product_id === spec.product_id)) {
+      UI.toast("Finish this sale before adding an item from the updated price list");
+      return false;
+    }
     const next = cart.map((l) => ({ ...l })), found = next.find((l) => keyOf(l) === keyOf(spec));
     found ? (found.qty += spec.qty) : next.push({ ...spec });
     const lack = shortItem(next);
     if (lack) { UI.toast("Not enough stock: " + lack); return false; }
-    cart = next; save("pos_cart", cart); render(); refreshProductDisplays(); return true;
+    cart = next; saveCart(); render(); refreshProductDisplays(); return true;
   }
   function render() {
     const ul = $("#order-lines");
@@ -58,7 +103,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   $("#order-lines").addEventListener("click", (e) => {
     const inc = e.target.dataset.inc, dec = e.target.dataset.dec;
     if (inc !== undefined) addSpec({ ...cart[inc], qty: 1 });
-    if (dec !== undefined) { cart[dec].qty--; if (cart[dec].qty <= 0) cart.splice(dec, 1); save("pos_cart", cart); render(); refreshProductDisplays(); }
+    if (dec !== undefined) {
+      cart[dec].qty--;
+      if (cart[dec].qty <= 0) cart.splice(dec, 1);
+      if (!cart.length) { cartPricing = null; mp = boot.meal_prices; legacyCartNeedsPriceConfirmation = false; }
+      saveCart(); render(); refreshProductDisplays();
+    }
   });
   $("#btn-add-box").addEventListener("click", () => addSpec({ type: "takeout_box", qty: 1 }));
   $$all("input[name=pay]").forEach((r) => r.addEventListener("change", () => localStorage.setItem("pos_pay", $("#pay-1").checked ? "ewallet" : "cash")));
@@ -66,13 +116,28 @@ document.addEventListener("DOMContentLoaded", async () => {
   $("#ewallet-ref4").addEventListener("input", (e) => (e.target.value = e.target.value.replace(/\D/g, "").slice(0, 4)));
   function $$all(s) { return UI.$$(s); }
 
-  $("#btn-hold").addEventListener("click", () => { if (!cart.length) return; held.push(cart); cart = []; save("pos_held", held); save("pos_cart", cart); render(); refreshProductDisplays(); UI.toast("Sale put on hold"); });
-  $("#btn-resume").addEventListener("click", () => { if (!held.length || cart.length) return UI.toast(cart.length ? "Finish or hold the current sale first" : "");   cart = held.pop(); save("pos_held", held); save("pos_cart", cart); render(); refreshProductDisplays(); });
-  $("#btn-cancel").addEventListener("click", () => { if (cart.length && !confirm("Cancel this sale?")) return; cart = []; save("pos_cart", cart); $("#cash-tendered").value = ""; $("#ewallet-ref4").value = ""; render(); refreshProductDisplays(); });
+  $("#btn-hold").addEventListener("click", () => { if (!cart.length) return; held.push(cart); heldPricing.push(cartPricing); cart = []; cartPricing = null; mp = boot.meal_prices; save("pos_held", held); save("pos_held_pricing", heldPricing); saveCart(); render(); refreshProductDisplays(); UI.toast("Sale put on hold"); });
+  $("#btn-resume").addEventListener("click", () => {
+    if (!held.length || cart.length) return UI.toast(cart.length ? "Finish or hold the current sale first" : "");
+    const savedPricing = heldPricing[heldPricing.length - 1];
+    if (savedPricing && savedPricing.aux_id !== boot.user.aux_id) return UI.toast("Sign in to the outlet that owns this held sale");
+    if (!boot.pricing_token) return UI.toast("Connect to refresh the signed price list before resuming a sale.");
+    if ((!savedPricing || !savedPricing.token) && !confirm("This held sale has no saved price snapshot. Resume it at current prices?")) return;
+    cart = held.pop();
+    cartPricing = heldPricing.pop() || null;
+    if (!cartPricing || !cartPricing.token) cartPricing = catalogFor(boot);
+    legacyCartNeedsPriceConfirmation = false;
+    mp = cartPricing.meal_prices;
+    save("pos_held", held); save("pos_held_pricing", heldPricing); saveCart();
+    updateMealPrices(); render(); refreshProductDisplays();
+  });
+  $("#btn-cancel").addEventListener("click", () => { if (cart.length && !confirm("Cancel this sale?")) return; cart = []; cartPricing = null; legacyCartNeedsPriceConfirmation = false; mp = boot.meal_prices; saveCart(); $("#cash-tendered").value = ""; $("#ewallet-ref4").value = ""; updateMealPrices(); render(); refreshProductDisplays(); });
 
-  /* ---------- complete sale: save on the device first, then sync ---------- */
+  /* complete sale: save on the device first, then sync */
   $("#btn-complete").addEventListener("click", async () => {
     if (!cart.length) return UI.toast("Add an item first");
+    if (legacyCartNeedsPriceConfirmation || !cartPricing || !cartPricing.token) return UI.toast("This saved cart has no locked prices. Cancel it or confirm current prices before completing it.");
+    if (cartPricing.aux_id !== boot.user.aux_id) return UI.toast("This sale belongs to another outlet. Sign in to that outlet to complete it.");
     const ewallet = $("#pay-1").checked, tendered = parseFloat($("#cash-tendered").value || 0), ref4 = $("#ewallet-ref4").value, t = grand();
     if (ewallet && !/^\d{4}$/.test(ref4)) return UI.toast("Enter the last 4 digits of the e-wallet reference number");
     if (!ewallet && tendered < t) return UI.toast("Amount tendered is less than the total");
@@ -80,20 +145,38 @@ document.addEventListener("DOMContentLoaded", async () => {
     const now = UI.isoNow(), code = UI.session().user.aux_code;
     const txn = { id: UI.uuid(), receipt_no: `${code}-${now.slice(0, 10).replace(/-/g, "")}-${UI.uuid().slice(0, 4).toUpperCase()}`, created_at: now,
       payment_method: ewallet ? "E-Wallet" : "Cash", amount_tendered: ewallet ? null : tendered, ewallet_ref4: ewallet ? ref4 : null,
-      dine: "in", lines: cart.map((l) => ({ ...l })) };
+      dine: "in", pricing_token: cartPricing.token, lines: cart.map((l) => ({ ...l })) };
     await Store.put("outbox", { id: txn.id, payload: txn, status: "pending" });       // 1. safe on the device
     await Sync.useStock(needOf(cart));                                                // lower the saved stock
-    Object.entries(needOf(cart)).forEach(([k, v]) => { if (k.startsWith("meal:")) boot.meal_stock[k.slice(5)] -= v; else boot.products.find((p) => String(p.product_id) === k).qty -= v; });
-    cart = []; save("pos_cart", cart); $("#cash-tendered").value = ""; $("#ewallet-ref4").value = ""; render(); refreshProductDisplays();
+    Object.entries(needOf(cart)).forEach(([k, v]) => {
+      if (k.startsWith("meal:")) boot.meal_stock[k.slice(5)] -= v;
+      else {
+        const product = boot.products.find((p) => String(p.product_id) === k);
+        if (product) product.qty -= v;
+      }
+    });
+    cart = []; cartPricing = null; legacyCartNeedsPriceConfirmation = false; mp = boot.meal_prices; saveCart(); $("#cash-tendered").value = ""; $("#ewallet-ref4").value = ""; updateMealPrices(); render(); refreshProductDisplays();
     Sync.badge(); Sync.flush();                                                       // 2. send when online
   });
 
-  /* ---------- data: online = fresh from the server, offline = the copy saved on this device ---------- */
+  /* data: online = fresh from the server, offline = the copy saved on this device */
   await Sync.flush();
   boot = await Sync.bootstrap();
   if (!boot) { UI.toast("Connect to the internet once to download the products and prices."); return; }
   mp = boot.meal_prices;
-  UI.$$("[data-price]").forEach((el) => (el.textContent = UI.money(mp[el.dataset.price.replace("_only", "")])));
+  if (cart.length && (!cartPricing || !cartPricing.token)) {
+    legacyCartNeedsPriceConfirmation = true;
+    if (boot.pricing_token && confirm("This saved cart predates price locking. Apply the current prices to it?")) {
+      cartPricing = catalogFor(boot);
+      legacyCartNeedsPriceConfirmation = false;
+      save("pos_cart_pricing", cartPricing);
+    } else {
+      UI.toast("This saved cart has no locked prices. Cancel it or reload and confirm current prices before completing it.");
+    }
+  }
+  if (cartPricing && cartPricing.aux_id !== boot.user.aux_id) UI.toast("This saved cart belongs to another outlet. Sign in to that outlet to complete it.");
+  if (cartPricing) mp = cartPricing.meal_prices;
+  updateMealPrices();
   const doneBtn = $("#btn-done-day");
   const closeKey = `sales-day-closed:${UI.session().user.aux_id}:${boot.sales_day}`;
   if (localStorage.getItem(closeKey)) { doneBtn.disabled = true; doneBtn.textContent = "Sales day closed"; }
@@ -133,7 +216,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     const stock = Number.isFinite(qty) && qty <= 4
       ? `<span class="pos-product__stock">${qty > 0 ? `${qty} left` : "Out of stock"}</span>`
       : "";
-    return `<button class="tile pos-product" type="button" data-product="${p.product_id}"><b class="pos-product__name">${UI.esc(p.name)}</b>${punchBadge}<span class="tile__price pos-product__price">${UI.money(p.price)}</span>${stock}</button>`;
+    const listed = cartPricing && cartPricing.products.find((item) => item.product_id === p.product_id);
+    const name = listed ? listed.name : p.name, price = listed ? listed.price : p.price;
+    return `<button class="tile pos-product" type="button" data-product="${p.product_id}"><b class="pos-product__name">${UI.esc(name)}</b>${punchBadge}<span class="tile__price pos-product__price">${UI.money(price)}</span>${stock}</button>`;
   }
   function drawCatalog() {
     if (!posProducts) return;
@@ -226,7 +311,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     $("#qty-minus").addEventListener("click", () => { q = Math.max(1, q - 1); update(); });
     $("#qty-plus").addEventListener("click", () => { q++; update(); });
-    $("#btn-add-meal").addEventListener("click", () => { const s = spec(); if (!s.meat && !s.veg_qty) return UI.toast("Select an item before adding this meal"); if (addSpec(s)) location.href = "pos.html"; });
+    $("#btn-add-meal").addEventListener("click", async () => { const s = spec(); if (!s.meat && !s.veg_qty) return UI.toast("Select an item before adding this meal"); if (await addSpec(s)) location.href = "pos.html"; });
     update();
   }
   render(); refreshProductDisplays();

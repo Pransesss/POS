@@ -3,17 +3,37 @@ document.addEventListener("DOMContentLoaded", async () => {
   const { $, esc, money, num } = UI, admin = UI.session().user.role === "admin";
   let data = null, openPred = false, openTop = false, openLow = false;
 
-  /* tiny charts drawn with SVG (colours come from the page's CSS variables) */
+  /* Compact SVG charts styled with the dashboard's green theme. */
   const bars = (rows, id) => {
     const el = $(id), max = Math.max(1, ...rows.map((r) => +r.qty));
     if (!rows.length) { el.textContent = "No sales yet"; return; }
-    const w = 300 / rows.length;
-    el.innerHTML = `<svg viewBox="0 0 300 150" width="100%" height="150">${rows.map((r, i) => { const h = Math.round((r.qty / max) * 95) + 2, x = i * w + 4;
-      return `<rect x="${x}" y="${110 - h}" width="${Math.max(8, w - 8)}" height="${h}" rx="3" fill="currentColor" opacity=".8"/><text x="${x + (w - 8) / 2}" y="${104 - h}" font-size="9" text-anchor="middle" fill="currentColor">${num(r.qty)}</text><text x="${x + (w - 8) / 2}" y="125" font-size="7" text-anchor="middle" fill="currentColor" opacity=".7">${esc(r.name.length > 12 ? r.name.slice(0, 11) + "…" : r.name)}</text>`; }).join("")}</svg>`;
+    const w = 300 / rows.length, gradientId = `${id.slice(1)}-bar-gradient`;
+    const gradient = id.includes("low") ? ["#d9a64a", "#8c6330"] : ["#a2efaf", "#478a56"];
+    el.innerHTML = `<svg class="chart__svg" viewBox="0 0 300 150" role="img" aria-label="${esc(el.getAttribute("aria-label") || "Sales chart")}">
+      <defs><linearGradient id="${gradientId}" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="${gradient[0]}"/><stop offset="100%" stop-color="${gradient[1]}"/></linearGradient></defs>
+      ${[25, 50, 75, 100].map((y) => `<line class="chart__grid" x1="4" y1="${y}" x2="296" y2="${y}"/>`).join("")}
+      ${rows.map((r, i) => {
+        const h = Math.max(3, Math.round((r.qty / max) * 78)), x = i * w + 4, barW = Math.max(8, w - 8), cx = x + barW / 2;
+        const label = r.name.length > 12 ? r.name.slice(0, 11) + "…" : r.name;
+        return `<g><title>${esc(r.name)}: ${num(r.qty)}</title><rect class="chart__bar" x="${x}" y="${105 - h}" width="${barW}" height="${h}" rx="4" fill="url(#${gradientId})"/><text class="chart__value" x="${cx}" y="${99 - h}" text-anchor="middle">${num(r.qty)}</text><text class="chart__label" x="${cx}" y="126" text-anchor="middle">${esc(label)}</text></g>`;
+      }).join("")}</svg>`;
   };
   const line = (rows) => {
-    const el = $("#chart-weekly"), max = Math.max(1, ...rows.map((r) => +r.total)), pts = rows.map((r, i) => [20 + i * 43, 100 - (r.total / max) * 85]);
-    el.innerHTML = `<svg viewBox="0 0 300 130" width="100%" height="140"><polyline points="${pts.map((p) => p.join(",")).join(" ")}" fill="none" stroke="currentColor" stroke-width="2"/>${pts.map((p, i) => `<circle cx="${p[0]}" cy="${p[1]}" r="3" fill="currentColor"/><text x="${p[0]}" y="120" font-size="8" text-anchor="middle" fill="currentColor" opacity=".7">${new Date(rows[i].date + "T00:00:00").toLocaleDateString("en-US", { weekday: "short" })}</text>`).join("")}</svg>`;
+    const el = $("#chart-weekly");
+    if (!rows.length) { el.textContent = "No sales yet"; return; }
+    const max = Math.max(1, ...rows.map((r) => +r.total));
+    const pts = rows.map((r, i) => [20 + i * (260 / Math.max(1, rows.length - 1)), 18 + (1 - r.total / max) * 76]);
+    const curve = pts.reduce((path, point, i) => {
+      if (!i) return `M ${point[0]} ${point[1]}`;
+      const prev = pts[i - 1], midX = (prev[0] + point[0]) / 2, midY = (prev[1] + point[1]) / 2;
+      return `${path} Q ${prev[0]} ${prev[1]} ${midX} ${midY}`;
+    }, "") + ` T ${pts[pts.length - 1][0]} ${pts[pts.length - 1][1]}`;
+    const area = `${curve} L ${pts[pts.length - 1][0]} 108 L ${pts[0][0]} 108 Z`;
+    el.innerHTML = `<svg class="chart__svg chart__svg--weekly" viewBox="0 0 300 130" role="img" aria-label="Sales by day this week">
+      <defs><linearGradient id="weekly-sales-fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#8fe3a0" stop-opacity=".24"/><stop offset="100%" stop-color="#8fe3a0" stop-opacity="0"/></linearGradient></defs>
+      ${[25, 50, 75, 100].map((y) => `<line class="chart__grid" x1="8" y1="${y}" x2="292" y2="${y}"/>`).join("")}
+      <path d="${area}" fill="url(#weekly-sales-fill)"/><path class="chart__line" d="${curve}"/>
+      ${pts.map((p, i) => `<g><title>${new Date(rows[i].date + "T00:00:00").toLocaleDateString("en-US", { weekday: "long" })}: ${money(rows[i].total)}</title><circle class="chart__point-halo" cx="${p[0]}" cy="${p[1]}" r="6"/><circle class="chart__point" cx="${p[0]}" cy="${p[1]}" r="3.5"/><text class="chart__label" x="${p[0]}" y="122" text-anchor="middle">${new Date(rows[i].date + "T00:00:00").toLocaleDateString("en-US", { weekday: "short" })}</text></g>`).join("")}</svg>`;
   };
 
   function draw() {
@@ -34,7 +54,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     bars(s.low_snacks.slice(0, nLow), "#chart-low-snacks"); bars(s.low_meals.slice(0, nLow), "#chart-low-meals");
     line(data.weekly);
     const sba = $("#sales-by-aux");
-    if (sba && data.sales_by_aux) { const max = Math.max(1, ...data.sales_by_aux.map((a) => +a.total)); sba.innerHTML = data.sales_by_aux.map((a) => `<div class="rows__item"><dt>${esc(a.name)}</dt><dd>${money(a.total)}</dd></div><meter min="0" max="${max}" value="${a.total}" style="width:100%"></meter>`).join(""); }
+    if (sba && data.sales_by_aux) {
+      const max = Math.max(1, ...data.sales_by_aux.map((a) => +a.total));
+      sba.innerHTML = data.sales_by_aux.map((a) => {
+        const total = Math.max(0, +a.total);
+        const percent = Math.min(100, (total / max) * 100);
+        return `<div class="sales-aux__item">
+          <div class="sales-aux__heading"><span>${esc(a.name)}</span><strong>${money(total)}</strong></div>
+          <div class="sales-aux__track" role="meter" aria-label="Sales for ${esc(a.name)}" aria-valuemin="0" aria-valuemax="${max}" aria-valuenow="${total}">
+            <span class="sales-aux__fill" style="width:${percent}%"></span>
+          </div>
+        </div>`;
+      }).join("");
+    }
   }
   const num2 = (n) => Number(n || 0).toLocaleString("en-PH", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
@@ -52,8 +84,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
   $("#filter-date").addEventListener("change", load);
   const links = UI.$$(".link-button");                      // See all → : predicted table, top sellers, low sellers
-  if (links[0]) links[0].addEventListener("click", () => { openPred = !openPred; links[0].textContent = openPred ? "Show less" : "See all →"; draw(); });
-  if (links[1]) links[1].addEventListener("click", () => { openTop = !openTop; links[1].textContent = openTop ? "Show less" : "See all →"; draw(); });
-  if (links[2]) links[2].addEventListener("click", () => { openLow = !openLow; links[2].textContent = openLow ? "Show less" : "See all →"; draw(); });
+  const setLinkState = (link, expanded) => {
+    link.querySelector("span").textContent = expanded ? "Show less" : "See all";
+    link.classList.toggle("is-expanded", expanded);
+  };
+  if (links[0]) links[0].addEventListener("click", () => { openPred = !openPred; setLinkState(links[0], openPred); draw(); });
+  if (links[1]) links[1].addEventListener("click", () => { openTop = !openTop; setLinkState(links[1], openTop); draw(); });
+  if (links[2]) links[2].addEventListener("click", () => { openLow = !openLow; setLinkState(links[2], openLow); draw(); });
   load();
 });

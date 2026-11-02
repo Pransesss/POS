@@ -1,6 +1,6 @@
 /* components.css — reusable pieces: card, kpi, table, badge, dot, tabs, segmented, tiles, banner, modal */
 
-/* ---------- card: soft lit edge like the Figma ---------- */
+/* card: soft lit edge like the Figma */
 .card {
   padding: 16px;
   border: 1px solid var(--edge);
@@ -27,7 +27,7 @@
 .card__head .card__title { margin: 0; }
 .card--scroll { overflow-x: auto; }
 
-/* ---------- KPI ---------- */
+/* KPI */
 .kpi__value {
   margin-top: 14px;
   font-size: 28px;
@@ -48,7 +48,7 @@
   color: var(--green-soft);
 }
 
-/* ---------- label : value rows (cash on hand) ---------- */
+/* label : value rows (cash on hand) */
 .rows { margin: 0; }
 
 .rows__item {
@@ -65,7 +65,7 @@
 .rows__item dd:nth-child(2) { color: var(--muted); }
 .rows__item dd:last-child   { text-align: right; }
 
-/* ---------- table ---------- */
+/* table */
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -100,7 +100,7 @@
   color: var(--muted);
 }
 
-/* ---------- badge / dot ---------- */
+/* badge / dot */
 .badge {
   display: inline-block;
   padding: 2px 8px;
@@ -184,7 +184,7 @@
 
 .legend .dot { margin: 0 4px 0 0; }
 
-/* ---------- banner ---------- */
+/* banner */
 .banner {
   display: block;
   padding: 8px 12px;
@@ -194,7 +194,7 @@
 .banner--warn { background: #463a18; color: var(--amber); }
 .banner--info { background: #233347; color: #8ab8f0; }
 
-/* ---------- pure-CSS tabs (radio + label) ----------
+/* pure-CSS tabs (radio + label)
    Markup: .tabset > input[radio] x N, then the bar (labels), then <section class="tabset__panel"> x N.
    The 1st radio shows the 1st panel, and so on (up to 4 tabs).
    Selected tabs use a theme-tinted glass highlight. */
@@ -273,7 +273,7 @@
 
 .tabset--pay > .tabset__bar { margin-bottom: 14px; }
 
-/* ---------- segmented control (Single / Double, Dine in / Take out, All / Cash / E-Wallet) ---------- */
+/* segmented control (Single / Double, Dine in / Take out, All / Cash / E-Wallet) */
 .segmented {
   --segment-glass: rgba(143, 227, 160, 0.18);
   position: relative;
@@ -326,7 +326,7 @@
     inset -1px -1px 4px rgba(0, 0, 0, 0.18);
 }
 
-/* ---------- tiles (POS buttons) ---------- */
+/* tiles (POS buttons) */
 .tiles {
   display: grid;
   grid-template-columns: repeat(auto-fill, 138px);
@@ -376,7 +376,7 @@
   background: var(--green-bg);
 }
 
-/* ---------- search bar ---------- */
+/* search bar */
 .search {
   position: relative;
 }
@@ -392,7 +392,7 @@
 
 .search input::placeholder { color: var(--muted); }
 
-/* ---------- filters / chips ---------- */
+/* filters / chips */
 .toolbar {
   display: flex;
   align-items: center;
@@ -437,17 +437,60 @@
     0 0 8px rgba(143, 227, 160, 0.14);
 }
 
-/* ---------- charts (empty containers, JS/Chart.js draws into them) ---------- */
+/* charts (empty containers, JS/Chart.js draws into them) */
 .chart {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 160px;
+  padding: 4px 2px;
   border-radius: 8px;
-  background: repeating-linear-gradient(to bottom, transparent 0 39px, #3a3d3c 39px 40px);
+  background: linear-gradient(180deg, rgba(143, 227, 160, 0.025), transparent 70%);
   font-size: 11px;
   color: var(--muted);
 }
+
+.chart__svg {
+  display: block;
+  width: 100%;
+  height: 150px;
+  overflow: visible;
+}
+
+.chart__grid {
+  stroke: var(--line);
+  stroke-width: 1;
+  stroke-dasharray: 3 5;
+}
+
+.chart__value {
+  fill: var(--text);
+  font: 600 9px var(--font-sans);
+}
+
+.chart__label {
+  fill: var(--muted);
+  font: 8px var(--font-sans);
+}
+
+.chart__bar {
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.22));
+  transition: opacity 160ms ease;
+}
+
+.chart__svg g:hover .chart__bar { opacity: 0.78; }
+
+.chart__line {
+  fill: none;
+  stroke: var(--green-soft);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 2px 4px rgba(143, 227, 160, 0.2));
+}
+
+.chart__point-halo { fill: var(--green-bg); }
+.chart__point { fill: var(--green-soft); stroke: var(--panel); stroke-width: 1.5; }
 
 .chart-pair {
   display: grid;
@@ -472,7 +515,7 @@
   background: var(--green-soft);
 }
 
-/* ---------- forms ---------- */
+/* forms */
 .form-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -485,11 +528,11 @@
   color: var(--muted);
 }
 
-/* ---------- label wrappers must not inherit the generic label margin ---------- */
+/* label wrappers must not inherit the generic label margin */
 .tile-radio,
 .chip-toggle { margin: 0; }
 
-/* ---------- six-column grid (meal servings left) ---------- */
+/* six-column grid (meal servings left) */
 .grid-six {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -498,12 +541,12 @@
 
 .stat__value { font-size: 16px; }
 
-/* ---------- selectable table row (settings) ---------- */
+/* selectable table row (settings) */
 .is-clickable { cursor: pointer; }
 .is-clickable:hover td { background: #2c2f2d; }
 .is-selected td { background: var(--green-bg); }
 
-/* ---------- modal (edit product / remittance / receipt / add event) ---------- */
+/* modal (edit product / remittance / receipt / add event) */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -539,7 +582,7 @@
   transform: translateX(-50%);
 }
 
-/* ---------- admin delivery picker ---------- */
+/* admin delivery picker */
 .delivery-picker { position: relative; }
 .delivery-picker__input { width: 100%; }
 .delivery-picker__menu {
@@ -577,7 +620,7 @@
   .delivery-selected__row input { width:100%; }
 }
 
-/* ---------- admin delivery picker ---------- */
+/* admin delivery picker */
 .delivery-picker { position: relative; }
 .delivery-picker__input { width: 100%; }
 .delivery-picker__menu { position:absolute; z-index:20; left:0; right:0; top:calc(100% + 4px); max-height:260px; overflow-y:auto; background:var(--card,#262927); border:1px solid var(--border,#3b3f3c); border-radius:10px; box-shadow:0 12px 28px rgba(0,0,0,.28); display:none; }

@@ -1,9 +1,9 @@
 /* pages.css — page-specific layout: POS (matches Figma POS1/POS2), receiving, report slips */
 
-/* ---------- POS: left column ---------- */
+/* POS: left column */
 .pos-results { margin-top: 0; }
 
-/* ---------- POS: product filters and cards ---------- */
+/* POS: product filters and cards */
 .pos-catalog { min-width: 0; }
 
 .pos-filters {
@@ -96,7 +96,7 @@
   color: var(--amber);
 }
 
-/* ---------- POS: meal builder ---------- */
+/* POS: meal builder */
 .builder { padding: 20px; }
 
 .builder__title {
@@ -175,7 +175,7 @@
   color: var(--green-soft);
 }
 
-/* ---------- POS: Current Sale card (full height, right) ---------- */
+/* POS: Current Sale card (full height, right) */
 .order {
   position: sticky;
   top: 16px;
@@ -327,7 +327,7 @@
   }
 }
 
-/* ---------- receiving ---------- */
+/* receiving */
 .delivery__table { overflow-x: auto; }
 .delivery__table input { width: 90px; }
 
@@ -362,7 +362,7 @@
 #delivery-history .rows__item:last-child { border-bottom: 0; }
 #delivery-history .badge { flex: none; }
 
-/* ---------- report preview (print layout) ---------- */
+/* report preview (print layout) */
 .slip {
   padding: 18px;
   background: #fff;
@@ -397,7 +397,7 @@
   font-size: 11px;
 }
 
-/* ---------- receipt (modal preview) ---------- */
+/* receipt (modal preview) */
 .receipt {
   padding: 14px;
   border-radius: 6px;
@@ -408,7 +408,7 @@
 
 .receipt .rows__item { border-color: #ccc; }
 
-/* ---------- forecast page (staff/forecast.html) ---------- */
+/* forecast page (staff/forecast.html) */
 .fc-grid { display: grid; grid-template-columns: minmax(180px, 260px) 1fr; gap: 16px; align-items: start; }
 .fc-kind { gap: 8px; margin-top: 4px; }
 .fc-toolbar { margin: 14px 0 8px; }
@@ -416,3 +416,146 @@
 .fc-actions { gap: 12px; margin-top: 14px; }
 #fc-notes .banner { margin: 8px 0; }
 @media (max-width: 640px) { .fc-grid { grid-template-columns: 1fr; } }
+
+/* dashboard: keep auxiliary totals separate from their comparison bars */
+.dashboard-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  height: 28px;
+  min-height: 28px;
+  margin-top: 8px;
+  padding: 0 8px 0 6px;
+  line-height: 1;
+  isolation: isolate;
+  transition: transform 180ms ease, color 180ms ease;
+}
+
+.dashboard-cta::before {
+  position: absolute;
+  z-index: -1;
+  inset: 1px auto 1px 0;
+  width: 26px;
+  border-radius: 999px;
+  background: var(--green-bg);
+  content: "";
+  transition: width 260ms ease, background-color 260ms ease;
+}
+
+.dashboard-cta span {
+  position: relative;
+  margin-left: 10px;
+  white-space: nowrap;
+}
+
+.dashboard-cta:hover {
+  color: var(--green-soft);
+}
+
+.dashboard-cta:hover::before {
+  width: 100%;
+  background: var(--green-bg);
+}
+
+.dashboard-cta.is-expanded::before {
+  width: 100%;
+  background: #3a3c3d;
+}
+
+.dashboard-cta.is-expanded {
+  color: #d4d4d4;
+}
+
+.dashboard-cta.is-expanded svg {
+  transform: scaleX(-1);
+}
+
+.dashboard-cta.is-expanded:hover {
+  color: #fff;
+}
+
+.dashboard-cta.is-expanded:hover::before {
+  background: #454849;
+}
+
+.dashboard-cta.is-expanded:hover svg {
+  transform: scaleX(-1) translateX(2px);
+}
+
+.dashboard-cta svg {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transform: translateX(-2px);
+  transition: transform 260ms ease;
+}
+
+.dashboard-cta:hover svg {
+  transform: translateX(0);
+}
+
+.dashboard-cta:active {
+  transform: scale(0.96);
+}
+
+.dashboard-cta:focus-visible {
+  outline: 2px solid var(--green-soft);
+  outline-offset: 3px;
+}
+
+.sales-aux__item {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.sales-aux__heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 12px;
+  font-size: 11px;
+}
+
+.sales-aux__heading > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.sales-aux__heading > strong {
+  white-space: nowrap;
+  text-align: right;
+  font-weight: 500;
+}
+
+.sales-aux__track {
+  height: 8px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--field);
+}
+
+.sales-aux__fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--green-soft);
+  transition: width 180ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-cta,
+  .dashboard-cta::before,
+  .dashboard-cta svg {
+    transition: none;
+  }
+}

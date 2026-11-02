@@ -1,4 +1,4 @@
-"""Meal pricing — the ONLY place that decides a price. The browser shows a preview, the server recomputes with this.
+"""Meal pricing — the ONLY place that calculates a price. The browser shows a preview; the server recomputes with a signed price snapshot.
 
 A sale line (spec) coming from the POS looks like one of:
   {"type": "meal", "meat": "beef", "meat_qty": 1, "veg_qty": 1, "rice_type": "plain", "rice_qty": 1, "qty": 2}
