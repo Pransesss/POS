@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Settings · MMSU Auxiliary POS</title>
+    <link rel="stylesheet" href="../css/base.css?v=20261102-file-picker">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/icons.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="../css/print.css">
+  </head>
+  <body>
+    <div class="app">
+      <!-- SIDEBAR: identical on every admin page, only .is-active moves -->
+      <aside class="sidebar">
+        <img class="logo" src="../logos/mamasu.png" alt="MMSU seal">
+        <span class="sidebar__label">Menu</span>
+        <nav class="nav">
+          <a class="nav-item nav-item--dashboard" href="dashboard.html">Dashboard</a>
+          <a class="nav-item nav-item--deliveries" href="deliveries.html">Deliveries</a>
+          <a class="nav-item nav-item--inventory" href="inventory.html">Inventory</a>
+          <a class="nav-item nav-item--transactions" href="transactions.html">Transactions</a>
+          <a class="nav-item nav-item--events" href="events.html">Events</a>
+          <a class="nav-item nav-item--settings is-active" href="settings.html">Settings</a>
+        </nav>
+        <div class="sidebar__footer">
+          <div class="sidebar__college">
+            <!-- replace with: <img class="sidebar__college-logo" src="../logos/college.png" alt=""> -->
+            <span class="sidebar__college-logo"></span>
+            <span id="sidebar-college">Administrator</span>
+          </div>
+          <a class="nav-item nav-item--logout" href="../login.html">Log out</a>
+        </div>
+      </aside>
+      <main class="main">
+        <header class="page-header">
+          <div>
+            <h1>Settings</h1>
+          </div>
+        </header>
+
+        <div class="admin-tabs" role="tablist" aria-label="Settings sections">
+          <button class="admin-tab is-active" type="button" data-settings-tab="auxiliary">Auxiliary</button>
+          <button class="admin-tab" type="button" data-settings-tab="accounts">Accounts</button>
+          <button class="admin-tab" type="button" data-settings-tab="prediction">Prediction</button>
+        </div>
+
+        <section class="admin-section" id="settings-auxiliary">
+          <div class="grid-split">
+            <section class="card card--scroll">
+              <h2 class="card__title">Auxiliaries</h2>
+              <table class="table" id="table-aux">
+                <thead><tr><th>Auxiliary</th><th>Code</th></tr></thead>
+                <tbody><tr class="table__empty"><td colspan="2">No data yet</td></tr></tbody>
+              </table>
+              <div class="row" style="margin-top:14px">
+                <button class="btn btn--danger delete-action" id="btn-delete-aux" type="button" aria-label="Delete selected auxiliary" data-delete-tooltip="Delete selected auxiliary" disabled><svg class="delete-action__icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 3h6l1 2h5v2H3V5h5zm-3 6h12l-1 12H7zm3 2v8h2v-8zm4 0v8h2v-8z"/></svg></button>
+              </div>
+            </section>
+            <section class="card">
+              <h2 class="card__title">Add auxiliary</h2>
+              <form id="form-aux" autocomplete="off">
+                <label for="aux-name">Name</label>
+                <input type="text" id="aux-name" required placeholder="College of Nursing">
+                <label for="aux-code">Short code</label>
+                <input type="text" id="aux-code" required maxlength="10" placeholder="CON">
+                <label for="aux-username">Staff username</label>
+                <input type="text" id="aux-username" required autocomplete="off">
+                <label for="aux-password">Staff password (6+ characters)</label>
+                <input type="password" id="aux-password" required autocomplete="new-password">
+                <label for="aux-logo">Logo (PNG or JPG, optional)</label>
+                <div class="file-picker">
+                  <input type="file" id="aux-logo" accept="image/png,image/jpeg">
+                  <label class="file-picker__button" for="aux-logo">
+                    <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 6.5A1.5 1.5 0 0 1 4.5 5h5l2 2H19.5A1.5 1.5 0 0 1 21 8.5v9a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5z"/><path class="file-picker__page" d="M9 9h5l2 2v6H9z"/></svg>
+                    <span>Choose file</span>
+                  </label>
+                  <span class="file-picker__name" id="aux-logo-name">No file chosen</span>
+                </div>
+                <div class="row" style="margin-top:14px"><button class="btn" type="submit">Add auxiliary</button></div>
+              </form>
+            </section>
+          </div>
+        </section>
+
+        <section class="admin-section" id="settings-accounts" hidden>
+          <div class="grid-split">
+            <section class="card card--scroll">
+              <h2 class="card__title">Accounts</h2>
+              <table class="table" id="table-accounts">
+                <thead><tr><th>Account</th><th>Role</th></tr></thead>
+                <tbody><tr class="table__empty"><td colspan="2">No data yet</td></tr></tbody>
+              </table>
+            </section>
+            <section class="card">
+              <h2 class="card__title">Manage: <span id="account-name">select an account</span></h2>
+              <form id="form-account" autocomplete="off">
+                <label for="new-username">New username (leave blank to keep)</label>
+                <input type="text" id="new-username" autocomplete="off">
+                <label for="new-password">New password</label>
+                <input type="password" id="new-password" autocomplete="new-password">
+                <label for="confirm-password">Confirm new password</label>
+                <input type="password" id="confirm-password" autocomplete="new-password">
+                <label for="admin-password">Admin password (required for username/password changes)</label>
+                <input type="password" id="admin-password" autocomplete="off">
+                <label for="account-logo">Logo (PNG or JPG)</label>
+                <div class="file-picker">
+                  <input type="file" id="account-logo" accept="image/png,image/jpeg">
+                  <label class="file-picker__button" for="account-logo">
+                    <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 6.5A1.5 1.5 0 0 1 4.5 5h5l2 2H19.5A1.5 1.5 0 0 1 21 8.5v9a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5z"/><path class="file-picker__page" d="M9 9h5l2 2v6H9z"/></svg>
+                    <span>Choose file</span>
+                  </label>
+                  <span class="file-picker__name" id="account-logo-name">No file chosen</span>
+                </div>
+                <p class="muted text-small" id="account-logo-help">Select an account first to manage its logo.</p>
+                <div class="row" style="margin-top:14px">
+                  <button class="btn" type="submit">Save changes</button>
+                  <button class="btn btn--ghost" type="button" id="btn-reset-password">Reset to temporary password</button>
+                </div>
+              </form>
+            </section>
+          </div>
+        </section>
+        <section class="admin-section" id="settings-prediction" hidden>
+          <section class="card card--scroll">
+            <h2 class="card__title">Items used for waste prediction</h2>
+            <table class="table" id="table-prediction-products">
+              <thead><tr><th>Item</th><th>Category</th><th>Include</th></tr></thead>
+              <tbody><tr class="table__empty"><td colspan="3">No data yet</td></tr></tbody>
+            </table>
+          </section>
+        </section>
+      </main>
+    </div>
+    <script src="../js/common.js?v=20261024-logo2"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/settings.js?v=20261102-file-picker"></script>
+  </body>
+</html>

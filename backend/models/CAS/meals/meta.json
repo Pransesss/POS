@@ -1,0 +1,35 @@
+{
+  "version": "lstm-rot-20261029-1503",
+  "trained_at": "2026-10-29T15:03:37",
+  "trained_through": "2026-05-19",
+  "val_start": "2026-03-23",
+  "items": [
+    "Chicken @99",
+    "Pork",
+    "Rice",
+    "Veggies"
+  ],
+  "n_items": 4,
+  "skipped": [],
+  "pool": 47.13695105899246,
+  "item_scale": {
+    "Chicken @99": 10.76,
+    "Pork": 50.372262773722625,
+    "Rice": 52.669064748201436,
+    "Veggies": 43.90163934426229
+  },
+  "window": 3,
+  "seeds": 3,
+  "min_active_days": 26,
+  "n_school_days": 176,
+  "wape_lstm": 28.14,
+  "wape_item_average": 32.56,
+  "weather_fill": {
+    "temperature_2m_max": 31.22670454545454,
+    "temperature_2m_min": 22.822727272727274,
+    "precipitation_sum": 3.476704545454545,
+    "is_rainy": 0.5,
+    "is_hot": 0.3409090909090909
+  },
+  "weather_source": "Open-Meteo"
+}

@@ -1,0 +1,12 @@
+{
+  "aux": "CAS",
+  "as_of": "2026-10-16",
+  "target_date": "2026-10-19",
+  "model_version": "moving_avg_7d",
+  "total_predicted": 312,
+  "items": [
+    { "name": "Banana cue", "category": "snack", "last_sold": 120, "predicted": 90 },
+    { "name": "Turon",      "category": "snack", "last_sold": 35,  "predicted": 30 },
+    { "name": "pork",       "category": "meal",  "last_sold": 42,  "predicted": 40 }
+  ]
+}

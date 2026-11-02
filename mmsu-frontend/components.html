@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Components · MMSU Auxiliary POS</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/print.css">
+  </head>
+  <body>
+    <div class="app" style="grid-template-columns:1fr">
+      <main class="main">
+        <header class="page-header">
+          <div><h1>Components</h1><p class="muted text-small">Reference for every reusable piece. Copy from here, do not reinvent.</p></div>
+        </header>
+
+        <section class="card">
+          <h2 class="card__title">Buttons</h2>
+          <div class="row">
+            <button class="btn" type="button">Primary</button>
+            <button class="btn btn--ghost" type="button">Ghost</button>
+            <button class="link-button" type="button">Link button</button>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2 class="card__title">Badges, dots and banners</h2>
+          <div class="row">
+            <span class="badge badge--ok">In stock</span>
+            <span class="badge badge--warn">Low stock</span>
+            <span class="badge badge--bad">Out of stock</span>
+            <span class="badge badge--info">Info</span>
+            <span class="legend"><span><span class="dot dot--budget"></span>Budget meal</span><span><span class="dot dot--takeout"></span>Take-out</span></span>
+          </div>
+          <div class="stack" style="margin-top:10px">
+            <div class="banner banner--warn">Warning banner</div>
+            <div class="banner banner--info">Info banner</div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2 class="card__title">Modal: Edit product</h2>
+          <!-- real modal = .modal-overlay > .card.modal -->
+          <div class="card modal">
+            <h3>Edit product</h3>
+            <label for="m-name">Name</label>
+            <input type="text" id="m-name">
+            <label for="m-barcode">Barcode</label>
+            <input type="text" id="m-barcode">
+            <label for="m-category">Category</label>
+            <select id="m-category"><option value="Snacks">Snacks</option><option value="Drinks">Drinks</option></select>
+            <label for="m-price">Price (₱) — applies to all auxiliaries</label>
+            <input type="number" id="m-price">
+            <label for="m-stock">Stock at this auxiliary</label>
+            <input type="number" id="m-stock">
+            <label for="m-status">Status</label>
+            <select id="m-status"><option>Active</option><option>Inactive</option></select>
+            <div class="modal__actions">
+              <button class="btn" type="button">Save</button>
+              <button class="btn btn--ghost" type="button">Cancel</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2 class="card__title">Modal: Record remittance</h2>
+          <div class="card modal">
+            <h3>Record remittance</h3>
+            <p class="muted text-small">Remit at 2:00 PM. Cash sales for the day up to 1:45 PM: <strong class="text-good" id="remit-expected">₱0.00</strong></p>
+            <label for="remit-amount">Amount handed over (₱)</label>
+            <input type="number" id="remit-amount">
+            <div class="modal__actions">
+              <button class="btn" type="button">Save</button>
+              <button class="btn btn--ghost" type="button">Cancel</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2 class="card__title">Modal: Receipt</h2>
+          <div class="card modal">
+            <div class="receipt">
+              <strong>MMSU AUXILIARY</strong>
+              <p id="receipt-aux">College name</p>
+              <p id="receipt-meta">Receipt # · date time</p>
+              <dl class="rows" id="receipt-lines"></dl>
+              <dl class="rows">
+                <div class="rows__item"><dt><strong>Total</strong></dt><dd id="receipt-total">₱0.00</dd></div>
+                <div class="rows__item"><dt>Cash / E-wallet ref</dt><dd id="receipt-pay">—</dd></div>
+              </dl>
+            </div>
+            <div class="banner banner--warn text-small" hidden>After 1:45 PM: counted on the next business day.</div>
+            <div class="modal__actions">
+              <button class="btn" type="button">Print</button>
+              <button class="btn btn--ghost" type="button">Close</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="js/common.js"></script>
+    <!-- <script src="js/api.js"></script> -->
+  </body>
+</html>

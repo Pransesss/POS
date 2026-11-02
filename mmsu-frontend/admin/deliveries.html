@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Deliveries · MMSU Auxiliary POS</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/icons.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="../css/print.css">
+  </head>
+  <body>
+    <div class="app">
+      <!-- SIDEBAR: identical on every admin page, only .is-active moves -->
+      <aside class="sidebar">
+        <img class="logo" src="../logos/mamasu.png" alt="MMSU seal">
+        <span class="sidebar__label">Menu</span>
+        <nav class="nav">
+          <a class="nav-item nav-item--dashboard" href="dashboard.html">Dashboard</a>
+          <a class="nav-item nav-item--deliveries is-active" href="deliveries.html">Deliveries</a>
+          <a class="nav-item nav-item--inventory" href="inventory.html">Inventory</a>
+          <a class="nav-item nav-item--transactions" href="transactions.html">Transactions</a>
+          <a class="nav-item nav-item--events" href="events.html">Events</a>
+          <a class="nav-item nav-item--settings" href="settings.html">Settings</a>
+        </nav>
+        <div class="sidebar__footer">
+          <div class="sidebar__college">
+            <!-- replace with: <img class="sidebar__college-logo" src="../logos/college.png" alt=""> -->
+            <span class="sidebar__college-logo"></span>
+            <span id="sidebar-college">Administrator</span>
+          </div>
+          <a class="nav-item nav-item--logout" href="../login.html">Log out</a>
+        </div>
+      </aside>
+      <main class="main">
+        <header class="page-header">
+          <div>
+            <h1>Deliveries &amp; daily setup</h1>
+          </div>
+          <div class="page-header__actions">
+            <select id="delivery-aux"></select>
+            <input type="date" id="delivery-date-input">
+          </div>
+        </header>
+
+        <div class="grid-split">
+          <section class="card">
+            <h2 class="card__title">New delivery — <span id="delivery-aux-name">—</span></h2>
+
+            <label for="initial-cash">Initial cash for the day (₱)</label>
+            <input type="number" id="initial-cash" min="0" value="0">
+
+            <h2 class="card__title" style="margin-top:16px">Meal servings</h2>
+            <div class="form-grid">
+              <div>
+                <label for="meal-rice">Rice</label>
+                <input type="number" id="meal-rice" min="0" placeholder="0">
+              </div>
+              <div>
+                <label for="meal-pork">Pork</label>
+                <input type="number" id="meal-pork" min="0" placeholder="0">
+              </div>
+              <div>
+                <label for="meal-beef">Beef</label>
+                <input type="number" id="meal-beef" min="0" placeholder="0">
+              </div>
+              <div>
+                <label for="meal-chicken">Chicken</label>
+                <input type="number" id="meal-chicken" min="0" placeholder="0">
+              </div>
+              <div>
+                <label for="meal-fish">Fish</label>
+                <input type="number" id="meal-fish" min="0" placeholder="0">
+              </div>
+              <div>
+                <label for="meal-veg">Veggy</label>
+                <input type="number" id="meal-veg" min="0" placeholder="0">
+              </div>
+            </div>
+
+            <h2 class="card__title" style="margin-top:16px">Products</h2>
+            <div class="delivery-picker">
+              <input class="delivery-picker__input" type="search" id="delivery-product-search"
+                   placeholder="Type a product name (e.g. ba)…" autocomplete="off">
+            <div class="delivery-picker__menu" id="delivery-product-menu"></div>
+            </div>
+            <div class="delivery-selected" id="delivery-selected"></div>
+
+            <div class="row" style="margin-top:14px">
+              <button class="btn" type="button" id="btn-send-delivery">Send to auxiliary</button>
+            </div>
+          </section>
+
+          <section class="card card--scroll">
+            <h2 class="card__title">Delivery log</h2>
+            <table class="table" id="table-delivery-log">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Auxiliary</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table__empty"><td colspan="3">No data yet</td></tr>
+              </tbody>
+            </table>
+          </section>
+        </div>
+      </main>
+    </div>
+    <script src="../js/common.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/deliveries.js"></script>
+  </body>
+</html>

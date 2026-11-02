@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Receiving · MMSU Auxiliary POS</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/icons.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="../css/print.css">
+  </head>
+  <body>
+    <div class="app">
+      <!-- SIDEBAR: identical on every staff page, only .is-active moves -->
+      <aside class="sidebar">
+        <img class="logo" src="../logos/mamasu.png" alt="MMSU seal">
+        <span class="sidebar__label">Menu</span>
+        <nav class="nav">
+          <a class="nav-item nav-item--dashboard" href="dashboard.html">Dashboard</a>
+          <a class="nav-item nav-item--forecast" href="forecast.html">Prediction</a>
+          <a class="nav-item nav-item--pos" href="pos.html">POS</a>
+          <a class="nav-item nav-item--receiving is-active" href="receiving.html">Receiving</a>
+          <a class="nav-item nav-item--inventory" href="inventory.html">Inventory</a>
+          <a class="nav-item nav-item--transactions" href="transactions.html">Transactions</a>
+        </nav>
+        <div class="sidebar__footer">
+          <div class="sidebar__college">
+            <!-- replace with: <img class="sidebar__college-logo" src="../logos/college.png" alt=""> -->
+            <span class="sidebar__college-logo"></span>
+            <span id="sidebar-college">College of Arts and Sciences</span>
+          </div>
+          <a class="nav-item nav-item--logout" href="../login.html">Log out</a>
+        </div>
+      </aside>
+      <main class="main">
+        <header class="page-header">
+          <div>
+            <h1>Receiving</h1>
+          </div>
+        </header>
+
+        <!-- repeat this card once per pending delivery -->
+        <section class="card delivery" id="delivery-pending">
+          <h2 class="card__title">Delivery for <span id="delivery-date">—</span></h2>
+
+          <label for="delivery-cash">Initial cash received (₱) — listed: <span id="delivery-cash-listed">—</span></label>
+          <input type="number" id="delivery-cash" min="0">
+
+          <div class="delivery__table">
+            <table class="table" id="table-delivery-check">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Listed qty</th>
+                  <th>Counted qty</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table__empty"><td colspan="3">No pending delivery</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="row delivery__actions">
+            <button class="btn" type="button" id="btn-accept">Accept delivery</button>
+          </div>
+        </section>
+
+        <section class="card delivery-history">
+          <h2 class="card__title">Recently received</h2>
+          <div id="delivery-history">
+            <!-- JS: <div class="rows__item"><span>date</span><span class="badge badge--ok">matched</span></div> -->
+            <p class="muted text-small">Nothing received yet.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="../js/common.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/offline.js"></script>
+    <script src="../js/receiving.js"></script>
+  </body>
+</html>

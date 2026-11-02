@@ -1,0 +1,9 @@
+Flask>=3.0
+flask-cors>=4.0
+psycopg2-binary>=2.9
+python-dotenv>=1.0
+pandas>=2.2
+numpy>=1.26
+requests>=2.31
+tensorflow-cpu>=2.16   # Python 3.10-3.12 (TensorFlow has no wheel for 3.13 yet)
+gunicorn>=22.0

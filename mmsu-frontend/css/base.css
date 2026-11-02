@@ -1,0 +1,508 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+
+/* base.css — variables, reset, typography, form controls, buttons, utilities */
+
+:root {
+  --bg: #27272a;
+  --panel: #2c2e2f;
+  --field: #323435;
+  --line: #3a3d3c;
+  --edge: #343a36;
+  --text: #ecefec;
+  --muted: #9a9f9b;
+  --green: #0c4b05;
+  --green-soft: #8fe3a0;
+  --green-bg: #2b4a2e;
+  --blue-tab: #25394d;
+  --red: #e5534b;
+  --amber: #e0a43c;
+  --blue: #4a90e2;
+  --orange: #f0912f;
+  --radius: 8px;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 13px/1.4 var(--font-sans);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 400;
+}
+
+h1 {
+  font: 400 18px/1.2 var(--font-sans);
+}
+
+h2 { font-size: 12px; color: var(--muted); }
+h3 { font: 400 16px/1.2 var(--font-sans); }
+p  { margin: 0; }
+
+a {
+  color: var(--green-soft);
+  text-decoration: none;
+}
+
+/* the hidden attribute must always win over component display rules */
+[hidden] { display: none !important; }
+
+/* ---------- forms ---------- */
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--field);
+  color: var(--text);
+  font: inherit;
+  transition: background-color 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+}
+
+input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="range"]):not([type="hidden"]):hover,
+input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="range"]):not([type="hidden"]):focus,
+select:hover,
+select:focus,
+textarea:hover,
+textarea:focus {
+  outline: none;
+  border-color: rgba(143, 227, 160, 0.55);
+  background-color: #383b3c;
+  box-shadow: 0 0 0 3px rgba(143, 227, 160, 0.1);
+}
+
+select {
+  appearance: none;
+  min-height: 34px;
+  padding: 7px 32px 7px 10px;
+  background-color: var(--field);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='m3 4.5 3 3 3-3' fill='none' stroke='%238fe3a0' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+select option {
+  background: var(--panel);
+  color: var(--text);
+}
+
+select:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted);
+}
+
+textarea {
+  min-height: 72px;
+  resize: vertical;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  width: auto;
+}
+
+.file-picker {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--field);
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.file-picker:focus-within {
+  border-color: rgba(143, 227, 160, 0.55);
+  box-shadow: 0 0 0 3px rgba(143, 227, 160, 0.1);
+}
+
+.file-picker input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+.file-picker__button {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 7px;
+  min-height: 30px;
+  margin: 0;
+  padding: 0 10px;
+  border: 1px solid #454a48;
+  border-radius: 6px;
+  background: #3a3d3d;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  cursor: pointer;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.file-picker__button:hover {
+  border-color: #68736b;
+  background: #454949;
+}
+
+.file-picker__button svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--green-soft);
+}
+
+.file-picker__button .file-picker__page {
+  fill: var(--field);
+}
+
+.file-picker__name {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+label {
+  display: block;
+  margin: 8px 0 3px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  font-family: var(--font-sans);
+}
+
+/* ---------- buttons ---------- */
+.btn {
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--green);
+  color: #fff;
+  font: 500 11px/1 var(--font-sans);
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: transform 160ms ease, filter 160ms ease, box-shadow 160ms ease;
+}
+
+.btn:not(:disabled):hover,
+.btn:not(:disabled):focus-visible {
+  filter: brightness(1.12);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.22);
+}
+
+.btn:not(:disabled):active {
+  filter: brightness(0.96);
+  transform: translateY(0) scale(0.99);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .tile {
+    transition: none;
+  }
+}
+
+.btn--ghost {
+  background: #2f3132;
+  color: var(--text);
+}
+
+.delete-action {
+  position: relative;
+}
+
+.delete-action__icon {
+  display: block;
+  width: 13px;
+  height: 13px;
+  fill: currentColor;
+  transition: transform 200ms linear, fill 200ms linear;
+}
+
+.delete-action::after {
+  position: absolute;
+  top: -130%;
+  left: 50%;
+  z-index: 5;
+  width: max-content;
+  height: auto;
+  padding: 4px 8px;
+  border-radius: 5px;
+  background: #a80707;
+  color: #fff;
+  content: attr(data-delete-tooltip);
+  font-size: 10px;
+  line-height: 1.2;
+  opacity: 0;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+  transition: top 200ms linear, opacity 200ms linear, visibility 200ms linear;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.delete-action:not(:disabled):hover .delete-action__icon,
+.delete-action:not(:disabled):focus-visible .delete-action__icon {
+  fill: #a80707;
+  transform: scale(1.2);
+}
+
+.delete-action:not(:disabled):hover::after,
+.delete-action:not(:disabled):focus-visible::after {
+  top: -160%;
+  opacity: 1;
+  visibility: visible;
+}
+
+.delete-action:disabled .delete-action__icon {
+  opacity: 0.55;
+}
+
+.export-btn {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  min-width: 0;
+  height: 31px;
+  gap: 5px;
+  padding: 0 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  color: #fff;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.2), 0 2px 6px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+  font: 500 11px/1 var(--font-sans);
+  letter-spacing: 0.03em;
+  cursor: pointer;
+}
+
+.export-btn--pdf {
+  background: rgba(217, 67, 67, 0.78);
+}
+
+.export-btn--excel {
+  background: rgba(35, 134, 83, 0.78);
+}
+
+.export-btn__folder {
+  position: relative;
+  display: flex;
+  flex: none;
+  align-items: flex-end;
+  justify-content: center;
+  width: 19px;
+  height: 18px;
+}
+
+.export-btn__folder svg {
+  position: absolute;
+  width: 19px;
+  height: 16px;
+  overflow: visible;
+}
+
+.export-btn__file-back {
+  z-index: 1;
+  fill: rgba(255, 255, 255, 0.3);
+}
+
+.export-btn__file-page {
+  z-index: 2;
+  width: 11px !important;
+  height: 15px !important;
+  fill: #fff;
+  stroke: rgba(0, 0, 0, 0.2);
+  stroke-width: 0.6;
+  transition: transform 300ms ease-out;
+}
+
+.export-btn__file-front {
+  z-index: 3;
+  opacity: 0.95;
+  transform-origin: bottom;
+  transition: transform 300ms ease-out;
+}
+
+.export-btn--pdf .export-btn__file-front {
+  fill: #f27b7b;
+}
+
+.export-btn--excel .export-btn__file-front {
+  fill: #62c98c;
+}
+
+.export-btn__label {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.export-btn__text {
+  color: #fff;
+  font: inherit;
+}
+
+.export-btn:hover,
+.export-btn:focus-visible {
+  filter: brightness(1.12);
+  transform: translateY(-1px);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.28), 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.export-btn:hover .export-btn__file-page,
+.export-btn:focus-visible .export-btn__file-page {
+  transform: translateY(-4px);
+}
+
+.export-btn:hover .export-btn__file-front,
+.export-btn:focus-visible .export-btn__file-front {
+  transform: perspective(30px) rotateX(20deg);
+}
+
+.export-btn:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.export-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .export-btn,
+  .export-btn__file-page,
+  .export-btn__file-front {
+    transition: none;
+  }
+}
+
+.btn--block { width: 100%; }
+
+.link-button {
+  border: 0;
+  background: none;
+  color: #7fbf8c;
+  font: inherit;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  cursor: pointer;
+  transition: color 160ms ease;
+}
+
+.link-button:hover {
+  color: #a7e4b0;
+}
+
+/* small rounded button, e.g. "Open →" */
+.pill {
+  padding: 3px 12px;
+  border-radius: 12px;
+  background: #3a3c3d;
+  color: var(--text);
+  font-size: 10px;
+}
+
+.pill--open {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: background-color 200ms ease;
+}
+
+.pill--open:hover {
+  background: #4d4d4d;
+  color: var(--text);
+}
+
+.pill__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pill--open:hover .pill__arrow {
+  animation: pill-arrow-slide 600ms ease-out both;
+}
+
+@keyframes pill-arrow-slide {
+  from { transform: translateX(-6px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pill--open,
+  .pill--open:hover .pill__arrow {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* ---------- utilities ---------- */
+.muted       { color: var(--muted); }
+.text-small  { font-size: 11px; }
+.text-center { text-align: center; }
+.text-right  { text-align: right; }
+.text-danger { color: var(--red); }
+.text-warn   { color: var(--amber); }
+.text-good   { color: var(--green-soft); }
+.grow        { flex: 1; }
+
+.row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}

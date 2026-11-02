@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inventory · MMSU Auxiliary POS</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/icons.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="../css/print.css">
+  </head>
+  <body>
+    <div class="app">
+      <!-- SIDEBAR: identical on every admin page, only .is-active moves -->
+      <aside class="sidebar">
+        <img class="logo" src="../logos/mamasu.png" alt="MMSU seal">
+        <span class="sidebar__label">Menu</span>
+        <nav class="nav">
+          <a class="nav-item nav-item--dashboard" href="dashboard.html">Dashboard</a>
+          <a class="nav-item nav-item--deliveries" href="deliveries.html">Deliveries</a>
+          <a class="nav-item nav-item--inventory is-active" href="inventory.html">Inventory</a>
+          <a class="nav-item nav-item--transactions" href="transactions.html">Transactions</a>
+          <a class="nav-item nav-item--events" href="events.html">Events</a>
+          <a class="nav-item nav-item--settings" href="settings.html">Settings</a>
+        </nav>
+        <div class="sidebar__footer">
+          <div class="sidebar__college">
+            <!-- replace with: <img class="sidebar__college-logo" src="../logos/college.png" alt=""> -->
+            <span class="sidebar__college-logo"></span>
+            <span id="sidebar-college">Administrator</span>
+          </div>
+          <a class="nav-item nav-item--logout" href="../login.html">Log out</a>
+        </div>
+      </aside>
+      <main class="main">
+        <header class="page-header">
+          <div>
+            <h1>Inventory</h1>
+            <p class="muted text-small" id="today-label">Saturday, September 26</p>
+          </div>
+          <div class="page-header__actions">
+            <select id="filter-aux">
+              <option value="all">All auxiliaries</option>
+              <!-- JS: one option per auxiliary -->
+            </select>
+            <button class="btn" type="button" id="btn-add-product">+ Add product</button>
+          </div>
+        </header>
+
+        <section class="card">
+          <h2 class="card__title">Meal servings left</h2>
+          <div class="grid-six">
+            <div>
+              <p class="muted text-small">Rice</p>
+              <p class="stat__value" id="meal-left-rice">—</p>
+            </div>
+            <div>
+              <p class="muted text-small">Pork</p>
+              <p class="stat__value" id="meal-left-pork">—</p>
+            </div>
+            <div>
+              <p class="muted text-small">Beef</p>
+              <p class="stat__value" id="meal-left-beef">—</p>
+            </div>
+            <div>
+              <p class="muted text-small">Chicken</p>
+              <p class="stat__value" id="meal-left-chicken">—</p>
+            </div>
+            <div>
+              <p class="muted text-small">Fish</p>
+              <p class="stat__value" id="meal-left-fish">—</p>
+            </div>
+            <div>
+              <p class="muted text-small">Veggy</p>
+              <p class="stat__value" id="meal-left-veg">—</p>
+            </div>
+          </div>
+        </section>
+
+        <div class="grid-kpi">
+          <section class="card">
+            <h2 class="card__title">Total products</h2>
+            <p class="kpi__value" id="kpi-total">—</p>
+          </section>
+          <section class="card">
+            <h2 class="card__title">Low stock</h2>
+            <p class="kpi__value" id="kpi-low">—</p>
+          </section>
+          <section class="card">
+            <h2 class="card__title">Out of stock</h2>
+            <p class="kpi__value" id="kpi-out">—</p>
+          </section>
+        </div>
+
+        <section class="card card--scroll">
+          <div class="toolbar">
+            <input class="toolbar__search" type="search" id="inventory-search" placeholder="Scan barcode or search product…">
+            <span class="muted text-small">Filter:</span>
+            <label class="chip-toggle">
+              <input type="checkbox" name="status" value="in">
+              <span class="chip">In stock</span>
+            </label>
+            <label class="chip-toggle">
+              <input type="checkbox" name="status" value="low">
+              <span class="chip">Low stock</span>
+            </label>
+            <label class="chip-toggle">
+              <input type="checkbox" name="status" value="out">
+              <span class="chip">Out of stock</span>
+            </label>
+          </div>
+          <!-- inactive products are listed at the bottom -->
+          <table class="table" id="table-inventory">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Barcode</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Stock</th>
+                <th>Status</th>
+                <th>Auxiliary</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table__empty"><td colspan="9">No data yet</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+    <script src="../js/common.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/inventory.js"></script>
+  </body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>POS · MMSU Auxiliary POS</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/icons.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="../css/print.css">
+  </head>
+  <body>
+    <div class="app">
+      <!-- SIDEBAR: identical on every staff page, only .is-active moves -->
+      <div class="sidebar-shell">
+        <aside class="sidebar">
+        <img class="logo" src="../logos/mamasu.png" alt="MMSU seal">
+        <span class="sidebar__label">Menu</span>
+        <nav class="nav">
+          <a class="nav-item nav-item--dashboard" href="dashboard.html">Dashboard</a>
+          <a class="nav-item nav-item--forecast" href="forecast.html">Prediction</a>
+          <a class="nav-item nav-item--pos is-active" href="pos.html">POS</a>
+          <a class="nav-item nav-item--receiving" href="receiving.html">Receiving</a>
+          <a class="nav-item nav-item--inventory" href="inventory.html">Inventory</a>
+          <a class="nav-item nav-item--transactions" href="transactions.html">Transactions</a>
+        </nav>
+        <div class="sidebar__footer">
+          <div class="sidebar__college">
+            <!-- replace with: <img class="sidebar__college-logo" src="../logos/college.png" alt=""> -->
+            <span class="sidebar__college-logo"></span>
+            <span id="sidebar-college">College of Arts and Sciences</span>
+          </div>
+          <a class="nav-item nav-item--logout" href="../login.html">Log out</a>
+        </div>
+        </aside>
+        <button class="btn-done-day" id="btn-done-day" type="button">Close sales day</button>
+      </div>
+      <main class="main">
+        <div class="grid-pos">
+          <div class="stack">
+            <header class="page-header">
+              <div>
+                <h1>MMSU Auxiliary POS</h1>
+                <p class="muted text-small" id="today-label">Saturday, September 26</p>
+              </div>
+              <div class="page-header__actions">
+                <span class="badge badge--online" id="online-badge">Online</span>
+              </div>
+            </header>
+            <div class="search">
+              <input type="search" id="pos-search" placeholder="Scan barcode or search product…">
+            </div>
+            <!-- search results (barcode items: chips, drinks) replace the quick tiles while typing -->
+            <div class="tiles pos-results pos-products" id="pos-results" hidden></div>
+            <div class="pos-catalog" id="pos-home">
+              <div class="pos-filters" role="group" aria-label="Filter products by category">
+                <button class="pos-filter is-active" type="button" data-pos-filter="All" aria-pressed="true">All</button>
+                <button class="pos-filter" type="button" data-pos-filter="Meals" aria-pressed="false">Meals</button>
+                <button class="pos-filter" type="button" data-pos-filter="Snacks" aria-pressed="false">Snacks</button>
+                <button class="pos-filter" type="button" data-pos-filter="Drinks" aria-pressed="false">Drinks</button>
+              </div>
+              <div class="tiles pos-products" id="pos-products" aria-live="polite"></div>
+            </div>
+          </div>
+          <aside class="card order" id="order-panel">
+            <h3>Current Sale</h3>
+
+            <ul class="order__lines" id="order-lines">
+              <!-- JS: <li class="order__line"> name + stepper (− qty +) + <span class="order__line-amount"> </li> -->
+              <li class="order__empty">No items yet</li>
+            </ul>
+
+            <button class="btn btn--ghost" type="button" id="btn-add-box">+ Takeout box</button>
+            <p class="muted text-small" id="order-box-count">Takeout boxes: 0</p>
+
+            <div class="order__total">
+              <span>Total</span>
+              <strong id="order-total">₱0.00</strong>
+            </div>
+
+            <div class="tabset tabset--pay">
+              <input type="radio" name="pay" id="pay-0" checked>
+              <input type="radio" name="pay" id="pay-1">
+              <div class="tabset__bar">
+                <label for="pay-0">Cash</label>
+                <label for="pay-1">GCash / E-Wallet</label>
+              </div>
+              <section class="tabset__panel">
+                <label for="cash-tendered">Amount tendered</label>
+                <input type="number" id="cash-tendered" min="0" placeholder="0">
+                <div class="order__change">
+                  <span>Change</span>
+                  <strong id="order-change">₱0.00</strong>
+                </div>
+              </section>
+              <section class="tabset__panel">
+                <label for="ewallet-ref4">Last 4 digits of the e-wallet reference no. (required)</label>
+                <input type="text" id="ewallet-ref4" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" placeholder="0000">
+              </section>
+            </div>
+
+            <div class="order__buttons">
+              <button class="btn btn--block" id="btn-complete" type="button">COMPLETE SALE</button>
+              <button class="btn btn--ghost btn--block" id="btn-hold" type="button">HOLD SALE</button>
+              <button class="link-button" id="btn-resume" type="button" hidden>Resume last held sale</button>
+              <span class="order__cancel" id="btn-cancel">CANCEL SALE</span>
+            </div>
+          </aside>
+        </div>
+      </main>
+    </div>
+    <script src="../js/common.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/offline.js"></script>
+    <script src="../js/pos.js"></script>
+  </body>
+</html>

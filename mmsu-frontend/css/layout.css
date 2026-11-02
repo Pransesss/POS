@@ -1,0 +1,347 @@
+/* layout.css — app shell, sidebar, page header, page grids, login (sidebar + login match the Figma) */
+
+/* sidebar is flush with the top-left corner of the window, content has its own padding */
+.app {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 14px;
+  min-height: 100vh;
+  padding: 0 14px 14px 0;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+  padding-top: 16px;
+}
+
+/* ---------- sidebar ---------- */
+.sidebar-shell {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+  min-height: calc(100vh - 200px);
+  padding: 20px 0 16px;
+  border-radius: 0 10px 10px 0;
+  background: #292a2c;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+.logo {
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 26px;
+  object-fit: contain;
+}
+
+.sidebar__label {
+  margin: 0 0 6px 22px;
+  font: 10px/1 var(--font-sans);
+  color: var(--muted);
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px 9px 22px;
+  font: 13px/1.2 var(--font-sans);
+  color: #d4d4d4;
+}
+
+.nav-item:hover { color: #fff; }
+
+/* active item: full-width bar with a soft green glow (as in Figma) */
+.nav-item.is-active {
+  background: linear-gradient(90deg, #3a403d, #3f4643);
+  box-shadow: inset 0 0 0 1px rgba(143, 227, 160, 0.22), 0 0 10px rgba(143, 227, 160, 0.12);
+  color: #fff;
+}
+
+.sidebar__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.btn-done-day {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  margin: 12px 12px 0;
+  padding: 9px 10px;
+  border: 1px solid #594047;
+  border-radius: 6px;
+  background: #2b2729;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.03);
+  color: #d98787;
+  font: 12px/1.2 var(--font-sans);
+  cursor: pointer;
+  transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+
+.btn-done-day:hover {
+  border-color: #80515a;
+  background: #332a2d;
+  color: #f0a2a2;
+}
+
+.btn-done-day:active {
+  background: #241f21;
+}
+
+.btn-done-day:focus-visible {
+  outline: 2px solid #d98787;
+  outline-offset: 3px;
+}
+
+.btn-done-day:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.sidebar__college {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 14px 0 20px;
+  font: 11px/1.15 var(--font-sans);
+  color: #d4d4d4;
+}
+
+.sidebar__college-logo {
+  flex: none;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  object-fit: contain;
+  display: block;
+}
+
+.nav-item--logout {
+  padding: 4px 14px 4px 22px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.nav-item--logout::before {
+  width: 14px;
+  height: 14px;
+}
+
+/* ---------- page header ---------- */
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.page-header p { font-size: 10px; }
+
+.page-header__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.page-header__actions input,
+.page-header__actions select {
+  width: auto;
+}
+
+/* date field = rounded pill with the calendar icon on the right (Figma) */
+.page-header__actions input[type="date"] {
+  height: 34px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 8px;
+  background: #38393b;
+  font-size: 11px;
+}
+
+/* ---------- page grids ---------- */
+.grid-dashboard {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 14px;
+}
+
+.grid-kpi {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 14px;
+}
+
+/* POS: left column (header, search, tiles) + Current Sale card full height on the right */
+.grid-pos {
+  display: grid;
+  flex: 1;
+  grid-template-columns: 1fr 320px;
+  gap: 14px;
+}
+
+.grid-split {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 14px;
+}
+
+/* ---------- login ---------- */
+.page-login { background: #27272a; }
+
+.login {
+  display: flex;
+  flex-direction: column;
+  width: 380px;
+  max-width: 92vw;
+  margin: 12vh auto 0;
+  padding: 36px 32px 32px;
+  border: 1px solid #2e3532;
+  border-radius: 8px;
+  background: #2c2e2f;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+.login__logo {
+  display: block;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 34px;
+  object-fit: contain;
+}
+
+.login__title {
+  margin: 0 0 14px;
+  font: 400 16px/1.2 var(--font-sans);
+  color: #fff;
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.login__input {
+  height: 44px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 8px;
+  background: #363b3a;
+  color: var(--text);
+  font-size: 13px;
+}
+
+.login__input::placeholder {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.login__input:focus { outline: 2px solid var(--green); }
+
+.login__error {
+  margin: 0;
+  font-size: 12px;
+  color: var(--red);
+}
+
+.login__error:empty { display: none; }   /* no gap when there is no message */
+
+.login__button {
+  align-self: center;
+  padding: 12px 26px;
+  border: 0;
+  border-radius: 4px;
+  background: #0c4b05;
+  color: #fff;
+  font: 500 12px/1 var(--font-sans);
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: background-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.login__button:hover {
+  background: #12600a;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.22);
+}
+
+.login__button:active {
+  transform: translateY(0) scale(0.99);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .login__button {
+    transition: none;
+  }
+}
+
+/* temporary shortcuts for the team: delete when the real login works */
+.login__preview {
+  margin-top: 16px;
+  font-size: 11px;
+  text-align: center;
+  color: var(--muted);
+}
+
+@media (max-width: 860px) {
+  .app {
+    grid-template-columns: 1fr;
+    padding: 0 14px 14px;
+  }
+
+  .sidebar {
+    position: static;
+    min-height: 0;
+    border-radius: 0 0 10px 10px;
+  }
+
+  .sidebar-shell {
+    position: static;
+  }
+
+  .nav { flex-direction: row; flex-wrap: wrap; }
+
+  .grid-dashboard,
+  .grid-pos,
+  .grid-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+.aux-logo,
+.admin-logo,
+.account-logo {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: contain;
+    object-position: center;
+    border: none;
+    background: transparent;
+}

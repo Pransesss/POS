@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard · MMSU Auxiliary POS</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/icons.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="../css/print.css">
+  </head>
+  <body>
+    <div class="app">
+      <!-- SIDEBAR: identical on every admin page, only .is-active moves -->
+      <aside class="sidebar">
+        <img class="logo" src="../logos/mamasu.png" alt="MMSU seal">
+        <span class="sidebar__label">Menu</span>
+        <nav class="nav">
+          <a class="nav-item nav-item--dashboard is-active" href="dashboard.html">Dashboard</a>
+          <a class="nav-item nav-item--deliveries" href="deliveries.html">Deliveries</a>
+          <a class="nav-item nav-item--inventory" href="inventory.html">Inventory</a>
+          <a class="nav-item nav-item--transactions" href="transactions.html">Transactions</a>
+          <a class="nav-item nav-item--events" href="events.html">Events</a>
+          <a class="nav-item nav-item--settings" href="settings.html">Settings</a>
+        </nav>
+        <div class="sidebar__footer">
+          <div class="sidebar__college">
+            <!-- replace with: <img class="sidebar__college-logo" src="../logos/college.png" alt=""> -->
+            <span class="sidebar__college-logo"></span>
+            <span id="sidebar-college">Administrator</span>
+          </div>
+          <a class="nav-item nav-item--logout" href="../login.html">Log out</a>
+        </div>
+      </aside>
+      <main class="main">
+        <header class="page-header">
+          <div>
+            <h1>Admin Dashboard</h1>
+            <p class="muted text-small" id="today-label">Saturday, September 26</p>
+          </div>
+          <div class="page-header__actions">
+            <select id="filter-aux">
+              <option value="all">All auxiliaries</option>
+              <!-- JS: one option per auxiliary -->
+            </select>
+            <input type="date" id="filter-date">
+          </div>
+        </header>
+        <!-- shows only when tomorrow has an event: remove [hidden] to preview -->
+        <div class="banner banner--warn" id="banner-event" hidden>Tomorrow: National Family Week (No classes / ADM) — prediction adjusted</div>
+
+        <div class="grid-dashboard">
+          <div class="stack">
+            <div class="grid-kpi">
+              <section class="card">
+                <h2 class="card__title">Predicted demand tomorrow</h2>
+                <p class="kpi__value"><span id="kpi-predicted">—</span> <span class="kpi__unit">meals</span></p>
+              </section>
+              <section class="card">
+                <div class="card__head">
+                  <h2 class="card__title">Low stock &amp; Out of stock</h2>
+                  <!-- opens Inventory already filtered to low + out of stock -->
+                  <a class="pill pill--open" href="inventory.html?status=low,out"><span>Open</span><span class="pill__arrow" aria-hidden="true">→</span></a>
+                </div>
+                <p class="kpi__value" id="kpi-lowout">—</p>
+              </section>
+            </div>
+
+            <section class="card">
+              <h2 class="card__title">Predicted demand</h2>
+              <table class="table" id="table-predicted">
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Last actual sold</th>
+                    <th>Predicted qty</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="table__empty"><td colspan="3">No data yet</td></tr>
+                </tbody>
+              </table>
+              <div class="text-right"><button class="link-button" type="button">See all →</button></div>
+            </section>
+
+            <section class="tabset card">
+              <input type="radio" name="sellers" id="sellers-0" checked>
+              <input type="radio" name="sellers" id="sellers-1">
+              <div class="card__head">
+                <h2 class="card__title">Sellers</h2>
+                <div class="tabset__bar">
+                  <label for="sellers-0">Top sellers</label>
+                  <label for="sellers-1">Low sellers</label>
+                </div>
+              </div>
+              <section class="tabset__panel">
+                <div class="chart-pair">
+                  <div class="chart-pair__col">
+                    <p class="chart-pair__title">Snacks</p>
+                    <div class="chart" id="chart-top-snacks"></div>
+                  </div>
+                  <div class="chart-pair__col">
+                    <p class="chart-pair__title">Meals</p>
+                    <div class="chart" id="chart-top-meals"></div>
+                  </div>
+                </div>
+                <div class="text-right"><button class="link-button" type="button">See all →</button></div>
+              </section>
+              <section class="tabset__panel">
+                <div class="chart-pair">
+                  <div class="chart-pair__col">
+                    <p class="chart-pair__title">Snacks</p>
+                    <div class="chart" id="chart-low-snacks"></div>
+                  </div>
+                  <div class="chart-pair__col">
+                    <p class="chart-pair__title">Meals</p>
+                    <div class="chart" id="chart-low-meals"></div>
+                  </div>
+                </div>
+                <div class="text-right"><button class="link-button" type="button">See all →</button></div>
+              </section>
+            </section>
+          </div>
+
+          <div class="stack">
+            <section class="card">
+              <h2 class="card__title text-center">Cash on Hand</h2>
+              <p class="kpi__value kpi__value--cash" id="cash-total">₱0.00</p>
+              <dl class="rows">
+                <div class="rows__item"><dt>Initial</dt><dd>:</dd><dd id="cash-initial">—</dd></div>
+                <div class="rows__item"><dt>Cash Sales</dt><dd>:</dd><dd id="cash-sales">—</dd></div>
+                <div class="rows__item"><dt>E-Wallet Sales</dt><dd>:</dd><dd id="cash-ewallet">—</dd></div>
+                <div class="rows__item text-danger"><dt>Remittances</dt><dd>:</dd><dd id="cash-remitted">—</dd></div>
+                <div class="rows__item"><dt><strong>Total</strong></dt><dd>:</dd><dd id="cash-total-row"><strong>—</strong></dd></div>
+              </dl>
+            </section>
+
+            <section class="card">
+              <h2 class="card__title">Sales this week</h2>
+              <div class="chart" id="chart-weekly"></div>
+            </section>
+        <section class="card">
+          <h2 class="card__title">Sales by auxiliary</h2>
+          <div id="sales-by-aux">
+            <!-- JS: <div class="meter"><span>Name</span><strong>₱0.00</strong><div class="meter__bar" style="width:60%"></div></div> -->
+          </div>
+        </section>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="../js/common.js?v=20261024-logo2"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/dashboard.js"></script>
+  </body>
+</html>

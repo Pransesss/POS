@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Transactions · MMSU Auxiliary POS</title>
+    <link rel="stylesheet" href="../css/base.css?v=20261102-export-buttons">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/icons.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="../css/print.css">
+  </head>
+  <body>
+    <div class="app">
+      <!-- SIDEBAR: identical on every admin page, only .is-active moves -->
+      <aside class="sidebar">
+        <img class="logo" src="../logos/mamasu.png" alt="MMSU seal">
+        <span class="sidebar__label">Menu</span>
+        <nav class="nav">
+          <a class="nav-item nav-item--dashboard" href="dashboard.html">Dashboard</a>
+          <a class="nav-item nav-item--deliveries" href="deliveries.html">Deliveries</a>
+          <a class="nav-item nav-item--inventory" href="inventory.html">Inventory</a>
+          <a class="nav-item nav-item--transactions is-active" href="transactions.html">Transactions</a>
+          <a class="nav-item nav-item--events" href="events.html">Events</a>
+          <a class="nav-item nav-item--settings" href="settings.html">Settings</a>
+        </nav>
+        <div class="sidebar__footer">
+          <div class="sidebar__college">
+            <!-- replace with: <img class="sidebar__college-logo" src="../logos/college.png" alt=""> -->
+            <span class="sidebar__college-logo"></span>
+            <span id="sidebar-college">Administrator</span>
+          </div>
+          <a class="nav-item nav-item--logout" href="../login.html">Log out</a>
+        </div>
+      </aside>
+      <main class="main">
+        <header class="page-header">
+          <div>
+            <h1>Transactions</h1>
+            <p class="muted text-small" id="today-label">Saturday, September 26</p>
+          </div>
+          <div class="page-header__actions">
+            <label class="text-small" for="filter-from">From</label>
+            <input type="date" id="filter-from">
+            <label class="text-small" for="filter-to">To</label>
+            <input type="date" id="filter-to">
+            <select id="filter-aux">
+              <option value="all">All auxiliaries</option>
+              <!-- JS: one option per auxiliary -->
+            </select>
+            <button class="export-btn export-btn--pdf" type="button" id="btn-print" aria-label="PDF / Print">
+              <span class="export-btn__folder" aria-hidden="true">
+                <svg class="export-btn__file-back" viewBox="0 0 24 20"><path d="M2 4h8l2 2h10v12H2z" /></svg>
+                <svg class="export-btn__file-page" viewBox="0 0 24 20"><path d="M7 1h8l4 4v13H7zM15 1v5h4" /></svg>
+                <svg class="export-btn__file-front" viewBox="0 0 24 20"><path d="M2 6h20v12H2z" /></svg>
+              </span>
+              <span class="export-btn__label">
+                <span class="export-btn__text">PDF / Print</span>
+              </span>
+            </button>
+            <button class="export-btn export-btn--excel" type="button" id="btn-excel" aria-label="Excel">
+              <span class="export-btn__folder" aria-hidden="true">
+                <svg class="export-btn__file-back" viewBox="0 0 24 20"><path d="M2 4h8l2 2h10v12H2z" /></svg>
+                <svg class="export-btn__file-page" viewBox="0 0 24 20"><path d="M7 1h8l4 4v13H7zM15 1v5h4" /></svg>
+                <svg class="export-btn__file-front" viewBox="0 0 24 20"><path d="M2 6h20v12H2z" /></svg>
+              </span>
+              <span class="export-btn__label">
+                <span class="export-btn__text">Excel</span>
+              </span>
+            </button>
+          </div>
+        </header>
+
+        <section class="card toolbar">
+          <span class="muted text-small">Payment</span>
+          <div class="segmented">
+            <input type="radio" name="pay-filter" id="pay-filter-all" value="all" checked>
+            <label for="pay-filter-all">All</label>
+            <input type="radio" name="pay-filter" id="pay-filter-cash" value="cash">
+            <label for="pay-filter-cash">Cash</label>
+            <input type="radio" name="pay-filter" id="pay-filter-ewallet" value="ewallet">
+            <label for="pay-filter-ewallet">E-Wallet</label>
+          </div>
+        </section>
+
+        <div class="grid-kpi">
+          <section class="card">
+            <h2 class="card__title">Total sales</h2>
+            <p class="kpi__value" id="kpi-sales">—</p>
+          </section>
+          <section class="card">
+            <h2 class="card__title">Cash sales</h2>
+            <p class="kpi__value" id="kpi-cash">—</p>
+          </section>
+          <section class="card">
+            <h2 class="card__title">E-wallet sales</h2>
+            <p class="kpi__value" id="kpi-ewallet">—</p>
+          </section>
+          <section class="card">
+            <h2 class="card__title">Remitted (all sections)</h2>
+            <p class="kpi__value" id="kpi-remitted">—</p>
+          </section>
+        </div>
+
+        <section class="card card--scroll">
+          <h2 class="card__title">Remittance history</h2>
+          <table class="table" id="table-remittances">
+            <thead><tr><th>Date &amp; time</th><th>Sales day</th><th>Auxiliary</th><th>Amount handed over</th><th>Cash sales at remittance</th></tr></thead>
+            <tbody><tr class="table__empty"><td colspan="5">No remittances in this date range</td></tr></tbody>
+          </table>
+        </section>
+
+        <section class="tabset card card--scroll">
+          <input type="radio" name="section" id="section-0" checked>
+          <input type="radio" name="section" id="section-1">
+          <div class="card__head">
+            <h2 class="card__title">Transactions</h2>
+            <div class="tabset__bar">
+              <label for="section-0">Meals</label>
+              <label for="section-1">Snacks</label>
+            </div>
+          </div>
+          <section class="tabset__panel">
+            <div class="legend">
+              <span><span class="dot dot--budget"></span>Budget meal</span>
+              <span><span class="dot dot--takeout"></span>Take-out</span>
+            </div>
+            <h3 class="table-title">Regular — within the sales day</h3>
+            <table class="table" id="table-meals-regular">
+              <thead>
+                <tr>
+                  <th>Date &amp; time</th>
+                  <th>Ref</th>
+                  <th>Auxiliary</th>
+                  <th>Order</th>
+                  <th>Pay</th>
+                  <th>E-wallet ref #</th>
+                  <th>Rice</th>
+                  <th>Pork</th>
+                  <th>Beef</th>
+                  <th>Chicken</th>
+                  <th>Fish</th>
+                  <th>Vegs</th>
+                  <th>Total</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table__empty"><td colspan="14">No data yet</td></tr>
+              </tbody>
+              <tfoot>
+                <tr><td colspan="6">Quantity received</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td colspan="6">Quantity sold</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td colspan="6">Quantity left</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td colspan="12">Total sales</td><td></td><td></td></tr>
+              </tfoot>
+            </table>
+            <h3 class="table-title">Sales recorded on the next sales day</h3>
+            <table class="table" id="table-meals-carried">
+              <thead>
+                <tr>
+                  <th>Date &amp; time</th>
+                  <th>Ref</th>
+                  <th>Auxiliary</th>
+                  <th>Order</th>
+                  <th>Pay</th>
+                  <th>E-wallet ref #</th>
+                  <th>Rice</th>
+                  <th>Pork</th>
+                  <th>Beef</th>
+                  <th>Chicken</th>
+                  <th>Fish</th>
+                  <th>Vegs</th>
+                  <th>Total</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table__empty"><td colspan="14">No data yet</td></tr>
+              </tbody>
+              <tfoot>
+                <tr><td colspan="6">Quantity sold</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td colspan="12">Total sales</td><td></td><td></td></tr>
+              </tfoot>
+            </table>
+          </section>
+          <section class="tabset__panel">
+            <h3 class="table-title">Item summary (requisition slip)</h3>
+            <table class="table" id="table-snack-summary">
+              <thead>
+                <tr>
+                  <th>Item / description</th>
+                  <th>Invty beg qty</th>
+                  <th>Rcvd qty</th>
+                  <th>Total qty</th>
+                  <th>Sold qty</th>
+                  <th>Left qty</th>
+                  <th>Unit price</th>
+                  <th>Total sales</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table__empty"><td colspan="8">No data yet</td></tr>
+              </tbody>
+            </table>
+            <h3 class="table-title">Regular — within the sales day</h3>
+            <table class="table" id="table-snack-regular">
+              <thead>
+                <tr>
+                  <th>Date &amp; time</th>
+                  <th>Ref</th>
+                  <th>Auxiliary</th>
+                  <th>Items</th>
+                  <th>Pay</th>
+                  <th>E-wallet ref #</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table__empty"><td colspan="7">No data yet</td></tr>
+              </tbody>
+            </table>
+            <h3 class="table-title">Sales recorded on the next sales day</h3>
+            <table class="table" id="table-snack-carried">
+              <thead>
+                <tr>
+                  <th>Date &amp; time</th>
+                  <th>Ref</th>
+                  <th>Auxiliary</th>
+                  <th>Items</th>
+                  <th>Pay</th>
+                  <th>E-wallet ref #</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table__empty"><td colspan="7">No data yet</td></tr>
+              </tbody>
+            </table>
+          </section>
+        </section>
+        <!-- admin only: this is what PDF / Excel produce (one pair of slips per auxiliary per day) -->
+        <section class="card report">
+          <h2 class="card__title">Report preview</h2>
+          <article class="slip" id="slip-meals">
+            <h3>MARIANO MARCOS STATE UNIVERSITY</h3>
+            <p>Auxiliary Services</p>
+            <p class="slip__title">MEALS REQUISITION SLIP</p>
+            <p>DATE: <span id="slip-meals-date">—</span> &nbsp; OUTLET: <span id="slip-meals-outlet">—</span></p>
+            <table>
+              <thead>
+                <tr>
+                  <th>ORDER</th>
+                  <th>RICE</th>
+                  <th>PORK</th>
+                  <th>BEEF</th>
+                  <th>CHICKEN</th>
+                  <th>FISH</th>
+                  <th>VEGS</th>
+                  <th>DESSERT</th>
+                  <th>TOTAL COST</th>
+                </tr>
+              </thead>
+              <tbody id="slip-meals-rows"></tbody>
+              <tfoot>
+                <tr><td colspan="1">QUANTITY RECEIVED</td><td colspan="8"></td></tr>
+                <tr><td colspan="1">QUANTITY SOLD</td><td colspan="8"></td></tr>
+                <tr><td colspan="1">QUANTITY LEFT</td><td colspan="8"></td></tr>
+                <tr><td colspan="1">Total Sales</td><td colspan="8"></td></tr>
+                <tr><td colspan="1">Cash Sales</td><td colspan="8"></td></tr>
+                <tr><td colspan="1">E-wallet Sales</td><td colspan="8"></td></tr>
+              </tfoot>
+            </table>
+            <div class="slip__signatures">
+              <span>GOODS RECEIVED BY:<br><br>________________<br>Sales Clerk</span>
+              <span>VERIFIED BY:<br><br>________________</span>
+              <span>CASH RECEIVED BY:<br><br>________________<br>Collecting Officer</span>
+            </div>
+          </article>
+          <article class="slip" id="slip-snacks">
+            <h3>MARIANO MARCOS STATE UNIVERSITY</h3>
+            <p>Auxiliary Services</p>
+            <p class="slip__title">SNACKS REQUISITION SLIP</p>
+            <p>DATE: <span id="slip-snacks-date">—</span> &nbsp; OUTLET: <span id="slip-snacks-outlet">—</span></p>
+            <table>
+              <thead>
+                <tr>
+                  <th>ITEM / DESCRIPTION</th>
+                  <th>INVTY BEG QTY</th>
+                  <th>RCVD QTY</th>
+                  <th>TOTAL QTY</th>
+                  <th>SOLD QTY</th>
+                  <th>LEFT QTY</th>
+                  <th>UNIT PRICE</th>
+                  <th>TOTAL SALES</th>
+                </tr>
+              </thead>
+              <tbody id="slip-snacks-rows"></tbody>
+              <tfoot>
+                <tr><td colspan="1">Total Sales</td><td colspan="7"></td></tr>
+                <tr><td colspan="1">Cash Sales</td><td colspan="7"></td></tr>
+                <tr><td colspan="1">E-wallet Sales</td><td colspan="7"></td></tr>
+              </tfoot>
+            </table>
+            <div class="slip__signatures">
+              <span>GOODS RECEIVED BY:<br><br>________________<br>Sales Clerk</span>
+              <span>VERIFIED BY:<br><br>________________</span>
+              <span>CASH RECEIVED BY:<br><br>________________<br>Collecting Officer</span>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+    <script src="../js/common.js?v=20261024-logo2"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/transactions.js?v=20261029-remittance"></script>
+  </body>
+</html>

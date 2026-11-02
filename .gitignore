@@ -1,0 +1,11 @@
+﻿backend/.env
+
+backend/venv/
+__pycache__/
+*.py[cod]
+.venv*/
+**/venv/
+**/.env
+**/.env.*
+!**/.env.example
+backend/uploads/

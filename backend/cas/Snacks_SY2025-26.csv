@@ -1,0 +1,3060 @@
+Date,Day,School_Year,Semester,Item,Prepared_Qty,Sold_Qty,Left_Qty,Unit_Price,Total_Sale
+8/4/2025,Monday,2025-2026,1st Sem,BBQ,15,15,0,20,300
+8/4/2025,Monday,2025-2026,1st Sem,Baduya,7,6,1,15,90
+8/4/2025,Monday,2025-2026,1st Sem,Gluti Roll,20,10,10,20,200
+8/4/2025,Monday,2025-2026,1st Sem,Hotdog Stick,20,1,19,15,15
+8/4/2025,Monday,2025-2026,1st Sem,Karen Dumplings,25,8,17,7,56
+8/4/2025,Monday,2025-2026,1st Sem,Karen Japanese Siomai,125,125,0,7,875
+8/4/2025,Monday,2025-2026,1st Sem,Karen Pork Siomai,170,138,32,6,828
+8/4/2025,Monday,2025-2026,1st Sem,Kutsinta Cheese,5,4,1,12,48
+8/4/2025,Monday,2025-2026,1st Sem,Kutsinta Yema,5,5,0,12,60
+8/4/2025,Monday,2025-2026,1st Sem,Lomi,10,8,2,25,200
+8/4/2025,Monday,2025-2026,1st Sem,Maja,10,6,4,15,90
+8/4/2025,Monday,2025-2026,1st Sem,Palitaw,10,10,0,5,50
+8/4/2025,Monday,2025-2026,1st Sem,Puto Flan,5,5,0,12,60
+8/4/2025,Monday,2025-2026,1st Sem,Puto Latik,6,2,4,12,24
+8/4/2025,Monday,2025-2026,1st Sem,Siomai Rice,15,6,9,45,270
+8/4/2025,Monday,2025-2026,1st Sem,Tinudok,10,5,5,10,50
+8/4/2025,Monday,2025-2026,1st Sem,Tuna Pie,10,10,0,18,180
+8/5/2025,Tuesday,2025-2026,1st Sem,Arroz Caldo,5,3,2,20,60
+8/5/2025,Tuesday,2025-2026,1st Sem,Cheese Stick,30,30,0,10,300
+8/5/2025,Tuesday,2025-2026,1st Sem,Egg Sandwich,10,10,0,20,200
+8/5/2025,Tuesday,2025-2026,1st Sem,Hotdog Stick,20,14,6,15,210
+8/5/2025,Tuesday,2025-2026,1st Sem,Karen Dumplings,20,20,0,7,140
+8/5/2025,Tuesday,2025-2026,1st Sem,Karen Japanese Siomai,170,170,0,7,1190
+8/5/2025,Tuesday,2025-2026,1st Sem,Karen Siopao,5,5,0,31,155
+8/5/2025,Tuesday,2025-2026,1st Sem,Kutsinta Yema,5,5,0,12,60
+8/5/2025,Tuesday,2025-2026,1st Sem,Lumpianada,10,10,0,35,350
+8/5/2025,Tuesday,2025-2026,1st Sem,Puto Cheese,4,4,0,12,48
+8/5/2025,Tuesday,2025-2026,1st Sem,Puto Flan,5,5,0,12,60
+8/5/2025,Tuesday,2025-2026,1st Sem,Puto Latik,5,4,1,12,48
+8/5/2025,Tuesday,2025-2026,1st Sem,Siomai Rice,15,10,5,45,450
+8/5/2025,Tuesday,2025-2026,1st Sem,Sopas,10,8,2,25,200
+8/5/2025,Tuesday,2025-2026,1st Sem,Turon,20,20,0,15,300
+8/6/2025,Wednesday,2025-2026,1st Sem,Arroz Caldo,5,5,0,20,100
+8/6/2025,Wednesday,2025-2026,1st Sem,Banana Cue,10,10,0,20,200
+8/6/2025,Wednesday,2025-2026,1st Sem,Camote Cue,10,1,9,20,20
+8/6/2025,Wednesday,2025-2026,1st Sem,Empanada,3,3,0,60,180
+8/6/2025,Wednesday,2025-2026,1st Sem,Karen Japanese Siomai,160,85,75,7,595
+8/6/2025,Wednesday,2025-2026,1st Sem,Karen Pork Siomai,175,106,69,6,636
+8/6/2025,Wednesday,2025-2026,1st Sem,Kutsinta Cheese,5,5,0,12,60
+8/6/2025,Wednesday,2025-2026,1st Sem,Kutsinta Yema,6,6,0,12,72
+8/6/2025,Wednesday,2025-2026,1st Sem,Popcorn,7,0,7,18,0
+8/6/2025,Wednesday,2025-2026,1st Sem,Puto Cheese,4,4,0,12,48
+8/6/2025,Wednesday,2025-2026,1st Sem,Puto Latik,4,4,0,12,48
+8/6/2025,Wednesday,2025-2026,1st Sem,Shanghai,20,14,6,12,168
+8/6/2025,Wednesday,2025-2026,1st Sem,Siomai Rice,15,10,5,45,450
+8/7/2025,Thursday,2025-2026,1st Sem,Boiled Banana,15,10,5,6,60
+8/7/2025,Thursday,2025-2026,1st Sem,Buchi,20,14,6,10,140
+8/7/2025,Thursday,2025-2026,1st Sem,Cheese Stick,25,25,0,10,250
+8/7/2025,Thursday,2025-2026,1st Sem,Hotdog Stick,20,4,16,15,60
+8/7/2025,Thursday,2025-2026,1st Sem,Karen Dumplings,30,30,0,7,210
+8/7/2025,Thursday,2025-2026,1st Sem,Karen Japanese Siomai,130,120,10,7,840
+8/7/2025,Thursday,2025-2026,1st Sem,Kutsinta Cheese,5,4,1,12,48
+8/7/2025,Thursday,2025-2026,1st Sem,Kutsinta Yema,5,5,0,12,60
+8/7/2025,Thursday,2025-2026,1st Sem,Puto Flan,4,4,0,12,48
+8/7/2025,Thursday,2025-2026,1st Sem,Puto Latik,4,4,0,12,48
+8/7/2025,Thursday,2025-2026,1st Sem,Sopas,10,2,8,25,50
+8/7/2025,Thursday,2025-2026,1st Sem,Tinudok,10,10,0,10,100
+8/7/2025,Thursday,2025-2026,1st Sem,Tuna Pie,10,10,0,18,180
+8/8/2025,Friday,2025-2026,1st Sem,Bihon Guisado,6,5,1,25,125
+8/8/2025,Friday,2025-2026,1st Sem,Camote Fries,6,2,4,21,42
+8/8/2025,Friday,2025-2026,1st Sem,Cheese Stick,30,30,0,10,300
+8/8/2025,Friday,2025-2026,1st Sem,Chicken Mami,10,5,5,25,125
+8/8/2025,Friday,2025-2026,1st Sem,Hamburger,8,4,4,45,180
+8/8/2025,Friday,2025-2026,1st Sem,Hotdog Sandwich,5,5,0,40,200
+8/8/2025,Friday,2025-2026,1st Sem,Karen Dumplings,30,13,17,7,91
+8/8/2025,Friday,2025-2026,1st Sem,Karen Japanese Siomai,105,75,30,7,525
+8/8/2025,Friday,2025-2026,1st Sem,Karen Pork Siomai,180,5,175,6,30
+8/8/2025,Friday,2025-2026,1st Sem,Karen Siopao,4,4,0,31,124
+8/8/2025,Friday,2025-2026,1st Sem,Kutsinta Yema,4,4,0,12,48
+8/8/2025,Friday,2025-2026,1st Sem,Puto Cheese,4,2,2,12,24
+8/8/2025,Friday,2025-2026,1st Sem,Puto Flan,4,3,1,12,36
+8/8/2025,Friday,2025-2026,1st Sem,Puto Latik,5,2,3,12,24
+8/8/2025,Friday,2025-2026,1st Sem,Rolls,5,5,0,26,130
+8/8/2025,Friday,2025-2026,1st Sem,Sopas,10,5,5,25,125
+8/8/2025,Friday,2025-2026,1st Sem,Spaghetti,10,10,0,25,250
+8/8/2025,Friday,2025-2026,1st Sem,Turon,20,10,10,15,150
+8/11/2025,Monday,2025-2026,1st Sem,Arroz Caldo,5,3,2,20,60
+8/11/2025,Monday,2025-2026,1st Sem,Hotdog Stick,20,13,7,15,195
+8/11/2025,Monday,2025-2026,1st Sem,Karen Japanese Siomai,150,92,58,7,644
+8/11/2025,Monday,2025-2026,1st Sem,Karen Pork Siomai,180,67,113,6,402
+8/11/2025,Monday,2025-2026,1st Sem,Kutsinta Cheese,5,4,1,12,48
+8/11/2025,Monday,2025-2026,1st Sem,Kutsinta Yema,5,1,4,12,12
+8/11/2025,Monday,2025-2026,1st Sem,Pork Lomi,10,2,8,25,50
+8/11/2025,Monday,2025-2026,1st Sem,Puto Flan,6,5,1,12,60
+8/11/2025,Monday,2025-2026,1st Sem,Puto Latik,5,5,0,12,60
+8/11/2025,Monday,2025-2026,1st Sem,Rolls,5,5,0,26,130
+8/11/2025,Monday,2025-2026,1st Sem,Siomai Rice,15,5,10,45,225
+8/11/2025,Monday,2025-2026,1st Sem,Sopas,10,10,0,25,250
+8/11/2025,Monday,2025-2026,1st Sem,Ukoy Balls,20,15,5,20,300
+8/12/2025,Tuesday,2025-2026,1st Sem,Arroz Caldo,5,0,5,20,0
+8/12/2025,Tuesday,2025-2026,1st Sem,Buchi,15,15,0,10,150
+8/12/2025,Tuesday,2025-2026,1st Sem,Buchi Peanut,15,5,10,10,50
+8/12/2025,Tuesday,2025-2026,1st Sem,Empanada,3,3,0,60,180
+8/12/2025,Tuesday,2025-2026,1st Sem,Karen Japanese Siomai,155,134,21,7,938
+8/12/2025,Tuesday,2025-2026,1st Sem,Karen Pork Siomai,180,71,109,6,426
+8/12/2025,Tuesday,2025-2026,1st Sem,Kutsinta Cheese,5,4,1,12,48
+8/12/2025,Tuesday,2025-2026,1st Sem,Kutsinta Yema,6,1,5,12,12
+8/12/2025,Tuesday,2025-2026,1st Sem,Puto Cheese,6,3,3,12,36
+8/12/2025,Tuesday,2025-2026,1st Sem,Puto Flan,5,5,0,12,60
+8/12/2025,Tuesday,2025-2026,1st Sem,Puto Latik,6,1,5,12,12
+8/12/2025,Tuesday,2025-2026,1st Sem,Rolls,6,2,4,26,52
+8/12/2025,Tuesday,2025-2026,1st Sem,Shanghai,15,15,0,12,180
+8/12/2025,Tuesday,2025-2026,1st Sem,Special Empanada,5,5,0,60,300
+8/12/2025,Tuesday,2025-2026,1st Sem,Turon,25,25,0,15,375
+8/13/2025,Wednesday,2025-2026,1st Sem,Arroz Caldo,5,1,4,20,20
+8/13/2025,Wednesday,2025-2026,1st Sem,Baduya,10,6,4,15,90
+8/13/2025,Wednesday,2025-2026,1st Sem,Beef Mami,10,8,2,30,240
+8/13/2025,Wednesday,2025-2026,1st Sem,Buchi,15,2,13,10,20
+8/13/2025,Wednesday,2025-2026,1st Sem,Corndog,10,6,4,30,180
+8/13/2025,Wednesday,2025-2026,1st Sem,Empanada,3,1,2,60,60
+8/13/2025,Wednesday,2025-2026,1st Sem,Hotdog Sandwich,5,5,0,40,200
+8/13/2025,Wednesday,2025-2026,1st Sem,Karen Dumplings,25,16,9,7,112
+8/13/2025,Wednesday,2025-2026,1st Sem,Karen Japanese Siomai,135,50,85,7,350
+8/13/2025,Wednesday,2025-2026,1st Sem,Karen Pork Siomai,175,61,114,6,366
+8/13/2025,Wednesday,2025-2026,1st Sem,Kutsinta Yema,6,5,1,12,60
+8/13/2025,Wednesday,2025-2026,1st Sem,Palabok,10,4,6,25,100
+8/13/2025,Wednesday,2025-2026,1st Sem,Puto Cheese,5,5,0,12,60
+8/13/2025,Wednesday,2025-2026,1st Sem,Puto Latik,6,3,3,12,36
+8/13/2025,Wednesday,2025-2026,1st Sem,Rolls,5,3,2,26,78
+8/13/2025,Wednesday,2025-2026,1st Sem,Shanghai,20,16,4,12,192
+8/13/2025,Wednesday,2025-2026,1st Sem,Siomai Rice,15,15,0,45,675
+8/13/2025,Wednesday,2025-2026,1st Sem,Special Empanada,4,4,0,60,240
+8/13/2025,Wednesday,2025-2026,1st Sem,Ukoy Balls,20,19,1,20,380
+8/14/2025,Thursday,2025-2026,1st Sem,BBQ,15,15,0,20,300
+8/14/2025,Thursday,2025-2026,1st Sem,Boiled Camote,4,1,3,20,20
+8/14/2025,Thursday,2025-2026,1st Sem,Buchi,15,7,8,10,70
+8/14/2025,Thursday,2025-2026,1st Sem,Chicken Mami,10,1,9,25,25
+8/14/2025,Thursday,2025-2026,1st Sem,Egg Sandwich,10,5,5,20,100
+8/14/2025,Thursday,2025-2026,1st Sem,Hotdog Stick,20,3,17,15,45
+8/14/2025,Thursday,2025-2026,1st Sem,Karen Japanese Siomai,110,58,52,7,406
+8/14/2025,Thursday,2025-2026,1st Sem,Karen Pork Siomai,170,112,58,6,672
+8/14/2025,Thursday,2025-2026,1st Sem,Kutsinta Cheese,6,6,0,12,72
+8/14/2025,Thursday,2025-2026,1st Sem,Kutsinta Yema,5,5,0,12,60
+8/14/2025,Thursday,2025-2026,1st Sem,Lomi,10,2,8,25,50
+8/14/2025,Thursday,2025-2026,1st Sem,Palitaw,10,10,0,5,50
+8/14/2025,Thursday,2025-2026,1st Sem,Popcorn,8,8,0,18,144
+8/14/2025,Thursday,2025-2026,1st Sem,Pork Mami,10,8,2,25,200
+8/14/2025,Thursday,2025-2026,1st Sem,Puto Cheese,5,2,3,12,24
+8/14/2025,Thursday,2025-2026,1st Sem,Puto Flan,4,4,0,12,48
+8/14/2025,Thursday,2025-2026,1st Sem,Puto Latik,5,5,0,12,60
+8/14/2025,Thursday,2025-2026,1st Sem,Siomai Rice,15,13,2,45,585
+8/14/2025,Thursday,2025-2026,1st Sem,Sopas,10,10,0,25,250
+8/14/2025,Thursday,2025-2026,1st Sem,Tokneneng,20,9,11,20,180
+8/14/2025,Thursday,2025-2026,1st Sem,Vegetable Lumpia,15,15,0,15,225
+8/15/2025,Friday,2025-2026,1st Sem,Bihon Guisado,6,0,6,25,0
+8/15/2025,Friday,2025-2026,1st Sem,Boiled Banana,15,11,4,6,66
+8/15/2025,Friday,2025-2026,1st Sem,Corndog,10,6,4,30,180
+8/15/2025,Friday,2025-2026,1st Sem,Egg Sandwich,10,5,5,20,100
+8/15/2025,Friday,2025-2026,1st Sem,Gluti Roll,15,4,11,20,80
+8/15/2025,Friday,2025-2026,1st Sem,Hotdog Sandwich,4,4,0,40,160
+8/15/2025,Friday,2025-2026,1st Sem,Hotdog Stick,25,3,22,15,45
+8/15/2025,Friday,2025-2026,1st Sem,Karen Japanese Siomai,115,43,72,7,301
+8/15/2025,Friday,2025-2026,1st Sem,Kutsinta Cheese,5,4,1,12,48
+8/15/2025,Friday,2025-2026,1st Sem,Kutsinta Yema,5,5,0,12,60
+8/15/2025,Friday,2025-2026,1st Sem,Maja,10,9,1,15,135
+8/15/2025,Friday,2025-2026,1st Sem,Popcorn,6,1,5,18,18
+8/15/2025,Friday,2025-2026,1st Sem,Puto Cheese,5,4,1,12,48
+8/15/2025,Friday,2025-2026,1st Sem,Puto Flan,5,5,0,12,60
+8/15/2025,Friday,2025-2026,1st Sem,Puto Latik,5,0,5,12,0
+8/15/2025,Friday,2025-2026,1st Sem,Shanghai,15,12,3,12,144
+8/15/2025,Friday,2025-2026,1st Sem,Spaghetti,10,1,9,25,25
+8/15/2025,Friday,2025-2026,1st Sem,Tinudok,10,10,0,10,100
+8/18/2025,Monday,2025-2026,1st Sem,Baduya,10,8,2,15,120
+8/18/2025,Monday,2025-2026,1st Sem,Buchi,15,15,0,10,150
+8/18/2025,Monday,2025-2026,1st Sem,Camote Cue,10,9,1,20,180
+8/18/2025,Monday,2025-2026,1st Sem,Chicken Mami,10,3,7,25,75
+8/18/2025,Monday,2025-2026,1st Sem,Hotdog Stick,20,5,15,15,75
+8/18/2025,Monday,2025-2026,1st Sem,Karen Japanese Siomai,125,122,3,7,854
+8/18/2025,Monday,2025-2026,1st Sem,Karen Pork Siomai,140,140,0,6,840
+8/18/2025,Monday,2025-2026,1st Sem,Kutsinta Yema,5,4,1,12,48
+8/18/2025,Monday,2025-2026,1st Sem,Lumpianada,10,8,2,35,280
+8/18/2025,Monday,2025-2026,1st Sem,Meatballs,15,15,0,20,300
+8/18/2025,Monday,2025-2026,1st Sem,Pancit Canton,10,6,4,30,180
+8/18/2025,Monday,2025-2026,1st Sem,Pork Mami,10,1,9,25,25
+8/18/2025,Monday,2025-2026,1st Sem,Puto Cheese,6,6,0,12,72
+8/18/2025,Monday,2025-2026,1st Sem,Puto Flan,4,4,0,12,48
+8/18/2025,Monday,2025-2026,1st Sem,Puto Latik,5,5,0,12,60
+8/18/2025,Monday,2025-2026,1st Sem,Tinudok,10,9,1,10,90
+8/18/2025,Monday,2025-2026,1st Sem,Tuna Pie,10,9,1,18,162
+8/18/2025,Monday,2025-2026,1st Sem,Vegetable Lumpia,15,15,0,15,225
+8/19/2025,Tuesday,2025-2026,1st Sem,Banana Cue,10,10,0,20,200
+8/19/2025,Tuesday,2025-2026,1st Sem,Bihon Guisado,7,5,2,25,125
+8/19/2025,Tuesday,2025-2026,1st Sem,Buchi,15,15,0,10,150
+8/19/2025,Tuesday,2025-2026,1st Sem,Chicken Mami,10,3,7,25,75
+8/19/2025,Tuesday,2025-2026,1st Sem,Egg Sandwich,10,8,2,20,160
+8/19/2025,Tuesday,2025-2026,1st Sem,Hamburger,10,10,0,45,450
+8/19/2025,Tuesday,2025-2026,1st Sem,Hotdog Sandwich,5,3,2,40,120
+8/19/2025,Tuesday,2025-2026,1st Sem,Hotdog Stick,20,2,18,15,30
+8/19/2025,Tuesday,2025-2026,1st Sem,Karen Dumplings,25,25,0,7,175
+8/19/2025,Tuesday,2025-2026,1st Sem,Karen Japanese Siomai,140,28,112,7,196
+8/19/2025,Tuesday,2025-2026,1st Sem,Karen Pork Siomai,175,132,43,6,792
+8/19/2025,Tuesday,2025-2026,1st Sem,Kutsinta Cheese,6,3,3,12,36
+8/19/2025,Tuesday,2025-2026,1st Sem,Kutsinta Yema,4,4,0,12,48
+8/19/2025,Tuesday,2025-2026,1st Sem,Lomi,10,3,7,25,75
+8/19/2025,Tuesday,2025-2026,1st Sem,Palabok,10,2,8,25,50
+8/19/2025,Tuesday,2025-2026,1st Sem,Pork Mami,10,3,7,25,75
+8/19/2025,Tuesday,2025-2026,1st Sem,Puto Cheese,5,5,0,12,60
+8/19/2025,Tuesday,2025-2026,1st Sem,Puto Flan,4,3,1,12,36
+8/19/2025,Tuesday,2025-2026,1st Sem,Puto Latik,6,3,3,12,36
+8/19/2025,Tuesday,2025-2026,1st Sem,Siomai Rice,20,20,0,45,900
+8/19/2025,Tuesday,2025-2026,1st Sem,Tokneneng,20,20,0,20,400
+8/19/2025,Tuesday,2025-2026,1st Sem,Tuna Pie,15,7,8,18,126
+8/20/2025,Wednesday,2025-2026,1st Sem,Camote Cue,10,8,2,20,160
+8/20/2025,Wednesday,2025-2026,1st Sem,Cater Bihon Canton,10,5,5,30,150
+8/20/2025,Wednesday,2025-2026,1st Sem,Cheese Stick,35,16,19,10,160
+8/20/2025,Wednesday,2025-2026,1st Sem,Chicken Pie,10,2,8,18,36
+8/20/2025,Wednesday,2025-2026,1st Sem,Empanada,3,3,0,60,180
+8/20/2025,Wednesday,2025-2026,1st Sem,Fresh Pancit,10,10,0,20,200
+8/20/2025,Wednesday,2025-2026,1st Sem,Hotdog Sandwich,4,3,1,40,120
+8/20/2025,Wednesday,2025-2026,1st Sem,Hotdog Stick,20,8,12,15,120
+8/20/2025,Wednesday,2025-2026,1st Sem,Karen Dumplings,20,20,0,7,140
+8/20/2025,Wednesday,2025-2026,1st Sem,Karen Japanese Siomai,165,54,111,7,378
+8/20/2025,Wednesday,2025-2026,1st Sem,Kutsinta Cheese,5,4,1,12,48
+8/20/2025,Wednesday,2025-2026,1st Sem,Maja,10,7,3,15,105
+8/20/2025,Wednesday,2025-2026,1st Sem,Palitaw 1's,15,15,0,10,150
+8/20/2025,Wednesday,2025-2026,1st Sem,Pork Mami,10,6,4,25,150
+8/20/2025,Wednesday,2025-2026,1st Sem,Puto Cheese,4,4,0,12,48
+8/20/2025,Wednesday,2025-2026,1st Sem,Puto Flan,6,6,0,12,72
+8/20/2025,Wednesday,2025-2026,1st Sem,Puto Latik,6,5,1,12,60
+8/20/2025,Wednesday,2025-2026,1st Sem,Siomai Rice,15,12,3,45,540
+8/20/2025,Wednesday,2025-2026,1st Sem,Sopas,10,3,7,25,75
+8/20/2025,Wednesday,2025-2026,1st Sem,Spaghetti,10,5,5,25,125
+8/20/2025,Wednesday,2025-2026,1st Sem,Tinudok,15,10,5,10,100
+8/20/2025,Wednesday,2025-2026,1st Sem,Turon,15,15,0,15,225
+8/20/2025,Wednesday,2025-2026,1st Sem,Vegetable Lumpia,15,15,0,15,225
+8/22/2025,Friday,2025-2026,1st Sem,BBQ,15,15,0,20,300
+8/22/2025,Friday,2025-2026,1st Sem,Camote Cue,8,3,5,20,60
+8/22/2025,Friday,2025-2026,1st Sem,Cheese Stick,25,25,0,10,250
+8/22/2025,Friday,2025-2026,1st Sem,Empanada,3,3,0,60,180
+8/22/2025,Friday,2025-2026,1st Sem,Fresh Pancit,7,5,2,20,100
+8/22/2025,Friday,2025-2026,1st Sem,Karen Japanese Siomai,160,160,0,7,1120
+8/22/2025,Friday,2025-2026,1st Sem,Karen Pork Siomai,165,45,120,6,270
+8/22/2025,Friday,2025-2026,1st Sem,Kutsinta Cheese,4,3,1,12,36
+8/22/2025,Friday,2025-2026,1st Sem,Kutsinta Yema,4,4,0,12,48
+8/22/2025,Friday,2025-2026,1st Sem,Meatballs,15,4,11,20,80
+8/22/2025,Friday,2025-2026,1st Sem,Puto Cheese,4,2,2,12,24
+8/22/2025,Friday,2025-2026,1st Sem,Puto Latik,5,5,0,12,60
+8/22/2025,Friday,2025-2026,1st Sem,Tokneneng,15,15,0,20,300
+8/26/2025,Tuesday,2025-2026,1st Sem,Banana Cue,10,10,0,20,200
+8/26/2025,Tuesday,2025-2026,1st Sem,Bihon Guisado,6,2,4,25,50
+8/26/2025,Tuesday,2025-2026,1st Sem,Boiled Banana,15,10,5,6,60
+8/26/2025,Tuesday,2025-2026,1st Sem,Camote Cue,10,8,2,20,160
+8/26/2025,Tuesday,2025-2026,1st Sem,Egg Sandwich,10,7,3,20,140
+8/26/2025,Tuesday,2025-2026,1st Sem,Empanada,3,1,2,60,60
+8/26/2025,Tuesday,2025-2026,1st Sem,Fresh Pancit,10,8,2,20,160
+8/26/2025,Tuesday,2025-2026,1st Sem,Hotdog Sandwich,5,5,0,40,200
+8/26/2025,Tuesday,2025-2026,1st Sem,Karen Dumplings,25,25,0,7,175
+8/26/2025,Tuesday,2025-2026,1st Sem,Karen Japanese Siomai,160,36,124,7,252
+8/26/2025,Tuesday,2025-2026,1st Sem,Karen Pork Siomai,200,72,128,6,432
+8/26/2025,Tuesday,2025-2026,1st Sem,Kutsinta Yema,5,2,3,12,24
+8/26/2025,Tuesday,2025-2026,1st Sem,Palitaw,15,12,3,5,60
+8/26/2025,Tuesday,2025-2026,1st Sem,Pork Mami,10,8,2,25,200
+8/26/2025,Tuesday,2025-2026,1st Sem,Puto Cheese,5,5,0,12,60
+8/26/2025,Tuesday,2025-2026,1st Sem,Puto Latik,5,4,1,12,48
+8/26/2025,Tuesday,2025-2026,1st Sem,Rolls,5,2,3,26,52
+8/26/2025,Tuesday,2025-2026,1st Sem,Siomai Rice,10,10,0,45,450
+8/26/2025,Tuesday,2025-2026,1st Sem,Spaghetti,10,2,8,25,50
+8/26/2025,Tuesday,2025-2026,1st Sem,Tuna Shanghai,15,15,0,12,180
+8/26/2025,Tuesday,2025-2026,1st Sem,Ukoy Balls,20,16,4,20,320
+8/27/2025,Wednesday,2025-2026,1st Sem,BBQ,15,11,4,20,220
+8/27/2025,Wednesday,2025-2026,1st Sem,Bihon Guisado,7,6,1,25,150
+8/27/2025,Wednesday,2025-2026,1st Sem,Carbonara,10,10,0,25,250
+8/27/2025,Wednesday,2025-2026,1st Sem,Empanada,3,3,0,60,180
+8/27/2025,Wednesday,2025-2026,1st Sem,Karen Dumplings,20,19,1,7,133
+8/27/2025,Wednesday,2025-2026,1st Sem,Karen Pork Siomai,165,81,84,6,486
+8/27/2025,Wednesday,2025-2026,1st Sem,Kutsinta Cheese,5,1,4,12,12
+8/27/2025,Wednesday,2025-2026,1st Sem,Kutsinta Yema,4,4,0,12,48
+8/27/2025,Wednesday,2025-2026,1st Sem,Lumpianada,10,10,0,35,350
+8/27/2025,Wednesday,2025-2026,1st Sem,Maja,15,8,7,15,120
+8/27/2025,Wednesday,2025-2026,1st Sem,Palitaw 1's,15,6,9,10,60
+8/27/2025,Wednesday,2025-2026,1st Sem,Pork Mami,10,7,3,25,175
+8/27/2025,Wednesday,2025-2026,1st Sem,Puto Flan,5,5,0,12,60
+8/27/2025,Wednesday,2025-2026,1st Sem,Shanghai,20,20,0,12,240
+8/27/2025,Wednesday,2025-2026,1st Sem,Siomai Rice,15,9,6,45,405
+8/27/2025,Wednesday,2025-2026,1st Sem,Sopas,10,4,6,25,100
+8/27/2025,Wednesday,2025-2026,1st Sem,Tokneneng,20,20,0,20,400
+8/27/2025,Wednesday,2025-2026,1st Sem,Tuna Pie,10,6,4,18,108
+8/28/2025,Thursday,2025-2026,1st Sem,Arroz Caldo,5,3,2,20,60
+8/28/2025,Thursday,2025-2026,1st Sem,Chicken Pie,10,5,5,18,90
+8/28/2025,Thursday,2025-2026,1st Sem,Hotdog Stick,20,4,16,15,60
+8/28/2025,Thursday,2025-2026,1st Sem,Karen Dumplings,20,19,1,7,133
+8/28/2025,Thursday,2025-2026,1st Sem,Karen Japanese Siomai,145,45,100,7,315
+8/28/2025,Thursday,2025-2026,1st Sem,Karen Pork Siomai,215,215,0,6,1290
+8/28/2025,Thursday,2025-2026,1st Sem,Kutsinta Cheese,5,4,1,12,48
+8/28/2025,Thursday,2025-2026,1st Sem,Kutsinta Yema,5,5,0,12,60
+8/28/2025,Thursday,2025-2026,1st Sem,Puto Cheese,4,4,0,12,48
+8/28/2025,Thursday,2025-2026,1st Sem,Puto Flan,5,3,2,12,36
+8/28/2025,Thursday,2025-2026,1st Sem,Puto Latik,5,5,0,12,60
+8/28/2025,Thursday,2025-2026,1st Sem,Shanghai,20,20,0,12,240
+8/28/2025,Thursday,2025-2026,1st Sem,Siomai Rice,15,14,1,45,630
+8/28/2025,Thursday,2025-2026,1st Sem,Sopas,10,6,4,25,150
+8/28/2025,Thursday,2025-2026,1st Sem,Tokneneng,25,25,0,20,500
+8/28/2025,Thursday,2025-2026,1st Sem,Tuna Pie,10,8,2,18,144
+8/28/2025,Thursday,2025-2026,1st Sem,Turon,20,10,10,15,150
+8/28/2025,Thursday,2025-2026,1st Sem,Ukoy Balls,25,11,14,20,220
+8/29/2025,Friday,2025-2026,1st Sem,Banana Balls,10,10,0,20,200
+8/29/2025,Friday,2025-2026,1st Sem,Buchi,10,5,5,10,50
+8/29/2025,Friday,2025-2026,1st Sem,Corndog,8,1,7,30,30
+8/29/2025,Friday,2025-2026,1st Sem,Fresh Pancit,10,8,2,20,160
+8/29/2025,Friday,2025-2026,1st Sem,Hotdog Sandwich,4,4,0,40,160
+8/29/2025,Friday,2025-2026,1st Sem,Hotdog Stick,20,13,7,15,195
+8/29/2025,Friday,2025-2026,1st Sem,Karen Japanese Siomai,135,48,87,7,336
+8/29/2025,Friday,2025-2026,1st Sem,Karen Pork Siomai,175,115,60,6,690
+8/29/2025,Friday,2025-2026,1st Sem,Kutsinta Cheese,5,5,0,12,60
+8/29/2025,Friday,2025-2026,1st Sem,Kutsinta Yema,5,3,2,12,36
+8/29/2025,Friday,2025-2026,1st Sem,Pancit Canton,10,4,6,30,120
+8/29/2025,Friday,2025-2026,1st Sem,Puto Flan,6,2,4,12,24
+8/29/2025,Friday,2025-2026,1st Sem,Siomai Rice,15,15,0,45,675
+8/29/2025,Friday,2025-2026,1st Sem,Turon,20,16,4,15,240
+9/1/2025,Monday,2025-2026,1st Sem,Buchi,15,15,0,10,150
+9/1/2025,Monday,2025-2026,1st Sem,Camote Cue,10,7,3,20,140
+9/1/2025,Monday,2025-2026,1st Sem,Cheese Stick,25,25,0,10,250
+9/1/2025,Monday,2025-2026,1st Sem,Chicken Mami,10,3,7,25,75
+9/1/2025,Monday,2025-2026,1st Sem,Fresh Pancit,10,0,10,20,0
+9/1/2025,Monday,2025-2026,1st Sem,Gluti Roll,15,15,0,20,300
+9/1/2025,Monday,2025-2026,1st Sem,Hotdog Stick,25,10,15,15,150
+9/1/2025,Monday,2025-2026,1st Sem,Karen Dumplings,20,2,18,7,14
+9/1/2025,Monday,2025-2026,1st Sem,Karen Japanese Siomai,160,160,0,7,1120
+9/1/2025,Monday,2025-2026,1st Sem,Karen Pork Siomai,185,92,93,6,552
+9/1/2025,Monday,2025-2026,1st Sem,Karen Siopao,6,6,0,31,186
+9/1/2025,Monday,2025-2026,1st Sem,Kutsinta Cheese,5,3,2,12,36
+9/1/2025,Monday,2025-2026,1st Sem,Kutsinta Yema,5,4,1,12,48
+9/1/2025,Monday,2025-2026,1st Sem,Pork Mami,10,7,3,25,175
+9/1/2025,Monday,2025-2026,1st Sem,Puto Flan,7,3,4,12,36
+9/1/2025,Monday,2025-2026,1st Sem,Puto Latik,5,2,3,12,24
+9/1/2025,Monday,2025-2026,1st Sem,Siomai Rice,15,15,0,45,675
+9/1/2025,Monday,2025-2026,1st Sem,Sopas,10,10,0,25,250
+9/1/2025,Monday,2025-2026,1st Sem,Tinudok,10,10,0,10,100
+9/1/2025,Monday,2025-2026,1st Sem,Tokneneng,20,20,0,20,400
+9/1/2025,Monday,2025-2026,1st Sem,Ukoy Balls,25,25,0,20,500
+9/2/2025,Tuesday,2025-2026,1st Sem,Banana Balls,10,10,0,20,200
+9/2/2025,Tuesday,2025-2026,1st Sem,Bihon Guisado,7,4,3,25,100
+9/2/2025,Tuesday,2025-2026,1st Sem,Boiled Camote,5,2,3,20,40
+9/2/2025,Tuesday,2025-2026,1st Sem,Camote Cue,10,4,6,20,80
+9/2/2025,Tuesday,2025-2026,1st Sem,Cheese Stick,25,25,0,10,250
+9/2/2025,Tuesday,2025-2026,1st Sem,Chicken Mami,15,15,0,25,375
+9/2/2025,Tuesday,2025-2026,1st Sem,Karen Dumplings,20,20,0,7,140
+9/2/2025,Tuesday,2025-2026,1st Sem,Karen Japanese Siomai,160,116,44,7,812
+9/2/2025,Tuesday,2025-2026,1st Sem,Karen Pork Siomai,170,170,0,6,1020
+9/2/2025,Tuesday,2025-2026,1st Sem,Kutsinta Yema,5,3,2,12,36
+9/2/2025,Tuesday,2025-2026,1st Sem,Palitaw 1's,15,15,0,10,150
+9/2/2025,Tuesday,2025-2026,1st Sem,Puto Cheese,5,5,0,12,60
+9/2/2025,Tuesday,2025-2026,1st Sem,Puto Latik,6,4,2,12,48
+9/2/2025,Tuesday,2025-2026,1st Sem,Rolls,6,6,0,26,156
+9/2/2025,Tuesday,2025-2026,1st Sem,Siomai Rice,20,20,0,45,900
+9/2/2025,Tuesday,2025-2026,1st Sem,Tuna Pie,10,7,3,18,126
+9/3/2025,Wednesday,2025-2026,1st Sem,Baduya,10,4,6,15,60
+9/3/2025,Wednesday,2025-2026,1st Sem,Boiled Camote,4,1,3,20,20
+9/3/2025,Wednesday,2025-2026,1st Sem,Buchi Peanut,15,7,8,10,70
+9/3/2025,Wednesday,2025-2026,1st Sem,Corndog,10,5,5,30,150
+9/3/2025,Wednesday,2025-2026,1st Sem,Egg Sandwich,10,3,7,20,60
+9/3/2025,Wednesday,2025-2026,1st Sem,Empanada,3,3,0,60,180
+9/3/2025,Wednesday,2025-2026,1st Sem,Fresh Pancit,10,1,9,20,20
+9/3/2025,Wednesday,2025-2026,1st Sem,Hotdog Sandwich,5,4,1,40,160
+9/3/2025,Wednesday,2025-2026,1st Sem,Hotdog Stick,25,13,12,15,195
+9/3/2025,Wednesday,2025-2026,1st Sem,Karen Dumplings,30,30,0,7,210
+9/3/2025,Wednesday,2025-2026,1st Sem,Karen Japanese Siomai,130,93,37,7,651
+9/3/2025,Wednesday,2025-2026,1st Sem,Karen Pork Siomai,200,111,89,6,666
+9/3/2025,Wednesday,2025-2026,1st Sem,Kutsinta Cheese,6,3,3,12,36
+9/3/2025,Wednesday,2025-2026,1st Sem,Kutsinta Yema,4,0,4,12,0
+9/3/2025,Wednesday,2025-2026,1st Sem,Meatballs,15,13,2,20,260
+9/3/2025,Wednesday,2025-2026,1st Sem,Palitaw,10,10,0,5,50
+9/3/2025,Wednesday,2025-2026,1st Sem,Puto Cheese,5,4,1,12,48
+9/3/2025,Wednesday,2025-2026,1st Sem,Puto Flan,6,6,0,12,72
+9/3/2025,Wednesday,2025-2026,1st Sem,Puto Latik,5,5,0,12,60
+9/3/2025,Wednesday,2025-2026,1st Sem,Siomai Rice,10,10,0,45,450
+9/3/2025,Wednesday,2025-2026,1st Sem,Tokneneng,25,17,8,20,340
+9/3/2025,Wednesday,2025-2026,1st Sem,Tuna Pie,10,10,0,18,180
+9/3/2025,Wednesday,2025-2026,1st Sem,Turon,25,11,14,15,165
+9/4/2025,Thursday,2025-2026,1st Sem,BBQ,10,10,0,20,200
+9/4/2025,Thursday,2025-2026,1st Sem,Baduya,10,10,0,15,150
+9/4/2025,Thursday,2025-2026,1st Sem,Carbonara,10,5,5,25,125
+9/4/2025,Thursday,2025-2026,1st Sem,Cheese Stick,25,11,14,10,110
+9/4/2025,Thursday,2025-2026,1st Sem,Chicken Mami,10,6,4,25,150
+9/4/2025,Thursday,2025-2026,1st Sem,Corndog,10,5,5,30,150
+9/4/2025,Thursday,2025-2026,1st Sem,Hotdog Sandwich,6,4,2,40,160
+9/4/2025,Thursday,2025-2026,1st Sem,Hotdog Stick,15,8,7,15,120
+9/4/2025,Thursday,2025-2026,1st Sem,Karen Japanese Siomai,135,42,93,7,294
+9/4/2025,Thursday,2025-2026,1st Sem,Karen Pork Siomai,180,61,119,6,366
+9/4/2025,Thursday,2025-2026,1st Sem,Karen Siopao,6,3,3,31,93
+9/4/2025,Thursday,2025-2026,1st Sem,Kutsinta Cheese,6,2,4,12,24
+9/4/2025,Thursday,2025-2026,1st Sem,Kutsinta Yema,6,6,0,12,72
+9/4/2025,Thursday,2025-2026,1st Sem,Puto Cheese,5,5,0,12,60
+9/4/2025,Thursday,2025-2026,1st Sem,Puto Flan,5,3,2,12,36
+9/4/2025,Thursday,2025-2026,1st Sem,Puto Latik,5,2,3,12,24
+9/4/2025,Thursday,2025-2026,1st Sem,Siomai Rice,20,9,11,45,405
+9/4/2025,Thursday,2025-2026,1st Sem,Turon,20,11,9,15,165
+9/5/2025,Friday,2025-2026,1st Sem,BBQ,15,8,7,20,160
+9/5/2025,Friday,2025-2026,1st Sem,Banana Balls,10,10,0,20,200
+9/5/2025,Friday,2025-2026,1st Sem,Boiled Banana,15,2,13,6,12
+9/5/2025,Friday,2025-2026,1st Sem,Buchi Peanut,10,4,6,10,40
+9/5/2025,Friday,2025-2026,1st Sem,Egg Sandwich,10,6,4,20,120
+9/5/2025,Friday,2025-2026,1st Sem,Hamburger,10,6,4,45,270
+9/5/2025,Friday,2025-2026,1st Sem,Hotdog Stick,15,8,7,15,120
+9/5/2025,Friday,2025-2026,1st Sem,Karen Japanese Siomai,125,111,14,7,777
+9/5/2025,Friday,2025-2026,1st Sem,Karen Pork Siomai,145,103,42,6,618
+9/5/2025,Friday,2025-2026,1st Sem,Kutsinta Cheese,4,4,0,12,48
+9/5/2025,Friday,2025-2026,1st Sem,Kutsinta Yema,5,0,5,12,0
+9/5/2025,Friday,2025-2026,1st Sem,Meatballs,15,5,10,20,100
+9/5/2025,Friday,2025-2026,1st Sem,Palitaw 1's,15,10,5,10,100
+9/5/2025,Friday,2025-2026,1st Sem,Puto Cheese,5,5,0,12,60
+9/5/2025,Friday,2025-2026,1st Sem,Puto Flan,4,4,0,12,48
+9/5/2025,Friday,2025-2026,1st Sem,Puto Latik,4,3,1,12,36
+9/5/2025,Friday,2025-2026,1st Sem,Siomai Rice,15,13,2,45,585
+9/8/2025,Monday,2025-2026,1st Sem,Banana Cue,10,8,2,20,160
+9/8/2025,Monday,2025-2026,1st Sem,Chicken Mami,8,8,0,25,200
+9/8/2025,Monday,2025-2026,1st Sem,Hotdog Sandwich,4,4,0,40,160
+9/8/2025,Monday,2025-2026,1st Sem,Karen Dumplings,25,22,3,7,154
+9/8/2025,Monday,2025-2026,1st Sem,Karen Japanese Siomai,150,88,62,7,616
+9/8/2025,Monday,2025-2026,1st Sem,Karen Pork Siomai,200,36,164,6,216
+9/8/2025,Monday,2025-2026,1st Sem,Kutsinta Cheese,5,5,0,12,60
+9/8/2025,Monday,2025-2026,1st Sem,Kutsinta Yema,4,1,3,12,12
+9/8/2025,Monday,2025-2026,1st Sem,Lumpianada,10,10,0,35,350
+9/8/2025,Monday,2025-2026,1st Sem,Puto Cheese,5,5,0,12,60
+9/8/2025,Monday,2025-2026,1st Sem,Puto Flan,5,4,1,12,48
+9/8/2025,Monday,2025-2026,1st Sem,Puto Latik,5,5,0,12,60
+9/8/2025,Monday,2025-2026,1st Sem,Rolls,5,1,4,26,26
+9/8/2025,Monday,2025-2026,1st Sem,Siomai Rice,15,15,0,45,675
+9/9/2025,Tuesday,2025-2026,1st Sem,Arroz Caldo,6,0,6,20,0
+9/9/2025,Tuesday,2025-2026,1st Sem,Banana Cue,10,10,0,20,200
+9/9/2025,Tuesday,2025-2026,1st Sem,Cheese Stick,40,40,0,10,400
+9/9/2025,Tuesday,2025-2026,1st Sem,Chicken Mami,10,10,0,25,250
+9/9/2025,Tuesday,2025-2026,1st Sem,Gluti Roll,15,14,1,20,280
+9/9/2025,Tuesday,2025-2026,1st Sem,Karen Japanese Siomai,160,142,18,7,994
+9/9/2025,Tuesday,2025-2026,1st Sem,Karen Pork Siomai,170,170,0,6,1020
+9/9/2025,Tuesday,2025-2026,1st Sem,Kutsinta Yema,6,6,0,12,72
+9/9/2025,Tuesday,2025-2026,1st Sem,Pork Mami,10,10,0,25,250
+9/9/2025,Tuesday,2025-2026,1st Sem,Puto Flan,5,5,0,12,60
+9/9/2025,Tuesday,2025-2026,1st Sem,Puto Latik,5,5,0,12,60
+9/9/2025,Tuesday,2025-2026,1st Sem,Siomai Rice,15,15,0,45,675
+9/9/2025,Tuesday,2025-2026,1st Sem,Tokneneng,20,14,6,20,280
+9/10/2025,Wednesday,2025-2026,1st Sem,Banana Cue,10,10,0,20,200
+9/10/2025,Wednesday,2025-2026,1st Sem,Buchi,15,15,0,10,150
+9/10/2025,Wednesday,2025-2026,1st Sem,Hotdog Sandwich,5,5,0,40,200
+9/10/2025,Wednesday,2025-2026,1st Sem,Hotdog Stick,15,11,4,15,165
+9/10/2025,Wednesday,2025-2026,1st Sem,Karen Japanese Siomai,115,109,6,7,763
+9/10/2025,Wednesday,2025-2026,1st Sem,Karen Pork Siomai,135,129,6,6,774
+9/10/2025,Wednesday,2025-2026,1st Sem,Kutsinta Cheese,5,5,0,12,60
+9/10/2025,Wednesday,2025-2026,1st Sem,Kutsinta Yema,5,5,0,12,60
+9/10/2025,Wednesday,2025-2026,1st Sem,Puto Cheese,5,5,0,12,60
+9/10/2025,Wednesday,2025-2026,1st Sem,Puto Flan,5,1,4,12,12
+9/10/2025,Wednesday,2025-2026,1st Sem,Siomai Rice,15,15,0,45,675
+9/10/2025,Wednesday,2025-2026,1st Sem,Special Empanada,5,2,3,60,120
+9/10/2025,Wednesday,2025-2026,1st Sem,Tuna Pie,15,9,6,18,162
+9/11/2025,Thursday,2025-2026,1st Sem,Bihon Guisado,7,1,6,25,25
+9/11/2025,Thursday,2025-2026,1st Sem,Boiled Banana,15,12,3,6,72
+9/11/2025,Thursday,2025-2026,1st Sem,Chicken Mami,10,5,5,25,125
+9/11/2025,Thursday,2025-2026,1st Sem,Corndog,10,5,5,30,150
+9/11/2025,Thursday,2025-2026,1st Sem,Hotdog Stick,20,20,0,15,300
+9/11/2025,Thursday,2025-2026,1st Sem,Karen Japanese Siomai,150,150,0,7,1050
+9/11/2025,Thursday,2025-2026,1st Sem,Karen Pork Siomai,190,126,64,6,756
+9/11/2025,Thursday,2025-2026,1st Sem,Kutsinta Cheese,6,5,1,12,60
+9/11/2025,Thursday,2025-2026,1st Sem,Kutsinta Yema,5,3,2,12,36
+9/11/2025,Thursday,2025-2026,1st Sem,Puto Cheese,5,2,3,12,24
+9/11/2025,Thursday,2025-2026,1st Sem,Puto Flan,6,6,0,12,72
+9/11/2025,Thursday,2025-2026,1st Sem,Rolls,4,4,0,26,104
+9/11/2025,Thursday,2025-2026,1st Sem,Vegetable Lumpia,15,10,5,15,150
+9/12/2025,Friday,2025-2026,1st Sem,Banana Cue,7,7,0,20,140
+9/12/2025,Friday,2025-2026,1st Sem,Buchi Peanut,15,7,8,10,70
+9/12/2025,Friday,2025-2026,1st Sem,Empanada,3,2,1,60,120
+9/12/2025,Friday,2025-2026,1st Sem,Hotdog Sandwich,5,1,4,40,40
+9/12/2025,Friday,2025-2026,1st Sem,Hotdog Stick,15,11,4,15,165
+9/12/2025,Friday,2025-2026,1st Sem,Karen Dumplings,25,25,0,7,175
+9/12/2025,Friday,2025-2026,1st Sem,Karen Japanese Siomai,145,76,69,7,532
+9/12/2025,Friday,2025-2026,1st Sem,Kutsinta Cheese,3,3,0,12,36
+9/12/2025,Friday,2025-2026,1st Sem,Kutsinta Yema,4,4,0,12,48
+9/12/2025,Friday,2025-2026,1st Sem,Pork Lomi,10,8,2,25,200
+9/12/2025,Friday,2025-2026,1st Sem,Pork Mami,8,0,8,25,0
+9/12/2025,Friday,2025-2026,1st Sem,Puto Flan,4,3,1,12,36
+9/12/2025,Friday,2025-2026,1st Sem,Puto Latik,5,5,0,12,60
+9/12/2025,Friday,2025-2026,1st Sem,Rolls,5,5,0,26,130
+9/12/2025,Friday,2025-2026,1st Sem,Siomai Rice,15,8,7,45,360
+9/12/2025,Friday,2025-2026,1st Sem,Suman,10,4,6,18,72
+9/12/2025,Friday,2025-2026,1st Sem,Turon,20,20,0,15,300
+9/15/2025,Monday,2025-2026,1st Sem,Beef Mami,10,9,1,30,270
+9/15/2025,Monday,2025-2026,1st Sem,Buchi,15,15,0,10,150
+9/15/2025,Monday,2025-2026,1st Sem,Camote Cue,10,6,4,20,120
+9/15/2025,Monday,2025-2026,1st Sem,Empanada,3,2,1,60,120
+9/15/2025,Monday,2025-2026,1st Sem,Hamburger,10,1,9,45,45
+9/15/2025,Monday,2025-2026,1st Sem,Hotdog Sandwich,5,4,1,40,160
+9/15/2025,Monday,2025-2026,1st Sem,Hotdog Stick,20,7,13,15,105
+9/15/2025,Monday,2025-2026,1st Sem,Karen Pork Siomai,185,50,135,6,300
+9/15/2025,Monday,2025-2026,1st Sem,Kutsinta Cheese,5,5,0,12,60
+9/15/2025,Monday,2025-2026,1st Sem,Maja,10,10,0,15,150
+9/15/2025,Monday,2025-2026,1st Sem,Puto Flan,4,4,0,12,48
+9/15/2025,Monday,2025-2026,1st Sem,Puto Latik,4,3,1,12,36
+9/15/2025,Monday,2025-2026,1st Sem,Siomai Rice,15,15,0,45,675
+9/15/2025,Monday,2025-2026,1st Sem,Tuna Shanghai,20,8,12,12,96
+9/16/2025,Tuesday,2025-2026,1st Sem,Chicken Mami,10,8,2,25,200
+9/16/2025,Tuesday,2025-2026,1st Sem,Hotdog Sandwich,6,6,0,40,240
+9/16/2025,Tuesday,2025-2026,1st Sem,Karen Dumplings,25,19,6,7,133
+9/16/2025,Tuesday,2025-2026,1st Sem,Karen Japanese Siomai,140,50,90,7,350
+9/16/2025,Tuesday,2025-2026,1st Sem,Karen Pork Siomai,220,220,0,6,1320
+9/16/2025,Tuesday,2025-2026,1st Sem,Karen Siopao,6,4,2,31,124
+9/16/2025,Tuesday,2025-2026,1st Sem,Kutsinta Cheese,5,5,0,12,60
+9/16/2025,Tuesday,2025-2026,1st Sem,Kutsinta Yema,6,6,0,12,72
+9/16/2025,Tuesday,2025-2026,1st Sem,Pork Mami,10,1,9,25,25
+9/16/2025,Tuesday,2025-2026,1st Sem,Puto Flan,5,5,0,12,60
+9/16/2025,Tuesday,2025-2026,1st Sem,Puto Latik,5,5,0,12,60
+9/16/2025,Tuesday,2025-2026,1st Sem,Suman,6,6,0,18,108
+9/16/2025,Tuesday,2025-2026,1st Sem,Tinudok,15,8,7,10,80
+9/16/2025,Tuesday,2025-2026,1st Sem,Vegetable Lumpia,15,10,5,15,150
+9/17/2025,Wednesday,2025-2026,1st Sem,Bihon Guisado,8,4,4,25,100
+9/17/2025,Wednesday,2025-2026,1st Sem,Cater Bihon Canton,10,10,0,30,300
+9/17/2025,Wednesday,2025-2026,1st Sem,Empanada,3,3,0,60,180
+9/17/2025,Wednesday,2025-2026,1st Sem,Hotdog Sandwich,4,3,1,40,120
+9/17/2025,Wednesday,2025-2026,1st Sem,Karen Dumplings,25,25,0,7,175
+9/17/2025,Wednesday,2025-2026,1st Sem,Karen Japanese Siomai,140,57,83,7,399
+9/17/2025,Wednesday,2025-2026,1st Sem,Kutsinta Cheese,6,6,0,12,72
+9/17/2025,Wednesday,2025-2026,1st Sem,Kutsinta Yema,5,4,1,12,48
+9/17/2025,Wednesday,2025-2026,1st Sem,Palabok,10,7,3,25,175
+9/17/2025,Wednesday,2025-2026,1st Sem,Pork Mami,10,0,10,25,0
+9/17/2025,Wednesday,2025-2026,1st Sem,Puto Cheese,6,1,5,12,12
+9/17/2025,Wednesday,2025-2026,1st Sem,Puto Flan,6,2,4,12,24
+9/17/2025,Wednesday,2025-2026,1st Sem,Puto Latik,5,5,0,12,60
+9/17/2025,Wednesday,2025-2026,1st Sem,Siomai Rice,15,15,0,45,675
+9/17/2025,Wednesday,2025-2026,1st Sem,Turon,20,20,0,15,300
+9/17/2025,Wednesday,2025-2026,1st Sem,Ukoy Balls,20,20,0,20,400
+9/18/2025,Thursday,2025-2026,1st Sem,Boiled Banana,15,9,6,6,54
+9/18/2025,Thursday,2025-2026,1st Sem,Camote Cue,10,10,0,20,200
+9/18/2025,Thursday,2025-2026,1st Sem,Empanada,2,1,1,60,60
+9/18/2025,Thursday,2025-2026,1st Sem,Hotdog Sandwich,5,5,0,40,200
+9/18/2025,Thursday,2025-2026,1st Sem,Karen Dumplings,25,22,3,7,154
+9/18/2025,Thursday,2025-2026,1st Sem,Karen Japanese Siomai,155,59,96,7,413
+9/18/2025,Thursday,2025-2026,1st Sem,Karen Pork Siomai,170,165,5,6,990
+9/18/2025,Thursday,2025-2026,1st Sem,Kutsinta Cheese,5,1,4,12,12
+9/18/2025,Thursday,2025-2026,1st Sem,Kutsinta Yema,6,6,0,12,72
+9/18/2025,Thursday,2025-2026,1st Sem,Meatballs,10,10,0,20,200
+9/18/2025,Thursday,2025-2026,1st Sem,Puto Cheese,5,5,0,12,60
+9/18/2025,Thursday,2025-2026,1st Sem,Puto Latik,4,2,2,12,24
+9/18/2025,Thursday,2025-2026,1st Sem,Siomai Rice,15,11,4,45,495
+9/18/2025,Thursday,2025-2026,1st Sem,Tinudok,15,2,13,10,20
+9/18/2025,Thursday,2025-2026,1st Sem,Tokneneng,15,15,0,20,300
+9/18/2025,Thursday,2025-2026,1st Sem,Turon,25,12,13,15,180
+9/19/2025,Friday,2025-2026,1st Sem,Arroz Caldo,4,2,2,20,40
+9/19/2025,Friday,2025-2026,1st Sem,BBQ,15,9,6,20,180
+9/19/2025,Friday,2025-2026,1st Sem,Buchi,15,1,14,10,10
+9/19/2025,Friday,2025-2026,1st Sem,Camote Cue,8,4,4,20,80
+9/19/2025,Friday,2025-2026,1st Sem,Camote Roll,6,6,0,15,90
+9/19/2025,Friday,2025-2026,1st Sem,Empanada,3,2,1,60,120
+9/19/2025,Friday,2025-2026,1st Sem,Hotdog Stick,25,5,20,15,75
+9/19/2025,Friday,2025-2026,1st Sem,Karen Dumplings,20,20,0,7,140
+9/19/2025,Friday,2025-2026,1st Sem,Karen Japanese Siomai,115,92,23,7,644
+9/19/2025,Friday,2025-2026,1st Sem,Karen Pork Siomai,180,59,121,6,354
+9/19/2025,Friday,2025-2026,1st Sem,Kutsinta Cheese,4,4,0,12,48
+9/19/2025,Friday,2025-2026,1st Sem,Kutsinta Yema,5,5,0,12,60
+9/19/2025,Friday,2025-2026,1st Sem,Lomi,10,1,9,25,25
+9/19/2025,Friday,2025-2026,1st Sem,Meatballs,10,8,2,20,160
+9/19/2025,Friday,2025-2026,1st Sem,Pork Mami,10,4,6,25,100
+9/19/2025,Friday,2025-2026,1st Sem,Puto Cheese,5,5,0,12,60
+9/19/2025,Friday,2025-2026,1st Sem,Puto Flan,4,3,1,12,36
+9/19/2025,Friday,2025-2026,1st Sem,Puto Latik,4,4,0,12,48
+9/19/2025,Friday,2025-2026,1st Sem,Shanghai,20,20,0,12,240
+9/19/2025,Friday,2025-2026,1st Sem,Siomai Rice,15,15,0,45,675
+9/24/2025,Wednesday,2025-2026,1st Sem,Boiled Banana,10,4,6,6,24
+9/24/2025,Wednesday,2025-2026,1st Sem,Camote Cue,10,10,0,20,200
+9/24/2025,Wednesday,2025-2026,1st Sem,Egg Sandwich,10,10,0,20,200
+9/24/2025,Wednesday,2025-2026,1st Sem,Empanada,2,2,0,60,120
+9/24/2025,Wednesday,2025-2026,1st Sem,Hotdog Stick,20,2,18,15,30
+9/24/2025,Wednesday,2025-2026,1st Sem,Karen Dumplings,20,20,0,7,140
+9/24/2025,Wednesday,2025-2026,1st Sem,Karen Japanese Siomai,140,140,0,7,980
+9/24/2025,Wednesday,2025-2026,1st Sem,Karen Pork Siomai,195,195,0,6,1170
+9/24/2025,Wednesday,2025-2026,1st Sem,Kutsinta Cheese,5,5,0,12,60
+9/24/2025,Wednesday,2025-2026,1st Sem,Kutsinta Yema,7,6,1,12,72
+9/24/2025,Wednesday,2025-2026,1st Sem,Lumpianada,10,3,7,35,105
+9/24/2025,Wednesday,2025-2026,1st Sem,Meatballs,15,15,0,20,300
+9/24/2025,Wednesday,2025-2026,1st Sem,Pork Mami,10,7,3,25,175
+9/24/2025,Wednesday,2025-2026,1st Sem,Puto Flan,4,3,1,12,36
+9/24/2025,Wednesday,2025-2026,1st Sem,Puto Latik,5,4,1,12,48
+9/24/2025,Wednesday,2025-2026,1st Sem,Siomai Rice,15,15,0,45,675
+9/24/2025,Wednesday,2025-2026,1st Sem,Tinudok,15,5,10,10,50
+9/24/2025,Wednesday,2025-2026,1st Sem,Ukoy Balls,20,11,9,20,220
+9/24/2025,Wednesday,2025-2026,1st Sem,Vegetable Lumpia,15,15,0,15,225
+9/25/2025,Thursday,2025-2026,1st Sem,BBQ,15,15,0,20,300
+9/25/2025,Thursday,2025-2026,1st Sem,Baduya,10,4,6,15,60
+9/25/2025,Thursday,2025-2026,1st Sem,Banana Balls,10,5,5,20,100
+9/25/2025,Thursday,2025-2026,1st Sem,Buchi,15,11,4,10,110
+9/25/2025,Thursday,2025-2026,1st Sem,Buchi Peanut,10,9,1,10,90
+9/25/2025,Thursday,2025-2026,1st Sem,Camote Roll,7,2,5,15,30
+9/25/2025,Thursday,2025-2026,1st Sem,Cheese Stick,30,21,9,10,210
+9/25/2025,Thursday,2025-2026,1st Sem,Empanada,3,3,0,60,180
+9/25/2025,Thursday,2025-2026,1st Sem,Ginataan,5,2,3,20,40
+9/25/2025,Thursday,2025-2026,1st Sem,Hamburger,15,8,7,45,360
+9/25/2025,Thursday,2025-2026,1st Sem,Hotdog Sandwich,5,4,1,40,160
+9/25/2025,Thursday,2025-2026,1st Sem,Karen Japanese Siomai,145,24,121,7,168
+9/25/2025,Thursday,2025-2026,1st Sem,Karen Pork Siomai,215,154,61,6,924
+9/25/2025,Thursday,2025-2026,1st Sem,Kutsinta Cheese,5,4,1,12,48
+9/25/2025,Thursday,2025-2026,1st Sem,Kutsinta Yema,4,3,1,12,36
+9/25/2025,Thursday,2025-2026,1st Sem,Lomi,10,4,6,25,100
+9/25/2025,Thursday,2025-2026,1st Sem,Palabok,10,2,8,25,50
+9/25/2025,Thursday,2025-2026,1st Sem,Pork Mami,10,8,2,25,200
+9/25/2025,Thursday,2025-2026,1st Sem,Puto Cheese,5,0,5,12,0
+9/25/2025,Thursday,2025-2026,1st Sem,Puto Flan,5,3,2,12,36
+9/25/2025,Thursday,2025-2026,1st Sem,Siomai Rice,10,7,3,45,315
+9/25/2025,Thursday,2025-2026,1st Sem,Spaghetti,10,6,4,25,150
+9/25/2025,Thursday,2025-2026,1st Sem,Turon,20,13,7,15,195
+9/26/2025,Friday,2025-2026,1st Sem,Banana Cue,10,9,1,20,180
+9/26/2025,Friday,2025-2026,1st Sem,Buchi,15,15,0,10,150
+9/26/2025,Friday,2025-2026,1st Sem,Camote Cue,10,4,6,20,80
+9/26/2025,Friday,2025-2026,1st Sem,Camote Roll,7,7,0,15,105
+9/26/2025,Friday,2025-2026,1st Sem,Egg Sandwich,7,4,3,20,80
+9/26/2025,Friday,2025-2026,1st Sem,Empanada,3,3,0,60,180
+9/26/2025,Friday,2025-2026,1st Sem,Hamburger,10,4,6,45,180
+9/26/2025,Friday,2025-2026,1st Sem,Hotdog Stick,20,2,18,15,30
+9/26/2025,Friday,2025-2026,1st Sem,Karen Japanese Siomai,115,75,40,7,525
+9/26/2025,Friday,2025-2026,1st Sem,Karen Pork Siomai,150,48,102,6,288
+9/26/2025,Friday,2025-2026,1st Sem,Kutsinta Cheese,5,1,4,12,12
+9/26/2025,Friday,2025-2026,1st Sem,Kutsinta Yema,5,3,2,12,36
+9/26/2025,Friday,2025-2026,1st Sem,Pork Mami,10,8,2,25,200
+9/26/2025,Friday,2025-2026,1st Sem,Puto Cheese,5,4,1,12,48
+9/26/2025,Friday,2025-2026,1st Sem,Puto Flan,4,4,0,12,48
+9/26/2025,Friday,2025-2026,1st Sem,Puto Latik,5,3,2,12,36
+9/26/2025,Friday,2025-2026,1st Sem,Shanghai,20,6,14,12,72
+9/26/2025,Friday,2025-2026,1st Sem,Siomai Rice,10,4,6,45,180
+9/26/2025,Friday,2025-2026,1st Sem,Suman,7,7,0,18,126
+9/26/2025,Friday,2025-2026,1st Sem,Tinudok,10,3,7,10,30
+9/26/2025,Friday,2025-2026,1st Sem,Tokneneng,15,15,0,20,300
+9/29/2025,Monday,2025-2026,1st Sem,Bihon Guisado,10,1,9,25,25
+9/29/2025,Monday,2025-2026,1st Sem,Buchi,15,2,13,10,20
+9/29/2025,Monday,2025-2026,1st Sem,Hamburger,10,8,2,45,360
+9/29/2025,Monday,2025-2026,1st Sem,Hotdog Stick,20,8,12,15,120
+9/29/2025,Monday,2025-2026,1st Sem,Karen Japanese Siomai,145,46,99,7,322
+9/29/2025,Monday,2025-2026,1st Sem,Karen Pork Siomai,170,168,2,6,1008
+9/29/2025,Monday,2025-2026,1st Sem,Kutsinta Cheese,6,6,0,12,72
+9/29/2025,Monday,2025-2026,1st Sem,Kutsinta Yema,6,6,0,12,72
+9/29/2025,Monday,2025-2026,1st Sem,Maja,15,9,6,15,135
+9/29/2025,Monday,2025-2026,1st Sem,Puto Cheese,5,5,0,12,60
+9/29/2025,Monday,2025-2026,1st Sem,Puto Flan,5,5,0,12,60
+9/30/2025,Tuesday,2025-2026,1st Sem,Buchi,15,15,0,10,150
+9/30/2025,Tuesday,2025-2026,1st Sem,Buchi Peanut,15,15,0,10,150
+9/30/2025,Tuesday,2025-2026,1st Sem,Camote Cue,15,8,7,20,160
+9/30/2025,Tuesday,2025-2026,1st Sem,Egg Sandwich,10,5,5,20,100
+9/30/2025,Tuesday,2025-2026,1st Sem,Hamburger,10,10,0,45,450
+9/30/2025,Tuesday,2025-2026,1st Sem,Karen Japanese Siomai,185,40,145,7,280
+9/30/2025,Tuesday,2025-2026,1st Sem,Karen Pork Siomai,185,168,17,6,1008
+9/30/2025,Tuesday,2025-2026,1st Sem,Karen Siopao,6,3,3,31,93
+9/30/2025,Tuesday,2025-2026,1st Sem,Kutsinta Cheese,5,5,0,12,60
+9/30/2025,Tuesday,2025-2026,1st Sem,Kutsinta Yema,5,4,1,12,48
+9/30/2025,Tuesday,2025-2026,1st Sem,Puto Cheese,6,3,3,12,36
+9/30/2025,Tuesday,2025-2026,1st Sem,Puto Latik,5,5,0,12,60
+9/30/2025,Tuesday,2025-2026,1st Sem,Rolls,5,5,0,26,130
+9/30/2025,Tuesday,2025-2026,1st Sem,Siomai Rice,20,10,10,45,450
+9/30/2025,Tuesday,2025-2026,1st Sem,Tuna Pie,10,10,0,18,180
+9/30/2025,Tuesday,2025-2026,1st Sem,Tuna Shanghai,15,15,0,12,180
+10/1/2025,Wednesday,2025-2026,1st Sem,Buchi,15,9,6,10,90
+10/1/2025,Wednesday,2025-2026,1st Sem,Camote Fries,6,6,0,21,126
+10/1/2025,Wednesday,2025-2026,1st Sem,Camote Roll,8,8,0,15,120
+10/1/2025,Wednesday,2025-2026,1st Sem,Corndog,10,10,0,30,300
+10/1/2025,Wednesday,2025-2026,1st Sem,Empanada,3,1,2,60,60
+10/1/2025,Wednesday,2025-2026,1st Sem,Hotdog Sandwich,5,5,0,40,200
+10/1/2025,Wednesday,2025-2026,1st Sem,Hotdog Stick,15,1,14,15,15
+10/1/2025,Wednesday,2025-2026,1st Sem,Karen Dumplings,20,20,0,7,140
+10/1/2025,Wednesday,2025-2026,1st Sem,Karen Pork Siomai,120,119,1,6,714
+10/1/2025,Wednesday,2025-2026,1st Sem,Kutsinta Cheese,4,4,0,12,48
+10/1/2025,Wednesday,2025-2026,1st Sem,Kutsinta Yema,4,2,2,12,24
+10/1/2025,Wednesday,2025-2026,1st Sem,Pork Mami,8,1,7,25,25
+10/1/2025,Wednesday,2025-2026,1st Sem,Puto Cheese,4,4,0,12,48
+10/1/2025,Wednesday,2025-2026,1st Sem,Puto Flan,6,6,0,12,72
+10/1/2025,Wednesday,2025-2026,1st Sem,Puto Latik,5,5,0,12,60
+10/1/2025,Wednesday,2025-2026,1st Sem,Siomai Rice,15,15,0,45,675
+10/1/2025,Wednesday,2025-2026,1st Sem,Tinudok,10,10,0,10,100
+10/1/2025,Wednesday,2025-2026,1st Sem,Tuna Pie,10,4,6,18,72
+10/1/2025,Wednesday,2025-2026,1st Sem,Tuna Shanghai,15,4,11,12,48
+10/1/2025,Wednesday,2025-2026,1st Sem,Ukoy Balls,15,15,0,20,300
+10/2/2025,Thursday,2025-2026,1st Sem,Baduya,8,4,4,15,60
+10/2/2025,Thursday,2025-2026,1st Sem,Banana Cue,7,7,0,20,140
+10/2/2025,Thursday,2025-2026,1st Sem,Cheese Stick,30,30,0,10,300
+10/2/2025,Thursday,2025-2026,1st Sem,Corndog,10,8,2,30,240
+10/2/2025,Thursday,2025-2026,1st Sem,Egg Sandwich,10,8,2,20,160
+10/2/2025,Thursday,2025-2026,1st Sem,Empanada,3,3,0,60,180
+10/2/2025,Thursday,2025-2026,1st Sem,Hamburger,10,10,0,45,450
+10/2/2025,Thursday,2025-2026,1st Sem,Hotdog Sandwich,5,5,0,40,200
+10/2/2025,Thursday,2025-2026,1st Sem,Karen Dumplings,20,20,0,7,140
+10/2/2025,Thursday,2025-2026,1st Sem,Karen Japanese Siomai,105,105,0,7,735
+10/2/2025,Thursday,2025-2026,1st Sem,Karen Pork Siomai,170,170,0,6,1020
+10/2/2025,Thursday,2025-2026,1st Sem,Kutsinta Yema,4,3,1,12,36
+10/2/2025,Thursday,2025-2026,1st Sem,Lomi,10,2,8,25,50
+10/2/2025,Thursday,2025-2026,1st Sem,Pork Lomi,10,2,8,25,50
+10/2/2025,Thursday,2025-2026,1st Sem,Puto Cheese,6,3,3,12,36
+10/2/2025,Thursday,2025-2026,1st Sem,Puto Flan,4,4,0,12,48
+10/2/2025,Thursday,2025-2026,1st Sem,Sopas,10,1,9,25,25
+10/2/2025,Thursday,2025-2026,1st Sem,Ube Buchi,15,12,3,10,120
+10/3/2025,Friday,2025-2026,1st Sem,Arroz Caldo,5,2,3,20,40
+10/3/2025,Friday,2025-2026,1st Sem,Cheese Stick,20,18,2,10,180
+10/3/2025,Friday,2025-2026,1st Sem,Empanada,3,3,0,60,180
+10/3/2025,Friday,2025-2026,1st Sem,Fresh Pancit,7,3,4,20,60
+10/3/2025,Friday,2025-2026,1st Sem,Gluti Roll,10,10,0,20,200
+10/3/2025,Friday,2025-2026,1st Sem,Karen Japanese Siomai,155,49,106,7,343
+10/3/2025,Friday,2025-2026,1st Sem,Karen Pork Siomai,175,96,79,6,576
+10/3/2025,Friday,2025-2026,1st Sem,Kutsinta Cheese,4,1,3,12,12
+10/3/2025,Friday,2025-2026,1st Sem,Kutsinta Yema,4,3,1,12,36
+10/3/2025,Friday,2025-2026,1st Sem,Maja,10,4,6,15,60
+10/3/2025,Friday,2025-2026,1st Sem,Palabok,10,10,0,25,250
+10/3/2025,Friday,2025-2026,1st Sem,Puto Cheese,4,2,2,12,24
+10/3/2025,Friday,2025-2026,1st Sem,Puto Flan,5,3,2,12,36
+10/3/2025,Friday,2025-2026,1st Sem,Rolls,4,3,1,26,78
+10/3/2025,Friday,2025-2026,1st Sem,Shanghai,15,15,0,12,180
+10/3/2025,Friday,2025-2026,1st Sem,Siomai Rice,15,12,3,45,540
+10/3/2025,Friday,2025-2026,1st Sem,Sopas,10,0,10,25,0
+10/3/2025,Friday,2025-2026,1st Sem,Turon,20,6,14,15,90
+10/6/2025,Monday,2025-2026,1st Sem,Corndog,10,10,0,30,300
+10/6/2025,Monday,2025-2026,1st Sem,Empanada,4,4,0,60,240
+10/6/2025,Monday,2025-2026,1st Sem,Gluti Roll,15,12,3,20,240
+10/6/2025,Monday,2025-2026,1st Sem,Hamburger,10,3,7,45,135
+10/6/2025,Monday,2025-2026,1st Sem,Hotdog Stick,20,3,17,15,45
+10/6/2025,Monday,2025-2026,1st Sem,Karen Japanese Siomai,125,125,0,7,875
+10/6/2025,Monday,2025-2026,1st Sem,Karen Pork Siomai,190,112,78,6,672
+10/6/2025,Monday,2025-2026,1st Sem,Kutsinta Cheese,5,2,3,12,24
+10/6/2025,Monday,2025-2026,1st Sem,Kutsinta Yema,4,4,0,12,48
+10/6/2025,Monday,2025-2026,1st Sem,Maja,15,7,8,15,105
+10/6/2025,Monday,2025-2026,1st Sem,Puto Cheese,4,3,1,12,36
+10/6/2025,Monday,2025-2026,1st Sem,Puto Flan,8,6,2,12,72
+10/6/2025,Monday,2025-2026,1st Sem,Siomai Rice,15,15,0,45,675
+10/6/2025,Monday,2025-2026,1st Sem,Ukoy Balls,25,10,15,20,200
+10/6/2025,Monday,2025-2026,1st Sem,Vegetable Lumpia,15,7,8,15,105
+10/7/2025,Tuesday,2025-2026,1st Sem,Banana Cue,10,10,0,20,200
+10/7/2025,Tuesday,2025-2026,1st Sem,Boiled Banana,15,6,9,6,36
+10/7/2025,Tuesday,2025-2026,1st Sem,Boiled Camote,4,4,0,20,80
+10/7/2025,Tuesday,2025-2026,1st Sem,Camote Cue,10,4,6,20,80
+10/7/2025,Tuesday,2025-2026,1st Sem,Carbonara,10,2,8,25,50
+10/7/2025,Tuesday,2025-2026,1st Sem,Empanada,3,2,1,60,120
+10/7/2025,Tuesday,2025-2026,1st Sem,Ginataan,5,5,0,20,100
+10/7/2025,Tuesday,2025-2026,1st Sem,Gluti Roll,15,15,0,20,300
+10/7/2025,Tuesday,2025-2026,1st Sem,Karen Dumplings,30,30,0,7,210
+10/7/2025,Tuesday,2025-2026,1st Sem,Karen Japanese Siomai,155,115,40,7,805
+10/7/2025,Tuesday,2025-2026,1st Sem,Karen Pork Siomai,160,116,44,6,696
+10/7/2025,Tuesday,2025-2026,1st Sem,Kutsinta Cheese,6,4,2,12,48
+10/7/2025,Tuesday,2025-2026,1st Sem,Puto Cheese,6,3,3,12,36
+10/7/2025,Tuesday,2025-2026,1st Sem,Puto Latik,6,3,3,12,36
+10/7/2025,Tuesday,2025-2026,1st Sem,Suman,7,5,2,18,90
+10/7/2025,Tuesday,2025-2026,1st Sem,Turon,25,13,12,15,195
+10/8/2025,Wednesday,2025-2026,1st Sem,Arroz Caldo,5,2,3,20,40
+10/8/2025,Wednesday,2025-2026,1st Sem,Carbonara,10,1,9,25,25
+10/8/2025,Wednesday,2025-2026,1st Sem,Cheese Stick,35,20,15,10,200
+10/8/2025,Wednesday,2025-2026,1st Sem,Chicken Mami,10,6,4,25,150
+10/8/2025,Wednesday,2025-2026,1st Sem,Empanada,3,3,0,60,180
+10/8/2025,Wednesday,2025-2026,1st Sem,Hotdog Stick,20,20,0,15,300
+10/8/2025,Wednesday,2025-2026,1st Sem,Karen Japanese Siomai,125,64,61,7,448
+10/8/2025,Wednesday,2025-2026,1st Sem,Karen Pork Siomai,205,133,72,6,798
+10/8/2025,Wednesday,2025-2026,1st Sem,Kutsinta Cheese,5,5,0,12,60
+10/8/2025,Wednesday,2025-2026,1st Sem,Puto Cheese,5,5,0,12,60
+10/8/2025,Wednesday,2025-2026,1st Sem,Puto Flan,5,1,4,12,12
+10/8/2025,Wednesday,2025-2026,1st Sem,Puto Latik,6,4,2,12,48
+10/8/2025,Wednesday,2025-2026,1st Sem,Vegetable Lumpia,15,15,0,15,225
+10/9/2025,Thursday,2025-2026,1st Sem,Arroz Caldo,5,5,0,20,100
+10/9/2025,Thursday,2025-2026,1st Sem,Bihon Guisado,7,7,0,25,175
+10/9/2025,Thursday,2025-2026,1st Sem,Cheese Stick,25,23,2,10,230
+10/9/2025,Thursday,2025-2026,1st Sem,Chicken Pie,10,9,1,18,162
+10/9/2025,Thursday,2025-2026,1st Sem,Karen Dumplings,30,30,0,7,210
+10/9/2025,Thursday,2025-2026,1st Sem,Karen Pork Siomai,170,106,64,6,636
+10/9/2025,Thursday,2025-2026,1st Sem,Kutsinta Cheese,5,4,1,12,48
+10/9/2025,Thursday,2025-2026,1st Sem,Kutsinta Yema,5,3,2,12,36
+10/9/2025,Thursday,2025-2026,1st Sem,Palitaw,10,8,2,5,40
+10/9/2025,Thursday,2025-2026,1st Sem,Popcorn,6,5,1,18,90
+10/9/2025,Thursday,2025-2026,1st Sem,Puto Cheese,5,5,0,12,60
+10/9/2025,Thursday,2025-2026,1st Sem,Puto Flan,5,3,2,12,36
+10/9/2025,Thursday,2025-2026,1st Sem,Puto Latik,4,4,0,12,48
+10/9/2025,Thursday,2025-2026,1st Sem,Siomai Rice,15,13,2,45,585
+10/9/2025,Thursday,2025-2026,1st Sem,Special Empanada,5,5,0,60,300
+10/9/2025,Thursday,2025-2026,1st Sem,Tinudok,10,10,0,10,100
+10/9/2025,Thursday,2025-2026,1st Sem,Tokneneng,20,20,0,20,400
+10/9/2025,Thursday,2025-2026,1st Sem,Tuna Pie,10,6,4,18,108
+10/10/2025,Friday,2025-2026,1st Sem,Banana Balls,10,3,7,20,60
+10/10/2025,Friday,2025-2026,1st Sem,Banana Cue,10,10,0,20,200
+10/10/2025,Friday,2025-2026,1st Sem,Bihon Guisado,6,6,0,25,150
+10/10/2025,Friday,2025-2026,1st Sem,Cheese Stick,30,18,12,10,180
+10/10/2025,Friday,2025-2026,1st Sem,Empanada,3,3,0,60,180
+10/10/2025,Friday,2025-2026,1st Sem,Karen Dumplings,25,25,0,7,175
+10/10/2025,Friday,2025-2026,1st Sem,Karen Japanese Siomai,145,54,91,7,378
+10/10/2025,Friday,2025-2026,1st Sem,Karen Pork Siomai,195,92,103,6,552
+10/10/2025,Friday,2025-2026,1st Sem,Kutsinta Yema,5,2,3,12,24
+10/10/2025,Friday,2025-2026,1st Sem,Lumpianada,8,7,1,35,245
+10/10/2025,Friday,2025-2026,1st Sem,Puto Cheese,4,2,2,12,24
+10/10/2025,Friday,2025-2026,1st Sem,Puto Flan,5,3,2,12,36
+10/10/2025,Friday,2025-2026,1st Sem,Puto Latik,4,4,0,12,48
+10/10/2025,Friday,2025-2026,1st Sem,Siomai Rice,10,7,3,45,315
+10/10/2025,Friday,2025-2026,1st Sem,Suman,8,8,0,18,144
+10/10/2025,Friday,2025-2026,1st Sem,Ube Buchi,15,15,0,10,150
+10/13/2025,Monday,2025-2026,1st Sem,Bihon Guisado,8,3,5,25,75
+10/13/2025,Monday,2025-2026,1st Sem,Camote Roll,7,5,2,15,75
+10/13/2025,Monday,2025-2026,1st Sem,Carbonara,8,5,3,25,125
+10/13/2025,Monday,2025-2026,1st Sem,Cheese Stick,30,30,0,10,300
+10/13/2025,Monday,2025-2026,1st Sem,Empanada,3,3,0,60,180
+10/13/2025,Monday,2025-2026,1st Sem,Karen Japanese Siomai,150,85,65,7,595
+10/13/2025,Monday,2025-2026,1st Sem,Karen Pork Siomai,185,185,0,6,1110
+10/13/2025,Monday,2025-2026,1st Sem,Kutsinta Cheese,4,3,1,12,36
+10/13/2025,Monday,2025-2026,1st Sem,Kutsinta Yema,5,5,0,12,60
+10/13/2025,Monday,2025-2026,1st Sem,Maja,15,11,4,15,165
+10/13/2025,Monday,2025-2026,1st Sem,Puto Cheese,4,1,3,12,12
+10/13/2025,Monday,2025-2026,1st Sem,Puto Latik,5,5,0,12,60
+10/13/2025,Monday,2025-2026,1st Sem,Tuna Pie,10,10,0,18,180
+10/13/2025,Monday,2025-2026,1st Sem,Turon,20,18,2,15,270
+10/14/2025,Tuesday,2025-2026,1st Sem,Buchi,15,12,3,10,120
+10/14/2025,Tuesday,2025-2026,1st Sem,Fresh Pancit,10,6,4,20,120
+10/14/2025,Tuesday,2025-2026,1st Sem,Hotdog Stick,20,10,10,15,150
+10/14/2025,Tuesday,2025-2026,1st Sem,Karen Dumplings,30,18,12,7,126
+10/14/2025,Tuesday,2025-2026,1st Sem,Karen Japanese Siomai,140,126,14,7,882
+10/14/2025,Tuesday,2025-2026,1st Sem,Karen Pork Siomai,175,64,111,6,384
+10/14/2025,Tuesday,2025-2026,1st Sem,Kutsinta Cheese,6,4,2,12,48
+10/14/2025,Tuesday,2025-2026,1st Sem,Kutsinta Yema,5,5,0,12,60
+10/14/2025,Tuesday,2025-2026,1st Sem,Lomi,10,10,0,25,250
+10/14/2025,Tuesday,2025-2026,1st Sem,Meatballs,15,11,4,20,220
+10/14/2025,Tuesday,2025-2026,1st Sem,Palabok,15,15,0,25,375
+10/14/2025,Tuesday,2025-2026,1st Sem,Puto Cheese,5,3,2,12,36
+10/14/2025,Tuesday,2025-2026,1st Sem,Puto Latik,6,6,0,12,72
+10/14/2025,Tuesday,2025-2026,1st Sem,Turon,20,19,1,15,285
+10/14/2025,Tuesday,2025-2026,1st Sem,Ukoy Balls,20,20,0,20,400
+10/15/2025,Wednesday,2025-2026,1st Sem,Arroz Caldo,5,1,4,20,20
+10/15/2025,Wednesday,2025-2026,1st Sem,Carbonara,10,3,7,25,75
+10/15/2025,Wednesday,2025-2026,1st Sem,Egg Sandwich,10,4,6,20,80
+10/15/2025,Wednesday,2025-2026,1st Sem,Empanada,3,2,1,60,120
+10/15/2025,Wednesday,2025-2026,1st Sem,Hotdog Stick,20,13,7,15,195
+10/15/2025,Wednesday,2025-2026,1st Sem,Karen Dumplings,25,25,0,7,175
+10/15/2025,Wednesday,2025-2026,1st Sem,Karen Japanese Siomai,120,50,70,7,350
+10/15/2025,Wednesday,2025-2026,1st Sem,Karen Pork Siomai,215,215,0,6,1290
+10/15/2025,Wednesday,2025-2026,1st Sem,Kutsinta Cheese,6,6,0,12,72
+10/15/2025,Wednesday,2025-2026,1st Sem,Kutsinta Yema,7,4,3,12,48
+10/15/2025,Wednesday,2025-2026,1st Sem,Meatballs,15,10,5,20,200
+10/15/2025,Wednesday,2025-2026,1st Sem,Palitaw 1's,15,15,0,10,150
+10/15/2025,Wednesday,2025-2026,1st Sem,Puto Cheese,5,5,0,12,60
+10/15/2025,Wednesday,2025-2026,1st Sem,Puto Flan,4,2,2,12,24
+10/15/2025,Wednesday,2025-2026,1st Sem,Siomai Rice,15,12,3,45,540
+10/15/2025,Wednesday,2025-2026,1st Sem,Sopas,10,10,0,25,250
+10/15/2025,Wednesday,2025-2026,1st Sem,Tokneneng,25,10,15,20,200
+10/15/2025,Wednesday,2025-2026,1st Sem,Turon,20,20,0,15,300
+10/15/2025,Wednesday,2025-2026,1st Sem,Ukoy Balls,20,15,5,20,300
+10/16/2025,Thursday,2025-2026,1st Sem,Camote Fries,4,4,0,21,84
+10/16/2025,Thursday,2025-2026,1st Sem,Chicken Mami,10,10,0,25,250
+10/16/2025,Thursday,2025-2026,1st Sem,Empanada,3,3,0,60,180
+10/16/2025,Thursday,2025-2026,1st Sem,Fresh Pancit,10,7,3,20,140
+10/16/2025,Thursday,2025-2026,1st Sem,Hotdog Sandwich,4,4,0,40,160
+10/16/2025,Thursday,2025-2026,1st Sem,Karen Japanese Siomai,140,140,0,7,980
+10/16/2025,Thursday,2025-2026,1st Sem,Karen Pork Siomai,185,87,98,6,522
+10/16/2025,Thursday,2025-2026,1st Sem,Kutsinta Cheese,5,1,4,12,12
+10/16/2025,Thursday,2025-2026,1st Sem,Kutsinta Yema,5,4,1,12,48
+10/16/2025,Thursday,2025-2026,1st Sem,Lumpianada,6,6,0,35,210
+10/16/2025,Thursday,2025-2026,1st Sem,Maja,10,5,5,15,75
+10/16/2025,Thursday,2025-2026,1st Sem,Puto Flan,5,2,3,12,24
+10/16/2025,Thursday,2025-2026,1st Sem,Puto Latik,5,5,0,12,60
+10/17/2025,Friday,2025-2026,1st Sem,Arroz Caldo,5,1,4,20,20
+10/17/2025,Friday,2025-2026,1st Sem,Baduya,8,8,0,15,120
+10/17/2025,Friday,2025-2026,1st Sem,Banana Cue,10,6,4,20,120
+10/17/2025,Friday,2025-2026,1st Sem,Beef Mami,10,3,7,30,90
+10/17/2025,Friday,2025-2026,1st Sem,Boiled Camote,4,1,3,20,20
+10/17/2025,Friday,2025-2026,1st Sem,Buchi,10,10,0,10,100
+10/17/2025,Friday,2025-2026,1st Sem,Empanada,3,1,2,60,60
+10/17/2025,Friday,2025-2026,1st Sem,Hotdog Sandwich,4,2,2,40,80
+10/17/2025,Friday,2025-2026,1st Sem,Hotdog Stick,15,7,8,15,105
+10/17/2025,Friday,2025-2026,1st Sem,Karen Japanese Siomai,135,49,86,7,343
+10/17/2025,Friday,2025-2026,1st Sem,Karen Pork Siomai,185,35,150,6,210
+10/17/2025,Friday,2025-2026,1st Sem,Karen Siopao,4,4,0,31,124
+10/17/2025,Friday,2025-2026,1st Sem,Kutsinta Cheese,4,1,3,12,12
+10/17/2025,Friday,2025-2026,1st Sem,Kutsinta Yema,6,5,1,12,60
+10/17/2025,Friday,2025-2026,1st Sem,Puto Cheese,4,4,0,12,48
+10/17/2025,Friday,2025-2026,1st Sem,Puto Flan,5,5,0,12,60
+10/17/2025,Friday,2025-2026,1st Sem,Puto Latik,4,2,2,12,24
+10/17/2025,Friday,2025-2026,1st Sem,Siomai Rice,15,15,0,45,675
+10/17/2025,Friday,2025-2026,1st Sem,Tokneneng,20,20,0,20,400
+10/17/2025,Friday,2025-2026,1st Sem,Vegetable Lumpia,15,15,0,15,225
+10/20/2025,Monday,2025-2026,1st Sem,Buchi,15,15,0,10,150
+10/20/2025,Monday,2025-2026,1st Sem,Empanada,3,3,0,60,180
+10/20/2025,Monday,2025-2026,1st Sem,Hotdog Stick,20,6,14,15,90
+10/20/2025,Monday,2025-2026,1st Sem,Karen Pork Siomai,220,189,31,6,1134
+10/20/2025,Monday,2025-2026,1st Sem,Kutsinta Cheese,4,3,1,12,36
+10/20/2025,Monday,2025-2026,1st Sem,Kutsinta Yema,5,5,0,12,60
+10/20/2025,Monday,2025-2026,1st Sem,Meatballs,15,15,0,20,300
+10/20/2025,Monday,2025-2026,1st Sem,Puto Cheese,5,2,3,12,24
+10/20/2025,Monday,2025-2026,1st Sem,Puto Latik,5,5,0,12,60
+10/20/2025,Monday,2025-2026,1st Sem,Rolls,5,5,0,26,130
+10/20/2025,Monday,2025-2026,1st Sem,Sopas,10,1,9,25,25
+10/20/2025,Monday,2025-2026,1st Sem,Tinudok,15,7,8,10,70
+10/20/2025,Monday,2025-2026,1st Sem,Tuna Pie,10,6,4,18,108
+10/21/2025,Tuesday,2025-2026,1st Sem,BBQ,15,14,1,20,280
+10/21/2025,Tuesday,2025-2026,1st Sem,Boiled Camote,6,4,2,20,80
+10/21/2025,Tuesday,2025-2026,1st Sem,Carbonara,10,7,3,25,175
+10/21/2025,Tuesday,2025-2026,1st Sem,Chicken Mami,10,10,0,25,250
+10/21/2025,Tuesday,2025-2026,1st Sem,Hotdog Sandwich,6,5,1,40,200
+10/21/2025,Tuesday,2025-2026,1st Sem,Karen Dumplings,20,16,4,7,112
+10/21/2025,Tuesday,2025-2026,1st Sem,Karen Japanese Siomai,150,105,45,7,735
+10/21/2025,Tuesday,2025-2026,1st Sem,Karen Pork Siomai,155,155,0,6,930
+10/21/2025,Tuesday,2025-2026,1st Sem,Kutsinta Cheese,5,2,3,12,24
+10/21/2025,Tuesday,2025-2026,1st Sem,Kutsinta Yema,5,4,1,12,48
+10/21/2025,Tuesday,2025-2026,1st Sem,Lumpianada,10,8,2,35,280
+10/21/2025,Tuesday,2025-2026,1st Sem,Maja,15,15,0,15,225
+10/21/2025,Tuesday,2025-2026,1st Sem,Puto Flan,4,4,0,12,48
+10/21/2025,Tuesday,2025-2026,1st Sem,Puto Latik,7,4,3,12,48
+10/21/2025,Tuesday,2025-2026,1st Sem,Siomai Rice,15,14,1,45,630
+10/21/2025,Tuesday,2025-2026,1st Sem,Special Empanada,7,0,7,60,0
+10/21/2025,Tuesday,2025-2026,1st Sem,Ukoy Balls,20,4,16,20,80
+10/22/2025,Wednesday,2025-2026,1st Sem,Baduya,6,6,0,15,90
+10/22/2025,Wednesday,2025-2026,1st Sem,Banana Balls,15,7,8,20,140
+10/22/2025,Wednesday,2025-2026,1st Sem,Boiled Camote,4,2,2,20,40
+10/22/2025,Wednesday,2025-2026,1st Sem,Buchi,20,5,15,10,50
+10/22/2025,Wednesday,2025-2026,1st Sem,Corndog,10,5,5,30,150
+10/22/2025,Wednesday,2025-2026,1st Sem,Hotdog Stick,20,7,13,15,105
+10/22/2025,Wednesday,2025-2026,1st Sem,Karen Japanese Siomai,135,71,64,7,497
+10/22/2025,Wednesday,2025-2026,1st Sem,Karen Pork Siomai,200,33,167,6,198
+10/22/2025,Wednesday,2025-2026,1st Sem,Kutsinta Yema,5,5,0,12,60
+10/22/2025,Wednesday,2025-2026,1st Sem,Lumpianada,6,4,2,35,140
+10/22/2025,Wednesday,2025-2026,1st Sem,Maja,15,8,7,15,120
+10/22/2025,Wednesday,2025-2026,1st Sem,Palitaw 1's,15,15,0,10,150
+10/22/2025,Wednesday,2025-2026,1st Sem,Puto Cheese,6,6,0,12,72
+10/22/2025,Wednesday,2025-2026,1st Sem,Puto Flan,5,5,0,12,60
+10/22/2025,Wednesday,2025-2026,1st Sem,Puto Latik,5,3,2,12,36
+10/22/2025,Wednesday,2025-2026,1st Sem,Rolls,5,5,0,26,130
+10/22/2025,Wednesday,2025-2026,1st Sem,Siomai Rice,10,10,0,45,450
+10/22/2025,Wednesday,2025-2026,1st Sem,Sopas,10,2,8,25,50
+10/22/2025,Wednesday,2025-2026,1st Sem,Ube Buchi,15,15,0,10,150
+10/22/2025,Wednesday,2025-2026,1st Sem,Ukoy Balls,20,20,0,20,400
+10/23/2025,Thursday,2025-2026,1st Sem,Cheese Stick,30,23,7,10,230
+10/23/2025,Thursday,2025-2026,1st Sem,Egg Sandwich,10,3,7,20,60
+10/23/2025,Thursday,2025-2026,1st Sem,Empanada,3,3,0,60,180
+10/23/2025,Thursday,2025-2026,1st Sem,Gluti Roll,15,8,7,20,160
+10/23/2025,Thursday,2025-2026,1st Sem,Hotdog Sandwich,5,4,1,40,160
+10/23/2025,Thursday,2025-2026,1st Sem,Hotdog Stick,25,5,20,15,75
+10/23/2025,Thursday,2025-2026,1st Sem,Karen Dumplings,25,25,0,7,175
+10/23/2025,Thursday,2025-2026,1st Sem,Karen Japanese Siomai,145,87,58,7,609
+10/23/2025,Thursday,2025-2026,1st Sem,Karen Pork Siomai,160,99,61,6,594
+10/23/2025,Thursday,2025-2026,1st Sem,Kutsinta Cheese,4,3,1,12,36
+10/23/2025,Thursday,2025-2026,1st Sem,Lumpianada,10,7,3,35,245
+10/23/2025,Thursday,2025-2026,1st Sem,Meatballs,15,9,6,20,180
+10/23/2025,Thursday,2025-2026,1st Sem,Puto Cheese,5,2,3,12,24
+10/23/2025,Thursday,2025-2026,1st Sem,Puto Flan,4,3,1,12,36
+10/23/2025,Thursday,2025-2026,1st Sem,Puto Latik,5,3,2,12,36
+10/23/2025,Thursday,2025-2026,1st Sem,Siomai Rice,15,8,7,45,360
+10/23/2025,Thursday,2025-2026,1st Sem,Tinudok,10,10,0,10,100
+10/23/2025,Thursday,2025-2026,1st Sem,Tuna Pie,10,8,2,18,144
+10/23/2025,Thursday,2025-2026,1st Sem,Turon,20,14,6,15,210
+10/24/2025,Friday,2025-2026,1st Sem,Banana Cue,10,5,5,20,100
+10/24/2025,Friday,2025-2026,1st Sem,Buchi Peanut,10,2,8,10,20
+10/24/2025,Friday,2025-2026,1st Sem,Camote Fries,6,3,3,21,63
+10/24/2025,Friday,2025-2026,1st Sem,Carbonara,7,0,7,25,0
+10/24/2025,Friday,2025-2026,1st Sem,Ginataan,4,4,0,20,80
+10/24/2025,Friday,2025-2026,1st Sem,Hotdog Sandwich,4,1,3,40,40
+10/24/2025,Friday,2025-2026,1st Sem,Hotdog Stick,20,12,8,15,180
+10/24/2025,Friday,2025-2026,1st Sem,Karen Dumplings,20,20,0,7,140
+10/24/2025,Friday,2025-2026,1st Sem,Karen Japanese Siomai,140,76,64,7,532
+10/24/2025,Friday,2025-2026,1st Sem,Karen Pork Siomai,160,96,64,6,576
+10/24/2025,Friday,2025-2026,1st Sem,Karen Siopao,5,5,0,31,155
+10/24/2025,Friday,2025-2026,1st Sem,Kutsinta Cheese,4,4,0,12,48
+10/24/2025,Friday,2025-2026,1st Sem,Kutsinta Yema,5,2,3,12,24
+10/24/2025,Friday,2025-2026,1st Sem,Lumpianada,7,6,1,35,210
+10/24/2025,Friday,2025-2026,1st Sem,Pancit Canton,8,1,7,30,30
+10/24/2025,Friday,2025-2026,1st Sem,Puto Cheese,4,4,0,12,48
+10/24/2025,Friday,2025-2026,1st Sem,Puto Flan,4,4,0,12,48
+10/24/2025,Friday,2025-2026,1st Sem,Puto Latik,4,3,1,12,36
+10/24/2025,Friday,2025-2026,1st Sem,Rolls,4,4,0,26,104
+10/24/2025,Friday,2025-2026,1st Sem,Siomai Rice,15,15,0,45,675
+10/24/2025,Friday,2025-2026,1st Sem,Sopas,8,6,2,25,150
+10/24/2025,Friday,2025-2026,1st Sem,Tuna Pie,8,8,0,18,144
+10/27/2025,Monday,2025-2026,1st Sem,Camote Cue,10,3,7,20,60
+10/27/2025,Monday,2025-2026,1st Sem,Camote Roll,7,7,0,15,105
+10/27/2025,Monday,2025-2026,1st Sem,Hotdog Stick,20,14,6,15,210
+10/27/2025,Monday,2025-2026,1st Sem,Karen Dumplings,30,30,0,7,210
+10/27/2025,Monday,2025-2026,1st Sem,Karen Japanese Siomai,155,155,0,7,1085
+10/27/2025,Monday,2025-2026,1st Sem,Karen Pork Siomai,155,28,127,6,168
+10/27/2025,Monday,2025-2026,1st Sem,Karen Siopao,5,5,0,31,155
+10/27/2025,Monday,2025-2026,1st Sem,Kutsinta Cheese,5,4,1,12,48
+10/27/2025,Monday,2025-2026,1st Sem,Kutsinta Yema,6,6,0,12,72
+10/27/2025,Monday,2025-2026,1st Sem,Maja,10,10,0,15,150
+10/27/2025,Monday,2025-2026,1st Sem,Palabok,10,10,0,25,250
+10/27/2025,Monday,2025-2026,1st Sem,Puto Cheese,5,5,0,12,60
+10/27/2025,Monday,2025-2026,1st Sem,Puto Flan,4,4,0,12,48
+10/27/2025,Monday,2025-2026,1st Sem,Puto Latik,5,4,1,12,48
+10/27/2025,Monday,2025-2026,1st Sem,Shanghai,20,9,11,12,108
+10/27/2025,Monday,2025-2026,1st Sem,Siomai Rice,20,20,0,45,900
+10/27/2025,Monday,2025-2026,1st Sem,Tinudok,10,10,0,10,100
+10/27/2025,Monday,2025-2026,1st Sem,Tuna Pie,10,8,2,18,144
+10/27/2025,Monday,2025-2026,1st Sem,Turon,20,20,0,15,300
+10/27/2025,Monday,2025-2026,1st Sem,Ube Buchi,15,15,0,10,150
+10/27/2025,Monday,2025-2026,1st Sem,Ukoy Balls,25,16,9,20,320
+10/28/2025,Tuesday,2025-2026,1st Sem,Buchi,15,15,0,10,150
+10/28/2025,Tuesday,2025-2026,1st Sem,Camote Cue,10,10,0,20,200
+10/28/2025,Tuesday,2025-2026,1st Sem,Camote Roll,10,10,0,15,150
+10/28/2025,Tuesday,2025-2026,1st Sem,Cheese Stick,35,12,23,10,120
+10/28/2025,Tuesday,2025-2026,1st Sem,Karen Japanese Siomai,175,175,0,7,1225
+10/28/2025,Tuesday,2025-2026,1st Sem,Karen Pork Siomai,215,215,0,6,1290
+10/28/2025,Tuesday,2025-2026,1st Sem,Kutsinta Cheese,6,6,0,12,72
+10/28/2025,Tuesday,2025-2026,1st Sem,Lomi,10,1,9,25,25
+10/28/2025,Tuesday,2025-2026,1st Sem,Puto Cheese,5,5,0,12,60
+10/28/2025,Tuesday,2025-2026,1st Sem,Puto Flan,6,6,0,12,72
+10/28/2025,Tuesday,2025-2026,1st Sem,Puto Latik,5,2,3,12,24
+10/28/2025,Tuesday,2025-2026,1st Sem,Siomai Rice,15,15,0,45,675
+10/28/2025,Tuesday,2025-2026,1st Sem,Tokneneng,20,5,15,20,100
+10/28/2025,Tuesday,2025-2026,1st Sem,Tuna Pie,10,6,4,18,108
+10/29/2025,Wednesday,2025-2026,1st Sem,Boiled Banana,15,7,8,6,42
+10/29/2025,Wednesday,2025-2026,1st Sem,Camote Cue,10,9,1,20,180
+10/29/2025,Wednesday,2025-2026,1st Sem,Hotdog Sandwich,5,3,2,40,120
+10/29/2025,Wednesday,2025-2026,1st Sem,Hotdog Stick,15,5,10,15,75
+10/29/2025,Wednesday,2025-2026,1st Sem,Karen Dumplings,20,20,0,7,140
+10/29/2025,Wednesday,2025-2026,1st Sem,Karen Japanese Siomai,135,46,89,7,322
+10/29/2025,Wednesday,2025-2026,1st Sem,Kutsinta Cheese,4,3,1,12,36
+10/29/2025,Wednesday,2025-2026,1st Sem,Kutsinta Yema,5,5,0,12,60
+10/29/2025,Wednesday,2025-2026,1st Sem,Palitaw 1's,15,3,12,10,30
+10/29/2025,Wednesday,2025-2026,1st Sem,Pork Mami,8,7,1,25,175
+10/29/2025,Wednesday,2025-2026,1st Sem,Puto Flan,6,3,3,12,36
+10/29/2025,Wednesday,2025-2026,1st Sem,Puto Latik,4,3,1,12,36
+10/29/2025,Wednesday,2025-2026,1st Sem,Rolls,5,5,0,26,130
+10/29/2025,Wednesday,2025-2026,1st Sem,Shanghai,25,25,0,12,300
+10/29/2025,Wednesday,2025-2026,1st Sem,Siomai Rice,10,10,0,45,450
+10/29/2025,Wednesday,2025-2026,1st Sem,Special Empanada,5,2,3,60,120
+10/29/2025,Wednesday,2025-2026,1st Sem,Turon,25,23,2,15,345
+10/30/2025,Thursday,2025-2026,1st Sem,BBQ,15,15,0,20,300
+10/30/2025,Thursday,2025-2026,1st Sem,Boiled Camote,4,1,3,20,20
+10/30/2025,Thursday,2025-2026,1st Sem,Cheese Stick,30,20,10,10,200
+10/30/2025,Thursday,2025-2026,1st Sem,Empanada,4,4,0,60,240
+10/30/2025,Thursday,2025-2026,1st Sem,Hotdog Stick,20,19,1,15,285
+10/30/2025,Thursday,2025-2026,1st Sem,Karen Japanese Siomai,145,22,123,7,154
+10/30/2025,Thursday,2025-2026,1st Sem,Karen Pork Siomai,165,89,76,6,534
+10/30/2025,Thursday,2025-2026,1st Sem,Karen Siopao,5,5,0,31,155
+10/30/2025,Thursday,2025-2026,1st Sem,Kutsinta Yema,4,4,0,12,48
+10/30/2025,Thursday,2025-2026,1st Sem,Maja,15,5,10,15,75
+10/30/2025,Thursday,2025-2026,1st Sem,Puto Flan,5,4,1,12,48
+10/30/2025,Thursday,2025-2026,1st Sem,Puto Latik,4,4,0,12,48
+10/30/2025,Thursday,2025-2026,1st Sem,Shanghai,15,15,0,12,180
+10/30/2025,Thursday,2025-2026,1st Sem,Spaghetti,10,3,7,25,75
+10/30/2025,Thursday,2025-2026,1st Sem,Suman,8,3,5,18,54
+10/30/2025,Thursday,2025-2026,1st Sem,Tinudok,15,6,9,10,60
+10/31/2025,Friday,2025-2026,1st Sem,Boiled Banana,15,12,3,6,72
+10/31/2025,Friday,2025-2026,1st Sem,Corndog,10,3,7,30,90
+10/31/2025,Friday,2025-2026,1st Sem,Empanada,3,3,0,60,180
+10/31/2025,Friday,2025-2026,1st Sem,Ginataan,5,2,3,20,40
+10/31/2025,Friday,2025-2026,1st Sem,Karen Dumplings,25,20,5,7,140
+10/31/2025,Friday,2025-2026,1st Sem,Karen Japanese Siomai,115,59,56,7,413
+10/31/2025,Friday,2025-2026,1st Sem,Karen Pork Siomai,185,109,76,6,654
+10/31/2025,Friday,2025-2026,1st Sem,Kutsinta Cheese,4,4,0,12,48
+10/31/2025,Friday,2025-2026,1st Sem,Kutsinta Yema,5,5,0,12,60
+10/31/2025,Friday,2025-2026,1st Sem,Lomi,10,1,9,25,25
+10/31/2025,Friday,2025-2026,1st Sem,Palabok,10,1,9,25,25
+10/31/2025,Friday,2025-2026,1st Sem,Palitaw 1's,10,5,5,10,50
+10/31/2025,Friday,2025-2026,1st Sem,Pancit Canton,10,1,9,30,30
+10/31/2025,Friday,2025-2026,1st Sem,Pork Lomi,8,2,6,25,50
+10/31/2025,Friday,2025-2026,1st Sem,Pork Mami,10,10,0,25,250
+10/31/2025,Friday,2025-2026,1st Sem,Puto Cheese,4,0,4,12,0
+10/31/2025,Friday,2025-2026,1st Sem,Puto Flan,5,2,3,12,24
+10/31/2025,Friday,2025-2026,1st Sem,Puto Latik,5,3,2,12,36
+10/31/2025,Friday,2025-2026,1st Sem,Shanghai,20,13,7,12,156
+10/31/2025,Friday,2025-2026,1st Sem,Siomai Rice,15,15,0,45,675
+10/31/2025,Friday,2025-2026,1st Sem,Sopas,10,7,3,25,175
+10/31/2025,Friday,2025-2026,1st Sem,Special Empanada,4,3,1,60,180
+10/31/2025,Friday,2025-2026,1st Sem,Tuna Pie,10,8,2,18,144
+10/31/2025,Friday,2025-2026,1st Sem,Vegetable Lumpia,10,10,0,15,150
+11/3/2025,Monday,2025-2026,1st Sem,Banana Cue,10,4,6,20,80
+11/3/2025,Monday,2025-2026,1st Sem,Empanada,4,4,0,60,240
+11/3/2025,Monday,2025-2026,1st Sem,Hotdog Sandwich,4,4,0,40,160
+11/3/2025,Monday,2025-2026,1st Sem,Hotdog Stick,20,8,12,15,120
+11/3/2025,Monday,2025-2026,1st Sem,Karen Dumplings,25,25,0,7,175
+11/3/2025,Monday,2025-2026,1st Sem,Karen Japanese Siomai,155,73,82,7,511
+11/3/2025,Monday,2025-2026,1st Sem,Karen Pork Siomai,245,122,123,6,732
+11/3/2025,Monday,2025-2026,1st Sem,Kutsinta Cheese,5,4,1,12,48
+11/3/2025,Monday,2025-2026,1st Sem,Kutsinta Yema,5,3,2,12,36
+11/3/2025,Monday,2025-2026,1st Sem,Pork Lomi,10,3,7,25,75
+11/3/2025,Monday,2025-2026,1st Sem,Puto Cheese,5,5,0,12,60
+11/3/2025,Monday,2025-2026,1st Sem,Puto Flan,4,3,1,12,36
+11/3/2025,Monday,2025-2026,1st Sem,Puto Latik,5,5,0,12,60
+11/3/2025,Monday,2025-2026,1st Sem,Siomai Rice,15,15,0,45,675
+11/3/2025,Monday,2025-2026,1st Sem,Suman,7,7,0,18,126
+11/3/2025,Monday,2025-2026,1st Sem,Tinudok,15,15,0,10,150
+11/3/2025,Monday,2025-2026,1st Sem,Tuna Shanghai,15,12,3,12,144
+11/3/2025,Monday,2025-2026,1st Sem,Ukoy Balls,25,3,22,20,60
+11/3/2025,Monday,2025-2026,1st Sem,Vegetable Lumpia,15,11,4,15,165
+11/4/2025,Tuesday,2025-2026,1st Sem,Banana Balls,10,10,0,20,200
+11/4/2025,Tuesday,2025-2026,1st Sem,Empanada,2,2,0,60,120
+11/4/2025,Tuesday,2025-2026,1st Sem,Fresh Pancit,15,3,12,20,60
+11/4/2025,Tuesday,2025-2026,1st Sem,Hotdog Sandwich,6,4,2,40,160
+11/4/2025,Tuesday,2025-2026,1st Sem,Hotdog Stick,25,6,19,15,90
+11/4/2025,Tuesday,2025-2026,1st Sem,Karen Dumplings,25,12,13,7,84
+11/4/2025,Tuesday,2025-2026,1st Sem,Karen Pork Siomai,180,99,81,6,594
+11/4/2025,Tuesday,2025-2026,1st Sem,Karen Siopao,5,5,0,31,155
+11/4/2025,Tuesday,2025-2026,1st Sem,Kutsinta Cheese,6,3,3,12,36
+11/4/2025,Tuesday,2025-2026,1st Sem,Kutsinta Yema,5,4,1,12,48
+11/4/2025,Tuesday,2025-2026,1st Sem,Palitaw,10,10,0,5,50
+11/4/2025,Tuesday,2025-2026,1st Sem,Puto Cheese,4,4,0,12,48
+11/4/2025,Tuesday,2025-2026,1st Sem,Puto Flan,5,3,2,12,36
+11/4/2025,Tuesday,2025-2026,1st Sem,Puto Latik,6,4,2,12,48
+11/4/2025,Tuesday,2025-2026,1st Sem,Tinudok,15,6,9,10,60
+11/4/2025,Tuesday,2025-2026,1st Sem,Tuna Shanghai,20,14,6,12,168
+11/4/2025,Tuesday,2025-2026,1st Sem,Turon,25,21,4,15,315
+11/4/2025,Tuesday,2025-2026,1st Sem,Ukoy Balls,25,23,2,20,460
+11/5/2025,Wednesday,2025-2026,1st Sem,Arroz Caldo,5,5,0,20,100
+11/5/2025,Wednesday,2025-2026,1st Sem,Camote Fries,7,7,0,21,147
+11/5/2025,Wednesday,2025-2026,1st Sem,Cheese Stick,30,18,12,10,180
+11/5/2025,Wednesday,2025-2026,1st Sem,Empanada,3,3,0,60,180
+11/5/2025,Wednesday,2025-2026,1st Sem,Fresh Pancit,10,0,10,20,0
+11/5/2025,Wednesday,2025-2026,1st Sem,Hotdog Stick,20,6,14,15,90
+11/5/2025,Wednesday,2025-2026,1st Sem,Karen Japanese Siomai,150,150,0,7,1050
+11/5/2025,Wednesday,2025-2026,1st Sem,Karen Pork Siomai,195,75,120,6,450
+11/5/2025,Wednesday,2025-2026,1st Sem,Kutsinta Cheese,5,5,0,12,60
+11/5/2025,Wednesday,2025-2026,1st Sem,Maja,10,8,2,15,120
+11/5/2025,Wednesday,2025-2026,1st Sem,Pork Mami,10,6,4,25,150
+11/5/2025,Wednesday,2025-2026,1st Sem,Puto Flan,5,2,3,12,24
+11/5/2025,Wednesday,2025-2026,1st Sem,Puto Latik,5,4,1,12,48
+11/5/2025,Wednesday,2025-2026,1st Sem,Rolls,4,4,0,26,104
+11/5/2025,Wednesday,2025-2026,1st Sem,Shanghai,20,14,6,12,168
+11/5/2025,Wednesday,2025-2026,1st Sem,Siomai Rice,15,15,0,45,675
+11/5/2025,Wednesday,2025-2026,1st Sem,Tinudok,15,9,6,10,90
+11/5/2025,Wednesday,2025-2026,1st Sem,Turon,25,10,15,15,150
+11/5/2025,Wednesday,2025-2026,1st Sem,Ube Buchi,15,15,0,10,150
+11/6/2025,Thursday,2025-2026,1st Sem,Baduya,7,5,2,15,75
+11/6/2025,Thursday,2025-2026,1st Sem,Beef Mami,10,6,4,30,180
+11/6/2025,Thursday,2025-2026,1st Sem,Boiled Banana,15,12,3,6,72
+11/6/2025,Thursday,2025-2026,1st Sem,Buchi,15,4,11,10,40
+11/6/2025,Thursday,2025-2026,1st Sem,Corndog,10,10,0,30,300
+11/6/2025,Thursday,2025-2026,1st Sem,Empanada,2,2,0,60,120
+11/6/2025,Thursday,2025-2026,1st Sem,Karen Dumplings,25,23,2,7,161
+11/6/2025,Thursday,2025-2026,1st Sem,Karen Japanese Siomai,175,120,55,7,840
+11/6/2025,Thursday,2025-2026,1st Sem,Karen Pork Siomai,195,107,88,6,642
+11/6/2025,Thursday,2025-2026,1st Sem,Kutsinta Yema,6,4,2,12,48
+11/6/2025,Thursday,2025-2026,1st Sem,Palitaw,15,15,0,5,75
+11/6/2025,Thursday,2025-2026,1st Sem,Puto Cheese,6,0,6,12,0
+11/6/2025,Thursday,2025-2026,1st Sem,Puto Flan,6,4,2,12,48
+11/6/2025,Thursday,2025-2026,1st Sem,Puto Latik,6,4,2,12,48
+11/6/2025,Thursday,2025-2026,1st Sem,Rolls,6,6,0,26,156
+11/6/2025,Thursday,2025-2026,1st Sem,Ukoy Balls,15,15,0,20,300
+11/7/2025,Friday,2025-2026,1st Sem,Boiled Camote,4,1,3,20,20
+11/7/2025,Friday,2025-2026,1st Sem,Cheese Stick,20,15,5,10,150
+11/7/2025,Friday,2025-2026,1st Sem,Chicken Mami,10,10,0,25,250
+11/7/2025,Friday,2025-2026,1st Sem,Corndog,8,7,1,30,210
+11/7/2025,Friday,2025-2026,1st Sem,Empanada,3,3,0,60,180
+11/7/2025,Friday,2025-2026,1st Sem,Hotdog Sandwich,3,3,0,40,120
+11/7/2025,Friday,2025-2026,1st Sem,Karen Dumplings,20,20,0,7,140
+11/7/2025,Friday,2025-2026,1st Sem,Karen Japanese Siomai,115,37,78,7,259
+11/7/2025,Friday,2025-2026,1st Sem,Kutsinta Cheese,4,2,2,12,24
+11/7/2025,Friday,2025-2026,1st Sem,Kutsinta Yema,4,3,1,12,36
+11/7/2025,Friday,2025-2026,1st Sem,Lomi,8,4,4,25,100
+11/7/2025,Friday,2025-2026,1st Sem,Popcorn,7,0,7,18,0
+11/7/2025,Friday,2025-2026,1st Sem,Puto Cheese,4,4,0,12,48
+11/7/2025,Friday,2025-2026,1st Sem,Puto Flan,5,5,0,12,60
+11/7/2025,Friday,2025-2026,1st Sem,Puto Latik,4,4,0,12,48
+11/7/2025,Friday,2025-2026,1st Sem,Siomai Rice,10,10,0,45,450
+11/7/2025,Friday,2025-2026,1st Sem,Sopas,10,6,4,25,150
+11/7/2025,Friday,2025-2026,1st Sem,Tuna Pie,10,10,0,18,180
+11/7/2025,Friday,2025-2026,1st Sem,Ube Buchi,15,11,4,10,110
+11/12/2025,Wednesday,2025-2026,1st Sem,Beef Mami,15,6,9,30,180
+11/12/2025,Wednesday,2025-2026,1st Sem,Buchi,15,15,0,10,150
+11/12/2025,Wednesday,2025-2026,1st Sem,Cheese Stick,35,26,9,10,260
+11/12/2025,Wednesday,2025-2026,1st Sem,Egg Sandwich,10,10,0,20,200
+11/12/2025,Wednesday,2025-2026,1st Sem,Hotdog Sandwich,6,6,0,40,240
+11/12/2025,Wednesday,2025-2026,1st Sem,Hotdog Stick,25,12,13,15,180
+11/12/2025,Wednesday,2025-2026,1st Sem,Karen Dumplings,25,25,0,7,175
+11/12/2025,Wednesday,2025-2026,1st Sem,Karen Japanese Siomai,160,102,58,7,714
+11/12/2025,Wednesday,2025-2026,1st Sem,Karen Pork Siomai,205,183,22,6,1098
+11/12/2025,Wednesday,2025-2026,1st Sem,Kutsinta Cheese,4,1,3,12,12
+11/12/2025,Wednesday,2025-2026,1st Sem,Kutsinta Yema,5,5,0,12,60
+11/12/2025,Wednesday,2025-2026,1st Sem,Lomi,10,10,0,25,250
+11/12/2025,Wednesday,2025-2026,1st Sem,Puto Flan,6,6,0,12,72
+11/12/2025,Wednesday,2025-2026,1st Sem,Siomai Rice,15,15,0,45,675
+11/12/2025,Wednesday,2025-2026,1st Sem,Tinudok,10,6,4,10,60
+11/12/2025,Wednesday,2025-2026,1st Sem,Turon,25,25,0,15,375
+11/12/2025,Wednesday,2025-2026,1st Sem,Ukoy Balls,25,20,5,20,400
+11/13/2025,Thursday,2025-2026,1st Sem,Baduya,6,6,0,15,90
+11/13/2025,Thursday,2025-2026,1st Sem,Banana Cue,10,6,4,20,120
+11/13/2025,Thursday,2025-2026,1st Sem,Boiled Banana,20,14,6,6,84
+11/13/2025,Thursday,2025-2026,1st Sem,Buchi Peanut,15,12,3,10,120
+11/13/2025,Thursday,2025-2026,1st Sem,Camote Fries,6,6,0,21,126
+11/13/2025,Thursday,2025-2026,1st Sem,Cheese Stick,30,30,0,10,300
+11/13/2025,Thursday,2025-2026,1st Sem,Chicken Mami,10,3,7,25,75
+11/13/2025,Thursday,2025-2026,1st Sem,Hotdog Stick,25,13,12,15,195
+11/13/2025,Thursday,2025-2026,1st Sem,Karen Dumplings,30,30,0,7,210
+11/13/2025,Thursday,2025-2026,1st Sem,Karen Japanese Siomai,155,59,96,7,413
+11/13/2025,Thursday,2025-2026,1st Sem,Karen Pork Siomai,185,185,0,6,1110
+11/13/2025,Thursday,2025-2026,1st Sem,Kutsinta Cheese,4,4,0,12,48
+11/13/2025,Thursday,2025-2026,1st Sem,Puto Flan,7,7,0,12,84
+11/13/2025,Thursday,2025-2026,1st Sem,Puto Latik,6,6,0,12,72
+11/13/2025,Thursday,2025-2026,1st Sem,Rolls,5,5,0,26,130
+11/13/2025,Thursday,2025-2026,1st Sem,Sopas,10,9,1,25,225
+11/13/2025,Thursday,2025-2026,1st Sem,Tokneneng,25,25,0,20,500
+11/13/2025,Thursday,2025-2026,1st Sem,Turon,20,20,0,15,300
+11/13/2025,Thursday,2025-2026,1st Sem,Ukoy Balls,20,20,0,20,400
+11/13/2025,Thursday,2025-2026,1st Sem,Vegetable Lumpia,15,15,0,15,225
+11/14/2025,Friday,2025-2026,1st Sem,Baduya,7,6,1,15,90
+11/14/2025,Friday,2025-2026,1st Sem,Banana Cue,10,6,4,20,120
+11/14/2025,Friday,2025-2026,1st Sem,Carbonara,8,3,5,25,75
+11/14/2025,Friday,2025-2026,1st Sem,Chicken Mami,10,10,0,25,250
+11/14/2025,Friday,2025-2026,1st Sem,Corndog,10,7,3,30,210
+11/14/2025,Friday,2025-2026,1st Sem,Egg Sandwich,10,10,0,20,200
+11/14/2025,Friday,2025-2026,1st Sem,Empanada,3,3,0,60,180
+11/14/2025,Friday,2025-2026,1st Sem,Karen Japanese Siomai,125,57,68,7,399
+11/14/2025,Friday,2025-2026,1st Sem,Karen Pork Siomai,180,107,73,6,642
+11/14/2025,Friday,2025-2026,1st Sem,Kutsinta Cheese,4,4,0,12,48
+11/14/2025,Friday,2025-2026,1st Sem,Pancit Canton,10,10,0,30,300
+11/14/2025,Friday,2025-2026,1st Sem,Pork Lomi,8,8,0,25,200
+11/14/2025,Friday,2025-2026,1st Sem,Puto Cheese,4,4,0,12,48
+11/14/2025,Friday,2025-2026,1st Sem,Puto Latik,5,5,0,12,60
+11/14/2025,Friday,2025-2026,1st Sem,Sopas,10,8,2,25,200
+11/14/2025,Friday,2025-2026,1st Sem,Tokneneng,20,8,12,20,160
+11/17/2025,Monday,2025-2026,1st Sem,Corndog,10,7,3,30,210
+11/17/2025,Monday,2025-2026,1st Sem,Empanada,3,3,0,60,180
+11/17/2025,Monday,2025-2026,1st Sem,Gluti Roll,15,2,13,20,40
+11/17/2025,Monday,2025-2026,1st Sem,Karen Dumplings,25,25,0,7,175
+11/17/2025,Monday,2025-2026,1st Sem,Karen Japanese Siomai,135,65,70,7,455
+11/17/2025,Monday,2025-2026,1st Sem,Karen Pork Siomai,155,155,0,6,930
+11/17/2025,Monday,2025-2026,1st Sem,Kutsinta Cheese,5,4,1,12,48
+11/17/2025,Monday,2025-2026,1st Sem,Kutsinta Yema,6,6,0,12,72
+11/17/2025,Monday,2025-2026,1st Sem,Lomi,10,5,5,25,125
+11/17/2025,Monday,2025-2026,1st Sem,Maja,10,7,3,15,105
+11/17/2025,Monday,2025-2026,1st Sem,Pork Mami,10,10,0,25,250
+11/17/2025,Monday,2025-2026,1st Sem,Puto Cheese,6,6,0,12,72
+11/17/2025,Monday,2025-2026,1st Sem,Puto Flan,5,2,3,12,24
+11/17/2025,Monday,2025-2026,1st Sem,Puto Latik,5,5,0,12,60
+11/17/2025,Monday,2025-2026,1st Sem,Tinudok,10,4,6,10,40
+11/17/2025,Monday,2025-2026,1st Sem,Tuna Pie,10,3,7,18,54
+11/18/2025,Tuesday,2025-2026,1st Sem,Arroz Caldo,5,1,4,20,20
+11/18/2025,Tuesday,2025-2026,1st Sem,Banana Cue,10,10,0,20,200
+11/18/2025,Tuesday,2025-2026,1st Sem,Bihon Guisado,7,7,0,25,175
+11/18/2025,Tuesday,2025-2026,1st Sem,Boiled Banana,20,9,11,6,54
+11/18/2025,Tuesday,2025-2026,1st Sem,Chicken Mami,10,2,8,25,50
+11/18/2025,Tuesday,2025-2026,1st Sem,Egg Sandwich,10,10,0,20,200
+11/18/2025,Tuesday,2025-2026,1st Sem,Ginataan,6,6,0,20,120
+11/18/2025,Tuesday,2025-2026,1st Sem,Hamburger,10,2,8,45,90
+11/18/2025,Tuesday,2025-2026,1st Sem,Hotdog Sandwich,6,6,0,40,240
+11/18/2025,Tuesday,2025-2026,1st Sem,Hotdog Stick,20,1,19,15,15
+11/18/2025,Tuesday,2025-2026,1st Sem,Karen Japanese Siomai,140,140,0,7,980
+11/18/2025,Tuesday,2025-2026,1st Sem,Karen Pork Siomai,190,190,0,6,1140
+11/18/2025,Tuesday,2025-2026,1st Sem,Kutsinta Cheese,6,4,2,12,48
+11/18/2025,Tuesday,2025-2026,1st Sem,Kutsinta Yema,6,6,0,12,72
+11/18/2025,Tuesday,2025-2026,1st Sem,Lomi,10,7,3,25,175
+11/18/2025,Tuesday,2025-2026,1st Sem,Maja,15,15,0,15,225
+11/18/2025,Tuesday,2025-2026,1st Sem,Meatballs,20,20,0,20,400
+11/18/2025,Tuesday,2025-2026,1st Sem,Pork Mami,10,6,4,25,150
+11/18/2025,Tuesday,2025-2026,1st Sem,Puto Cheese,5,2,3,12,24
+11/18/2025,Tuesday,2025-2026,1st Sem,Puto Flan,6,6,0,12,72
+11/18/2025,Tuesday,2025-2026,1st Sem,Shanghai,20,20,0,12,240
+11/18/2025,Tuesday,2025-2026,1st Sem,Siomai Rice,20,20,0,45,900
+11/18/2025,Tuesday,2025-2026,1st Sem,Suman,10,8,2,18,144
+11/18/2025,Tuesday,2025-2026,1st Sem,Tinudok,10,10,0,10,100
+11/18/2025,Tuesday,2025-2026,1st Sem,Vegetable Lumpia,15,4,11,15,60
+11/19/2025,Wednesday,2025-2026,1st Sem,Boiled Camote,5,5,0,20,100
+11/19/2025,Wednesday,2025-2026,1st Sem,Buchi,15,3,12,10,30
+11/19/2025,Wednesday,2025-2026,1st Sem,Camote Roll,7,5,2,15,75
+11/19/2025,Wednesday,2025-2026,1st Sem,Fresh Pancit,10,0,10,20,0
+11/19/2025,Wednesday,2025-2026,1st Sem,Karen Japanese Siomai,155,155,0,7,1085
+11/19/2025,Wednesday,2025-2026,1st Sem,Karen Pork Siomai,190,190,0,6,1140
+11/19/2025,Wednesday,2025-2026,1st Sem,Karen Siopao,4,4,0,31,124
+11/19/2025,Wednesday,2025-2026,1st Sem,Kutsinta Cheese,5,4,1,12,48
+11/19/2025,Wednesday,2025-2026,1st Sem,Kutsinta Yema,4,4,0,12,48
+11/19/2025,Wednesday,2025-2026,1st Sem,Palabok,10,5,5,25,125
+11/19/2025,Wednesday,2025-2026,1st Sem,Pork Mami,10,0,10,25,0
+11/19/2025,Wednesday,2025-2026,1st Sem,Puto Cheese,4,4,0,12,48
+11/19/2025,Wednesday,2025-2026,1st Sem,Puto Flan,5,5,0,12,60
+11/19/2025,Wednesday,2025-2026,1st Sem,Puto Latik,4,0,4,12,0
+11/19/2025,Wednesday,2025-2026,1st Sem,Siomai Rice,15,15,0,45,675
+11/19/2025,Wednesday,2025-2026,1st Sem,Spaghetti,10,10,0,25,250
+11/19/2025,Wednesday,2025-2026,1st Sem,Tinudok,15,15,0,10,150
+11/19/2025,Wednesday,2025-2026,1st Sem,Tokneneng,20,20,0,20,400
+11/19/2025,Wednesday,2025-2026,1st Sem,Ukoy Balls,20,19,1,20,380
+11/19/2025,Wednesday,2025-2026,1st Sem,Vegetable Lumpia,15,15,0,15,225
+11/20/2025,Thursday,2025-2026,1st Sem,Banana Balls,10,6,4,20,120
+11/20/2025,Thursday,2025-2026,1st Sem,Camote Roll,10,7,3,15,105
+11/20/2025,Thursday,2025-2026,1st Sem,Hamburger,10,3,7,45,135
+11/20/2025,Thursday,2025-2026,1st Sem,Hotdog Sandwich,6,5,1,40,200
+11/20/2025,Thursday,2025-2026,1st Sem,Karen Dumplings,25,25,0,7,175
+11/20/2025,Thursday,2025-2026,1st Sem,Karen Japanese Siomai,140,60,80,7,420
+11/20/2025,Thursday,2025-2026,1st Sem,Karen Pork Siomai,205,205,0,6,1230
+11/20/2025,Thursday,2025-2026,1st Sem,Karen Siopao,4,3,1,31,93
+11/20/2025,Thursday,2025-2026,1st Sem,Kutsinta Yema,4,4,0,12,48
+11/20/2025,Thursday,2025-2026,1st Sem,Puto Cheese,5,5,0,12,60
+11/20/2025,Thursday,2025-2026,1st Sem,Puto Flan,5,3,2,12,36
+11/20/2025,Thursday,2025-2026,1st Sem,Puto Latik,5,4,1,12,48
+11/20/2025,Thursday,2025-2026,1st Sem,Rolls,4,0,4,26,0
+11/20/2025,Thursday,2025-2026,1st Sem,Siomai Rice,15,15,0,45,675
+11/20/2025,Thursday,2025-2026,1st Sem,Tinudok,10,8,2,10,80
+11/20/2025,Thursday,2025-2026,1st Sem,Tuna Pie,8,7,1,18,126
+11/21/2025,Friday,2025-2026,1st Sem,BBQ,15,4,11,20,80
+11/21/2025,Friday,2025-2026,1st Sem,Baduya,7,6,1,15,90
+11/21/2025,Friday,2025-2026,1st Sem,Buchi,10,1,9,10,10
+11/21/2025,Friday,2025-2026,1st Sem,Empanada,3,3,0,60,180
+11/21/2025,Friday,2025-2026,1st Sem,Karen Dumplings,20,20,0,7,140
+11/21/2025,Friday,2025-2026,1st Sem,Karen Pork Siomai,150,94,56,6,564
+11/21/2025,Friday,2025-2026,1st Sem,Kutsinta Cheese,4,3,1,12,36
+11/21/2025,Friday,2025-2026,1st Sem,Kutsinta Yema,5,4,1,12,48
+11/21/2025,Friday,2025-2026,1st Sem,Lomi,10,0,10,25,0
+11/21/2025,Friday,2025-2026,1st Sem,Puto Cheese,5,5,0,12,60
+11/21/2025,Friday,2025-2026,1st Sem,Puto Flan,4,4,0,12,48
+11/21/2025,Friday,2025-2026,1st Sem,Puto Latik,4,4,0,12,48
+11/21/2025,Friday,2025-2026,1st Sem,Siomai Rice,15,15,0,45,675
+11/21/2025,Friday,2025-2026,1st Sem,Tuna Pie,10,8,2,18,144
+11/24/2025,Monday,2025-2026,1st Sem,BBQ,15,15,0,20,300
+11/24/2025,Monday,2025-2026,1st Sem,Camote Cue,10,10,0,20,200
+11/24/2025,Monday,2025-2026,1st Sem,Cheese Stick,30,30,0,10,300
+11/24/2025,Monday,2025-2026,1st Sem,Chicken Mami,10,10,0,25,250
+11/24/2025,Monday,2025-2026,1st Sem,Fresh Pancit,10,4,6,20,80
+11/24/2025,Monday,2025-2026,1st Sem,Hotdog Sandwich,5,4,1,40,160
+11/24/2025,Monday,2025-2026,1st Sem,Hotdog Stick,20,17,3,15,255
+11/24/2025,Monday,2025-2026,1st Sem,Karen Dumplings,30,30,0,7,210
+11/24/2025,Monday,2025-2026,1st Sem,Karen Japanese Siomai,125,51,74,7,357
+11/24/2025,Monday,2025-2026,1st Sem,Karen Pork Siomai,150,129,21,6,774
+11/24/2025,Monday,2025-2026,1st Sem,Kutsinta Cheese,5,2,3,12,24
+11/24/2025,Monday,2025-2026,1st Sem,Kutsinta Yema,5,5,0,12,60
+11/24/2025,Monday,2025-2026,1st Sem,Pork Mami,10,5,5,25,125
+11/24/2025,Monday,2025-2026,1st Sem,Puto Cheese,6,6,0,12,72
+11/24/2025,Monday,2025-2026,1st Sem,Puto Latik,5,1,4,12,12
+11/24/2025,Monday,2025-2026,1st Sem,Siomai Rice,15,8,7,45,360
+11/24/2025,Monday,2025-2026,1st Sem,Sopas,15,14,1,25,350
+11/24/2025,Monday,2025-2026,1st Sem,Ukoy Balls,20,20,0,20,400
+11/25/2025,Tuesday,2025-2026,1st Sem,Bihon Guisado,8,2,6,25,50
+11/25/2025,Tuesday,2025-2026,1st Sem,Egg Sandwich,10,10,0,20,200
+11/25/2025,Tuesday,2025-2026,1st Sem,Empanada,4,4,0,60,240
+11/25/2025,Tuesday,2025-2026,1st Sem,Hotdog Sandwich,5,2,3,40,80
+11/25/2025,Tuesday,2025-2026,1st Sem,Hotdog Stick,20,16,4,15,240
+11/25/2025,Tuesday,2025-2026,1st Sem,Karen Japanese Siomai,185,185,0,7,1295
+11/25/2025,Tuesday,2025-2026,1st Sem,Karen Pork Siomai,185,185,0,6,1110
+11/25/2025,Tuesday,2025-2026,1st Sem,Kutsinta Cheese,5,3,2,12,36
+11/25/2025,Tuesday,2025-2026,1st Sem,Kutsinta Yema,5,5,0,12,60
+11/25/2025,Tuesday,2025-2026,1st Sem,Lumpianada,7,7,0,35,245
+11/25/2025,Tuesday,2025-2026,1st Sem,Puto Cheese,6,6,0,12,72
+11/25/2025,Tuesday,2025-2026,1st Sem,Puto Flan,5,5,0,12,60
+11/25/2025,Tuesday,2025-2026,1st Sem,Puto Latik,5,2,3,12,24
+11/25/2025,Tuesday,2025-2026,1st Sem,Rolls,5,5,0,26,130
+11/25/2025,Tuesday,2025-2026,1st Sem,Siomai Rice,15,15,0,45,675
+11/25/2025,Tuesday,2025-2026,1st Sem,Ukoy Balls,30,28,2,20,560
+11/25/2025,Tuesday,2025-2026,1st Sem,Vegetable Lumpia,15,15,0,15,225
+11/26/2025,Wednesday,2025-2026,1st Sem,Camote Roll,7,1,6,15,15
+11/26/2025,Wednesday,2025-2026,1st Sem,Karen Dumplings,20,20,0,7,140
+11/26/2025,Wednesday,2025-2026,1st Sem,Karen Japanese Siomai,145,135,10,7,945
+11/26/2025,Wednesday,2025-2026,1st Sem,Karen Pork Siomai,180,180,0,6,1080
+11/26/2025,Wednesday,2025-2026,1st Sem,Kutsinta Cheese,5,2,3,12,24
+11/26/2025,Wednesday,2025-2026,1st Sem,Meatballs,15,8,7,20,160
+11/26/2025,Wednesday,2025-2026,1st Sem,Pork Mami,10,7,3,25,175
+11/26/2025,Wednesday,2025-2026,1st Sem,Puto Cheese,6,6,0,12,72
+11/26/2025,Wednesday,2025-2026,1st Sem,Puto Flan,3,3,0,12,36
+11/26/2025,Wednesday,2025-2026,1st Sem,Puto Latik,5,5,0,12,60
+11/26/2025,Wednesday,2025-2026,1st Sem,Siomai Rice,15,15,0,45,675
+11/26/2025,Wednesday,2025-2026,1st Sem,Spaghetti,10,7,3,25,175
+11/27/2025,Thursday,2025-2026,1st Sem,Boiled Banana,15,14,1,6,84
+11/27/2025,Thursday,2025-2026,1st Sem,Buchi,15,15,0,10,150
+11/27/2025,Thursday,2025-2026,1st Sem,Cheese Stick,30,30,0,10,300
+11/27/2025,Thursday,2025-2026,1st Sem,Egg Sandwich,10,6,4,20,120
+11/27/2025,Thursday,2025-2026,1st Sem,Gluti Roll,20,11,9,20,220
+11/27/2025,Thursday,2025-2026,1st Sem,Hotdog Sandwich,5,4,1,40,160
+11/27/2025,Thursday,2025-2026,1st Sem,Hotdog Stick,20,6,14,15,90
+11/27/2025,Thursday,2025-2026,1st Sem,Karen Dumplings,20,20,0,7,140
+11/27/2025,Thursday,2025-2026,1st Sem,Karen Japanese Siomai,125,80,45,7,560
+11/27/2025,Thursday,2025-2026,1st Sem,Karen Pork Siomai,180,48,132,6,288
+11/27/2025,Thursday,2025-2026,1st Sem,Kutsinta Cheese,4,3,1,12,36
+11/27/2025,Thursday,2025-2026,1st Sem,Kutsinta Yema,5,4,1,12,48
+11/27/2025,Thursday,2025-2026,1st Sem,Meatballs,15,15,0,20,300
+11/27/2025,Thursday,2025-2026,1st Sem,Palitaw 1's,15,15,0,10,150
+11/27/2025,Thursday,2025-2026,1st Sem,Puto Cheese,4,4,0,12,48
+11/27/2025,Thursday,2025-2026,1st Sem,Puto Latik,5,5,0,12,60
+11/27/2025,Thursday,2025-2026,1st Sem,Rolls,5,5,0,26,130
+11/27/2025,Thursday,2025-2026,1st Sem,Spaghetti,10,0,10,25,0
+11/27/2025,Thursday,2025-2026,1st Sem,Tokneneng,20,20,0,20,400
+11/28/2025,Friday,2025-2026,1st Sem,BBQ,15,13,2,20,260
+11/28/2025,Friday,2025-2026,1st Sem,Cheese Stick,25,25,0,10,250
+11/28/2025,Friday,2025-2026,1st Sem,Egg Sandwich,10,3,7,20,60
+11/28/2025,Friday,2025-2026,1st Sem,Empanada,2,2,0,60,120
+11/28/2025,Friday,2025-2026,1st Sem,Karen Japanese Siomai,120,29,91,7,203
+11/28/2025,Friday,2025-2026,1st Sem,Karen Pork Siomai,180,134,46,6,804
+11/28/2025,Friday,2025-2026,1st Sem,Kutsinta Cheese,5,3,2,12,36
+11/28/2025,Friday,2025-2026,1st Sem,Palitaw 1's,10,10,0,10,100
+11/28/2025,Friday,2025-2026,1st Sem,Puto Cheese,4,1,3,12,12
+11/28/2025,Friday,2025-2026,1st Sem,Puto Flan,5,5,0,12,60
+11/28/2025,Friday,2025-2026,1st Sem,Puto Latik,4,4,0,12,48
+11/28/2025,Friday,2025-2026,1st Sem,Siomai Rice,15,5,10,45,225
+11/28/2025,Friday,2025-2026,1st Sem,Sopas,7,2,5,25,50
+11/28/2025,Friday,2025-2026,1st Sem,Tokneneng,20,13,7,20,260
+11/28/2025,Friday,2025-2026,1st Sem,Tuna Pie,10,10,0,18,180
+11/28/2025,Friday,2025-2026,1st Sem,Turon,25,12,13,15,180
+11/28/2025,Friday,2025-2026,1st Sem,Ukoy Balls,20,9,11,20,180
+11/28/2025,Friday,2025-2026,1st Sem,Vegetable Lumpia,15,15,0,15,225
+12/1/2025,Monday,2025-2026,1st Sem,Banana Cue,15,15,0,20,300
+12/1/2025,Monday,2025-2026,1st Sem,Cheese Stick,25,25,0,10,250
+12/1/2025,Monday,2025-2026,1st Sem,Chicken Mami,10,10,0,25,250
+12/1/2025,Monday,2025-2026,1st Sem,Corndog,10,4,6,30,120
+12/1/2025,Monday,2025-2026,1st Sem,Empanada,3,2,1,60,120
+12/1/2025,Monday,2025-2026,1st Sem,Hotdog Sandwich,5,5,0,40,200
+12/1/2025,Monday,2025-2026,1st Sem,Hotdog Stick,20,5,15,15,75
+12/1/2025,Monday,2025-2026,1st Sem,Karen Dumplings,25,25,0,7,175
+12/1/2025,Monday,2025-2026,1st Sem,Karen Japanese Siomai,170,98,72,7,686
+12/1/2025,Monday,2025-2026,1st Sem,Kutsinta Cheese,5,5,0,12,60
+12/1/2025,Monday,2025-2026,1st Sem,Kutsinta Yema,5,5,0,12,60
+12/1/2025,Monday,2025-2026,1st Sem,Maja,10,10,0,15,150
+12/1/2025,Monday,2025-2026,1st Sem,Puto Cheese,6,5,1,12,60
+12/1/2025,Monday,2025-2026,1st Sem,Puto Flan,4,4,0,12,48
+12/1/2025,Monday,2025-2026,1st Sem,Puto Latik,4,2,2,12,24
+12/1/2025,Monday,2025-2026,1st Sem,Siomai Rice,20,20,0,45,900
+12/1/2025,Monday,2025-2026,1st Sem,Suman,8,8,0,18,144
+12/1/2025,Monday,2025-2026,1st Sem,Vegetable Lumpia,15,15,0,15,225
+12/2/2025,Tuesday,2025-2026,1st Sem,BBQ,15,14,1,20,280
+12/2/2025,Tuesday,2025-2026,1st Sem,Baduya,10,2,8,15,30
+12/2/2025,Tuesday,2025-2026,1st Sem,Boiled Camote,4,1,3,20,20
+12/2/2025,Tuesday,2025-2026,1st Sem,Buchi,20,20,0,10,200
+12/2/2025,Tuesday,2025-2026,1st Sem,Corndog,10,3,7,30,90
+12/2/2025,Tuesday,2025-2026,1st Sem,Empanada,3,3,0,60,180
+12/2/2025,Tuesday,2025-2026,1st Sem,Karen Dumplings,25,15,10,7,105
+12/2/2025,Tuesday,2025-2026,1st Sem,Karen Pork Siomai,190,144,46,6,864
+12/2/2025,Tuesday,2025-2026,1st Sem,Karen Siopao,4,4,0,31,124
+12/2/2025,Tuesday,2025-2026,1st Sem,Kutsinta Cheese,5,4,1,12,48
+12/2/2025,Tuesday,2025-2026,1st Sem,Kutsinta Yema,6,1,5,12,12
+12/2/2025,Tuesday,2025-2026,1st Sem,Palabok,10,2,8,25,50
+12/2/2025,Tuesday,2025-2026,1st Sem,Pancit Canton,15,5,10,30,150
+12/2/2025,Tuesday,2025-2026,1st Sem,Pork Lomi,15,9,6,25,225
+12/2/2025,Tuesday,2025-2026,1st Sem,Puto Cheese,4,3,1,12,36
+12/2/2025,Tuesday,2025-2026,1st Sem,Puto Latik,5,4,1,12,48
+12/2/2025,Tuesday,2025-2026,1st Sem,Siomai Rice,15,15,0,45,675
+12/2/2025,Tuesday,2025-2026,1st Sem,Tinudok,15,10,5,10,100
+12/2/2025,Tuesday,2025-2026,1st Sem,Tokneneng,20,7,13,20,140
+12/2/2025,Tuesday,2025-2026,1st Sem,Tuna Pie,10,7,3,18,126
+12/2/2025,Tuesday,2025-2026,1st Sem,Turon,20,9,11,15,135
+12/2/2025,Tuesday,2025-2026,1st Sem,Vegetable Lumpia,15,9,6,15,135
+12/3/2025,Wednesday,2025-2026,1st Sem,Bihon Guisado,6,6,0,25,150
+12/3/2025,Wednesday,2025-2026,1st Sem,Camote Roll,7,7,0,15,105
+12/3/2025,Wednesday,2025-2026,1st Sem,Empanada,4,1,3,60,60
+12/3/2025,Wednesday,2025-2026,1st Sem,Hotdog Sandwich,5,4,1,40,160
+12/3/2025,Wednesday,2025-2026,1st Sem,Karen Japanese Siomai,130,56,74,7,392
+12/3/2025,Wednesday,2025-2026,1st Sem,Karen Pork Siomai,185,185,0,6,1110
+12/3/2025,Wednesday,2025-2026,1st Sem,Karen Siopao,4,3,1,31,93
+12/3/2025,Wednesday,2025-2026,1st Sem,Kutsinta Cheese,5,1,4,12,12
+12/3/2025,Wednesday,2025-2026,1st Sem,Kutsinta Yema,4,4,0,12,48
+12/3/2025,Wednesday,2025-2026,1st Sem,Palabok,10,7,3,25,175
+12/3/2025,Wednesday,2025-2026,1st Sem,Puto Cheese,4,2,2,12,24
+12/3/2025,Wednesday,2025-2026,1st Sem,Puto Flan,4,3,1,12,36
+12/3/2025,Wednesday,2025-2026,1st Sem,Rolls,5,5,0,26,130
+12/3/2025,Wednesday,2025-2026,1st Sem,Shanghai,20,16,4,12,192
+12/3/2025,Wednesday,2025-2026,1st Sem,Sopas,10,1,9,25,25
+12/3/2025,Wednesday,2025-2026,1st Sem,Tuna Pie,10,1,9,18,18
+12/3/2025,Wednesday,2025-2026,1st Sem,Turon,20,20,0,15,300
+12/3/2025,Wednesday,2025-2026,1st Sem,Vegetable Lumpia,15,11,4,15,165
+12/4/2025,Thursday,2025-2026,1st Sem,BBQ,15,5,10,20,100
+12/4/2025,Thursday,2025-2026,1st Sem,Buchi,15,15,0,10,150
+12/4/2025,Thursday,2025-2026,1st Sem,Egg Sandwich,10,10,0,20,200
+12/4/2025,Thursday,2025-2026,1st Sem,Fresh Pancit,10,10,0,20,200
+12/4/2025,Thursday,2025-2026,1st Sem,Hotdog Stick,25,7,18,15,105
+12/4/2025,Thursday,2025-2026,1st Sem,Karen Dumplings,20,20,0,7,140
+12/4/2025,Thursday,2025-2026,1st Sem,Karen Japanese Siomai,140,38,102,7,266
+12/4/2025,Thursday,2025-2026,1st Sem,Karen Pork Siomai,220,187,33,6,1122
+12/4/2025,Thursday,2025-2026,1st Sem,Kutsinta Cheese,6,5,1,12,60
+12/4/2025,Thursday,2025-2026,1st Sem,Kutsinta Yema,4,4,0,12,48
+12/4/2025,Thursday,2025-2026,1st Sem,Maja,10,7,3,15,105
+12/4/2025,Thursday,2025-2026,1st Sem,Pancit Canton,10,10,0,30,300
+12/4/2025,Thursday,2025-2026,1st Sem,Puto Cheese,6,0,6,12,0
+12/4/2025,Thursday,2025-2026,1st Sem,Puto Latik,4,3,1,12,36
+12/4/2025,Thursday,2025-2026,1st Sem,Spaghetti,10,1,9,25,25
+12/4/2025,Thursday,2025-2026,1st Sem,Turon,20,5,15,15,75
+12/5/2025,Friday,2025-2026,1st Sem,Cater Bihon Canton,10,2,8,30,60
+12/5/2025,Friday,2025-2026,1st Sem,Empanada,2,2,0,60,120
+12/5/2025,Friday,2025-2026,1st Sem,Fresh Pancit,7,4,3,20,80
+12/5/2025,Friday,2025-2026,1st Sem,Kutsinta Cheese,4,0,4,12,0
+12/5/2025,Friday,2025-2026,1st Sem,Kutsinta Yema,5,4,1,12,48
+12/5/2025,Friday,2025-2026,1st Sem,Puto Cheese,5,1,4,12,12
+12/5/2025,Friday,2025-2026,1st Sem,Puto Flan,4,1,3,12,12
+12/5/2025,Friday,2025-2026,1st Sem,Puto Latik,4,3,1,12,36
+12/5/2025,Friday,2025-2026,1st Sem,Siomai Rice,15,7,8,45,315
+12/5/2025,Friday,2025-2026,1st Sem,Turon,15,7,8,15,105
+12/9/2025,Tuesday,2025-2026,1st Sem,Baduya,7,5,2,15,75
+12/9/2025,Tuesday,2025-2026,1st Sem,Bihon Guisado,7,5,2,25,125
+12/9/2025,Tuesday,2025-2026,1st Sem,Buchi,10,9,1,10,90
+12/9/2025,Tuesday,2025-2026,1st Sem,Hotdog Stick,15,6,9,15,90
+12/9/2025,Tuesday,2025-2026,1st Sem,Karen Pork Siomai,155,41,114,6,246
+12/9/2025,Tuesday,2025-2026,1st Sem,Karen Siopao,5,1,4,31,31
+12/9/2025,Tuesday,2025-2026,1st Sem,Puto Flan,6,4,2,12,48
+12/9/2025,Tuesday,2025-2026,1st Sem,Siomai Rice,15,3,12,45,135
+12/9/2025,Tuesday,2025-2026,1st Sem,Tokneneng,20,11,9,20,220
+12/9/2025,Tuesday,2025-2026,1st Sem,Vegetable Lumpia,15,10,5,15,150
+12/10/2025,Wednesday,2025-2026,1st Sem,Cheese Stick,30,30,0,10,300
+12/10/2025,Wednesday,2025-2026,1st Sem,Chicken Mami,8,8,0,25,200
+12/10/2025,Wednesday,2025-2026,1st Sem,Empanada,3,2,1,60,120
+12/10/2025,Wednesday,2025-2026,1st Sem,Karen Dumplings,25,6,19,7,42
+12/10/2025,Wednesday,2025-2026,1st Sem,Karen Japanese Siomai,120,100,20,7,700
+12/10/2025,Wednesday,2025-2026,1st Sem,Karen Pork Siomai,155,155,0,6,930
+12/10/2025,Wednesday,2025-2026,1st Sem,Kutsinta Cheese,4,1,3,12,12
+12/10/2025,Wednesday,2025-2026,1st Sem,Puto Flan,4,3,1,12,36
+12/10/2025,Wednesday,2025-2026,1st Sem,Siomai Rice,10,5,5,45,225
+12/10/2025,Wednesday,2025-2026,1st Sem,Turon,20,11,9,15,165
+12/10/2025,Wednesday,2025-2026,1st Sem,Ukoy Balls,20,16,4,20,320
+12/11/2025,Thursday,2025-2026,1st Sem,Arroz Caldo,4,1,3,20,20
+12/11/2025,Thursday,2025-2026,1st Sem,Baduya,10,2,8,15,30
+12/11/2025,Thursday,2025-2026,1st Sem,Boiled Banana,15,8,7,6,48
+12/11/2025,Thursday,2025-2026,1st Sem,Buchi,15,9,6,10,90
+12/11/2025,Thursday,2025-2026,1st Sem,Cheese Stick,30,20,10,10,200
+12/11/2025,Thursday,2025-2026,1st Sem,Hotdog Stick,20,12,8,15,180
+12/11/2025,Thursday,2025-2026,1st Sem,Karen Dumplings,25,25,0,7,175
+12/11/2025,Thursday,2025-2026,1st Sem,Karen Japanese Siomai,120,110,10,7,770
+12/11/2025,Thursday,2025-2026,1st Sem,Kutsinta Cheese,5,3,2,12,36
+12/11/2025,Thursday,2025-2026,1st Sem,Kutsinta Yema,5,3,2,12,36
+12/11/2025,Thursday,2025-2026,1st Sem,Maja,15,1,14,15,15
+12/11/2025,Thursday,2025-2026,1st Sem,Pork Mami,10,2,8,25,50
+12/11/2025,Thursday,2025-2026,1st Sem,Puto Flan,4,0,4,12,0
+12/11/2025,Thursday,2025-2026,1st Sem,Puto Latik,4,4,0,12,48
+12/11/2025,Thursday,2025-2026,1st Sem,Siomai Rice,10,10,0,45,450
+12/11/2025,Thursday,2025-2026,1st Sem,Tokneneng,20,20,0,20,400
+12/11/2025,Thursday,2025-2026,1st Sem,Ukoy Balls,20,8,12,20,160
+12/12/2025,Friday,2025-2026,1st Sem,Banana Balls,8,3,5,20,60
+12/12/2025,Friday,2025-2026,1st Sem,Camote Cue,10,5,5,20,100
+12/12/2025,Friday,2025-2026,1st Sem,Chicken Mami,10,9,1,25,225
+12/12/2025,Friday,2025-2026,1st Sem,Corndog,10,5,5,30,150
+12/12/2025,Friday,2025-2026,1st Sem,Empanada,3,1,2,60,60
+12/12/2025,Friday,2025-2026,1st Sem,Hamburger,8,1,7,45,45
+12/12/2025,Friday,2025-2026,1st Sem,Hotdog Stick,20,5,15,15,75
+12/12/2025,Friday,2025-2026,1st Sem,Karen Dumplings,20,20,0,7,140
+12/12/2025,Friday,2025-2026,1st Sem,Karen Japanese Siomai,135,26,109,7,182
+12/12/2025,Friday,2025-2026,1st Sem,Karen Pork Siomai,150,121,29,6,726
+12/12/2025,Friday,2025-2026,1st Sem,Puto Cheese,4,1,3,12,12
+12/12/2025,Friday,2025-2026,1st Sem,Rolls,4,3,1,26,78
+12/12/2025,Friday,2025-2026,1st Sem,Siomai Rice,15,6,9,45,270
+12/12/2025,Friday,2025-2026,1st Sem,Tuna Pie,10,5,5,18,90
+1/5/2026,Monday,2025-2026,2nd Sem,Bihon Guisado,7,7,0,25,175
+1/5/2026,Monday,2025-2026,2nd Sem,Buchi,15,15,0,10,150
+1/5/2026,Monday,2025-2026,2nd Sem,Hamburger,10,10,0,45,450
+1/5/2026,Monday,2025-2026,2nd Sem,Hotdog Sandwich,5,5,0,40,200
+1/5/2026,Monday,2025-2026,2nd Sem,Hotdog Stick,25,21,4,15,315
+1/5/2026,Monday,2025-2026,2nd Sem,Karen Japanese Siomai,170,128,42,7,896
+1/5/2026,Monday,2025-2026,2nd Sem,Kutsinta Cheese,5,2,3,12,24
+1/5/2026,Monday,2025-2026,2nd Sem,Kutsinta Yema,5,5,0,12,60
+1/5/2026,Monday,2025-2026,2nd Sem,Lomi,10,6,4,25,150
+1/5/2026,Monday,2025-2026,2nd Sem,Palitaw 1's,15,12,3,10,120
+1/5/2026,Monday,2025-2026,2nd Sem,Puto Cheese,6,6,0,12,72
+1/5/2026,Monday,2025-2026,2nd Sem,Puto Flan,7,6,1,12,72
+1/5/2026,Monday,2025-2026,2nd Sem,Puto Latik,7,4,3,12,48
+1/5/2026,Monday,2025-2026,2nd Sem,Rolls,6,5,1,26,130
+1/5/2026,Monday,2025-2026,2nd Sem,Tinudok,10,10,0,10,100
+1/6/2026,Tuesday,2025-2026,2nd Sem,Arroz Caldo,6,6,0,20,120
+1/6/2026,Tuesday,2025-2026,2nd Sem,Buchi,15,15,0,10,150
+1/6/2026,Tuesday,2025-2026,2nd Sem,Carbonara,10,6,4,25,150
+1/6/2026,Tuesday,2025-2026,2nd Sem,Cheese Stick,35,25,10,10,250
+1/6/2026,Tuesday,2025-2026,2nd Sem,Empanada,3,3,0,60,180
+1/6/2026,Tuesday,2025-2026,2nd Sem,Fresh Pancit,10,4,6,20,80
+1/6/2026,Tuesday,2025-2026,2nd Sem,Hotdog Sandwich,5,5,0,40,200
+1/6/2026,Tuesday,2025-2026,2nd Sem,Karen Japanese Siomai,140,140,0,7,980
+1/6/2026,Tuesday,2025-2026,2nd Sem,Karen Pork Siomai,165,72,93,6,432
+1/6/2026,Tuesday,2025-2026,2nd Sem,Kutsinta Cheese,6,5,1,12,60
+1/6/2026,Tuesday,2025-2026,2nd Sem,Kutsinta Yema,5,2,3,12,24
+1/6/2026,Tuesday,2025-2026,2nd Sem,Palitaw,10,10,0,5,50
+1/6/2026,Tuesday,2025-2026,2nd Sem,Puto Cheese,6,6,0,12,72
+1/6/2026,Tuesday,2025-2026,2nd Sem,Puto Flan,5,5,0,12,60
+1/6/2026,Tuesday,2025-2026,2nd Sem,Puto Latik,6,6,0,12,72
+1/6/2026,Tuesday,2025-2026,2nd Sem,Shanghai,20,20,0,12,240
+1/6/2026,Tuesday,2025-2026,2nd Sem,Tinudok,15,15,0,10,150
+1/7/2026,Wednesday,2025-2026,2nd Sem,BBQ,15,15,0,20,300
+1/7/2026,Wednesday,2025-2026,2nd Sem,Banana Balls,10,7,3,20,140
+1/7/2026,Wednesday,2025-2026,2nd Sem,Boiled Banana,15,1,14,6,6
+1/7/2026,Wednesday,2025-2026,2nd Sem,Fresh Pancit,10,4,6,20,80
+1/7/2026,Wednesday,2025-2026,2nd Sem,Hotdog Sandwich,5,5,0,40,200
+1/7/2026,Wednesday,2025-2026,2nd Sem,Hotdog Stick,20,7,13,15,105
+1/7/2026,Wednesday,2025-2026,2nd Sem,Karen Japanese Siomai,130,78,52,7,546
+1/7/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Cheese,6,5,1,12,60
+1/7/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Yema,5,5,0,12,60
+1/7/2026,Wednesday,2025-2026,2nd Sem,Maja,10,7,3,15,105
+1/7/2026,Wednesday,2025-2026,2nd Sem,Meatballs,15,15,0,20,300
+1/7/2026,Wednesday,2025-2026,2nd Sem,Pork Mami,10,5,5,25,125
+1/7/2026,Wednesday,2025-2026,2nd Sem,Puto Flan,6,6,0,12,72
+1/7/2026,Wednesday,2025-2026,2nd Sem,Siomai Rice,15,13,2,45,585
+1/7/2026,Wednesday,2025-2026,2nd Sem,Sopas,10,10,0,25,250
+1/7/2026,Wednesday,2025-2026,2nd Sem,Spaghetti,15,9,6,25,225
+1/7/2026,Wednesday,2025-2026,2nd Sem,Tuna Pie,10,7,3,18,126
+1/8/2026,Thursday,2025-2026,2nd Sem,Banana Cue,10,7,3,20,140
+1/8/2026,Thursday,2025-2026,2nd Sem,Bihon Guisado,7,7,0,25,175
+1/8/2026,Thursday,2025-2026,2nd Sem,Boiled Banana,20,8,12,6,48
+1/8/2026,Thursday,2025-2026,2nd Sem,Cheese Stick,25,25,0,10,250
+1/8/2026,Thursday,2025-2026,2nd Sem,Corndog,10,10,0,30,300
+1/8/2026,Thursday,2025-2026,2nd Sem,Empanada,4,4,0,60,240
+1/8/2026,Thursday,2025-2026,2nd Sem,Hotdog Stick,20,8,12,15,120
+1/8/2026,Thursday,2025-2026,2nd Sem,Karen Japanese Siomai,135,60,75,7,420
+1/8/2026,Thursday,2025-2026,2nd Sem,Karen Pork Siomai,170,58,112,6,348
+1/8/2026,Thursday,2025-2026,2nd Sem,Kutsinta Cheese,5,5,0,12,60
+1/8/2026,Thursday,2025-2026,2nd Sem,Kutsinta Yema,5,5,0,12,60
+1/8/2026,Thursday,2025-2026,2nd Sem,Maja,10,7,3,15,105
+1/8/2026,Thursday,2025-2026,2nd Sem,Palitaw 1's,15,15,0,10,150
+1/8/2026,Thursday,2025-2026,2nd Sem,Puto Cheese,5,5,0,12,60
+1/8/2026,Thursday,2025-2026,2nd Sem,Puto Flan,4,4,0,12,48
+1/8/2026,Thursday,2025-2026,2nd Sem,Puto Latik,6,3,3,12,36
+1/8/2026,Thursday,2025-2026,2nd Sem,Sopas,10,8,2,25,200
+1/8/2026,Thursday,2025-2026,2nd Sem,Suman,10,10,0,18,180
+1/9/2026,Friday,2025-2026,2nd Sem,Bihon Guisado,6,5,1,25,125
+1/9/2026,Friday,2025-2026,2nd Sem,Egg Sandwich,10,4,6,20,80
+1/9/2026,Friday,2025-2026,2nd Sem,Karen Dumplings,25,20,5,7,140
+1/9/2026,Friday,2025-2026,2nd Sem,Karen Japanese Siomai,125,125,0,7,875
+1/9/2026,Friday,2025-2026,2nd Sem,Karen Pork Siomai,185,136,49,6,816
+1/9/2026,Friday,2025-2026,2nd Sem,Kutsinta Cheese,4,4,0,12,48
+1/9/2026,Friday,2025-2026,2nd Sem,Kutsinta Yema,4,4,0,12,48
+1/9/2026,Friday,2025-2026,2nd Sem,Palitaw,10,10,0,5,50
+1/9/2026,Friday,2025-2026,2nd Sem,Palitaw 1's,15,15,0,10,150
+1/9/2026,Friday,2025-2026,2nd Sem,Puto Cheese,3,1,2,12,12
+1/9/2026,Friday,2025-2026,2nd Sem,Puto Flan,4,3,1,12,36
+1/9/2026,Friday,2025-2026,2nd Sem,Puto Latik,5,3,2,12,36
+1/9/2026,Friday,2025-2026,2nd Sem,Siomai Rice,15,11,4,45,495
+1/9/2026,Friday,2025-2026,2nd Sem,Tokneneng,15,15,0,20,300
+1/12/2026,Monday,2025-2026,2nd Sem,Arroz Caldo,5,4,1,20,80
+1/12/2026,Monday,2025-2026,2nd Sem,Carbonara,10,3,7,25,75
+1/12/2026,Monday,2025-2026,2nd Sem,Hotdog Sandwich,5,4,1,40,160
+1/12/2026,Monday,2025-2026,2nd Sem,Hotdog Stick,15,14,1,15,210
+1/12/2026,Monday,2025-2026,2nd Sem,Karen Japanese Siomai,170,170,0,7,1190
+1/12/2026,Monday,2025-2026,2nd Sem,Karen Pork Siomai,225,54,171,6,324
+1/12/2026,Monday,2025-2026,2nd Sem,Karen Siopao,5,5,0,31,155
+1/12/2026,Monday,2025-2026,2nd Sem,Kutsinta Cheese,5,3,2,12,36
+1/12/2026,Monday,2025-2026,2nd Sem,Puto Cheese,5,2,3,12,24
+1/12/2026,Monday,2025-2026,2nd Sem,Puto Latik,5,4,1,12,48
+1/12/2026,Monday,2025-2026,2nd Sem,Suman,10,10,0,18,180
+1/13/2026,Tuesday,2025-2026,2nd Sem,Buchi,15,4,11,10,40
+1/13/2026,Tuesday,2025-2026,2nd Sem,Carbonara,10,10,0,25,250
+1/13/2026,Tuesday,2025-2026,2nd Sem,Corndog,10,7,3,30,210
+1/13/2026,Tuesday,2025-2026,2nd Sem,Empanada,3,3,0,60,180
+1/13/2026,Tuesday,2025-2026,2nd Sem,Hamburger,10,5,5,45,225
+1/13/2026,Tuesday,2025-2026,2nd Sem,Hotdog Stick,25,4,21,15,60
+1/13/2026,Tuesday,2025-2026,2nd Sem,Karen Japanese Siomai,160,94,66,7,658
+1/13/2026,Tuesday,2025-2026,2nd Sem,Karen Pork Siomai,215,117,98,6,702
+1/13/2026,Tuesday,2025-2026,2nd Sem,Karen Siopao,6,6,0,31,186
+1/13/2026,Tuesday,2025-2026,2nd Sem,Kutsinta Yema,8,3,5,12,36
+1/13/2026,Tuesday,2025-2026,2nd Sem,Puto Cheese,6,6,0,12,72
+1/13/2026,Tuesday,2025-2026,2nd Sem,Puto Flan,6,6,0,12,72
+1/13/2026,Tuesday,2025-2026,2nd Sem,Puto Latik,5,5,0,12,60
+1/13/2026,Tuesday,2025-2026,2nd Sem,Siomai Rice,15,15,0,45,675
+1/13/2026,Tuesday,2025-2026,2nd Sem,Suman,10,10,0,18,180
+1/14/2026,Wednesday,2025-2026,2nd Sem,Bihon Guisado,7,7,0,25,175
+1/14/2026,Wednesday,2025-2026,2nd Sem,Buchi,15,7,8,10,70
+1/14/2026,Wednesday,2025-2026,2nd Sem,Camote Cue,10,7,3,20,140
+1/14/2026,Wednesday,2025-2026,2nd Sem,Hotdog Sandwich,5,5,0,40,200
+1/14/2026,Wednesday,2025-2026,2nd Sem,Karen Dumplings,25,25,0,7,175
+1/14/2026,Wednesday,2025-2026,2nd Sem,Karen Pork Siomai,175,175,0,6,1050
+1/14/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Cheese,5,3,2,12,36
+1/14/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Yema,5,5,0,12,60
+1/14/2026,Wednesday,2025-2026,2nd Sem,Lomi,10,1,9,25,25
+1/14/2026,Wednesday,2025-2026,2nd Sem,Popcorn,6,1,5,18,18
+1/14/2026,Wednesday,2025-2026,2nd Sem,Puto Cheese,5,5,0,12,60
+1/14/2026,Wednesday,2025-2026,2nd Sem,Puto Flan,5,5,0,12,60
+1/14/2026,Wednesday,2025-2026,2nd Sem,Puto Latik,5,5,0,12,60
+1/14/2026,Wednesday,2025-2026,2nd Sem,Rolls,4,4,0,26,104
+1/14/2026,Wednesday,2025-2026,2nd Sem,Siomai Rice,10,10,0,45,450
+1/15/2026,Thursday,2025-2026,2nd Sem,BBQ,10,10,0,20,200
+1/15/2026,Thursday,2025-2026,2nd Sem,Bihon Guisado,7,7,0,25,175
+1/15/2026,Thursday,2025-2026,2nd Sem,Chicken Pie,10,10,0,18,180
+1/15/2026,Thursday,2025-2026,2nd Sem,Empanada,3,2,1,60,120
+1/15/2026,Thursday,2025-2026,2nd Sem,Gluti Roll,15,5,10,20,100
+1/15/2026,Thursday,2025-2026,2nd Sem,Karen Japanese Siomai,155,83,72,7,581
+1/15/2026,Thursday,2025-2026,2nd Sem,Karen Pork Siomai,250,32,218,6,192
+1/15/2026,Thursday,2025-2026,2nd Sem,Kutsinta Cheese,5,5,0,12,60
+1/15/2026,Thursday,2025-2026,2nd Sem,Kutsinta Yema,5,5,0,12,60
+1/15/2026,Thursday,2025-2026,2nd Sem,Puto Cheese,5,3,2,12,36
+1/15/2026,Thursday,2025-2026,2nd Sem,Puto Flan,6,6,0,12,72
+1/15/2026,Thursday,2025-2026,2nd Sem,Puto Latik,5,2,3,12,24
+1/15/2026,Thursday,2025-2026,2nd Sem,Rolls,6,6,0,26,156
+1/15/2026,Thursday,2025-2026,2nd Sem,Siomai Rice,10,10,0,45,450
+1/15/2026,Thursday,2025-2026,2nd Sem,Sopas,10,10,0,25,250
+1/15/2026,Thursday,2025-2026,2nd Sem,Special Empanada,5,3,2,60,180
+1/15/2026,Thursday,2025-2026,2nd Sem,Tokneneng,20,6,14,20,120
+1/16/2026,Friday,2025-2026,2nd Sem,Bihon Guisado,6,1,5,25,25
+1/16/2026,Friday,2025-2026,2nd Sem,Camote Cue,10,9,1,20,180
+1/16/2026,Friday,2025-2026,2nd Sem,Hotdog Sandwich,4,2,2,40,80
+1/16/2026,Friday,2025-2026,2nd Sem,Karen Dumplings,25,25,0,7,175
+1/16/2026,Friday,2025-2026,2nd Sem,Karen Japanese Siomai,150,130,20,7,910
+1/16/2026,Friday,2025-2026,2nd Sem,Karen Pork Siomai,175,46,129,6,276
+1/16/2026,Friday,2025-2026,2nd Sem,Kutsinta Yema,5,5,0,12,60
+1/16/2026,Friday,2025-2026,2nd Sem,Maja,10,8,2,15,120
+1/16/2026,Friday,2025-2026,2nd Sem,Palitaw 1's,15,5,10,10,50
+1/16/2026,Friday,2025-2026,2nd Sem,Popcorn,6,6,0,18,108
+1/16/2026,Friday,2025-2026,2nd Sem,Pork Mami,10,10,0,25,250
+1/16/2026,Friday,2025-2026,2nd Sem,Puto Flan,5,5,0,12,60
+1/16/2026,Friday,2025-2026,2nd Sem,Puto Latik,5,4,1,12,48
+1/16/2026,Friday,2025-2026,2nd Sem,Shanghai,20,16,4,12,192
+1/16/2026,Friday,2025-2026,2nd Sem,Siomai Rice,15,15,0,45,675
+1/16/2026,Friday,2025-2026,2nd Sem,Sopas,10,10,0,25,250
+1/16/2026,Friday,2025-2026,2nd Sem,Turon,15,15,0,15,225
+1/16/2026,Friday,2025-2026,2nd Sem,Ube Buchi,10,6,4,10,60
+1/19/2026,Monday,2025-2026,2nd Sem,Baduya,6,1,5,15,15
+1/19/2026,Monday,2025-2026,2nd Sem,Buchi,15,15,0,10,150
+1/19/2026,Monday,2025-2026,2nd Sem,Hotdog Sandwich,6,5,1,40,200
+1/19/2026,Monday,2025-2026,2nd Sem,Karen Pork Siomai,225,225,0,6,1350
+1/19/2026,Monday,2025-2026,2nd Sem,Kutsinta Cheese,5,5,0,12,60
+1/19/2026,Monday,2025-2026,2nd Sem,Kutsinta Yema,5,5,0,12,60
+1/19/2026,Monday,2025-2026,2nd Sem,Puto Cheese,5,5,0,12,60
+1/19/2026,Monday,2025-2026,2nd Sem,Puto Flan,6,4,2,12,48
+1/19/2026,Monday,2025-2026,2nd Sem,Puto Latik,5,2,3,12,24
+1/19/2026,Monday,2025-2026,2nd Sem,Shanghai,20,19,1,12,228
+1/19/2026,Monday,2025-2026,2nd Sem,Spaghetti,10,4,6,25,100
+1/19/2026,Monday,2025-2026,2nd Sem,Tuna Pie,10,3,7,18,54
+1/19/2026,Monday,2025-2026,2nd Sem,Turon,20,18,2,15,270
+1/20/2026,Tuesday,2025-2026,2nd Sem,Baduya,7,7,0,15,105
+1/20/2026,Tuesday,2025-2026,2nd Sem,Camote Cue,10,8,2,20,160
+1/20/2026,Tuesday,2025-2026,2nd Sem,Camote Roll,6,6,0,15,90
+1/20/2026,Tuesday,2025-2026,2nd Sem,Cheese Stick,35,35,0,10,350
+1/20/2026,Tuesday,2025-2026,2nd Sem,Empanada,3,3,0,60,180
+1/20/2026,Tuesday,2025-2026,2nd Sem,Fresh Pancit,10,4,6,20,80
+1/20/2026,Tuesday,2025-2026,2nd Sem,Karen Japanese Siomai,180,180,0,7,1260
+1/20/2026,Tuesday,2025-2026,2nd Sem,Karen Pork Siomai,205,205,0,6,1230
+1/20/2026,Tuesday,2025-2026,2nd Sem,Karen Siopao,5,5,0,31,155
+1/20/2026,Tuesday,2025-2026,2nd Sem,Kutsinta Cheese,6,3,3,12,36
+1/20/2026,Tuesday,2025-2026,2nd Sem,Palitaw,15,14,1,5,70
+1/20/2026,Tuesday,2025-2026,2nd Sem,Puto Cheese,6,4,2,12,48
+1/20/2026,Tuesday,2025-2026,2nd Sem,Puto Latik,5,5,0,12,60
+1/20/2026,Tuesday,2025-2026,2nd Sem,Rolls,5,3,2,26,78
+1/20/2026,Tuesday,2025-2026,2nd Sem,Siomai Rice,15,12,3,45,540
+1/20/2026,Tuesday,2025-2026,2nd Sem,Suman,10,5,5,18,90
+1/20/2026,Tuesday,2025-2026,2nd Sem,Tuna Shanghai,20,20,0,12,240
+1/21/2026,Wednesday,2025-2026,2nd Sem,Banana Cue,10,10,0,20,200
+1/21/2026,Wednesday,2025-2026,2nd Sem,Bihon Guisado,7,7,0,25,175
+1/21/2026,Wednesday,2025-2026,2nd Sem,Camote Roll,8,6,2,15,90
+1/21/2026,Wednesday,2025-2026,2nd Sem,Egg Sandwich,10,10,0,20,200
+1/21/2026,Wednesday,2025-2026,2nd Sem,Empanada,3,3,0,60,180
+1/21/2026,Wednesday,2025-2026,2nd Sem,Fresh Pancit,15,8,7,20,160
+1/21/2026,Wednesday,2025-2026,2nd Sem,Hotdog Sandwich,5,5,0,40,200
+1/21/2026,Wednesday,2025-2026,2nd Sem,Hotdog Stick,25,8,17,15,120
+1/21/2026,Wednesday,2025-2026,2nd Sem,Karen Dumplings,20,20,0,7,140
+1/21/2026,Wednesday,2025-2026,2nd Sem,Karen Japanese Siomai,190,190,0,7,1330
+1/21/2026,Wednesday,2025-2026,2nd Sem,Karen Pork Siomai,200,172,28,6,1032
+1/21/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Cheese,6,6,0,12,72
+1/21/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Yema,6,5,1,12,60
+1/21/2026,Wednesday,2025-2026,2nd Sem,Puto Cheese,5,3,2,12,36
+1/21/2026,Wednesday,2025-2026,2nd Sem,Puto Latik,6,5,1,12,60
+1/21/2026,Wednesday,2025-2026,2nd Sem,Rolls,5,5,0,26,130
+1/21/2026,Wednesday,2025-2026,2nd Sem,Shanghai,20,20,0,12,240
+1/21/2026,Wednesday,2025-2026,2nd Sem,Siomai Rice,15,9,6,45,405
+1/21/2026,Wednesday,2025-2026,2nd Sem,Tokneneng,25,16,9,20,320
+1/21/2026,Wednesday,2025-2026,2nd Sem,Vegetable Lumpia,15,14,1,15,210
+1/22/2026,Thursday,2025-2026,2nd Sem,Banana Balls,10,10,0,20,200
+1/22/2026,Thursday,2025-2026,2nd Sem,Carbonara,10,5,5,25,125
+1/22/2026,Thursday,2025-2026,2nd Sem,Cheese Stick,25,13,12,10,130
+1/22/2026,Thursday,2025-2026,2nd Sem,Empanada,3,2,1,60,120
+1/22/2026,Thursday,2025-2026,2nd Sem,Gluti Roll,15,15,0,20,300
+1/22/2026,Thursday,2025-2026,2nd Sem,Hotdog Sandwich,5,3,2,40,120
+1/22/2026,Thursday,2025-2026,2nd Sem,Karen Japanese Siomai,145,145,0,7,1015
+1/22/2026,Thursday,2025-2026,2nd Sem,Karen Siopao,5,5,0,31,155
+1/22/2026,Thursday,2025-2026,2nd Sem,Kutsinta Cheese,5,1,4,12,12
+1/22/2026,Thursday,2025-2026,2nd Sem,Kutsinta Yema,6,6,0,12,72
+1/22/2026,Thursday,2025-2026,2nd Sem,Palabok,10,10,0,25,250
+1/22/2026,Thursday,2025-2026,2nd Sem,Pork Mami,10,10,0,25,250
+1/22/2026,Thursday,2025-2026,2nd Sem,Puto Cheese,6,2,4,12,24
+1/22/2026,Thursday,2025-2026,2nd Sem,Puto Flan,5,5,0,12,60
+1/22/2026,Thursday,2025-2026,2nd Sem,Puto Latik,5,4,1,12,48
+1/22/2026,Thursday,2025-2026,2nd Sem,Rolls,5,2,3,26,52
+1/22/2026,Thursday,2025-2026,2nd Sem,Siomai Rice,15,14,1,45,630
+1/22/2026,Thursday,2025-2026,2nd Sem,Suman,8,5,3,18,90
+1/22/2026,Thursday,2025-2026,2nd Sem,Tuna Pie,10,10,0,18,180
+1/22/2026,Thursday,2025-2026,2nd Sem,Ukoy Balls,25,13,12,20,260
+1/23/2026,Friday,2025-2026,2nd Sem,Empanada,3,3,0,60,180
+1/23/2026,Friday,2025-2026,2nd Sem,Hotdog Stick,20,9,11,15,135
+1/23/2026,Friday,2025-2026,2nd Sem,Karen Japanese Siomai,130,100,30,7,700
+1/23/2026,Friday,2025-2026,2nd Sem,Karen Pork Siomai,170,136,34,6,816
+1/23/2026,Friday,2025-2026,2nd Sem,Kutsinta Cheese,5,5,0,12,60
+1/23/2026,Friday,2025-2026,2nd Sem,Kutsinta Yema,4,4,0,12,48
+1/23/2026,Friday,2025-2026,2nd Sem,Pork Lomi,10,5,5,25,125
+1/23/2026,Friday,2025-2026,2nd Sem,Puto Cheese,4,1,3,12,12
+1/23/2026,Friday,2025-2026,2nd Sem,Puto Flan,5,4,1,12,48
+1/23/2026,Friday,2025-2026,2nd Sem,Puto Latik,5,2,3,12,24
+1/23/2026,Friday,2025-2026,2nd Sem,Rolls,4,1,3,26,26
+1/23/2026,Friday,2025-2026,2nd Sem,Siomai Rice,15,15,0,45,675
+1/23/2026,Friday,2025-2026,2nd Sem,Spaghetti,10,9,1,25,225
+1/23/2026,Friday,2025-2026,2nd Sem,Tuna Pie,10,5,5,18,90
+1/23/2026,Friday,2025-2026,2nd Sem,Ube Buchi,10,6,4,10,60
+1/23/2026,Friday,2025-2026,2nd Sem,Ukoy Balls,20,20,0,20,400
+1/26/2026,Monday,2025-2026,2nd Sem,BBQ,15,15,0,20,300
+1/26/2026,Monday,2025-2026,2nd Sem,Baduya,7,5,2,15,75
+1/26/2026,Monday,2025-2026,2nd Sem,Banana Balls,10,4,6,20,80
+1/26/2026,Monday,2025-2026,2nd Sem,Bihon Guisado,7,7,0,25,175
+1/26/2026,Monday,2025-2026,2nd Sem,Camote Roll,7,7,0,15,105
+1/26/2026,Monday,2025-2026,2nd Sem,Corndog,15,6,9,30,180
+1/26/2026,Monday,2025-2026,2nd Sem,Empanada,4,4,0,60,240
+1/26/2026,Monday,2025-2026,2nd Sem,Hotdog Sandwich,6,6,0,40,240
+1/26/2026,Monday,2025-2026,2nd Sem,Hotdog Stick,20,4,16,15,60
+1/26/2026,Monday,2025-2026,2nd Sem,Karen Pork Siomai,200,161,39,6,966
+1/26/2026,Monday,2025-2026,2nd Sem,Kutsinta Cheese,6,4,2,12,48
+1/26/2026,Monday,2025-2026,2nd Sem,Kutsinta Yema,6,3,3,12,36
+1/26/2026,Monday,2025-2026,2nd Sem,Rolls,6,6,0,26,156
+1/26/2026,Monday,2025-2026,2nd Sem,Shanghai,25,25,0,12,300
+1/26/2026,Monday,2025-2026,2nd Sem,Siomai Rice,15,15,0,45,675
+1/26/2026,Monday,2025-2026,2nd Sem,Tokneneng,20,15,5,20,300
+1/26/2026,Monday,2025-2026,2nd Sem,Tuna Pie,10,6,4,18,108
+1/26/2026,Monday,2025-2026,2nd Sem,Turon,25,25,0,15,375
+1/27/2026,Tuesday,2025-2026,2nd Sem,Banana Cue,10,7,3,20,140
+1/27/2026,Tuesday,2025-2026,2nd Sem,Boiled Banana,15,15,0,6,90
+1/27/2026,Tuesday,2025-2026,2nd Sem,Gluti Roll,15,9,6,20,180
+1/27/2026,Tuesday,2025-2026,2nd Sem,Hamburger,10,10,0,45,450
+1/27/2026,Tuesday,2025-2026,2nd Sem,Hotdog Sandwich,5,4,1,40,160
+1/27/2026,Tuesday,2025-2026,2nd Sem,Karen Dumplings,20,20,0,7,140
+1/27/2026,Tuesday,2025-2026,2nd Sem,Karen Japanese Siomai,150,31,119,7,217
+1/27/2026,Tuesday,2025-2026,2nd Sem,Karen Pork Siomai,210,53,157,6,318
+1/27/2026,Tuesday,2025-2026,2nd Sem,Kutsinta Cheese,6,6,0,12,72
+1/27/2026,Tuesday,2025-2026,2nd Sem,Kutsinta Yema,5,5,0,12,60
+1/27/2026,Tuesday,2025-2026,2nd Sem,Palabok,15,15,0,25,375
+1/27/2026,Tuesday,2025-2026,2nd Sem,Pancit Canton,10,10,0,30,300
+1/27/2026,Tuesday,2025-2026,2nd Sem,Pork Mami,10,4,6,25,100
+1/27/2026,Tuesday,2025-2026,2nd Sem,Puto Cheese,6,4,2,12,48
+1/27/2026,Tuesday,2025-2026,2nd Sem,Puto Flan,5,2,3,12,24
+1/27/2026,Tuesday,2025-2026,2nd Sem,Shanghai,20,20,0,12,240
+1/27/2026,Tuesday,2025-2026,2nd Sem,Siomai Rice,15,15,0,45,675
+1/28/2026,Wednesday,2025-2026,2nd Sem,BBQ,20,20,0,20,400
+1/28/2026,Wednesday,2025-2026,2nd Sem,Camote Roll,10,9,1,15,135
+1/28/2026,Wednesday,2025-2026,2nd Sem,Cheese Stick,40,40,0,10,400
+1/28/2026,Wednesday,2025-2026,2nd Sem,Corndog,15,15,0,30,450
+1/28/2026,Wednesday,2025-2026,2nd Sem,Egg Sandwich,10,10,0,20,200
+1/28/2026,Wednesday,2025-2026,2nd Sem,Hotdog Sandwich,7,7,0,40,280
+1/28/2026,Wednesday,2025-2026,2nd Sem,Hotdog Stick,25,14,11,15,210
+1/28/2026,Wednesday,2025-2026,2nd Sem,Karen Dumplings,40,26,14,7,182
+1/28/2026,Wednesday,2025-2026,2nd Sem,Karen Japanese Siomai,175,175,0,7,1225
+1/28/2026,Wednesday,2025-2026,2nd Sem,Karen Pork Siomai,235,235,0,6,1410
+1/28/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Cheese,6,6,0,12,72
+1/28/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Yema,6,6,0,12,72
+1/28/2026,Wednesday,2025-2026,2nd Sem,Palitaw 1's,25,10,15,10,100
+1/28/2026,Wednesday,2025-2026,2nd Sem,Pork Lomi,15,15,0,25,375
+1/28/2026,Wednesday,2025-2026,2nd Sem,Pork Mami,15,15,0,25,375
+1/28/2026,Wednesday,2025-2026,2nd Sem,Puto Cheese,8,8,0,12,96
+1/28/2026,Wednesday,2025-2026,2nd Sem,Puto Flan,7,7,0,12,84
+1/28/2026,Wednesday,2025-2026,2nd Sem,Puto Latik,6,6,0,12,72
+1/28/2026,Wednesday,2025-2026,2nd Sem,Siomai Rice,20,20,0,45,900
+1/28/2026,Wednesday,2025-2026,2nd Sem,Tinudok,20,20,0,10,200
+1/28/2026,Wednesday,2025-2026,2nd Sem,Tuna Pie,15,15,0,18,270
+1/28/2026,Wednesday,2025-2026,2nd Sem,Ube Buchi,20,20,0,10,200
+1/28/2026,Wednesday,2025-2026,2nd Sem,Ukoy Balls,25,25,0,20,500
+1/29/2026,Thursday,2025-2026,2nd Sem,Arroz Caldo,6,1,5,20,20
+1/29/2026,Thursday,2025-2026,2nd Sem,Banana Balls,10,7,3,20,140
+1/29/2026,Thursday,2025-2026,2nd Sem,Buchi,20,5,15,10,50
+1/29/2026,Thursday,2025-2026,2nd Sem,Camote Roll,7,5,2,15,75
+1/29/2026,Thursday,2025-2026,2nd Sem,Carbonara,10,1,9,25,25
+1/29/2026,Thursday,2025-2026,2nd Sem,Cheese Stick,25,25,0,10,250
+1/29/2026,Thursday,2025-2026,2nd Sem,Karen Japanese Siomai,120,64,56,7,448
+1/29/2026,Thursday,2025-2026,2nd Sem,Karen Siopao,4,4,0,31,124
+1/29/2026,Thursday,2025-2026,2nd Sem,Kutsinta Cheese,5,3,2,12,36
+1/29/2026,Thursday,2025-2026,2nd Sem,Kutsinta Yema,6,6,0,12,72
+1/29/2026,Thursday,2025-2026,2nd Sem,Lomi,10,9,1,25,225
+1/29/2026,Thursday,2025-2026,2nd Sem,Palabok,15,4,11,25,100
+1/29/2026,Thursday,2025-2026,2nd Sem,Puto Cheese,4,4,0,12,48
+1/29/2026,Thursday,2025-2026,2nd Sem,Puto Flan,5,5,0,12,60
+1/29/2026,Thursday,2025-2026,2nd Sem,Puto Latik,5,5,0,12,60
+1/29/2026,Thursday,2025-2026,2nd Sem,Siomai Rice,15,15,0,45,675
+1/29/2026,Thursday,2025-2026,2nd Sem,Sopas,10,10,0,25,250
+1/29/2026,Thursday,2025-2026,2nd Sem,Special Empanada,4,4,0,60,240
+1/29/2026,Thursday,2025-2026,2nd Sem,Tuna Shanghai,15,15,0,12,180
+1/29/2026,Thursday,2025-2026,2nd Sem,Turon,20,6,14,15,90
+1/30/2026,Friday,2025-2026,2nd Sem,Baduya,10,10,0,15,150
+1/30/2026,Friday,2025-2026,2nd Sem,Banana Cue,10,10,0,20,200
+1/30/2026,Friday,2025-2026,2nd Sem,Bihon Guisado,6,4,2,25,100
+1/30/2026,Friday,2025-2026,2nd Sem,Camote Roll,7,7,0,15,105
+1/30/2026,Friday,2025-2026,2nd Sem,Cheese Stick,25,25,0,10,250
+1/30/2026,Friday,2025-2026,2nd Sem,Fresh Pancit,10,9,1,20,180
+1/30/2026,Friday,2025-2026,2nd Sem,Hotdog Stick,15,5,10,15,75
+1/30/2026,Friday,2025-2026,2nd Sem,Karen Japanese Siomai,135,82,53,7,574
+1/30/2026,Friday,2025-2026,2nd Sem,Karen Pork Siomai,185,23,162,6,138
+1/30/2026,Friday,2025-2026,2nd Sem,Karen Siopao,4,4,0,31,124
+1/30/2026,Friday,2025-2026,2nd Sem,Lomi,8,8,0,25,200
+1/30/2026,Friday,2025-2026,2nd Sem,Meatballs,15,15,0,20,300
+1/30/2026,Friday,2025-2026,2nd Sem,Pork Lomi,10,9,1,25,225
+1/30/2026,Friday,2025-2026,2nd Sem,Pork Mami,8,4,4,25,100
+1/30/2026,Friday,2025-2026,2nd Sem,Puto Cheese,4,0,4,12,0
+1/30/2026,Friday,2025-2026,2nd Sem,Puto Flan,4,3,1,12,36
+1/30/2026,Friday,2025-2026,2nd Sem,Puto Latik,5,5,0,12,60
+1/30/2026,Friday,2025-2026,2nd Sem,Rolls,5,1,4,26,26
+1/30/2026,Friday,2025-2026,2nd Sem,Siomai Rice,15,15,0,45,675
+1/30/2026,Friday,2025-2026,2nd Sem,Suman,6,6,0,18,108
+1/30/2026,Friday,2025-2026,2nd Sem,Tuna Pie,10,4,6,18,72
+1/30/2026,Friday,2025-2026,2nd Sem,Turon,20,20,0,15,300
+2/2/2026,Monday,2025-2026,2nd Sem,Arroz Caldo,4,3,1,20,60
+2/2/2026,Monday,2025-2026,2nd Sem,Banana Cue,10,10,0,20,200
+2/2/2026,Monday,2025-2026,2nd Sem,Buchi,15,15,0,10,150
+2/2/2026,Monday,2025-2026,2nd Sem,Buchi Peanut,15,15,0,10,150
+2/2/2026,Monday,2025-2026,2nd Sem,Cheese Stick,30,15,15,10,150
+2/2/2026,Monday,2025-2026,2nd Sem,Chicken Mami,10,10,0,25,250
+2/2/2026,Monday,2025-2026,2nd Sem,Empanada,3,1,2,60,60
+2/2/2026,Monday,2025-2026,2nd Sem,Hotdog Stick,15,10,5,15,150
+2/2/2026,Monday,2025-2026,2nd Sem,Karen Dumplings,30,27,3,7,189
+2/2/2026,Monday,2025-2026,2nd Sem,Karen Pork Siomai,165,165,0,6,990
+2/2/2026,Monday,2025-2026,2nd Sem,Kutsinta Yema,5,5,0,12,60
+2/2/2026,Monday,2025-2026,2nd Sem,Maja,15,8,7,15,120
+2/2/2026,Monday,2025-2026,2nd Sem,Pork Mami,10,7,3,25,175
+2/2/2026,Monday,2025-2026,2nd Sem,Puto Cheese,5,2,3,12,24
+2/2/2026,Monday,2025-2026,2nd Sem,Puto Flan,5,5,0,12,60
+2/2/2026,Monday,2025-2026,2nd Sem,Puto Latik,5,1,4,12,12
+2/2/2026,Monday,2025-2026,2nd Sem,Shanghai,20,20,0,12,240
+2/2/2026,Monday,2025-2026,2nd Sem,Sopas,10,10,0,25,250
+2/2/2026,Monday,2025-2026,2nd Sem,Tokneneng,20,20,0,20,400
+2/2/2026,Monday,2025-2026,2nd Sem,Tuna Pie,10,7,3,18,126
+2/2/2026,Monday,2025-2026,2nd Sem,Turon,20,20,0,15,300
+2/2/2026,Monday,2025-2026,2nd Sem,Vegetable Lumpia,15,14,1,15,210
+2/3/2026,Tuesday,2025-2026,2nd Sem,BBQ,15,15,0,20,300
+2/3/2026,Tuesday,2025-2026,2nd Sem,Baduya,10,9,1,15,135
+2/3/2026,Tuesday,2025-2026,2nd Sem,Camote Cue,10,9,1,20,180
+2/3/2026,Tuesday,2025-2026,2nd Sem,Cater Bihon Canton,10,9,1,30,270
+2/3/2026,Tuesday,2025-2026,2nd Sem,Corndog,10,6,4,30,180
+2/3/2026,Tuesday,2025-2026,2nd Sem,Egg Sandwich,10,8,2,20,160
+2/3/2026,Tuesday,2025-2026,2nd Sem,Hotdog Sandwich,5,5,0,40,200
+2/3/2026,Tuesday,2025-2026,2nd Sem,Hotdog Stick,15,15,0,15,225
+2/3/2026,Tuesday,2025-2026,2nd Sem,Karen Japanese Siomai,150,150,0,7,1050
+2/3/2026,Tuesday,2025-2026,2nd Sem,Karen Pork Siomai,215,94,121,6,564
+2/3/2026,Tuesday,2025-2026,2nd Sem,Karen Siopao,5,5,0,31,155
+2/3/2026,Tuesday,2025-2026,2nd Sem,Kutsinta Cheese,6,6,0,12,72
+2/3/2026,Tuesday,2025-2026,2nd Sem,Kutsinta Yema,5,5,0,12,60
+2/3/2026,Tuesday,2025-2026,2nd Sem,Puto Cheese,6,1,5,12,12
+2/3/2026,Tuesday,2025-2026,2nd Sem,Puto Flan,5,4,1,12,48
+2/3/2026,Tuesday,2025-2026,2nd Sem,Puto Latik,5,5,0,12,60
+2/3/2026,Tuesday,2025-2026,2nd Sem,Shanghai,25,25,0,12,300
+2/3/2026,Tuesday,2025-2026,2nd Sem,Siomai Rice,15,15,0,45,675
+2/3/2026,Tuesday,2025-2026,2nd Sem,Spaghetti,10,9,1,25,225
+2/3/2026,Tuesday,2025-2026,2nd Sem,Suman,10,6,4,18,108
+2/3/2026,Tuesday,2025-2026,2nd Sem,Tinudok,15,7,8,10,70
+2/3/2026,Tuesday,2025-2026,2nd Sem,Tokneneng,20,13,7,20,260
+2/3/2026,Tuesday,2025-2026,2nd Sem,Turon,20,15,5,15,225
+2/3/2026,Tuesday,2025-2026,2nd Sem,Ukoy Balls,20,5,15,20,100
+2/4/2026,Wednesday,2025-2026,2nd Sem,BBQ,15,14,1,20,280
+2/4/2026,Wednesday,2025-2026,2nd Sem,Baduya,7,5,2,15,75
+2/4/2026,Wednesday,2025-2026,2nd Sem,Boiled Banana,15,8,7,6,48
+2/4/2026,Wednesday,2025-2026,2nd Sem,Buchi,15,15,0,10,150
+2/4/2026,Wednesday,2025-2026,2nd Sem,Cheese Stick,20,20,0,10,200
+2/4/2026,Wednesday,2025-2026,2nd Sem,Egg Sandwich,10,2,8,20,40
+2/4/2026,Wednesday,2025-2026,2nd Sem,Fresh Pancit,10,3,7,20,60
+2/4/2026,Wednesday,2025-2026,2nd Sem,Hotdog Sandwich,4,4,0,40,160
+2/4/2026,Wednesday,2025-2026,2nd Sem,Karen Japanese Siomai,120,56,64,7,392
+2/4/2026,Wednesday,2025-2026,2nd Sem,Karen Pork Siomai,185,144,41,6,864
+2/4/2026,Wednesday,2025-2026,2nd Sem,Karen Siopao,5,5,0,31,155
+2/4/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Cheese,6,6,0,12,72
+2/4/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Yema,5,5,0,12,60
+2/4/2026,Wednesday,2025-2026,2nd Sem,Meatballs,10,10,0,20,200
+2/4/2026,Wednesday,2025-2026,2nd Sem,Puto Cheese,10,6,4,12,72
+2/4/2026,Wednesday,2025-2026,2nd Sem,Puto Flan,6,3,3,12,36
+2/4/2026,Wednesday,2025-2026,2nd Sem,Puto Latik,7,6,1,12,72
+2/4/2026,Wednesday,2025-2026,2nd Sem,Sopas,10,5,5,25,125
+2/4/2026,Wednesday,2025-2026,2nd Sem,Special Empanada,5,3,2,60,180
+2/4/2026,Wednesday,2025-2026,2nd Sem,Tokneneng,25,25,0,20,500
+2/4/2026,Wednesday,2025-2026,2nd Sem,Tuna Pie,10,10,0,18,180
+2/4/2026,Wednesday,2025-2026,2nd Sem,Turon,20,19,1,15,285
+2/5/2026,Thursday,2025-2026,2nd Sem,Buchi,15,15,0,10,150
+2/5/2026,Thursday,2025-2026,2nd Sem,Karen Dumplings,25,25,0,7,175
+2/5/2026,Thursday,2025-2026,2nd Sem,Karen Japanese Siomai,150,150,0,7,1050
+2/5/2026,Thursday,2025-2026,2nd Sem,Karen Pork Siomai,150,90,60,6,540
+2/5/2026,Thursday,2025-2026,2nd Sem,Kutsinta Cheese,5,5,0,12,60
+2/5/2026,Thursday,2025-2026,2nd Sem,Kutsinta Yema,5,5,0,12,60
+2/5/2026,Thursday,2025-2026,2nd Sem,Maja,10,3,7,15,45
+2/5/2026,Thursday,2025-2026,2nd Sem,Palabok,10,8,2,25,200
+2/5/2026,Thursday,2025-2026,2nd Sem,Pancit Canton,10,4,6,30,120
+2/5/2026,Thursday,2025-2026,2nd Sem,Popcorn,7,2,5,18,36
+2/5/2026,Thursday,2025-2026,2nd Sem,Puto Cheese,5,5,0,12,60
+2/5/2026,Thursday,2025-2026,2nd Sem,Puto Flan,4,2,2,12,24
+2/5/2026,Thursday,2025-2026,2nd Sem,Puto Latik,5,5,0,12,60
+2/5/2026,Thursday,2025-2026,2nd Sem,Rolls,5,2,3,26,52
+2/5/2026,Thursday,2025-2026,2nd Sem,Siomai Rice,20,14,6,45,630
+2/6/2026,Friday,2025-2026,2nd Sem,BBQ,15,13,2,20,260
+2/6/2026,Friday,2025-2026,2nd Sem,Banana Cue,10,10,0,20,200
+2/6/2026,Friday,2025-2026,2nd Sem,Camote Fries,5,5,0,21,105
+2/6/2026,Friday,2025-2026,2nd Sem,Cheese Stick,35,28,7,10,280
+2/6/2026,Friday,2025-2026,2nd Sem,Empanada,2,2,0,60,120
+2/6/2026,Friday,2025-2026,2nd Sem,Hotdog Sandwich,5,2,3,40,80
+2/6/2026,Friday,2025-2026,2nd Sem,Hotdog Stick,20,4,16,15,60
+2/6/2026,Friday,2025-2026,2nd Sem,Karen Pork Siomai,160,158,2,6,948
+2/6/2026,Friday,2025-2026,2nd Sem,Karen Siopao,5,3,2,31,93
+2/6/2026,Friday,2025-2026,2nd Sem,Kutsinta Cheese,5,3,2,12,36
+2/6/2026,Friday,2025-2026,2nd Sem,Kutsinta Yema,4,4,0,12,48
+2/6/2026,Friday,2025-2026,2nd Sem,Lomi,10,4,6,25,100
+2/6/2026,Friday,2025-2026,2nd Sem,Palabok,10,5,5,25,125
+2/6/2026,Friday,2025-2026,2nd Sem,Pork Mami,10,10,0,25,250
+2/6/2026,Friday,2025-2026,2nd Sem,Puto Cheese,4,4,0,12,48
+2/6/2026,Friday,2025-2026,2nd Sem,Puto Flan,5,4,1,12,48
+2/6/2026,Friday,2025-2026,2nd Sem,Puto Latik,5,5,0,12,60
+2/6/2026,Friday,2025-2026,2nd Sem,Siomai Rice,10,8,2,45,360
+2/6/2026,Friday,2025-2026,2nd Sem,Sopas,10,1,9,25,25
+2/6/2026,Friday,2025-2026,2nd Sem,Spaghetti,8,7,1,25,175
+2/6/2026,Friday,2025-2026,2nd Sem,Tuna Shanghai,15,15,0,12,180
+2/6/2026,Friday,2025-2026,2nd Sem,Turon,15,15,0,15,225
+2/6/2026,Friday,2025-2026,2nd Sem,Ukoy Balls,15,12,3,20,240
+2/6/2026,Friday,2025-2026,2nd Sem,Vegetable Lumpia,15,13,2,15,195
+2/9/2026,Monday,2025-2026,2nd Sem,Baduya,10,9,1,15,135
+2/9/2026,Monday,2025-2026,2nd Sem,Buchi,20,20,0,10,200
+2/9/2026,Monday,2025-2026,2nd Sem,Karen Japanese Siomai,125,113,12,7,791
+2/9/2026,Monday,2025-2026,2nd Sem,Karen Pork Siomai,145,145,0,6,870
+2/9/2026,Monday,2025-2026,2nd Sem,Kutsinta Cheese,5,4,1,12,48
+2/9/2026,Monday,2025-2026,2nd Sem,Kutsinta Yema,5,5,0,12,60
+2/9/2026,Monday,2025-2026,2nd Sem,Meatballs,15,9,6,20,180
+2/9/2026,Monday,2025-2026,2nd Sem,Palitaw,10,10,0,5,50
+2/9/2026,Monday,2025-2026,2nd Sem,Puto Cheese,4,4,0,12,48
+2/9/2026,Monday,2025-2026,2nd Sem,Puto Flan,6,4,2,12,48
+2/9/2026,Monday,2025-2026,2nd Sem,Puto Latik,5,5,0,12,60
+2/9/2026,Monday,2025-2026,2nd Sem,Siomai Rice,15,14,1,45,630
+2/9/2026,Monday,2025-2026,2nd Sem,Tinudok,15,15,0,10,150
+2/9/2026,Monday,2025-2026,2nd Sem,Tokneneng,20,14,6,20,280
+2/9/2026,Monday,2025-2026,2nd Sem,Tuna Pie,10,9,1,18,162
+2/9/2026,Monday,2025-2026,2nd Sem,Turon,15,15,0,15,225
+2/10/2026,Tuesday,2025-2026,2nd Sem,Bihon Guisado,6,6,0,25,150
+2/10/2026,Tuesday,2025-2026,2nd Sem,Boiled Banana,20,17,3,6,102
+2/10/2026,Tuesday,2025-2026,2nd Sem,Camote Cue,10,10,0,20,200
+2/10/2026,Tuesday,2025-2026,2nd Sem,Camote Roll,8,6,2,15,90
+2/10/2026,Tuesday,2025-2026,2nd Sem,Cheese Stick,30,30,0,10,300
+2/10/2026,Tuesday,2025-2026,2nd Sem,Empanada,3,3,0,60,180
+2/10/2026,Tuesday,2025-2026,2nd Sem,Karen Japanese Siomai,160,160,0,7,1120
+2/10/2026,Tuesday,2025-2026,2nd Sem,Karen Pork Siomai,165,150,15,6,900
+2/10/2026,Tuesday,2025-2026,2nd Sem,Lumpianada,8,8,0,35,280
+2/10/2026,Tuesday,2025-2026,2nd Sem,Pork Lomi,10,10,0,25,250
+2/10/2026,Tuesday,2025-2026,2nd Sem,Puto Cheese,5,5,0,12,60
+2/10/2026,Tuesday,2025-2026,2nd Sem,Puto Flan,6,6,0,12,72
+2/10/2026,Tuesday,2025-2026,2nd Sem,Rolls,8,5,3,26,130
+2/10/2026,Tuesday,2025-2026,2nd Sem,Siomai Rice,15,15,0,45,675
+2/10/2026,Tuesday,2025-2026,2nd Sem,Vegetable Lumpia,15,15,0,15,225
+2/11/2026,Wednesday,2025-2026,2nd Sem,Banana Balls,10,10,0,20,200
+2/11/2026,Wednesday,2025-2026,2nd Sem,Beef Mami,10,10,0,30,300
+2/11/2026,Wednesday,2025-2026,2nd Sem,Bihon Guisado,6,3,3,25,75
+2/11/2026,Wednesday,2025-2026,2nd Sem,Cheese Stick,30,30,0,10,300
+2/11/2026,Wednesday,2025-2026,2nd Sem,Chicken Mami,10,10,0,25,250
+2/11/2026,Wednesday,2025-2026,2nd Sem,Corndog,10,8,2,30,240
+2/11/2026,Wednesday,2025-2026,2nd Sem,Gluti Roll,15,15,0,20,300
+2/11/2026,Wednesday,2025-2026,2nd Sem,Karen Japanese Siomai,125,34,91,7,238
+2/11/2026,Wednesday,2025-2026,2nd Sem,Karen Pork Siomai,190,176,14,6,1056
+2/11/2026,Wednesday,2025-2026,2nd Sem,Karen Siopao,5,5,0,31,155
+2/11/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Yema,5,5,0,12,60
+2/11/2026,Wednesday,2025-2026,2nd Sem,Lumpianada,10,7,3,35,245
+2/11/2026,Wednesday,2025-2026,2nd Sem,Pancit Canton,10,9,1,30,270
+2/11/2026,Wednesday,2025-2026,2nd Sem,Puto Cheese,5,4,1,12,48
+2/11/2026,Wednesday,2025-2026,2nd Sem,Puto Latik,5,5,0,12,60
+2/11/2026,Wednesday,2025-2026,2nd Sem,Sopas,10,10,0,25,250
+2/11/2026,Wednesday,2025-2026,2nd Sem,Tokneneng,20,20,0,20,400
+2/11/2026,Wednesday,2025-2026,2nd Sem,Tuna Pie,10,5,5,18,90
+2/11/2026,Wednesday,2025-2026,2nd Sem,Ukoy Balls,20,20,0,20,400
+2/11/2026,Wednesday,2025-2026,2nd Sem,Vegetable Lumpia,15,12,3,15,180
+2/12/2026,Thursday,2025-2026,2nd Sem,BBQ,15,14,1,20,280
+2/12/2026,Thursday,2025-2026,2nd Sem,Boiled Banana,15,7,8,6,42
+2/12/2026,Thursday,2025-2026,2nd Sem,Cheese Stick,35,22,13,10,220
+2/12/2026,Thursday,2025-2026,2nd Sem,Chicken Mami,10,10,0,25,250
+2/12/2026,Thursday,2025-2026,2nd Sem,Egg Sandwich,10,4,6,20,80
+2/12/2026,Thursday,2025-2026,2nd Sem,Empanada,3,3,0,60,180
+2/12/2026,Thursday,2025-2026,2nd Sem,Fresh Pancit,10,10,0,20,200
+2/12/2026,Thursday,2025-2026,2nd Sem,Hotdog Stick,20,14,6,15,210
+2/12/2026,Thursday,2025-2026,2nd Sem,Karen Dumplings,25,13,12,7,91
+2/12/2026,Thursday,2025-2026,2nd Sem,Karen Pork Siomai,170,29,141,6,174
+2/12/2026,Thursday,2025-2026,2nd Sem,Kutsinta Cheese,4,4,0,12,48
+2/12/2026,Thursday,2025-2026,2nd Sem,Kutsinta Yema,5,5,0,12,60
+2/12/2026,Thursday,2025-2026,2nd Sem,Pork Mami,10,5,5,25,125
+2/12/2026,Thursday,2025-2026,2nd Sem,Puto Cheese,6,5,1,12,60
+2/12/2026,Thursday,2025-2026,2nd Sem,Puto Flan,5,3,2,12,36
+2/12/2026,Thursday,2025-2026,2nd Sem,Puto Latik,5,2,3,12,24
+2/12/2026,Thursday,2025-2026,2nd Sem,Siomai Rice,10,10,0,45,450
+2/12/2026,Thursday,2025-2026,2nd Sem,Ukoy Balls,20,20,0,20,400
+2/13/2026,Friday,2025-2026,2nd Sem,BBQ,10,10,0,20,200
+2/13/2026,Friday,2025-2026,2nd Sem,Banana Cue,10,10,0,20,200
+2/13/2026,Friday,2025-2026,2nd Sem,Cheese Stick,25,9,16,10,90
+2/13/2026,Friday,2025-2026,2nd Sem,Chicken Mami,10,10,0,25,250
+2/13/2026,Friday,2025-2026,2nd Sem,Empanada,3,0,3,60,0
+2/13/2026,Friday,2025-2026,2nd Sem,Hotdog Sandwich,5,3,2,40,120
+2/13/2026,Friday,2025-2026,2nd Sem,Kutsinta Cheese,4,4,0,12,48
+2/13/2026,Friday,2025-2026,2nd Sem,Kutsinta Yema,4,4,0,12,48
+2/13/2026,Friday,2025-2026,2nd Sem,Palitaw 1's,10,10,0,10,100
+2/13/2026,Friday,2025-2026,2nd Sem,Pork Lomi,8,7,1,25,175
+2/13/2026,Friday,2025-2026,2nd Sem,Puto Cheese,5,1,4,12,12
+2/13/2026,Friday,2025-2026,2nd Sem,Puto Flan,4,2,2,12,24
+2/13/2026,Friday,2025-2026,2nd Sem,Puto Latik,6,0,6,12,0
+2/13/2026,Friday,2025-2026,2nd Sem,Rolls,5,5,0,26,130
+2/13/2026,Friday,2025-2026,2nd Sem,Siomai Rice,15,15,0,45,675
+2/13/2026,Friday,2025-2026,2nd Sem,Tinudok,10,6,4,10,60
+2/13/2026,Friday,2025-2026,2nd Sem,Tuna Pie,8,8,0,18,144
+2/13/2026,Friday,2025-2026,2nd Sem,Ukoy Balls,15,15,0,20,300
+2/16/2026,Monday,2025-2026,2nd Sem,Banana Cue,10,10,0,20,200
+2/16/2026,Monday,2025-2026,2nd Sem,Camote Roll,7,5,2,15,75
+2/16/2026,Monday,2025-2026,2nd Sem,Cheese Stick,35,23,12,10,230
+2/16/2026,Monday,2025-2026,2nd Sem,Chicken Mami,10,10,0,25,250
+2/16/2026,Monday,2025-2026,2nd Sem,Empanada,3,3,0,60,180
+2/16/2026,Monday,2025-2026,2nd Sem,Hotdog Sandwich,5,5,0,40,200
+2/16/2026,Monday,2025-2026,2nd Sem,Hotdog Stick,20,11,9,15,165
+2/16/2026,Monday,2025-2026,2nd Sem,Karen Dumplings,20,20,0,7,140
+2/16/2026,Monday,2025-2026,2nd Sem,Karen Japanese Siomai,160,111,49,7,777
+2/16/2026,Monday,2025-2026,2nd Sem,Karen Pork Siomai,150,66,84,6,396
+2/16/2026,Monday,2025-2026,2nd Sem,Kutsinta Cheese,6,5,1,12,60
+2/16/2026,Monday,2025-2026,2nd Sem,Kutsinta Yema,5,5,0,12,60
+2/16/2026,Monday,2025-2026,2nd Sem,Palitaw,15,14,1,5,70
+2/16/2026,Monday,2025-2026,2nd Sem,Pork Lomi,10,10,0,25,250
+2/16/2026,Monday,2025-2026,2nd Sem,Puto Cheese,5,5,0,12,60
+2/16/2026,Monday,2025-2026,2nd Sem,Puto Flan,5,5,0,12,60
+2/16/2026,Monday,2025-2026,2nd Sem,Puto Latik,5,5,0,12,60
+2/16/2026,Monday,2025-2026,2nd Sem,Tinudok,15,15,0,10,150
+2/16/2026,Monday,2025-2026,2nd Sem,Tokneneng,20,20,0,20,400
+2/16/2026,Monday,2025-2026,2nd Sem,Turon,25,16,9,15,240
+2/18/2026,Wednesday,2025-2026,2nd Sem,Baduya,8,7,1,15,105
+2/18/2026,Wednesday,2025-2026,2nd Sem,Camote Cue,10,8,2,20,160
+2/18/2026,Wednesday,2025-2026,2nd Sem,Empanada,3,3,0,60,180
+2/18/2026,Wednesday,2025-2026,2nd Sem,Hotdog Stick,25,9,16,15,135
+2/18/2026,Wednesday,2025-2026,2nd Sem,Karen Japanese Siomai,150,99,51,7,693
+2/18/2026,Wednesday,2025-2026,2nd Sem,Karen Pork Siomai,160,108,52,6,648
+2/18/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Cheese,6,6,0,12,72
+2/18/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Yema,5,4,1,12,48
+2/18/2026,Wednesday,2025-2026,2nd Sem,Lomi,10,6,4,25,150
+2/18/2026,Wednesday,2025-2026,2nd Sem,Palabok,10,6,4,25,150
+2/18/2026,Wednesday,2025-2026,2nd Sem,Palitaw,10,8,2,5,40
+2/18/2026,Wednesday,2025-2026,2nd Sem,Palitaw 1's,15,7,8,10,70
+2/18/2026,Wednesday,2025-2026,2nd Sem,Pork Mami,10,3,7,25,75
+2/18/2026,Wednesday,2025-2026,2nd Sem,Puto Cheese,5,5,0,12,60
+2/18/2026,Wednesday,2025-2026,2nd Sem,Puto Flan,5,4,1,12,48
+2/18/2026,Wednesday,2025-2026,2nd Sem,Puto Latik,4,4,0,12,48
+2/18/2026,Wednesday,2025-2026,2nd Sem,Shanghai,20,20,0,12,240
+2/18/2026,Wednesday,2025-2026,2nd Sem,Sopas,10,2,8,25,50
+2/18/2026,Wednesday,2025-2026,2nd Sem,Spaghetti,10,9,1,25,225
+2/18/2026,Wednesday,2025-2026,2nd Sem,Tokneneng,20,18,2,20,360
+2/18/2026,Wednesday,2025-2026,2nd Sem,Ukoy Balls,20,13,7,20,260
+2/18/2026,Wednesday,2025-2026,2nd Sem,Vegetable Lumpia,15,15,0,15,225
+2/19/2026,Thursday,2025-2026,2nd Sem,Banana Balls,10,1,9,20,20
+2/19/2026,Thursday,2025-2026,2nd Sem,Banana Cue,10,1,9,20,20
+2/19/2026,Thursday,2025-2026,2nd Sem,Boiled Banana,15,7,8,6,42
+2/19/2026,Thursday,2025-2026,2nd Sem,Buchi,20,12,8,10,120
+2/19/2026,Thursday,2025-2026,2nd Sem,Carbonara,10,2,8,25,50
+2/19/2026,Thursday,2025-2026,2nd Sem,Cheese Stick,30,30,0,10,300
+2/19/2026,Thursday,2025-2026,2nd Sem,Chicken Pie,10,9,1,18,162
+2/19/2026,Thursday,2025-2026,2nd Sem,Empanada,3,3,0,60,180
+2/19/2026,Thursday,2025-2026,2nd Sem,Fresh Pancit,10,9,1,20,180
+2/19/2026,Thursday,2025-2026,2nd Sem,Gluti Roll,15,5,10,20,100
+2/19/2026,Thursday,2025-2026,2nd Sem,Hamburger,10,8,2,45,360
+2/19/2026,Thursday,2025-2026,2nd Sem,Hotdog Sandwich,5,5,0,40,200
+2/19/2026,Thursday,2025-2026,2nd Sem,Hotdog Stick,25,10,15,15,150
+2/19/2026,Thursday,2025-2026,2nd Sem,Karen Dumplings,20,20,0,7,140
+2/19/2026,Thursday,2025-2026,2nd Sem,Karen Japanese Siomai,165,120,45,7,840
+2/19/2026,Thursday,2025-2026,2nd Sem,Karen Pork Siomai,185,185,0,6,1110
+2/19/2026,Thursday,2025-2026,2nd Sem,Kutsinta Cheese,5,2,3,12,24
+2/19/2026,Thursday,2025-2026,2nd Sem,Kutsinta Yema,5,3,2,12,36
+2/19/2026,Thursday,2025-2026,2nd Sem,Maja,15,13,2,15,195
+2/19/2026,Thursday,2025-2026,2nd Sem,Pork Mami,10,6,4,25,150
+2/19/2026,Thursday,2025-2026,2nd Sem,Puto Flan,5,5,0,12,60
+2/19/2026,Thursday,2025-2026,2nd Sem,Shanghai,20,20,0,12,240
+2/19/2026,Thursday,2025-2026,2nd Sem,Sopas,10,6,4,25,150
+2/19/2026,Thursday,2025-2026,2nd Sem,Suman,6,5,1,18,90
+2/19/2026,Thursday,2025-2026,2nd Sem,Tuna Pie,15,11,4,18,198
+2/19/2026,Thursday,2025-2026,2nd Sem,Vegetable Lumpia,15,15,0,15,225
+2/20/2026,Friday,2025-2026,2nd Sem,Corndog,8,4,4,30,120
+2/20/2026,Friday,2025-2026,2nd Sem,Empanada,2,2,0,60,120
+2/20/2026,Friday,2025-2026,2nd Sem,Karen Dumplings,20,20,0,7,140
+2/20/2026,Friday,2025-2026,2nd Sem,Karen Japanese Siomai,140,122,18,7,854
+2/20/2026,Friday,2025-2026,2nd Sem,Karen Pork Siomai,190,62,128,6,372
+2/20/2026,Friday,2025-2026,2nd Sem,Kutsinta Cheese,6,4,2,12,48
+2/20/2026,Friday,2025-2026,2nd Sem,Lumpianada,8,8,0,35,280
+2/20/2026,Friday,2025-2026,2nd Sem,Meatballs,15,12,3,20,240
+2/20/2026,Friday,2025-2026,2nd Sem,Pork Mami,10,10,0,25,250
+2/20/2026,Friday,2025-2026,2nd Sem,Puto Cheese,4,4,0,12,48
+2/20/2026,Friday,2025-2026,2nd Sem,Puto Flan,5,4,1,12,48
+2/20/2026,Friday,2025-2026,2nd Sem,Puto Latik,5,4,1,12,48
+2/20/2026,Friday,2025-2026,2nd Sem,Siomai Rice,15,15,0,45,675
+2/20/2026,Friday,2025-2026,2nd Sem,Special Empanada,5,0,5,60,0
+2/20/2026,Friday,2025-2026,2nd Sem,Tinudok,10,7,3,10,70
+2/20/2026,Friday,2025-2026,2nd Sem,Tokneneng,20,13,7,20,260
+2/20/2026,Friday,2025-2026,2nd Sem,Tuna Shanghai,15,7,8,12,84
+2/23/2026,Monday,2025-2026,2nd Sem,BBQ,15,15,0,20,300
+2/23/2026,Monday,2025-2026,2nd Sem,Banana Crunch,6,6,0,12,72
+2/23/2026,Monday,2025-2026,2nd Sem,Banana Cue,10,10,0,20,200
+2/23/2026,Monday,2025-2026,2nd Sem,Corndog,10,7,3,30,210
+2/23/2026,Monday,2025-2026,2nd Sem,Egg Sandwich,10,10,0,20,200
+2/23/2026,Monday,2025-2026,2nd Sem,Karen Dumplings,15,15,0,7,105
+2/23/2026,Monday,2025-2026,2nd Sem,Karen Pork Siomai,175,74,101,6,444
+2/23/2026,Monday,2025-2026,2nd Sem,Kutsinta Cheese,5,5,0,12,60
+2/23/2026,Monday,2025-2026,2nd Sem,Kutsinta Yema,5,3,2,12,36
+2/23/2026,Monday,2025-2026,2nd Sem,Maja,15,9,6,15,135
+2/23/2026,Monday,2025-2026,2nd Sem,Palabok,10,6,4,25,150
+2/23/2026,Monday,2025-2026,2nd Sem,Palitaw 1's,15,12,3,10,120
+2/23/2026,Monday,2025-2026,2nd Sem,Puto Cheese,6,1,5,12,12
+2/23/2026,Monday,2025-2026,2nd Sem,Puto Flan,5,3,2,12,36
+2/23/2026,Monday,2025-2026,2nd Sem,Puto Latik,5,1,4,12,12
+2/23/2026,Monday,2025-2026,2nd Sem,Rolls,5,2,3,26,52
+2/23/2026,Monday,2025-2026,2nd Sem,Spaghetti,10,4,6,25,100
+2/23/2026,Monday,2025-2026,2nd Sem,Suman,10,10,0,18,180
+2/23/2026,Monday,2025-2026,2nd Sem,Tuna Pie,10,9,1,18,162
+2/23/2026,Monday,2025-2026,2nd Sem,Tuna Shanghai,20,20,0,12,240
+2/24/2026,Tuesday,2025-2026,2nd Sem,Banana Cue,10,8,2,20,160
+2/24/2026,Tuesday,2025-2026,2nd Sem,Camote Cue,10,10,0,20,200
+2/24/2026,Tuesday,2025-2026,2nd Sem,Egg Sandwich,10,4,6,20,80
+2/24/2026,Tuesday,2025-2026,2nd Sem,Ginataan,6,6,0,20,120
+2/24/2026,Tuesday,2025-2026,2nd Sem,Hotdog Stick,15,5,10,15,75
+2/24/2026,Tuesday,2025-2026,2nd Sem,Karen Dumplings,25,25,0,7,175
+2/24/2026,Tuesday,2025-2026,2nd Sem,Karen Japanese Siomai,185,163,22,7,1141
+2/24/2026,Tuesday,2025-2026,2nd Sem,Kutsinta Cheese,6,6,0,12,72
+2/24/2026,Tuesday,2025-2026,2nd Sem,Kutsinta Yema,5,5,0,12,60
+2/24/2026,Tuesday,2025-2026,2nd Sem,Pork Mami,10,8,2,25,200
+2/24/2026,Tuesday,2025-2026,2nd Sem,Puto Cheese,5,4,1,12,48
+2/24/2026,Tuesday,2025-2026,2nd Sem,Puto Flan,6,3,3,12,36
+2/24/2026,Tuesday,2025-2026,2nd Sem,Rolls,5,3,2,26,78
+2/24/2026,Tuesday,2025-2026,2nd Sem,Siomai Rice,20,20,0,45,900
+2/24/2026,Tuesday,2025-2026,2nd Sem,Tuna Pie,10,9,1,18,162
+2/24/2026,Tuesday,2025-2026,2nd Sem,Vegetable Lumpia,15,15,0,15,225
+2/26/2026,Thursday,2025-2026,2nd Sem,BBQ,15,15,0,20,300
+2/26/2026,Thursday,2025-2026,2nd Sem,Buchi Peanut,15,15,0,10,150
+2/26/2026,Thursday,2025-2026,2nd Sem,Camote Cue,10,10,0,20,200
+2/26/2026,Thursday,2025-2026,2nd Sem,Hotdog Sandwich,6,6,0,40,240
+2/26/2026,Thursday,2025-2026,2nd Sem,Hotdog Stick,15,15,0,15,225
+2/26/2026,Thursday,2025-2026,2nd Sem,Karen Pork Siomai,240,240,0,6,1440
+2/26/2026,Thursday,2025-2026,2nd Sem,Kutsinta Cheese,4,4,0,12,48
+2/26/2026,Thursday,2025-2026,2nd Sem,Kutsinta Yema,5,5,0,12,60
+2/26/2026,Thursday,2025-2026,2nd Sem,Lumpianada,10,7,3,35,245
+2/26/2026,Thursday,2025-2026,2nd Sem,Puto Cheese,6,1,5,12,12
+2/26/2026,Thursday,2025-2026,2nd Sem,Puto Latik,5,4,1,12,48
+2/26/2026,Thursday,2025-2026,2nd Sem,Siomai Rice,15,12,3,45,540
+2/26/2026,Thursday,2025-2026,2nd Sem,Sopas,8,6,2,25,150
+2/27/2026,Friday,2025-2026,2nd Sem,Camote Fries,4,4,0,21,84
+2/27/2026,Friday,2025-2026,2nd Sem,Cheese Stick,30,26,4,10,260
+2/27/2026,Friday,2025-2026,2nd Sem,Chicken Mami,10,7,3,25,175
+2/27/2026,Friday,2025-2026,2nd Sem,Egg Sandwich,10,3,7,20,60
+2/27/2026,Friday,2025-2026,2nd Sem,Fresh Pancit,10,8,2,20,160
+2/27/2026,Friday,2025-2026,2nd Sem,Ginataan,4,4,0,20,80
+2/27/2026,Friday,2025-2026,2nd Sem,Hotdog Stick,20,5,15,15,75
+2/27/2026,Friday,2025-2026,2nd Sem,Karen Japanese Siomai,115,111,4,7,777
+2/27/2026,Friday,2025-2026,2nd Sem,Karen Pork Siomai,185,122,63,6,732
+2/27/2026,Friday,2025-2026,2nd Sem,Karen Siopao,5,5,0,31,155
+2/27/2026,Friday,2025-2026,2nd Sem,Kutsinta Cheese,4,4,0,12,48
+2/27/2026,Friday,2025-2026,2nd Sem,Palitaw 1's,10,2,8,10,20
+2/27/2026,Friday,2025-2026,2nd Sem,Puto Cheese,5,5,0,12,60
+2/27/2026,Friday,2025-2026,2nd Sem,Puto Latik,4,2,2,12,24
+2/27/2026,Friday,2025-2026,2nd Sem,Siomai Rice,10,10,0,45,450
+2/27/2026,Friday,2025-2026,2nd Sem,Sopas,10,7,3,25,175
+2/27/2026,Friday,2025-2026,2nd Sem,Suman,7,6,1,18,108
+2/27/2026,Friday,2025-2026,2nd Sem,Tuna Pie,10,10,0,18,180
+2/27/2026,Friday,2025-2026,2nd Sem,Turon,20,20,0,15,300
+2/27/2026,Friday,2025-2026,2nd Sem,Ukoy Balls,20,20,0,20,400
+3/2/2026,Monday,2025-2026,2nd Sem,Buchi,15,14,1,10,140
+3/2/2026,Monday,2025-2026,2nd Sem,Camote Roll,6,6,0,15,90
+3/2/2026,Monday,2025-2026,2nd Sem,Corndog,10,10,0,30,300
+3/2/2026,Monday,2025-2026,2nd Sem,Karen Japanese Siomai,165,165,0,7,1155
+3/2/2026,Monday,2025-2026,2nd Sem,Karen Pork Siomai,165,32,133,6,192
+3/2/2026,Monday,2025-2026,2nd Sem,Karen Siopao,6,6,0,31,186
+3/2/2026,Monday,2025-2026,2nd Sem,Kutsinta Cheese,5,4,1,12,48
+3/2/2026,Monday,2025-2026,2nd Sem,Kutsinta Yema,5,4,1,12,48
+3/2/2026,Monday,2025-2026,2nd Sem,Lomi,10,10,0,25,250
+3/2/2026,Monday,2025-2026,2nd Sem,Lumpianada,7,6,1,35,210
+3/2/2026,Monday,2025-2026,2nd Sem,Palabok,10,7,3,25,175
+3/2/2026,Monday,2025-2026,2nd Sem,Palitaw 1's,15,15,0,10,150
+3/2/2026,Monday,2025-2026,2nd Sem,Pork Mami,10,5,5,25,125
+3/2/2026,Monday,2025-2026,2nd Sem,Puto Cheese,4,4,0,12,48
+3/2/2026,Monday,2025-2026,2nd Sem,Puto Flan,6,6,0,12,72
+3/2/2026,Monday,2025-2026,2nd Sem,Puto Latik,5,5,0,12,60
+3/2/2026,Monday,2025-2026,2nd Sem,Siomai Rice,10,10,0,45,450
+3/2/2026,Monday,2025-2026,2nd Sem,Sopas,10,3,7,25,75
+3/2/2026,Monday,2025-2026,2nd Sem,Spaghetti,10,10,0,25,250
+3/2/2026,Monday,2025-2026,2nd Sem,Tokneneng,20,20,0,20,400
+3/2/2026,Monday,2025-2026,2nd Sem,Tuna Pie,10,9,1,18,162
+3/2/2026,Monday,2025-2026,2nd Sem,Ukoy Balls,20,20,0,20,400
+3/3/2026,Tuesday,2025-2026,2nd Sem,BBQ,15,15,0,20,300
+3/3/2026,Tuesday,2025-2026,2nd Sem,Banana Balls,10,7,3,20,140
+3/3/2026,Tuesday,2025-2026,2nd Sem,Banana Cue,10,4,6,20,80
+3/3/2026,Tuesday,2025-2026,2nd Sem,Bihon Guisado,6,3,3,25,75
+3/3/2026,Tuesday,2025-2026,2nd Sem,Camote Cue,10,10,0,20,200
+3/3/2026,Tuesday,2025-2026,2nd Sem,Camote Roll,7,4,3,15,60
+3/3/2026,Tuesday,2025-2026,2nd Sem,Corndog,10,8,2,30,240
+3/3/2026,Tuesday,2025-2026,2nd Sem,Egg Sandwich,10,8,2,20,160
+3/3/2026,Tuesday,2025-2026,2nd Sem,Empanada,4,4,0,60,240
+3/3/2026,Tuesday,2025-2026,2nd Sem,Gluti Roll,15,15,0,20,300
+3/3/2026,Tuesday,2025-2026,2nd Sem,Karen Dumplings,30,30,0,7,210
+3/3/2026,Tuesday,2025-2026,2nd Sem,Karen Japanese Siomai,175,160,15,7,1120
+3/3/2026,Tuesday,2025-2026,2nd Sem,Karen Pork Siomai,175,175,0,6,1050
+3/3/2026,Tuesday,2025-2026,2nd Sem,Karen Siopao,7,5,2,31,155
+3/3/2026,Tuesday,2025-2026,2nd Sem,Kutsinta Cheese,6,6,0,12,72
+3/3/2026,Tuesday,2025-2026,2nd Sem,Kutsinta Yema,6,6,0,12,72
+3/3/2026,Tuesday,2025-2026,2nd Sem,Palitaw 1's,15,15,0,10,150
+3/3/2026,Tuesday,2025-2026,2nd Sem,Puto Cheese,7,0,7,12,0
+3/3/2026,Tuesday,2025-2026,2nd Sem,Puto Flan,4,4,0,12,48
+3/3/2026,Tuesday,2025-2026,2nd Sem,Siomai Rice,15,4,11,45,180
+3/3/2026,Tuesday,2025-2026,2nd Sem,Turon,20,19,1,15,285
+3/3/2026,Tuesday,2025-2026,2nd Sem,Vegetable Lumpia,15,6,9,15,90
+3/4/2026,Wednesday,2025-2026,2nd Sem,Bihon Guisado,8,8,0,25,200
+3/4/2026,Wednesday,2025-2026,2nd Sem,Boiled Banana,15,1,14,6,6
+3/4/2026,Wednesday,2025-2026,2nd Sem,Cheese Stick,25,25,0,10,250
+3/4/2026,Wednesday,2025-2026,2nd Sem,Hotdog Stick,20,12,8,15,180
+3/4/2026,Wednesday,2025-2026,2nd Sem,Karen Dumplings,25,25,0,7,175
+3/4/2026,Wednesday,2025-2026,2nd Sem,Karen Pork Siomai,200,104,96,6,624
+3/4/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Cheese,4,3,1,12,36
+3/4/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Yema,4,4,0,12,48
+3/4/2026,Wednesday,2025-2026,2nd Sem,Puto Cheese,5,5,0,12,60
+3/4/2026,Wednesday,2025-2026,2nd Sem,Puto Flan,5,4,1,12,48
+3/4/2026,Wednesday,2025-2026,2nd Sem,Puto Latik,5,3,2,12,36
+3/4/2026,Wednesday,2025-2026,2nd Sem,Shanghai,20,16,4,12,192
+3/4/2026,Wednesday,2025-2026,2nd Sem,Siomai Rice,15,11,4,45,495
+3/4/2026,Wednesday,2025-2026,2nd Sem,Spaghetti,10,1,9,25,25
+3/4/2026,Wednesday,2025-2026,2nd Sem,Suman,7,1,6,18,18
+3/4/2026,Wednesday,2025-2026,2nd Sem,Tuna Pie,10,8,2,18,144
+3/4/2026,Wednesday,2025-2026,2nd Sem,Tuna Shanghai,15,15,0,12,180
+3/4/2026,Wednesday,2025-2026,2nd Sem,Turon,20,20,0,15,300
+3/5/2026,Thursday,2025-2026,2nd Sem,Arroz Caldo,5,0,5,20,0
+3/5/2026,Thursday,2025-2026,2nd Sem,Bihon Guisado,7,7,0,25,175
+3/5/2026,Thursday,2025-2026,2nd Sem,Gluti Roll,15,11,4,20,220
+3/5/2026,Thursday,2025-2026,2nd Sem,Hamburger,10,2,8,45,90
+3/5/2026,Thursday,2025-2026,2nd Sem,Hotdog Stick,20,3,17,15,45
+3/5/2026,Thursday,2025-2026,2nd Sem,Karen Dumplings,25,25,0,7,175
+3/5/2026,Thursday,2025-2026,2nd Sem,Karen Japanese Siomai,145,141,4,7,987
+3/5/2026,Thursday,2025-2026,2nd Sem,Kutsinta Cheese,4,3,1,12,36
+3/5/2026,Thursday,2025-2026,2nd Sem,Kutsinta Yema,4,2,2,12,24
+3/5/2026,Thursday,2025-2026,2nd Sem,Lomi,10,7,3,25,175
+3/5/2026,Thursday,2025-2026,2nd Sem,Palabok,10,4,6,25,100
+3/5/2026,Thursday,2025-2026,2nd Sem,Shanghai,20,20,0,12,240
+3/5/2026,Thursday,2025-2026,2nd Sem,Ukoy Balls,25,9,16,20,180
+3/6/2026,Friday,2025-2026,2nd Sem,Banana Cue,10,8,2,20,160
+3/6/2026,Friday,2025-2026,2nd Sem,Camote Fries,5,4,1,21,84
+3/6/2026,Friday,2025-2026,2nd Sem,Cater Bihon Canton,10,4,6,30,120
+3/6/2026,Friday,2025-2026,2nd Sem,Cheese Stick,20,17,3,10,170
+3/6/2026,Friday,2025-2026,2nd Sem,Egg Sandwich,10,7,3,20,140
+3/6/2026,Friday,2025-2026,2nd Sem,Empanada,3,3,0,60,180
+3/6/2026,Friday,2025-2026,2nd Sem,Fresh Pancit,10,5,5,20,100
+3/6/2026,Friday,2025-2026,2nd Sem,Hotdog Sandwich,3,0,3,40,0
+3/6/2026,Friday,2025-2026,2nd Sem,Hotdog Stick,15,3,12,15,45
+3/6/2026,Friday,2025-2026,2nd Sem,Karen Japanese Siomai,125,49,76,7,343
+3/6/2026,Friday,2025-2026,2nd Sem,Karen Pork Siomai,130,24,106,6,144
+3/6/2026,Friday,2025-2026,2nd Sem,Kutsinta Cheese,4,1,3,12,12
+3/6/2026,Friday,2025-2026,2nd Sem,Kutsinta Yema,5,4,1,12,48
+3/6/2026,Friday,2025-2026,2nd Sem,Maja,10,3,7,15,45
+3/6/2026,Friday,2025-2026,2nd Sem,Puto Cheese,4,3,1,12,36
+3/6/2026,Friday,2025-2026,2nd Sem,Puto Flan,5,1,4,12,12
+3/6/2026,Friday,2025-2026,2nd Sem,Siomai Rice,15,9,6,45,405
+3/6/2026,Friday,2025-2026,2nd Sem,Spaghetti,10,3,7,25,75
+3/6/2026,Friday,2025-2026,2nd Sem,Tuna Pie,10,5,5,18,90
+3/6/2026,Friday,2025-2026,2nd Sem,Turon,15,15,0,15,225
+3/6/2026,Friday,2025-2026,2nd Sem,Vegetable Lumpia,15,13,2,15,195
+3/9/2026,Monday,2025-2026,2nd Sem,BBQ,15,12,3,20,240
+3/9/2026,Monday,2025-2026,2nd Sem,Buchi,15,15,0,10,150
+3/9/2026,Monday,2025-2026,2nd Sem,Carbonara,10,1,9,25,25
+3/9/2026,Monday,2025-2026,2nd Sem,Cater Bihon Canton,10,0,10,30,0
+3/9/2026,Monday,2025-2026,2nd Sem,Empanada,3,2,1,60,120
+3/9/2026,Monday,2025-2026,2nd Sem,Hamburger,10,10,0,45,450
+3/9/2026,Monday,2025-2026,2nd Sem,Hotdog Sandwich,6,5,1,40,200
+3/9/2026,Monday,2025-2026,2nd Sem,Karen Dumplings,30,30,0,7,210
+3/9/2026,Monday,2025-2026,2nd Sem,Karen Japanese Siomai,140,49,91,7,343
+3/9/2026,Monday,2025-2026,2nd Sem,Kutsinta Cheese,6,1,5,12,12
+3/9/2026,Monday,2025-2026,2nd Sem,Kutsinta Yema,5,4,1,12,48
+3/9/2026,Monday,2025-2026,2nd Sem,Puto Cheese,4,4,0,12,48
+3/9/2026,Monday,2025-2026,2nd Sem,Puto Flan,5,3,2,12,36
+3/9/2026,Monday,2025-2026,2nd Sem,Shanghai,20,20,0,12,240
+3/9/2026,Monday,2025-2026,2nd Sem,Tinudok,15,15,0,10,150
+3/9/2026,Monday,2025-2026,2nd Sem,Tokneneng,20,10,10,20,200
+3/9/2026,Monday,2025-2026,2nd Sem,Ukoy Balls,20,20,0,20,400
+3/10/2026,Tuesday,2025-2026,2nd Sem,Bihon Guisado,10,10,0,25,250
+3/10/2026,Tuesday,2025-2026,2nd Sem,Corndog,10,5,5,30,150
+3/10/2026,Tuesday,2025-2026,2nd Sem,Empanada,4,2,2,60,120
+3/10/2026,Tuesday,2025-2026,2nd Sem,Fresh Pancit,10,6,4,20,120
+3/10/2026,Tuesday,2025-2026,2nd Sem,Hotdog Sandwich,6,6,0,40,240
+3/10/2026,Tuesday,2025-2026,2nd Sem,Hotdog Stick,20,20,0,15,300
+3/10/2026,Tuesday,2025-2026,2nd Sem,Karen Dumplings,30,16,14,7,112
+3/10/2026,Tuesday,2025-2026,2nd Sem,Karen Pork Siomai,190,190,0,6,1140
+3/10/2026,Tuesday,2025-2026,2nd Sem,Kutsinta Cheese,5,5,0,12,60
+3/10/2026,Tuesday,2025-2026,2nd Sem,Kutsinta Yema,6,6,0,12,72
+3/10/2026,Tuesday,2025-2026,2nd Sem,Meatballs,15,15,0,20,300
+3/10/2026,Tuesday,2025-2026,2nd Sem,Pork Mami,10,7,3,25,175
+3/10/2026,Tuesday,2025-2026,2nd Sem,Puto Cheese,8,4,4,12,48
+3/10/2026,Tuesday,2025-2026,2nd Sem,Puto Flan,7,7,0,12,84
+3/10/2026,Tuesday,2025-2026,2nd Sem,Siomai Rice,20,15,5,45,675
+3/10/2026,Tuesday,2025-2026,2nd Sem,Tokneneng,25,12,13,20,240
+3/10/2026,Tuesday,2025-2026,2nd Sem,Ukoy Balls,20,18,2,20,360
+3/11/2026,Wednesday,2025-2026,2nd Sem,Banana Balls,15,10,5,20,200
+3/11/2026,Wednesday,2025-2026,2nd Sem,Egg Sandwich,10,4,6,20,80
+3/11/2026,Wednesday,2025-2026,2nd Sem,Empanada,3,3,0,60,180
+3/11/2026,Wednesday,2025-2026,2nd Sem,Fresh Pancit,10,5,5,20,100
+3/11/2026,Wednesday,2025-2026,2nd Sem,Hamburger,10,8,2,45,360
+3/11/2026,Wednesday,2025-2026,2nd Sem,Hotdog Stick,25,6,19,15,90
+3/11/2026,Wednesday,2025-2026,2nd Sem,Karen Dumplings,25,25,0,7,175
+3/11/2026,Wednesday,2025-2026,2nd Sem,Karen Japanese Siomai,170,68,102,7,476
+3/11/2026,Wednesday,2025-2026,2nd Sem,Karen Pork Siomai,230,58,172,6,348
+3/11/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Cheese,5,3,2,12,36
+3/11/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Yema,5,3,2,12,36
+3/11/2026,Wednesday,2025-2026,2nd Sem,Meatballs,15,15,0,20,300
+3/11/2026,Wednesday,2025-2026,2nd Sem,Pork Mami,10,7,3,25,175
+3/11/2026,Wednesday,2025-2026,2nd Sem,Puto Latik,4,3,1,12,36
+3/11/2026,Wednesday,2025-2026,2nd Sem,Rolls,5,1,4,26,26
+3/11/2026,Wednesday,2025-2026,2nd Sem,Tuna Shanghai,15,14,1,12,168
+3/12/2026,Thursday,2025-2026,2nd Sem,Baduya,10,8,2,15,120
+3/12/2026,Thursday,2025-2026,2nd Sem,Camote Cue,10,6,4,20,120
+3/12/2026,Thursday,2025-2026,2nd Sem,Hotdog Sandwich,4,1,3,40,40
+3/12/2026,Thursday,2025-2026,2nd Sem,Hotdog Stick,20,19,1,15,285
+3/12/2026,Thursday,2025-2026,2nd Sem,Karen Dumplings,25,7,18,7,49
+3/12/2026,Thursday,2025-2026,2nd Sem,Karen Japanese Siomai,90,73,17,7,511
+3/12/2026,Thursday,2025-2026,2nd Sem,Karen Pork Siomai,220,108,112,6,648
+3/12/2026,Thursday,2025-2026,2nd Sem,Kutsinta Cheese,5,5,0,12,60
+3/12/2026,Thursday,2025-2026,2nd Sem,Kutsinta Yema,4,4,0,12,48
+3/12/2026,Thursday,2025-2026,2nd Sem,Maja,15,7,8,15,105
+3/12/2026,Thursday,2025-2026,2nd Sem,Popcorn,8,3,5,18,54
+3/12/2026,Thursday,2025-2026,2nd Sem,Puto Cheese,5,5,0,12,60
+3/12/2026,Thursday,2025-2026,2nd Sem,Puto Flan,5,1,4,12,12
+3/12/2026,Thursday,2025-2026,2nd Sem,Puto Latik,5,1,4,12,12
+3/12/2026,Thursday,2025-2026,2nd Sem,Turon,20,20,0,15,300
+3/13/2026,Friday,2025-2026,2nd Sem,Arroz Caldo,4,1,3,20,20
+3/13/2026,Friday,2025-2026,2nd Sem,Banana Cue,8,3,5,20,60
+3/13/2026,Friday,2025-2026,2nd Sem,Buchi,15,11,4,10,110
+3/13/2026,Friday,2025-2026,2nd Sem,Cater Bihon Canton,10,4,6,30,120
+3/13/2026,Friday,2025-2026,2nd Sem,Cheese Stick,25,25,0,10,250
+3/13/2026,Friday,2025-2026,2nd Sem,Chicken Mami,10,10,0,25,250
+3/13/2026,Friday,2025-2026,2nd Sem,Egg Sandwich,10,10,0,20,200
+3/13/2026,Friday,2025-2026,2nd Sem,Empanada,3,0,3,60,0
+3/13/2026,Friday,2025-2026,2nd Sem,Fresh Pancit,10,5,5,20,100
+3/13/2026,Friday,2025-2026,2nd Sem,Hotdog Sandwich,5,4,1,40,160
+3/13/2026,Friday,2025-2026,2nd Sem,Hotdog Stick,20,5,15,15,75
+3/13/2026,Friday,2025-2026,2nd Sem,Karen Dumplings,25,15,10,7,105
+3/13/2026,Friday,2025-2026,2nd Sem,Karen Japanese Siomai,125,48,77,7,336
+3/13/2026,Friday,2025-2026,2nd Sem,Karen Pork Siomai,195,144,51,6,864
+3/13/2026,Friday,2025-2026,2nd Sem,Kutsinta Cheese,5,2,3,12,24
+3/13/2026,Friday,2025-2026,2nd Sem,Kutsinta Yema,5,2,3,12,24
+3/13/2026,Friday,2025-2026,2nd Sem,Maja,10,6,4,15,90
+3/13/2026,Friday,2025-2026,2nd Sem,Puto Cheese,4,4,0,12,48
+3/13/2026,Friday,2025-2026,2nd Sem,Puto Flan,4,4,0,12,48
+3/13/2026,Friday,2025-2026,2nd Sem,Puto Latik,6,3,3,12,36
+3/13/2026,Friday,2025-2026,2nd Sem,Siomai Rice,15,10,5,45,450
+3/13/2026,Friday,2025-2026,2nd Sem,Tokneneng,15,13,2,20,260
+3/16/2026,Monday,2025-2026,2nd Sem,Arroz Caldo,5,0,5,20,0
+3/16/2026,Monday,2025-2026,2nd Sem,Banana Balls,10,3,7,20,60
+3/16/2026,Monday,2025-2026,2nd Sem,Buchi,15,15,0,10,150
+3/16/2026,Monday,2025-2026,2nd Sem,Camote Cue,10,5,5,20,100
+3/16/2026,Monday,2025-2026,2nd Sem,Camote Roll,10,10,0,15,150
+3/16/2026,Monday,2025-2026,2nd Sem,Egg Sandwich,10,8,2,20,160
+3/16/2026,Monday,2025-2026,2nd Sem,Empanada,5,3,2,60,180
+3/16/2026,Monday,2025-2026,2nd Sem,Hotdog Sandwich,5,5,0,40,200
+3/16/2026,Monday,2025-2026,2nd Sem,Hotdog Stick,20,9,11,15,135
+3/16/2026,Monday,2025-2026,2nd Sem,Karen Dumplings,35,29,6,7,203
+3/16/2026,Monday,2025-2026,2nd Sem,Karen Japanese Siomai,130,123,7,7,861
+3/16/2026,Monday,2025-2026,2nd Sem,Karen Pork Siomai,190,190,0,6,1140
+3/16/2026,Monday,2025-2026,2nd Sem,Karen Siopao,4,4,0,31,124
+3/16/2026,Monday,2025-2026,2nd Sem,Puto Cheese,6,2,4,12,24
+3/16/2026,Monday,2025-2026,2nd Sem,Puto Flan,6,2,4,12,24
+3/16/2026,Monday,2025-2026,2nd Sem,Puto Latik,6,4,2,12,48
+3/16/2026,Monday,2025-2026,2nd Sem,Siomai Rice,15,10,5,45,450
+3/16/2026,Monday,2025-2026,2nd Sem,Sopas,10,10,0,25,250
+3/16/2026,Monday,2025-2026,2nd Sem,Tuna Pie,10,10,0,18,180
+3/17/2026,Tuesday,2025-2026,2nd Sem,Boiled Banana,10,3,7,6,18
+3/17/2026,Tuesday,2025-2026,2nd Sem,Cheese Stick,30,19,11,10,190
+3/17/2026,Tuesday,2025-2026,2nd Sem,Hotdog Stick,25,3,22,15,45
+3/17/2026,Tuesday,2025-2026,2nd Sem,Karen Pork Siomai,175,103,72,6,618
+3/17/2026,Tuesday,2025-2026,2nd Sem,Maja,10,8,2,15,120
+3/17/2026,Tuesday,2025-2026,2nd Sem,Pork Lomi,10,0,10,25,0
+3/17/2026,Tuesday,2025-2026,2nd Sem,Puto Cheese,5,5,0,12,60
+3/17/2026,Tuesday,2025-2026,2nd Sem,Puto Flan,6,6,0,12,72
+3/17/2026,Tuesday,2025-2026,2nd Sem,Puto Latik,5,5,0,12,60
+3/17/2026,Tuesday,2025-2026,2nd Sem,Rolls,6,6,0,26,156
+3/17/2026,Tuesday,2025-2026,2nd Sem,Siomai Rice,20,20,0,45,900
+3/17/2026,Tuesday,2025-2026,2nd Sem,Tuna Pie,10,6,4,18,108
+3/17/2026,Tuesday,2025-2026,2nd Sem,Turon,20,6,14,15,90
+3/18/2026,Wednesday,2025-2026,2nd Sem,Arroz Caldo,5,3,2,20,60
+3/18/2026,Wednesday,2025-2026,2nd Sem,Camote Cue,10,9,1,20,180
+3/18/2026,Wednesday,2025-2026,2nd Sem,Chicken Pie,10,10,0,18,180
+3/18/2026,Wednesday,2025-2026,2nd Sem,Egg Sandwich,8,8,0,20,160
+3/18/2026,Wednesday,2025-2026,2nd Sem,Hotdog Sandwich,4,4,0,40,160
+3/18/2026,Wednesday,2025-2026,2nd Sem,Hotdog Stick,25,11,14,15,165
+3/18/2026,Wednesday,2025-2026,2nd Sem,Karen Japanese Siomai,145,92,53,7,644
+3/18/2026,Wednesday,2025-2026,2nd Sem,Karen Pork Siomai,160,99,61,6,594
+3/18/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Cheese,5,3,2,12,36
+3/18/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Yema,5,2,3,12,24
+3/18/2026,Wednesday,2025-2026,2nd Sem,Lomi,10,5,5,25,125
+3/18/2026,Wednesday,2025-2026,2nd Sem,Lumpianada,7,5,2,35,175
+3/18/2026,Wednesday,2025-2026,2nd Sem,Puto Cheese,4,4,0,12,48
+3/18/2026,Wednesday,2025-2026,2nd Sem,Puto Flan,5,3,2,12,36
+3/18/2026,Wednesday,2025-2026,2nd Sem,Puto Latik,4,4,0,12,48
+3/18/2026,Wednesday,2025-2026,2nd Sem,Rolls,6,6,0,26,156
+3/18/2026,Wednesday,2025-2026,2nd Sem,Suman,10,7,3,18,126
+3/18/2026,Wednesday,2025-2026,2nd Sem,Turon,20,20,0,15,300
+3/18/2026,Wednesday,2025-2026,2nd Sem,Ube Buchi,15,15,0,10,150
+3/18/2026,Wednesday,2025-2026,2nd Sem,Ukoy Balls,20,20,0,20,400
+3/19/2026,Thursday,2025-2026,2nd Sem,Camote Cue,10,1,9,20,20
+3/19/2026,Thursday,2025-2026,2nd Sem,Empanada,3,3,0,60,180
+3/19/2026,Thursday,2025-2026,2nd Sem,Hamburger,10,2,8,45,90
+3/19/2026,Thursday,2025-2026,2nd Sem,Karen Dumplings,25,25,0,7,175
+3/19/2026,Thursday,2025-2026,2nd Sem,Karen Japanese Siomai,110,41,69,7,287
+3/19/2026,Thursday,2025-2026,2nd Sem,Karen Pork Siomai,185,135,50,6,810
+3/19/2026,Thursday,2025-2026,2nd Sem,Kutsinta Cheese,5,5,0,12,60
+3/19/2026,Thursday,2025-2026,2nd Sem,Puto Cheese,5,5,0,12,60
+3/19/2026,Thursday,2025-2026,2nd Sem,Puto Flan,5,3,2,12,36
+3/19/2026,Thursday,2025-2026,2nd Sem,Puto Latik,5,4,1,12,48
+3/19/2026,Thursday,2025-2026,2nd Sem,Siomai Rice,15,8,7,45,360
+3/19/2026,Thursday,2025-2026,2nd Sem,Sopas,10,6,4,25,150
+3/19/2026,Thursday,2025-2026,2nd Sem,Tinudok,10,9,1,10,90
+3/19/2026,Thursday,2025-2026,2nd Sem,Tuna Shanghai,15,15,0,12,180
+3/19/2026,Thursday,2025-2026,2nd Sem,Ukoy Balls,25,14,11,20,280
+3/20/2026,Friday,2025-2026,2nd Sem,Arroz Caldo,4,0,4,20,0
+3/20/2026,Friday,2025-2026,2nd Sem,Boiled Camote,4,0,4,20,0
+3/20/2026,Friday,2025-2026,2nd Sem,Buchi Peanut,10,10,0,10,100
+3/20/2026,Friday,2025-2026,2nd Sem,Camote Roll,5,3,2,15,45
+3/20/2026,Friday,2025-2026,2nd Sem,Chicken Pie,10,8,2,18,144
+3/20/2026,Friday,2025-2026,2nd Sem,Egg Sandwich,10,4,6,20,80
+3/20/2026,Friday,2025-2026,2nd Sem,Empanada,3,2,1,60,120
+3/20/2026,Friday,2025-2026,2nd Sem,Hotdog Stick,20,2,18,15,30
+3/20/2026,Friday,2025-2026,2nd Sem,Karen Dumplings,20,20,0,7,140
+3/20/2026,Friday,2025-2026,2nd Sem,Karen Japanese Siomai,135,44,91,7,308
+3/20/2026,Friday,2025-2026,2nd Sem,Karen Pork Siomai,160,35,125,6,210
+3/20/2026,Friday,2025-2026,2nd Sem,Kutsinta Cheese,4,3,1,12,36
+3/20/2026,Friday,2025-2026,2nd Sem,Maja,10,3,7,15,45
+3/20/2026,Friday,2025-2026,2nd Sem,Puto Flan,5,1,4,12,12
+3/20/2026,Friday,2025-2026,2nd Sem,Sopas,10,2,8,25,50
+3/23/2026,Monday,2025-2026,2nd Sem,Arroz Caldo,5,3,2,20,60
+3/23/2026,Monday,2025-2026,2nd Sem,Banana Cue,10,8,2,20,160
+3/23/2026,Monday,2025-2026,2nd Sem,Beef Mami,10,6,4,30,180
+3/23/2026,Monday,2025-2026,2nd Sem,Bihon Guisado,10,8,2,25,200
+3/23/2026,Monday,2025-2026,2nd Sem,Camote Cue,10,3,7,20,60
+3/23/2026,Monday,2025-2026,2nd Sem,Hotdog Stick,20,8,12,15,120
+3/23/2026,Monday,2025-2026,2nd Sem,Karen Dumplings,25,25,0,7,175
+3/23/2026,Monday,2025-2026,2nd Sem,Karen Japanese Siomai,150,82,68,7,574
+3/23/2026,Monday,2025-2026,2nd Sem,Karen Pork Siomai,150,37,113,6,222
+3/23/2026,Monday,2025-2026,2nd Sem,Karen Siopao,5,5,0,31,155
+3/23/2026,Monday,2025-2026,2nd Sem,Kutsinta Cheese,5,5,0,12,60
+3/23/2026,Monday,2025-2026,2nd Sem,Kutsinta Yema,6,5,1,12,60
+3/23/2026,Monday,2025-2026,2nd Sem,Palabok,10,7,3,25,175
+3/23/2026,Monday,2025-2026,2nd Sem,Pork Mami,10,3,7,25,75
+3/23/2026,Monday,2025-2026,2nd Sem,Puto Cheese,6,4,2,12,48
+3/23/2026,Monday,2025-2026,2nd Sem,Puto Latik,5,2,3,12,24
+3/23/2026,Monday,2025-2026,2nd Sem,Shanghai,15,4,11,12,48
+3/23/2026,Monday,2025-2026,2nd Sem,Turon,25,23,2,15,345
+3/23/2026,Monday,2025-2026,2nd Sem,Ube Buchi,15,15,0,10,150
+3/24/2026,Tuesday,2025-2026,2nd Sem,Arroz Caldo,5,2,3,20,40
+3/24/2026,Tuesday,2025-2026,2nd Sem,Bihon Guisado,7,1,6,25,25
+3/24/2026,Tuesday,2025-2026,2nd Sem,Egg Sandwich,10,4,6,20,80
+3/24/2026,Tuesday,2025-2026,2nd Sem,Empanada,3,3,0,60,180
+3/24/2026,Tuesday,2025-2026,2nd Sem,Karen Japanese Siomai,120,80,40,7,560
+3/24/2026,Tuesday,2025-2026,2nd Sem,Karen Pork Siomai,170,170,0,6,1020
+3/24/2026,Tuesday,2025-2026,2nd Sem,Kutsinta Yema,6,3,3,12,36
+3/24/2026,Tuesday,2025-2026,2nd Sem,Meatballs,20,20,0,20,400
+3/24/2026,Tuesday,2025-2026,2nd Sem,Puto Cheese,6,3,3,12,36
+3/24/2026,Tuesday,2025-2026,2nd Sem,Puto Flan,5,5,0,12,60
+3/24/2026,Tuesday,2025-2026,2nd Sem,Puto Latik,6,6,0,12,72
+3/24/2026,Tuesday,2025-2026,2nd Sem,Sopas,15,1,14,25,25
+3/24/2026,Tuesday,2025-2026,2nd Sem,Suman,8,3,5,18,54
+3/24/2026,Tuesday,2025-2026,2nd Sem,Turon,20,20,0,15,300
+3/25/2026,Wednesday,2025-2026,2nd Sem,BBQ,15,10,5,20,200
+3/25/2026,Wednesday,2025-2026,2nd Sem,Bihon Guisado,8,3,5,25,75
+3/25/2026,Wednesday,2025-2026,2nd Sem,Buchi,15,15,0,10,150
+3/25/2026,Wednesday,2025-2026,2nd Sem,Camote Cue,10,10,0,20,200
+3/25/2026,Wednesday,2025-2026,2nd Sem,Cater Bihon Canton,10,8,2,30,240
+3/25/2026,Wednesday,2025-2026,2nd Sem,Empanada,4,2,2,60,120
+3/25/2026,Wednesday,2025-2026,2nd Sem,Hamburger,10,10,0,45,450
+3/25/2026,Wednesday,2025-2026,2nd Sem,Karen Japanese Siomai,125,125,0,7,875
+3/25/2026,Wednesday,2025-2026,2nd Sem,Karen Pork Siomai,200,120,80,6,720
+3/25/2026,Wednesday,2025-2026,2nd Sem,Karen Siopao,4,4,0,31,124
+3/25/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Cheese,5,3,2,12,36
+3/25/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Yema,4,4,0,12,48
+3/25/2026,Wednesday,2025-2026,2nd Sem,Maja,15,7,8,15,105
+3/25/2026,Wednesday,2025-2026,2nd Sem,Pork Lomi,10,1,9,25,25
+3/25/2026,Wednesday,2025-2026,2nd Sem,Puto Cheese,5,3,2,12,36
+3/25/2026,Wednesday,2025-2026,2nd Sem,Puto Flan,5,4,1,12,48
+3/25/2026,Wednesday,2025-2026,2nd Sem,Puto Latik,5,4,1,12,48
+3/25/2026,Wednesday,2025-2026,2nd Sem,Sopas,10,5,5,25,125
+3/25/2026,Wednesday,2025-2026,2nd Sem,Spaghetti,10,2,8,25,50
+3/25/2026,Wednesday,2025-2026,2nd Sem,Suman,7,2,5,18,36
+3/25/2026,Wednesday,2025-2026,2nd Sem,Tinudok,15,10,5,10,100
+3/25/2026,Wednesday,2025-2026,2nd Sem,Tokneneng,20,9,11,20,180
+3/26/2026,Thursday,2025-2026,2nd Sem,Camote Roll,6,4,2,15,60
+3/26/2026,Thursday,2025-2026,2nd Sem,Empanada,3,3,0,60,180
+3/26/2026,Thursday,2025-2026,2nd Sem,Hotdog Stick,20,17,3,15,255
+3/26/2026,Thursday,2025-2026,2nd Sem,Karen Japanese Siomai,125,101,24,7,707
+3/26/2026,Thursday,2025-2026,2nd Sem,Karen Pork Siomai,150,150,0,6,900
+3/26/2026,Thursday,2025-2026,2nd Sem,Kutsinta Cheese,5,5,0,12,60
+3/26/2026,Thursday,2025-2026,2nd Sem,Kutsinta Yema,5,5,0,12,60
+3/26/2026,Thursday,2025-2026,2nd Sem,Palitaw,10,2,8,5,10
+3/26/2026,Thursday,2025-2026,2nd Sem,Palitaw 1's,15,15,0,10,150
+3/26/2026,Thursday,2025-2026,2nd Sem,Puto Cheese,5,4,1,12,48
+3/26/2026,Thursday,2025-2026,2nd Sem,Puto Latik,4,2,2,12,24
+3/26/2026,Thursday,2025-2026,2nd Sem,Rolls,4,4,0,26,104
+3/26/2026,Thursday,2025-2026,2nd Sem,Siomai Rice,15,13,2,45,585
+3/26/2026,Thursday,2025-2026,2nd Sem,Tokneneng,20,20,0,20,400
+3/27/2026,Friday,2025-2026,2nd Sem,Cheese Stick,25,12,13,10,120
+3/27/2026,Friday,2025-2026,2nd Sem,Empanada,3,2,1,60,120
+3/27/2026,Friday,2025-2026,2nd Sem,Fresh Pancit,10,2,8,20,40
+3/27/2026,Friday,2025-2026,2nd Sem,Hotdog Sandwich,5,5,0,40,200
+3/27/2026,Friday,2025-2026,2nd Sem,Karen Dumplings,25,14,11,7,98
+3/27/2026,Friday,2025-2026,2nd Sem,Karen Japanese Siomai,105,105,0,7,735
+3/27/2026,Friday,2025-2026,2nd Sem,Karen Pork Siomai,150,38,112,6,228
+3/27/2026,Friday,2025-2026,2nd Sem,Kutsinta Cheese,5,5,0,12,60
+3/27/2026,Friday,2025-2026,2nd Sem,Kutsinta Yema,4,3,1,12,36
+3/27/2026,Friday,2025-2026,2nd Sem,Maja,10,3,7,15,45
+3/27/2026,Friday,2025-2026,2nd Sem,Meatballs,15,8,7,20,160
+3/27/2026,Friday,2025-2026,2nd Sem,Puto Cheese,4,0,4,12,0
+3/27/2026,Friday,2025-2026,2nd Sem,Puto Flan,5,2,3,12,24
+3/27/2026,Friday,2025-2026,2nd Sem,Puto Latik,4,4,0,12,48
+3/27/2026,Friday,2025-2026,2nd Sem,Siomai Rice,10,10,0,45,450
+3/27/2026,Friday,2025-2026,2nd Sem,Tokneneng,15,15,0,20,300
+3/27/2026,Friday,2025-2026,2nd Sem,Tuna Pie,10,7,3,18,126
+4/6/2026,Monday,2025-2026,2nd Sem,Baduya,10,10,0,15,150
+4/6/2026,Monday,2025-2026,2nd Sem,Banana Balls,10,4,6,20,80
+4/6/2026,Monday,2025-2026,2nd Sem,Gluti Roll,15,12,3,20,240
+4/6/2026,Monday,2025-2026,2nd Sem,Karen Dumplings,25,25,0,7,175
+4/6/2026,Monday,2025-2026,2nd Sem,Karen Japanese Siomai,140,70,70,7,490
+4/6/2026,Monday,2025-2026,2nd Sem,Karen Pork Siomai,195,195,0,6,1170
+4/6/2026,Monday,2025-2026,2nd Sem,Kutsinta Cheese,5,5,0,12,60
+4/6/2026,Monday,2025-2026,2nd Sem,Kutsinta Yema,6,4,2,12,48
+4/6/2026,Monday,2025-2026,2nd Sem,Pork Lomi,10,3,7,25,75
+4/6/2026,Monday,2025-2026,2nd Sem,Pork Mami,10,7,3,25,175
+4/6/2026,Monday,2025-2026,2nd Sem,Puto Flan,5,4,1,12,48
+4/6/2026,Monday,2025-2026,2nd Sem,Puto Latik,5,3,2,12,36
+4/6/2026,Monday,2025-2026,2nd Sem,Siomai Rice,15,13,2,45,585
+4/6/2026,Monday,2025-2026,2nd Sem,Tokneneng,25,9,16,20,180
+4/6/2026,Monday,2025-2026,2nd Sem,Tuna Pie,10,10,0,18,180
+4/6/2026,Monday,2025-2026,2nd Sem,Ukoy Balls,15,15,0,20,300
+4/7/2026,Tuesday,2025-2026,2nd Sem,Banana Cue,10,10,0,20,200
+4/7/2026,Tuesday,2025-2026,2nd Sem,Boiled Camote,5,5,0,20,100
+4/7/2026,Tuesday,2025-2026,2nd Sem,Cheese Stick,25,12,13,10,120
+4/7/2026,Tuesday,2025-2026,2nd Sem,Empanada,3,3,0,60,180
+4/7/2026,Tuesday,2025-2026,2nd Sem,Hotdog Sandwich,5,5,0,40,200
+4/7/2026,Tuesday,2025-2026,2nd Sem,Hotdog Stick,25,4,21,15,60
+4/7/2026,Tuesday,2025-2026,2nd Sem,Karen Dumplings,30,30,0,7,210
+4/7/2026,Tuesday,2025-2026,2nd Sem,Karen Japanese Siomai,120,120,0,7,840
+4/7/2026,Tuesday,2025-2026,2nd Sem,Karen Pork Siomai,190,190,0,6,1140
+4/7/2026,Tuesday,2025-2026,2nd Sem,Kutsinta Cheese,6,6,0,12,72
+4/7/2026,Tuesday,2025-2026,2nd Sem,Kutsinta Yema,5,5,0,12,60
+4/7/2026,Tuesday,2025-2026,2nd Sem,Puto Flan,5,4,1,12,48
+4/7/2026,Tuesday,2025-2026,2nd Sem,Puto Latik,4,0,4,12,0
+4/7/2026,Tuesday,2025-2026,2nd Sem,Rolls,6,6,0,26,156
+4/7/2026,Tuesday,2025-2026,2nd Sem,Tuna Pie,10,10,0,18,180
+4/7/2026,Tuesday,2025-2026,2nd Sem,Tuna Shanghai,20,2,18,12,24
+4/7/2026,Tuesday,2025-2026,2nd Sem,Turon,25,16,9,15,240
+4/8/2026,Wednesday,2025-2026,2nd Sem,Baduya,7,2,5,15,30
+4/8/2026,Wednesday,2025-2026,2nd Sem,Bihon Guisado,7,0,7,25,0
+4/8/2026,Wednesday,2025-2026,2nd Sem,Carbonara,10,1,9,25,25
+4/8/2026,Wednesday,2025-2026,2nd Sem,Chicken Pie,10,10,0,18,180
+4/8/2026,Wednesday,2025-2026,2nd Sem,Egg Sandwich,10,4,6,20,80
+4/8/2026,Wednesday,2025-2026,2nd Sem,Fresh Pancit,10,5,5,20,100
+4/8/2026,Wednesday,2025-2026,2nd Sem,Karen Dumplings,25,25,0,7,175
+4/8/2026,Wednesday,2025-2026,2nd Sem,Karen Japanese Siomai,180,106,74,7,742
+4/8/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Cheese,5,5,0,12,60
+4/8/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Yema,4,2,2,12,24
+4/8/2026,Wednesday,2025-2026,2nd Sem,Maja,10,10,0,15,150
+4/8/2026,Wednesday,2025-2026,2nd Sem,Palabok,10,3,7,25,75
+4/8/2026,Wednesday,2025-2026,2nd Sem,Puto Cheese,5,5,0,12,60
+4/8/2026,Wednesday,2025-2026,2nd Sem,Puto Flan,5,5,0,12,60
+4/8/2026,Wednesday,2025-2026,2nd Sem,Puto Latik,6,5,1,12,60
+4/8/2026,Wednesday,2025-2026,2nd Sem,Shanghai,15,2,13,12,24
+4/8/2026,Wednesday,2025-2026,2nd Sem,Siomai Rice,20,7,13,45,315
+4/8/2026,Wednesday,2025-2026,2nd Sem,Sopas,10,2,8,25,50
+4/8/2026,Wednesday,2025-2026,2nd Sem,Special Empanada,6,4,2,60,240
+4/8/2026,Wednesday,2025-2026,2nd Sem,Tinudok,15,13,2,10,130
+4/8/2026,Wednesday,2025-2026,2nd Sem,Ube Buchi,15,12,3,10,120
+4/8/2026,Wednesday,2025-2026,2nd Sem,Ukoy Balls,20,20,0,20,400
+4/8/2026,Wednesday,2025-2026,2nd Sem,Vegetable Lumpia,15,14,1,15,210
+4/10/2026,Friday,2025-2026,2nd Sem,Buchi,15,6,9,10,60
+4/10/2026,Friday,2025-2026,2nd Sem,Buchi Peanut,10,9,1,10,90
+4/10/2026,Friday,2025-2026,2nd Sem,Camote Roll,7,1,6,15,15
+4/10/2026,Friday,2025-2026,2nd Sem,Corndog,10,6,4,30,180
+4/10/2026,Friday,2025-2026,2nd Sem,Empanada,3,3,0,60,180
+4/10/2026,Friday,2025-2026,2nd Sem,Hotdog Sandwich,5,3,2,40,120
+4/10/2026,Friday,2025-2026,2nd Sem,Karen Dumplings,25,23,2,7,161
+4/10/2026,Friday,2025-2026,2nd Sem,Karen Japanese Siomai,120,120,0,7,840
+4/10/2026,Friday,2025-2026,2nd Sem,Karen Pork Siomai,170,152,18,6,912
+4/10/2026,Friday,2025-2026,2nd Sem,Karen Siopao,4,3,1,31,93
+4/10/2026,Friday,2025-2026,2nd Sem,Kutsinta Cheese,5,5,0,12,60
+4/10/2026,Friday,2025-2026,2nd Sem,Meatballs,10,10,0,20,200
+4/10/2026,Friday,2025-2026,2nd Sem,Palitaw 1's,15,10,5,10,100
+4/10/2026,Friday,2025-2026,2nd Sem,Pancit Canton,10,2,8,30,60
+4/10/2026,Friday,2025-2026,2nd Sem,Puto Flan,4,2,2,12,24
+4/10/2026,Friday,2025-2026,2nd Sem,Puto Latik,5,2,3,12,24
+4/10/2026,Friday,2025-2026,2nd Sem,Shanghai,15,9,6,12,108
+4/10/2026,Friday,2025-2026,2nd Sem,Siomai Rice,15,15,0,45,675
+4/10/2026,Friday,2025-2026,2nd Sem,Spaghetti,10,0,10,25,0
+4/10/2026,Friday,2025-2026,2nd Sem,Tokneneng,20,20,0,20,400
+4/13/2026,Monday,2025-2026,2nd Sem,Banana Cue,10,10,0,20,200
+4/13/2026,Monday,2025-2026,2nd Sem,Chicken Mami,10,10,0,25,250
+4/13/2026,Monday,2025-2026,2nd Sem,Empanada,3,3,0,60,180
+4/13/2026,Monday,2025-2026,2nd Sem,Gluti Roll,15,15,0,20,300
+4/13/2026,Monday,2025-2026,2nd Sem,Karen Dumplings,20,20,0,7,140
+4/13/2026,Monday,2025-2026,2nd Sem,Karen Japanese Siomai,155,150,5,7,1050
+4/13/2026,Monday,2025-2026,2nd Sem,Karen Pork Siomai,165,154,11,6,924
+4/13/2026,Monday,2025-2026,2nd Sem,Kutsinta Cheese,5,2,3,12,24
+4/13/2026,Monday,2025-2026,2nd Sem,Kutsinta Yema,6,6,0,12,72
+4/13/2026,Monday,2025-2026,2nd Sem,Palabok,10,3,7,25,75
+4/13/2026,Monday,2025-2026,2nd Sem,Puto Cheese,4,4,0,12,48
+4/13/2026,Monday,2025-2026,2nd Sem,Puto Flan,5,1,4,12,12
+4/13/2026,Monday,2025-2026,2nd Sem,Puto Latik,5,5,0,12,60
+4/13/2026,Monday,2025-2026,2nd Sem,Siomai Rice,10,8,2,45,360
+4/13/2026,Monday,2025-2026,2nd Sem,Spaghetti,15,6,9,25,150
+4/14/2026,Tuesday,2025-2026,2nd Sem,BBQ,20,20,0,20,400
+4/14/2026,Tuesday,2025-2026,2nd Sem,Buchi,20,20,0,10,200
+4/14/2026,Tuesday,2025-2026,2nd Sem,Empanada,3,3,0,60,180
+4/14/2026,Tuesday,2025-2026,2nd Sem,Hotdog Sandwich,6,6,0,40,240
+4/14/2026,Tuesday,2025-2026,2nd Sem,Karen Dumplings,30,30,0,7,210
+4/14/2026,Tuesday,2025-2026,2nd Sem,Karen Japanese Siomai,180,180,0,7,1260
+4/14/2026,Tuesday,2025-2026,2nd Sem,Karen Pork Siomai,180,180,0,6,1080
+4/14/2026,Tuesday,2025-2026,2nd Sem,Kutsinta Cheese,5,4,1,12,48
+4/14/2026,Tuesday,2025-2026,2nd Sem,Kutsinta Yema,5,4,1,12,48
+4/14/2026,Tuesday,2025-2026,2nd Sem,Maja,15,2,13,15,30
+4/14/2026,Tuesday,2025-2026,2nd Sem,Palabok,10,2,8,25,50
+4/14/2026,Tuesday,2025-2026,2nd Sem,Pork Mami,10,9,1,25,225
+4/14/2026,Tuesday,2025-2026,2nd Sem,Puto Cheese,6,3,3,12,36
+4/14/2026,Tuesday,2025-2026,2nd Sem,Puto Flan,5,2,3,12,24
+4/14/2026,Tuesday,2025-2026,2nd Sem,Puto Latik,5,5,0,12,60
+4/14/2026,Tuesday,2025-2026,2nd Sem,Rolls,6,6,0,26,156
+4/14/2026,Tuesday,2025-2026,2nd Sem,Shanghai,20,19,1,12,228
+4/14/2026,Tuesday,2025-2026,2nd Sem,Siomai Rice,15,13,2,45,585
+4/14/2026,Tuesday,2025-2026,2nd Sem,Special Empanada,5,3,2,60,180
+4/14/2026,Tuesday,2025-2026,2nd Sem,Suman,7,6,1,18,108
+4/14/2026,Tuesday,2025-2026,2nd Sem,Turon,25,16,9,15,240
+4/15/2026,Wednesday,2025-2026,2nd Sem,Banana Cue,10,10,0,20,200
+4/15/2026,Wednesday,2025-2026,2nd Sem,Buchi,20,20,0,10,200
+4/15/2026,Wednesday,2025-2026,2nd Sem,Cheese Stick,25,9,16,10,90
+4/15/2026,Wednesday,2025-2026,2nd Sem,Empanada,3,3,0,60,180
+4/15/2026,Wednesday,2025-2026,2nd Sem,Fresh Pancit,7,1,6,20,20
+4/15/2026,Wednesday,2025-2026,2nd Sem,Hamburger,10,3,7,45,135
+4/15/2026,Wednesday,2025-2026,2nd Sem,Karen Dumplings,25,13,12,7,91
+4/15/2026,Wednesday,2025-2026,2nd Sem,Karen Japanese Siomai,115,36,79,7,252
+4/15/2026,Wednesday,2025-2026,2nd Sem,Karen Pork Siomai,145,126,19,6,756
+4/15/2026,Wednesday,2025-2026,2nd Sem,Karen Siopao,4,4,0,31,124
+4/15/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Cheese,5,3,2,12,36
+4/15/2026,Wednesday,2025-2026,2nd Sem,Lomi,10,4,6,25,100
+4/15/2026,Wednesday,2025-2026,2nd Sem,Puto Cheese,5,3,2,12,36
+4/15/2026,Wednesday,2025-2026,2nd Sem,Puto Flan,4,3,1,12,36
+4/15/2026,Wednesday,2025-2026,2nd Sem,Puto Latik,6,1,5,12,12
+4/15/2026,Wednesday,2025-2026,2nd Sem,Sopas,10,4,6,25,100
+4/16/2026,Thursday,2025-2026,2nd Sem,Banana Cue,10,10,0,20,200
+4/16/2026,Thursday,2025-2026,2nd Sem,Empanada,3,3,0,60,180
+4/16/2026,Thursday,2025-2026,2nd Sem,Hotdog Sandwich,5,3,2,40,120
+4/16/2026,Thursday,2025-2026,2nd Sem,Karen Dumplings,30,30,0,7,210
+4/16/2026,Thursday,2025-2026,2nd Sem,Karen Japanese Siomai,170,135,35,7,945
+4/16/2026,Thursday,2025-2026,2nd Sem,Karen Pork Siomai,175,77,98,6,462
+4/16/2026,Thursday,2025-2026,2nd Sem,Kutsinta Cheese,5,5,0,12,60
+4/16/2026,Thursday,2025-2026,2nd Sem,Pork Mami,10,2,8,25,50
+4/16/2026,Thursday,2025-2026,2nd Sem,Puto Cheese,6,1,5,12,12
+4/16/2026,Thursday,2025-2026,2nd Sem,Puto Flan,4,3,1,12,36
+4/16/2026,Thursday,2025-2026,2nd Sem,Puto Latik,5,4,1,12,48
+4/16/2026,Thursday,2025-2026,2nd Sem,Shanghai,25,14,11,12,168
+4/16/2026,Thursday,2025-2026,2nd Sem,Siomai Rice,15,15,0,45,675
+4/16/2026,Thursday,2025-2026,2nd Sem,Sopas,10,6,4,25,150
+4/16/2026,Thursday,2025-2026,2nd Sem,Ukoy Balls,20,5,15,20,100
+4/17/2026,Friday,2025-2026,2nd Sem,Bihon Guisado,6,0,6,25,0
+4/17/2026,Friday,2025-2026,2nd Sem,Buchi,15,11,4,10,110
+4/17/2026,Friday,2025-2026,2nd Sem,Buchi Peanut,15,3,12,10,30
+4/17/2026,Friday,2025-2026,2nd Sem,Cater Bihon Canton,10,1,9,30,30
+4/17/2026,Friday,2025-2026,2nd Sem,Corndog,10,5,5,30,150
+4/17/2026,Friday,2025-2026,2nd Sem,Fresh Pancit,10,1,9,20,20
+4/17/2026,Friday,2025-2026,2nd Sem,Karen Dumplings,25,25,0,7,175
+4/17/2026,Friday,2025-2026,2nd Sem,Karen Japanese Siomai,110,19,91,7,133
+4/17/2026,Friday,2025-2026,2nd Sem,Karen Pork Siomai,140,140,0,6,840
+4/17/2026,Friday,2025-2026,2nd Sem,Kutsinta Cheese,5,5,0,12,60
+4/17/2026,Friday,2025-2026,2nd Sem,Kutsinta Yema,4,2,2,12,24
+4/17/2026,Friday,2025-2026,2nd Sem,Lomi,10,2,8,25,50
+4/17/2026,Friday,2025-2026,2nd Sem,Puto Cheese,5,1,4,12,12
+4/17/2026,Friday,2025-2026,2nd Sem,Puto Flan,5,5,0,12,60
+4/17/2026,Friday,2025-2026,2nd Sem,Suman,6,1,5,18,18
+4/17/2026,Friday,2025-2026,2nd Sem,Tuna Pie,7,6,1,18,108
+4/17/2026,Friday,2025-2026,2nd Sem,Turon,20,17,3,15,255
+4/17/2026,Friday,2025-2026,2nd Sem,Ube Buchi,15,11,4,10,110
+4/17/2026,Friday,2025-2026,2nd Sem,Ukoy Balls,20,20,0,20,400
+4/17/2026,Friday,2025-2026,2nd Sem,Vegetable Lumpia,10,10,0,15,150
+4/20/2026,Monday,2025-2026,2nd Sem,BBQ,15,15,0,20,300
+4/20/2026,Monday,2025-2026,2nd Sem,Camote Cue,10,10,0,20,200
+4/20/2026,Monday,2025-2026,2nd Sem,Cheese Stick,30,30,0,10,300
+4/20/2026,Monday,2025-2026,2nd Sem,Empanada,4,4,0,60,240
+4/20/2026,Monday,2025-2026,2nd Sem,Karen Japanese Siomai,125,125,0,7,875
+4/20/2026,Monday,2025-2026,2nd Sem,Karen Pork Siomai,185,92,93,6,552
+4/20/2026,Monday,2025-2026,2nd Sem,Karen Siopao,6,5,1,31,155
+4/20/2026,Monday,2025-2026,2nd Sem,Kutsinta Cheese,7,5,2,12,60
+4/20/2026,Monday,2025-2026,2nd Sem,Kutsinta Yema,5,5,0,12,60
+4/20/2026,Monday,2025-2026,2nd Sem,Palabok,10,6,4,25,150
+4/20/2026,Monday,2025-2026,2nd Sem,Palitaw 1's,15,15,0,10,150
+4/20/2026,Monday,2025-2026,2nd Sem,Puto Cheese,5,5,0,12,60
+4/20/2026,Monday,2025-2026,2nd Sem,Puto Flan,6,4,2,12,48
+4/20/2026,Monday,2025-2026,2nd Sem,Puto Latik,6,6,0,12,72
+4/20/2026,Monday,2025-2026,2nd Sem,Rolls,5,5,0,26,130
+4/20/2026,Monday,2025-2026,2nd Sem,Shanghai,20,11,9,12,132
+4/20/2026,Monday,2025-2026,2nd Sem,Siomai Rice,15,15,0,45,675
+4/20/2026,Monday,2025-2026,2nd Sem,Tuna Pie,10,7,3,18,126
+4/21/2026,Tuesday,2025-2026,2nd Sem,Arroz Caldo,5,5,0,20,100
+4/21/2026,Tuesday,2025-2026,2nd Sem,Bihon Guisado,7,6,1,25,150
+4/21/2026,Tuesday,2025-2026,2nd Sem,Buchi,20,20,0,10,200
+4/21/2026,Tuesday,2025-2026,2nd Sem,Cheese Stick,30,29,1,10,290
+4/21/2026,Tuesday,2025-2026,2nd Sem,Chicken Mami,10,10,0,25,250
+4/21/2026,Tuesday,2025-2026,2nd Sem,Egg Sandwich,10,10,0,20,200
+4/21/2026,Tuesday,2025-2026,2nd Sem,Empanada,3,3,0,60,180
+4/21/2026,Tuesday,2025-2026,2nd Sem,Hotdog Sandwich,6,6,0,40,240
+4/21/2026,Tuesday,2025-2026,2nd Sem,Karen Japanese Siomai,145,126,19,7,882
+4/21/2026,Tuesday,2025-2026,2nd Sem,Karen Pork Siomai,185,185,0,6,1110
+4/21/2026,Tuesday,2025-2026,2nd Sem,Karen Siopao,5,5,0,31,155
+4/21/2026,Tuesday,2025-2026,2nd Sem,Kutsinta Cheese,6,4,2,12,48
+4/21/2026,Tuesday,2025-2026,2nd Sem,Kutsinta Yema,6,6,0,12,72
+4/21/2026,Tuesday,2025-2026,2nd Sem,Meatballs,15,15,0,20,300
+4/21/2026,Tuesday,2025-2026,2nd Sem,Popcorn,5,3,2,18,54
+4/21/2026,Tuesday,2025-2026,2nd Sem,Puto Cheese,5,2,3,12,24
+4/21/2026,Tuesday,2025-2026,2nd Sem,Puto Flan,5,5,0,12,60
+4/21/2026,Tuesday,2025-2026,2nd Sem,Puto Latik,5,5,0,12,60
+4/21/2026,Tuesday,2025-2026,2nd Sem,Siomai Rice,15,15,0,45,675
+4/21/2026,Tuesday,2025-2026,2nd Sem,Special Empanada,5,5,0,60,300
+4/21/2026,Tuesday,2025-2026,2nd Sem,Tuna Pie,10,7,3,18,126
+4/22/2026,Wednesday,2025-2026,2nd Sem,Cheese Stick,30,30,0,10,300
+4/22/2026,Wednesday,2025-2026,2nd Sem,Empanada,3,3,0,60,180
+4/22/2026,Wednesday,2025-2026,2nd Sem,Fresh Pancit,10,10,0,20,200
+4/22/2026,Wednesday,2025-2026,2nd Sem,Hotdog Stick,20,2,18,15,30
+4/22/2026,Wednesday,2025-2026,2nd Sem,Karen Japanese Siomai,145,124,21,7,868
+4/22/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Cheese,4,4,0,12,48
+4/22/2026,Wednesday,2025-2026,2nd Sem,Lomi,10,5,5,25,125
+4/22/2026,Wednesday,2025-2026,2nd Sem,Puto Cheese,5,5,0,12,60
+4/22/2026,Wednesday,2025-2026,2nd Sem,Puto Flan,5,5,0,12,60
+4/22/2026,Wednesday,2025-2026,2nd Sem,Tuna Pie,10,7,3,18,126
+4/22/2026,Wednesday,2025-2026,2nd Sem,Tuna Shanghai,20,19,1,12,228
+4/22/2026,Wednesday,2025-2026,2nd Sem,Vegetable Lumpia,15,15,0,15,225
+4/23/2026,Thursday,2025-2026,2nd Sem,BBQ,15,11,4,20,220
+4/23/2026,Thursday,2025-2026,2nd Sem,Banana Cue,10,10,0,20,200
+4/23/2026,Thursday,2025-2026,2nd Sem,Beef Mami,10,5,5,30,150
+4/23/2026,Thursday,2025-2026,2nd Sem,Buchi,15,10,5,10,100
+4/23/2026,Thursday,2025-2026,2nd Sem,Buchi Peanut,10,10,0,10,100
+4/23/2026,Thursday,2025-2026,2nd Sem,Empanada,3,2,1,60,120
+4/23/2026,Thursday,2025-2026,2nd Sem,Ginataan,6,6,0,20,120
+4/23/2026,Thursday,2025-2026,2nd Sem,Gluti Roll,15,10,5,20,200
+4/23/2026,Thursday,2025-2026,2nd Sem,Karen Dumplings,25,25,0,7,175
+4/23/2026,Thursday,2025-2026,2nd Sem,Karen Japanese Siomai,145,138,7,7,966
+4/23/2026,Thursday,2025-2026,2nd Sem,Karen Pork Siomai,190,112,78,6,672
+4/23/2026,Thursday,2025-2026,2nd Sem,Kutsinta Cheese,4,4,0,12,48
+4/23/2026,Thursday,2025-2026,2nd Sem,Kutsinta Yema,4,4,0,12,48
+4/23/2026,Thursday,2025-2026,2nd Sem,Palitaw 1's,15,9,6,10,90
+4/23/2026,Thursday,2025-2026,2nd Sem,Pork Lomi,10,2,8,25,50
+4/23/2026,Thursday,2025-2026,2nd Sem,Pork Mami,10,6,4,25,150
+4/23/2026,Thursday,2025-2026,2nd Sem,Puto Cheese,5,5,0,12,60
+4/23/2026,Thursday,2025-2026,2nd Sem,Puto Latik,5,4,1,12,48
+4/23/2026,Thursday,2025-2026,2nd Sem,Rolls,5,4,1,26,104
+4/23/2026,Thursday,2025-2026,2nd Sem,Siomai Rice,15,11,4,45,495
+4/23/2026,Thursday,2025-2026,2nd Sem,Tokneneng,20,20,0,20,400
+4/23/2026,Thursday,2025-2026,2nd Sem,Turon,15,15,0,15,225
+4/24/2026,Friday,2025-2026,2nd Sem,Banana Balls,10,5,5,20,100
+4/24/2026,Friday,2025-2026,2nd Sem,Banana Cue,8,8,0,20,160
+4/24/2026,Friday,2025-2026,2nd Sem,Buchi,10,6,4,10,60
+4/24/2026,Friday,2025-2026,2nd Sem,Camote Cue,10,1,9,20,20
+4/24/2026,Friday,2025-2026,2nd Sem,Empanada,3,0,3,60,0
+4/24/2026,Friday,2025-2026,2nd Sem,Hotdog Sandwich,4,2,2,40,80
+4/24/2026,Friday,2025-2026,2nd Sem,Hotdog Stick,20,6,14,15,90
+4/24/2026,Friday,2025-2026,2nd Sem,Karen Dumplings,20,12,8,7,84
+4/24/2026,Friday,2025-2026,2nd Sem,Karen Pork Siomai,180,180,0,6,1080
+4/24/2026,Friday,2025-2026,2nd Sem,Karen Siopao,5,5,0,31,155
+4/24/2026,Friday,2025-2026,2nd Sem,Kutsinta Cheese,4,4,0,12,48
+4/24/2026,Friday,2025-2026,2nd Sem,Kutsinta Yema,5,5,0,12,60
+4/24/2026,Friday,2025-2026,2nd Sem,Lomi,10,3,7,25,75
+4/24/2026,Friday,2025-2026,2nd Sem,Lumpianada,8,2,6,35,70
+4/24/2026,Friday,2025-2026,2nd Sem,Palabok,8,5,3,25,125
+4/24/2026,Friday,2025-2026,2nd Sem,Popcorn,7,3,4,18,54
+4/24/2026,Friday,2025-2026,2nd Sem,Puto Cheese,4,3,1,12,36
+4/24/2026,Friday,2025-2026,2nd Sem,Puto Flan,6,1,5,12,12
+4/24/2026,Friday,2025-2026,2nd Sem,Puto Latik,4,3,1,12,36
+4/24/2026,Friday,2025-2026,2nd Sem,Rolls,5,1,4,26,26
+4/24/2026,Friday,2025-2026,2nd Sem,Siomai Rice,15,9,6,45,405
+4/24/2026,Friday,2025-2026,2nd Sem,Turon,20,6,14,15,90
+4/24/2026,Friday,2025-2026,2nd Sem,Vegetable Lumpia,15,12,3,15,180
+4/27/2026,Monday,2025-2026,2nd Sem,Camote Roll,7,7,0,15,105
+4/27/2026,Monday,2025-2026,2nd Sem,Corndog,10,9,1,30,270
+4/27/2026,Monday,2025-2026,2nd Sem,Hamburger,10,4,6,45,180
+4/27/2026,Monday,2025-2026,2nd Sem,Karen Dumplings,25,12,13,7,84
+4/27/2026,Monday,2025-2026,2nd Sem,Karen Japanese Siomai,140,49,91,7,343
+4/27/2026,Monday,2025-2026,2nd Sem,Karen Pork Siomai,185,185,0,6,1110
+4/27/2026,Monday,2025-2026,2nd Sem,Kutsinta Cheese,4,3,1,12,36
+4/27/2026,Monday,2025-2026,2nd Sem,Kutsinta Yema,5,1,4,12,12
+4/27/2026,Monday,2025-2026,2nd Sem,Palitaw,10,7,3,5,35
+4/27/2026,Monday,2025-2026,2nd Sem,Puto Latik,4,3,1,12,36
+4/27/2026,Monday,2025-2026,2nd Sem,Siomai Rice,20,9,11,45,405
+4/27/2026,Monday,2025-2026,2nd Sem,Tokneneng,25,8,17,20,160
+4/28/2026,Tuesday,2025-2026,2nd Sem,Boiled Banana,15,15,0,6,90
+4/28/2026,Tuesday,2025-2026,2nd Sem,Egg Sandwich,10,6,4,20,120
+4/28/2026,Tuesday,2025-2026,2nd Sem,Hotdog Sandwich,5,5,0,40,200
+4/28/2026,Tuesday,2025-2026,2nd Sem,Hotdog Stick,30,4,26,15,60
+4/28/2026,Tuesday,2025-2026,2nd Sem,Karen Japanese Siomai,140,102,38,7,714
+4/28/2026,Tuesday,2025-2026,2nd Sem,Karen Pork Siomai,225,38,187,6,228
+4/28/2026,Tuesday,2025-2026,2nd Sem,Kutsinta Cheese,6,6,0,12,72
+4/28/2026,Tuesday,2025-2026,2nd Sem,Kutsinta Yema,6,4,2,12,48
+4/28/2026,Tuesday,2025-2026,2nd Sem,Lomi,10,2,8,25,50
+4/28/2026,Tuesday,2025-2026,2nd Sem,Lumpianada,8,7,1,35,245
+4/28/2026,Tuesday,2025-2026,2nd Sem,Maja,10,7,3,15,105
+4/28/2026,Tuesday,2025-2026,2nd Sem,Meatballs,20,17,3,20,340
+4/28/2026,Tuesday,2025-2026,2nd Sem,Palabok,10,4,6,25,100
+4/28/2026,Tuesday,2025-2026,2nd Sem,Palitaw 1's,15,4,11,10,40
+4/28/2026,Tuesday,2025-2026,2nd Sem,Puto Flan,5,5,0,12,60
+4/28/2026,Tuesday,2025-2026,2nd Sem,Puto Latik,6,6,0,12,72
+4/28/2026,Tuesday,2025-2026,2nd Sem,Rolls,5,2,3,26,52
+4/28/2026,Tuesday,2025-2026,2nd Sem,Siomai Rice,20,19,1,45,855
+4/28/2026,Tuesday,2025-2026,2nd Sem,Tuna Pie,10,10,0,18,180
+4/28/2026,Tuesday,2025-2026,2nd Sem,Turon,20,5,15,15,75
+4/28/2026,Tuesday,2025-2026,2nd Sem,Vegetable Lumpia,20,20,0,15,300
+4/29/2026,Wednesday,2025-2026,2nd Sem,BBQ,15,9,6,20,180
+4/29/2026,Wednesday,2025-2026,2nd Sem,Camote Fries,7,4,3,21,84
+4/29/2026,Wednesday,2025-2026,2nd Sem,Cheese Stick,30,10,20,10,100
+4/29/2026,Wednesday,2025-2026,2nd Sem,Egg Sandwich,10,5,5,20,100
+4/29/2026,Wednesday,2025-2026,2nd Sem,Empanada,3,0,3,60,0
+4/29/2026,Wednesday,2025-2026,2nd Sem,Hotdog Sandwich,6,6,0,40,240
+4/29/2026,Wednesday,2025-2026,2nd Sem,Hotdog Stick,25,9,16,15,135
+4/29/2026,Wednesday,2025-2026,2nd Sem,Karen Dumplings,25,25,0,7,175
+4/29/2026,Wednesday,2025-2026,2nd Sem,Karen Japanese Siomai,130,130,0,7,910
+4/29/2026,Wednesday,2025-2026,2nd Sem,Karen Pork Siomai,170,170,0,6,1020
+4/29/2026,Wednesday,2025-2026,2nd Sem,Karen Siopao,5,5,0,31,155
+4/29/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Cheese,5,4,1,12,48
+4/29/2026,Wednesday,2025-2026,2nd Sem,Meatballs,10,9,1,20,180
+4/29/2026,Wednesday,2025-2026,2nd Sem,Palabok,10,4,6,25,100
+4/29/2026,Wednesday,2025-2026,2nd Sem,Puto Cheese,5,3,2,12,36
+4/29/2026,Wednesday,2025-2026,2nd Sem,Puto Flan,6,6,0,12,72
+4/29/2026,Wednesday,2025-2026,2nd Sem,Puto Latik,6,4,2,12,48
+4/29/2026,Wednesday,2025-2026,2nd Sem,Shanghai,20,10,10,12,120
+4/29/2026,Wednesday,2025-2026,2nd Sem,Siomai Rice,10,10,0,45,450
+4/29/2026,Wednesday,2025-2026,2nd Sem,Spaghetti,10,3,7,25,75
+4/29/2026,Wednesday,2025-2026,2nd Sem,Tuna Pie,10,2,8,18,36
+4/30/2026,Thursday,2025-2026,2nd Sem,Camote Roll,6,4,2,15,60
+4/30/2026,Thursday,2025-2026,2nd Sem,Empanada,2,2,0,60,120
+4/30/2026,Thursday,2025-2026,2nd Sem,Hotdog Sandwich,6,6,0,40,240
+4/30/2026,Thursday,2025-2026,2nd Sem,Hotdog Stick,20,19,1,15,285
+4/30/2026,Thursday,2025-2026,2nd Sem,Karen Dumplings,25,25,0,7,175
+4/30/2026,Thursday,2025-2026,2nd Sem,Karen Pork Siomai,200,37,163,6,222
+4/30/2026,Thursday,2025-2026,2nd Sem,Kutsinta Cheese,5,5,0,12,60
+4/30/2026,Thursday,2025-2026,2nd Sem,Palabok,10,8,2,25,200
+4/30/2026,Thursday,2025-2026,2nd Sem,Palitaw 1's,20,9,11,10,90
+4/30/2026,Thursday,2025-2026,2nd Sem,Puto Cheese,5,4,1,12,48
+4/30/2026,Thursday,2025-2026,2nd Sem,Puto Flan,4,3,1,12,36
+4/30/2026,Thursday,2025-2026,2nd Sem,Puto Latik,5,5,0,12,60
+4/30/2026,Thursday,2025-2026,2nd Sem,Rolls,4,2,2,26,52
+4/30/2026,Thursday,2025-2026,2nd Sem,Siomai Rice,15,15,0,45,675
+4/30/2026,Thursday,2025-2026,2nd Sem,Sopas,10,8,2,25,200
+4/30/2026,Thursday,2025-2026,2nd Sem,Tinudok,10,10,0,10,100
+4/30/2026,Thursday,2025-2026,2nd Sem,Tuna Pie,10,10,0,18,180
+5/4/2026,Monday,2025-2026,2nd Sem,Arroz Caldo,5,1,4,20,20
+5/4/2026,Monday,2025-2026,2nd Sem,Cheese Stick,30,25,5,10,250
+5/4/2026,Monday,2025-2026,2nd Sem,Empanada,2,1,1,60,60
+5/4/2026,Monday,2025-2026,2nd Sem,Fresh Pancit,10,4,6,20,80
+5/4/2026,Monday,2025-2026,2nd Sem,Gluti Roll,15,7,8,20,140
+5/4/2026,Monday,2025-2026,2nd Sem,Hotdog Sandwich,5,5,0,40,200
+5/4/2026,Monday,2025-2026,2nd Sem,Hotdog Stick,25,12,13,15,180
+5/4/2026,Monday,2025-2026,2nd Sem,Kutsinta Cheese,5,5,0,12,60
+5/4/2026,Monday,2025-2026,2nd Sem,Kutsinta Yema,5,2,3,12,24
+5/4/2026,Monday,2025-2026,2nd Sem,Palitaw,10,10,0,5,50
+5/4/2026,Monday,2025-2026,2nd Sem,Pork Mami,10,3,7,25,75
+5/4/2026,Monday,2025-2026,2nd Sem,Puto Cheese,5,4,1,12,48
+5/4/2026,Monday,2025-2026,2nd Sem,Puto Latik,5,5,0,12,60
+5/4/2026,Monday,2025-2026,2nd Sem,Rolls,5,5,0,26,130
+5/4/2026,Monday,2025-2026,2nd Sem,Siomai Rice,15,15,0,45,675
+5/4/2026,Monday,2025-2026,2nd Sem,Sopas,10,1,9,25,25
+5/4/2026,Monday,2025-2026,2nd Sem,Tuna Shanghai,20,19,1,12,228
+5/4/2026,Monday,2025-2026,2nd Sem,Turon,20,19,1,15,285
+5/4/2026,Monday,2025-2026,2nd Sem,Ukoy Balls,20,20,0,20,400
+5/5/2026,Tuesday,2025-2026,2nd Sem,BBQ,15,15,0,20,300
+5/5/2026,Tuesday,2025-2026,2nd Sem,Hamburger,15,4,11,45,180
+5/5/2026,Tuesday,2025-2026,2nd Sem,Karen Dumplings,30,30,0,7,210
+5/5/2026,Tuesday,2025-2026,2nd Sem,Karen Japanese Siomai,165,103,62,7,721
+5/5/2026,Tuesday,2025-2026,2nd Sem,Kutsinta Yema,5,1,4,12,12
+5/5/2026,Tuesday,2025-2026,2nd Sem,Puto Flan,5,3,2,12,36
+5/5/2026,Tuesday,2025-2026,2nd Sem,Puto Latik,5,2,3,12,24
+5/5/2026,Tuesday,2025-2026,2nd Sem,Rolls,5,5,0,26,130
+5/5/2026,Tuesday,2025-2026,2nd Sem,Siomai Rice,15,5,10,45,225
+5/5/2026,Tuesday,2025-2026,2nd Sem,Tuna Pie,10,6,4,18,108
+5/5/2026,Tuesday,2025-2026,2nd Sem,Vegetable Lumpia,15,13,2,15,195
+5/6/2026,Wednesday,2025-2026,2nd Sem,Boiled Camote,6,2,4,20,40
+5/6/2026,Wednesday,2025-2026,2nd Sem,Camote Cue,10,10,0,20,200
+5/6/2026,Wednesday,2025-2026,2nd Sem,Corndog,10,7,3,30,210
+5/6/2026,Wednesday,2025-2026,2nd Sem,Hamburger,10,10,0,45,450
+5/6/2026,Wednesday,2025-2026,2nd Sem,Hotdog Stick,20,8,12,15,120
+5/6/2026,Wednesday,2025-2026,2nd Sem,Karen Japanese Siomai,140,29,111,7,203
+5/6/2026,Wednesday,2025-2026,2nd Sem,Karen Pork Siomai,150,69,81,6,414
+5/6/2026,Wednesday,2025-2026,2nd Sem,Karen Siopao,5,5,0,31,155
+5/6/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Cheese,6,3,3,12,36
+5/6/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Yema,5,5,0,12,60
+5/6/2026,Wednesday,2025-2026,2nd Sem,Palabok,10,10,0,25,250
+5/6/2026,Wednesday,2025-2026,2nd Sem,Pork Mami,10,10,0,25,250
+5/6/2026,Wednesday,2025-2026,2nd Sem,Puto Cheese,5,4,1,12,48
+5/6/2026,Wednesday,2025-2026,2nd Sem,Puto Flan,5,5,0,12,60
+5/6/2026,Wednesday,2025-2026,2nd Sem,Puto Latik,6,6,0,12,72
+5/6/2026,Wednesday,2025-2026,2nd Sem,Rolls,5,5,0,26,130
+5/6/2026,Wednesday,2025-2026,2nd Sem,Siomai Rice,15,15,0,45,675
+5/6/2026,Wednesday,2025-2026,2nd Sem,Suman,7,3,4,18,54
+5/7/2026,Thursday,2025-2026,2nd Sem,BBQ,15,9,6,20,180
+5/7/2026,Thursday,2025-2026,2nd Sem,Baduya,10,7,3,15,105
+5/7/2026,Thursday,2025-2026,2nd Sem,Bihon Guisado,8,6,2,25,150
+5/7/2026,Thursday,2025-2026,2nd Sem,Buchi,20,8,12,10,80
+5/7/2026,Thursday,2025-2026,2nd Sem,Cheese Stick,30,22,8,10,220
+5/7/2026,Thursday,2025-2026,2nd Sem,Empanada,3,2,1,60,120
+5/7/2026,Thursday,2025-2026,2nd Sem,Fresh Pancit,10,3,7,20,60
+5/7/2026,Thursday,2025-2026,2nd Sem,Hotdog Sandwich,5,2,3,40,80
+5/7/2026,Thursday,2025-2026,2nd Sem,Hotdog Stick,20,11,9,15,165
+5/7/2026,Thursday,2025-2026,2nd Sem,Karen Japanese Siomai,165,52,113,7,364
+5/7/2026,Thursday,2025-2026,2nd Sem,Karen Pork Siomai,160,63,97,6,378
+5/7/2026,Thursday,2025-2026,2nd Sem,Kutsinta Yema,5,3,2,12,36
+5/7/2026,Thursday,2025-2026,2nd Sem,Meatballs,15,5,10,20,100
+5/7/2026,Thursday,2025-2026,2nd Sem,Pork Mami,10,8,2,25,200
+5/7/2026,Thursday,2025-2026,2nd Sem,Puto Cheese,4,2,2,12,24
+5/7/2026,Thursday,2025-2026,2nd Sem,Puto Latik,4,3,1,12,36
+5/7/2026,Thursday,2025-2026,2nd Sem,Siomai Rice,15,9,6,45,405
+5/7/2026,Thursday,2025-2026,2nd Sem,Spaghetti,10,6,4,25,150
+5/7/2026,Thursday,2025-2026,2nd Sem,Special Empanada,6,1,5,60,60
+5/7/2026,Thursday,2025-2026,2nd Sem,Tokneneng,15,15,0,20,300
+5/7/2026,Thursday,2025-2026,2nd Sem,Ukoy Balls,20,20,0,20,400
+5/8/2026,Friday,2025-2026,2nd Sem,BBQ,10,8,2,20,160
+5/8/2026,Friday,2025-2026,2nd Sem,Banana Cue,10,9,1,20,180
+5/8/2026,Friday,2025-2026,2nd Sem,Carbonara,10,0,10,25,0
+5/8/2026,Friday,2025-2026,2nd Sem,Cater Bihon Canton,10,1,9,30,30
+5/8/2026,Friday,2025-2026,2nd Sem,Egg Sandwich,10,4,6,20,80
+5/8/2026,Friday,2025-2026,2nd Sem,Hotdog Sandwich,5,5,0,40,200
+5/8/2026,Friday,2025-2026,2nd Sem,Karen Dumplings,20,6,14,7,42
+5/8/2026,Friday,2025-2026,2nd Sem,Karen Japanese Siomai,145,60,85,7,420
+5/8/2026,Friday,2025-2026,2nd Sem,Karen Pork Siomai,180,86,94,6,516
+5/8/2026,Friday,2025-2026,2nd Sem,Kutsinta Cheese,5,4,1,12,48
+5/8/2026,Friday,2025-2026,2nd Sem,Kutsinta Yema,4,4,0,12,48
+5/8/2026,Friday,2025-2026,2nd Sem,Meatballs,10,4,6,20,80
+5/8/2026,Friday,2025-2026,2nd Sem,Palitaw 1's,15,4,11,10,40
+5/8/2026,Friday,2025-2026,2nd Sem,Pancit Canton,10,2,8,30,60
+5/8/2026,Friday,2025-2026,2nd Sem,Puto Cheese,6,1,5,12,12
+5/8/2026,Friday,2025-2026,2nd Sem,Puto Flan,4,3,1,12,36
+5/8/2026,Friday,2025-2026,2nd Sem,Puto Latik,4,1,3,12,12
+5/8/2026,Friday,2025-2026,2nd Sem,Rolls,4,0,4,26,0
+5/8/2026,Friday,2025-2026,2nd Sem,Siomai Rice,10,3,7,45,135
+5/8/2026,Friday,2025-2026,2nd Sem,Tinudok,10,4,6,10,40
+5/8/2026,Friday,2025-2026,2nd Sem,Tuna Pie,7,3,4,18,54
+5/8/2026,Friday,2025-2026,2nd Sem,Vegetable Lumpia,10,10,0,15,150
+5/11/2026,Monday,2025-2026,2nd Sem,Banana Balls,10,7,3,20,140
+5/11/2026,Monday,2025-2026,2nd Sem,Banana Cue,10,10,0,20,200
+5/11/2026,Monday,2025-2026,2nd Sem,Bihon Guisado,10,3,7,25,75
+5/11/2026,Monday,2025-2026,2nd Sem,Buchi Peanut,10,10,0,10,100
+5/11/2026,Monday,2025-2026,2nd Sem,Chicken Pie,15,3,12,18,54
+5/11/2026,Monday,2025-2026,2nd Sem,Karen Dumplings,25,25,0,7,175
+5/11/2026,Monday,2025-2026,2nd Sem,Karen Japanese Siomai,120,88,32,7,616
+5/11/2026,Monday,2025-2026,2nd Sem,Karen Pork Siomai,170,66,104,6,396
+5/11/2026,Monday,2025-2026,2nd Sem,Karen Siopao,6,6,0,31,186
+5/11/2026,Monday,2025-2026,2nd Sem,Kutsinta Cheese,4,4,0,12,48
+5/11/2026,Monday,2025-2026,2nd Sem,Kutsinta Yema,5,2,3,12,24
+5/11/2026,Monday,2025-2026,2nd Sem,Meatballs,15,4,11,20,80
+5/11/2026,Monday,2025-2026,2nd Sem,Pork Lomi,10,1,9,25,25
+5/11/2026,Monday,2025-2026,2nd Sem,Pork Mami,10,10,0,25,250
+5/11/2026,Monday,2025-2026,2nd Sem,Puto Cheese,6,4,2,12,48
+5/11/2026,Monday,2025-2026,2nd Sem,Puto Flan,4,2,2,12,24
+5/11/2026,Monday,2025-2026,2nd Sem,Puto Latik,5,3,2,12,36
+5/11/2026,Monday,2025-2026,2nd Sem,Rolls,4,0,4,26,0
+5/11/2026,Monday,2025-2026,2nd Sem,Siomai Rice,15,15,0,45,675
+5/11/2026,Monday,2025-2026,2nd Sem,Suman,8,3,5,18,54
+5/11/2026,Monday,2025-2026,2nd Sem,Tuna Pie,10,5,5,18,90
+5/12/2026,Tuesday,2025-2026,2nd Sem,Gluti Roll,15,7,8,20,140
+5/12/2026,Tuesday,2025-2026,2nd Sem,Karen Dumplings,25,25,0,7,175
+5/12/2026,Tuesday,2025-2026,2nd Sem,Karen Japanese Siomai,120,18,102,7,126
+5/12/2026,Tuesday,2025-2026,2nd Sem,Karen Pork Siomai,155,155,0,6,930
+5/12/2026,Tuesday,2025-2026,2nd Sem,Palabok,10,7,3,25,175
+5/12/2026,Tuesday,2025-2026,2nd Sem,Puto Flan,5,2,3,12,24
+5/12/2026,Tuesday,2025-2026,2nd Sem,Puto Latik,4,3,1,12,36
+5/12/2026,Tuesday,2025-2026,2nd Sem,Shanghai,25,13,12,12,156
+5/12/2026,Tuesday,2025-2026,2nd Sem,Siomai Rice,15,4,11,45,180
+5/12/2026,Tuesday,2025-2026,2nd Sem,Suman,7,6,1,18,108
+5/12/2026,Tuesday,2025-2026,2nd Sem,Tinudok,10,6,4,10,60
+5/12/2026,Tuesday,2025-2026,2nd Sem,Tokneneng,20,6,14,20,120
+5/12/2026,Tuesday,2025-2026,2nd Sem,Tuna Shanghai,15,15,0,12,180
+5/13/2026,Wednesday,2025-2026,2nd Sem,Bihon Guisado,6,3,3,25,75
+5/13/2026,Wednesday,2025-2026,2nd Sem,Buchi,15,0,15,10,0
+5/13/2026,Wednesday,2025-2026,2nd Sem,Corndog,10,1,9,30,30
+5/13/2026,Wednesday,2025-2026,2nd Sem,Hotdog Sandwich,4,4,0,40,160
+5/13/2026,Wednesday,2025-2026,2nd Sem,Hotdog Stick,20,2,18,15,30
+5/13/2026,Wednesday,2025-2026,2nd Sem,Karen Pork Siomai,135,135,0,6,810
+5/13/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Cheese,5,5,0,12,60
+5/13/2026,Wednesday,2025-2026,2nd Sem,Kutsinta Yema,4,4,0,12,48
+5/13/2026,Wednesday,2025-2026,2nd Sem,Lumpianada,7,3,4,35,105
+5/13/2026,Wednesday,2025-2026,2nd Sem,Puto Cheese,5,3,2,12,36
+5/13/2026,Wednesday,2025-2026,2nd Sem,Puto Flan,6,5,1,12,60
+5/13/2026,Wednesday,2025-2026,2nd Sem,Siomai Rice,10,10,0,45,450
+5/13/2026,Wednesday,2025-2026,2nd Sem,Sopas,10,3,7,25,75
+5/13/2026,Wednesday,2025-2026,2nd Sem,Tokneneng,15,7,8,20,140
+5/13/2026,Wednesday,2025-2026,2nd Sem,Ukoy Balls,20,12,8,20,240
+5/14/2026,Thursday,2025-2026,2nd Sem,Bihon Guisado,7,0,7,25,0
+5/14/2026,Thursday,2025-2026,2nd Sem,Camote Cue,10,2,8,20,40
+5/14/2026,Thursday,2025-2026,2nd Sem,Camote Roll,6,0,6,15,0
+5/14/2026,Thursday,2025-2026,2nd Sem,Cheese Stick,25,9,16,10,90
+5/14/2026,Thursday,2025-2026,2nd Sem,Egg Sandwich,10,9,1,20,180
+5/14/2026,Thursday,2025-2026,2nd Sem,Hamburger,10,3,7,45,135
+5/14/2026,Thursday,2025-2026,2nd Sem,Karen Japanese Siomai,135,117,18,7,819
+5/14/2026,Thursday,2025-2026,2nd Sem,Karen Siopao,5,1,4,31,31
+5/14/2026,Thursday,2025-2026,2nd Sem,Kutsinta Cheese,5,2,3,12,24
+5/14/2026,Thursday,2025-2026,2nd Sem,Siomai Rice,15,10,5,45,450
+5/14/2026,Thursday,2025-2026,2nd Sem,Tuna Pie,7,4,3,18,72
+5/15/2026,Friday,2025-2026,2nd Sem,Cheese Stick,20,11,9,10,110
+5/15/2026,Friday,2025-2026,2nd Sem,Empanada,2,2,0,60,120
+5/15/2026,Friday,2025-2026,2nd Sem,Fresh Pancit,10,1,9,20,20
+5/15/2026,Friday,2025-2026,2nd Sem,Hotdog Stick,20,10,10,15,150
+5/15/2026,Friday,2025-2026,2nd Sem,Karen Dumplings,20,10,10,7,70
+5/15/2026,Friday,2025-2026,2nd Sem,Kutsinta Cheese,4,1,3,12,12
+5/15/2026,Friday,2025-2026,2nd Sem,Meatballs,15,6,9,20,120
+5/15/2026,Friday,2025-2026,2nd Sem,Puto Flan,4,3,1,12,36
+5/15/2026,Friday,2025-2026,2nd Sem,Rolls,5,1,4,26,26
+5/15/2026,Friday,2025-2026,2nd Sem,Siomai Rice,15,10,5,45,450
+5/15/2026,Friday,2025-2026,2nd Sem,Spaghetti,7,7,0,25,175
+5/15/2026,Friday,2025-2026,2nd Sem,Vegetable Lumpia,10,6,4,15,90
+5/18/2026,Monday,2025-2026,2nd Sem,Buchi,15,15,0,10,150
+5/18/2026,Monday,2025-2026,2nd Sem,Camote Cue,10,4,6,20,80
+5/18/2026,Monday,2025-2026,2nd Sem,Cheese Stick,25,8,17,10,80
+5/18/2026,Monday,2025-2026,2nd Sem,Empanada,3,3,0,60,180
+5/18/2026,Monday,2025-2026,2nd Sem,Gluti Roll,15,8,7,20,160
+5/18/2026,Monday,2025-2026,2nd Sem,Karen Japanese Siomai,140,73,67,7,511
+5/18/2026,Monday,2025-2026,2nd Sem,Karen Pork Siomai,185,91,94,6,546
+5/18/2026,Monday,2025-2026,2nd Sem,Kutsinta Cheese,4,2,2,12,24
+5/18/2026,Monday,2025-2026,2nd Sem,Maja,10,10,0,15,150
+5/18/2026,Monday,2025-2026,2nd Sem,Siomai Rice,15,7,8,45,315
+5/18/2026,Monday,2025-2026,2nd Sem,Ukoy Balls,20,20,0,20,400
+5/19/2026,Tuesday,2025-2026,2nd Sem,Baduya,10,4,6,15,60
+5/19/2026,Tuesday,2025-2026,2nd Sem,Banana Cue,10,7,3,20,140
+5/19/2026,Tuesday,2025-2026,2nd Sem,Cheese Stick,25,25,0,10,250
+5/19/2026,Tuesday,2025-2026,2nd Sem,Hotdog Sandwich,6,2,4,40,80
+5/19/2026,Tuesday,2025-2026,2nd Sem,Karen Dumplings,25,20,5,7,140
+5/19/2026,Tuesday,2025-2026,2nd Sem,Karen Japanese Siomai,140,117,23,7,819
+5/19/2026,Tuesday,2025-2026,2nd Sem,Karen Pork Siomai,215,143,72,6,858
+5/19/2026,Tuesday,2025-2026,2nd Sem,Karen Siopao,5,5,0,31,155
+5/19/2026,Tuesday,2025-2026,2nd Sem,Kutsinta Cheese,4,1,3,12,12
+5/19/2026,Tuesday,2025-2026,2nd Sem,Kutsinta Yema,4,4,0,12,48
+5/19/2026,Tuesday,2025-2026,2nd Sem,Maja,10,5,5,15,75
+5/19/2026,Tuesday,2025-2026,2nd Sem,Puto Cheese,5,2,3,12,24
+5/19/2026,Tuesday,2025-2026,2nd Sem,Puto Flan,4,4,0,12,48
+5/19/2026,Tuesday,2025-2026,2nd Sem,Siomai Rice,10,10,0,45,450
+5/19/2026,Tuesday,2025-2026,2nd Sem,Spaghetti,10,2,8,25,50
+5/19/2026,Tuesday,2025-2026,2nd Sem,Tokneneng,20,20,0,20,400

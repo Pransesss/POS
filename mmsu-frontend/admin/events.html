@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Events · MMSU Auxiliary POS</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/icons.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="../css/print.css">
+  </head>
+  <body>
+    <div class="app">
+      <!-- SIDEBAR: identical on every admin page, only .is-active moves -->
+      <aside class="sidebar">
+        <img class="logo" src="../logos/mamasu.png" alt="MMSU seal">
+        <span class="sidebar__label">Menu</span>
+        <nav class="nav">
+          <a class="nav-item nav-item--dashboard" href="dashboard.html">Dashboard</a>
+          <a class="nav-item nav-item--deliveries" href="deliveries.html">Deliveries</a>
+          <a class="nav-item nav-item--inventory" href="inventory.html">Inventory</a>
+          <a class="nav-item nav-item--transactions" href="transactions.html">Transactions</a>
+          <a class="nav-item nav-item--events is-active" href="events.html">Events</a>
+          <a class="nav-item nav-item--settings" href="settings.html">Settings</a>
+        </nav>
+        <div class="sidebar__footer">
+          <div class="sidebar__college">
+            <!-- replace with: <img class="sidebar__college-logo" src="../logos/college.png" alt=""> -->
+            <span class="sidebar__college-logo"></span>
+            <span id="sidebar-college">Administrator</span>
+          </div>
+          <a class="nav-item nav-item--logout" href="../login.html">Log out</a>
+        </div>
+      </aside>
+      <main class="main">
+        <header class="page-header">
+          <div>
+            <h1>Events</h1>
+            <p class="muted text-small">"No classes / ADM" sets the next day's prediction to 0.</p>
+          </div>
+        </header>
+
+        <div class="grid-split">
+          <section class="card card--scroll">
+            <h2 class="card__title">Upcoming events</h2>
+            <table class="table" id="table-events">
+              <thead>
+                <tr>
+                  <th>Event</th>
+                  <th>Type</th>
+                  <th>Date</th>
+                  <th>Notes</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table__empty"><td colspan="5">No data yet</td></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="card">
+            <h2 class="card__title">Add event</h2>
+            <form id="form-event">
+              <label for="event-date">Date</label>
+              <input type="date" id="event-date" required>
+              <label for="event-type">Event type</label>
+              <select id="event-type">
+                <option value="no_classes">No classes / ADM</option>
+                <option value="exam">Exam</option>
+                <option value="event">Campus event</option>
+                <option value="other">Other</option>
+              </select>
+              <label for="event-name">Event name</label>
+              <input type="text" id="event-name" required>
+              <label for="event-notes">Notes</label>
+              <input type="text" id="event-notes">
+              <div class="row" style="margin-top:14px">
+                <button class="btn" type="submit">ADD EVENT</button>
+              </div>
+            </form>
+          </section>
+        </div>
+      </main>
+    </div>
+    <script src="../js/common.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/events.js"></script>
+  </body>
+</html>

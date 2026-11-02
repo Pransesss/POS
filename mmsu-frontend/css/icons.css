@@ -1,0 +1,81 @@
+/* icons.css — sidebar icons drawn with CSS masks (color = the link's text color).
+   To change an icon, edit its SVG path below. Add a class to the link: nav-item--<name>. */
+
+.nav-item::before {
+  content: "";
+  flex: none;
+  width: 16px;
+  height: 16px;
+  background: currentColor;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+}
+
+.nav-item--dashboard {
+  --icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Crect%20x='3'%20y='4'%20width='18'%20height='13'%20rx='2'/%3E%3Cpath%20d='M7%2013l3-3%203%202%204-4M9%2021h6'/%3E%3C/svg%3E");
+}
+
+.nav-item--forecast {
+  --icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M3%2017l6-6%204%204%208-8'/%3E%3Cpath%20d='M15%207h6v6'/%3E%3C/svg%3E");
+}
+
+.nav-item--pos {
+  --icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M4%2021V11h4v10M10%2021V6h4v15M16%2021v-8h4v8M3%2021h18'/%3E%3C/svg%3E");
+}
+
+.nav-item--receiving {
+  --icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M4%2013l2-8h12l2%208v6H4zM4%2013h5l1%202h4l1-2h5'/%3E%3C/svg%3E");
+}
+
+.nav-item--inventory {
+  --icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Crect%20x='3'%20y='4'%20width='18'%20height='5'%20rx='1'/%3E%3Cpath%20d='M5%209v10a1%201%200%20001%201h12a1%201%200%20001-1V9M10%2013h4'/%3E%3C/svg%3E");
+}
+
+.nav-item--transactions {
+  --icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M3%205h7a2%202%200%20012%202v13a2%202%200%2000-2-2H3zM21%205h-7a2%202%200%2000-2%202v13a2%202%200%20012-2h7z'/%3E%3C/svg%3E");
+}
+
+.nav-item--deliveries {
+  --icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M2%206h11v10H2zM13%209h4l3%203v4h-7'/%3E%3Ccircle%20cx='6'%20cy='18'%20r='2'/%3E%3Ccircle%20cx='17'%20cy='18'%20r='2'/%3E%3C/svg%3E");
+}
+
+.nav-item--events {
+  --icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Crect%20x='3'%20y='5'%20width='18'%20height='16'%20rx='2'/%3E%3Cpath%20d='M3%2010h18M8%203v4M16%203v4'/%3E%3C/svg%3E");
+}
+
+.nav-item--settings {
+  --icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M4%207h10M18%207h2M4%2017h2M10%2017h10'/%3E%3Ccircle%20cx='16'%20cy='7'%20r='2'/%3E%3Ccircle%20cx='8'%20cy='17'%20r='2'/%3E%3C/svg%3E");
+}
+
+.nav-item--logout {
+  --icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M9%204H5a1%201%200%2000-1%201v14a1%201%200%20001%201h4M16%208l4%204-4%204M20%2012H9'/%3E%3C/svg%3E");
+}
+
+/* ---------- POS icons ---------- */
+:root {
+  --icon-bowl: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M3%2011h18a9%209%200%2001-18%200zM9%207c0-1.5%201-1.5%201-3M14%207c0-1.5%201-1.5%201-3'/%3E%3C/svg%3E");
+}
+
+/* small bowl on every POS tile */
+.tile::before {
+  content: "";
+  width: 13px;
+  height: 13px;
+  background: var(--text);
+  -webkit-mask: var(--icon-bowl) center / contain no-repeat;
+  mask: var(--icon-bowl) center / contain no-repeat;
+}
+
+/* magnifier inside the search bar */
+.search::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  width: 16px;
+  height: 16px;
+  background: var(--muted);
+  transform: translateY(-50%);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Ccircle%20cx='11'%20cy='11'%20r='7'/%3E%3Cpath%20d='M20%2020l-4-4'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Ccircle%20cx='11'%20cy='11'%20r='7'/%3E%3Cpath%20d='M20%2020l-4-4'/%3E%3C/svg%3E") center / contain no-repeat;
+}

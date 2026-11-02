@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Transactions · MMSU Auxiliary POS</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/icons.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="../css/print.css">
+  </head>
+  <body>
+    <div class="app">
+      <!-- SIDEBAR: identical on every staff page, only .is-active moves -->
+      <aside class="sidebar">
+        <img class="logo" src="../logos/mamasu.png" alt="MMSU seal">
+        <span class="sidebar__label">Menu</span>
+        <nav class="nav">
+          <a class="nav-item nav-item--dashboard" href="dashboard.html">Dashboard</a>
+          <a class="nav-item nav-item--forecast" href="forecast.html">Prediction</a>
+          <a class="nav-item nav-item--pos" href="pos.html">POS</a>
+          <a class="nav-item nav-item--receiving" href="receiving.html">Receiving</a>
+          <a class="nav-item nav-item--inventory" href="inventory.html">Inventory</a>
+          <a class="nav-item nav-item--transactions is-active" href="transactions.html">Transactions</a>
+        </nav>
+        <div class="sidebar__footer">
+          <div class="sidebar__college">
+            <!-- replace with: <img class="sidebar__college-logo" src="../logos/college.png" alt=""> -->
+            <span class="sidebar__college-logo"></span>
+            <span id="sidebar-college">College of Arts and Sciences</span>
+          </div>
+          <a class="nav-item nav-item--logout" href="../login.html">Log out</a>
+        </div>
+      </aside>
+      <main class="main">
+        <header class="page-header">
+          <div>
+            <h1>Transactions</h1>
+            <p class="muted text-small" id="today-label">Saturday, September 26</p>
+          </div>
+          <div class="page-header__actions">
+            <label class="text-small" for="filter-from">From</label>
+            <input type="date" id="filter-from">
+            <label class="text-small" for="filter-to">To</label>
+            <input type="date" id="filter-to">
+            <button class="btn" type="button" id="btn-remit">Record remittance</button>
+          </div>
+        </header>
+
+        <section class="card toolbar">
+          <span class="muted text-small">Payment</span>
+          <div class="segmented">
+            <input type="radio" name="pay-filter" id="pay-filter-all" value="all" checked>
+            <label for="pay-filter-all">All</label>
+            <input type="radio" name="pay-filter" id="pay-filter-cash" value="cash">
+            <label for="pay-filter-cash">Cash</label>
+            <input type="radio" name="pay-filter" id="pay-filter-ewallet" value="ewallet">
+            <label for="pay-filter-ewallet">E-Wallet</label>
+          </div>
+        </section>
+
+        <div class="grid-kpi">
+          <section class="card">
+            <h2 class="card__title">Total sales (both tables)</h2>
+            <p class="kpi__value" id="kpi-sales">—</p>
+          </section>
+          <section class="card">
+            <h2 class="card__title">Cash sales</h2>
+            <p class="kpi__value" id="kpi-cash">—</p>
+          </section>
+          <section class="card">
+            <h2 class="card__title">E-wallet sales</h2>
+            <p class="kpi__value" id="kpi-ewallet">—</p>
+          </section>
+          <section class="card">
+            <h2 class="card__title">Remitted (all sections)</h2>
+            <p class="kpi__value" id="kpi-remitted">—</p>
+          </section>
+        </div>
+
+        <section class="card card--scroll">
+          <h2 class="card__title">Remittance history</h2>
+          <table class="table" id="table-remittances">
+            <thead><tr><th>Date &amp; time</th><th>Sales day</th><th>Amount handed over</th><th>Cash sales at remittance</th></tr></thead>
+            <tbody><tr class="table__empty"><td colspan="4">No remittances in this date range</td></tr></tbody>
+          </table>
+        </section>
+
+        <section class="tabset card card--scroll">
+          <input type="radio" name="section" id="section-0" checked>
+          <input type="radio" name="section" id="section-1">
+          <div class="card__head">
+            <h2 class="card__title">Transactions</h2>
+            <div class="tabset__bar">
+              <label for="section-0">Meals</label>
+              <label for="section-1">Snacks</label>
+            </div>
+          </div>
+          <section class="tabset__panel">
+            <div class="legend">
+              <span><span class="dot dot--budget"></span>Budget meal</span>
+            </div>
+            <h3 class="table-title">Sales entered on this sales day</h3>
+            <table class="table" id="table-meals-regular">
+              <thead>
+                <tr>
+                  <th>Date &amp; time</th>
+                  <th>Ref</th>
+                  <th>Order</th>
+                  <th>Pay</th>
+                  <th>E-wallet ref #</th>
+                  <th>Rice</th>
+                  <th>Pork</th>
+                  <th>Beef</th>
+                  <th>Chicken</th>
+                  <th>Fish</th>
+                  <th>Vegs</th>
+                  <th>Total</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table__empty"><td colspan="13">No data yet</td></tr>
+              </tbody>
+              <tfoot>
+                <tr><td colspan="5">Quantity received</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td colspan="5">Quantity sold</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td colspan="5">Quantity left</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td colspan="11">Total sales</td><td></td><td></td></tr>
+              </tfoot>
+            </table>
+            <h3 class="table-title">Sales carried over from the previous day</h3>
+            <table class="table" id="table-meals-carried">
+              <thead>
+                <tr>
+                  <th>Date &amp; time</th>
+                  <th>Ref</th>
+                  <th>Order</th>
+                  <th>Pay</th>
+                  <th>E-wallet ref #</th>
+                  <th>Rice</th>
+                  <th>Pork</th>
+                  <th>Beef</th>
+                  <th>Chicken</th>
+                  <th>Fish</th>
+                  <th>Vegs</th>
+                  <th>Total</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table__empty"><td colspan="13">No data yet</td></tr>
+              </tbody>
+              <tfoot>
+                <tr><td colspan="5">Quantity sold</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td colspan="11">Total sales</td><td></td><td></td></tr>
+              </tfoot>
+            </table>
+          </section>
+          <section class="tabset__panel">
+            <h3 class="table-title">Item summary (requisition slip)</h3>
+            <table class="table" id="table-snack-summary">
+              <thead>
+                <tr>
+                  <th>Item / description</th>
+                  <th>Invty beg qty</th>
+                  <th>Rcvd qty</th>
+                  <th>Total qty</th>
+                  <th>Sold qty</th>
+                  <th>Left qty</th>
+                  <th>Unit price</th>
+                  <th>Total sales</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table__empty"><td colspan="8">No data yet</td></tr>
+              </tbody>
+            </table>
+            <h3 class="table-title">Sales entered on this sales day</h3>
+            <table class="table" id="table-snack-regular">
+              <thead>
+                <tr>
+                  <th>Date &amp; time</th>
+                  <th>Ref</th>
+                  <th>Items</th>
+                  <th>Pay</th>
+                  <th>E-wallet ref #</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table__empty"><td colspan="6">No data yet</td></tr>
+              </tbody>
+            </table>
+            <h3 class="table-title">Sales carried over from the previous day</h3>
+            <table class="table" id="table-snack-carried">
+              <thead>
+                <tr>
+                  <th>Date &amp; time</th>
+                  <th>Ref</th>
+                  <th>Items</th>
+                  <th>Pay</th>
+                  <th>E-wallet ref #</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table__empty"><td colspan="6">No data yet</td></tr>
+              </tbody>
+            </table>
+          </section>
+        </section>
+      </main>
+    </div>
+    <script src="../js/common.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/offline.js"></script>
+    <script src="../js/transactions.js?v=20261029-remittance"></script>
+  </body>
+</html>

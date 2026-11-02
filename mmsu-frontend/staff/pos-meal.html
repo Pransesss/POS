@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>POS · Meal · MMSU Auxiliary POS</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/icons.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="../css/print.css">
+  </head>
+  <body>
+    <div class="app">
+      <!-- SIDEBAR: identical on every staff page, only .is-active moves -->
+      <div class="sidebar-shell">
+        <aside class="sidebar">
+        <img class="logo" src="../logos/mamasu.png" alt="MMSU seal">
+        <span class="sidebar__label">Menu</span>
+        <nav class="nav">
+          <a class="nav-item nav-item--dashboard" href="dashboard.html">Dashboard</a>
+          <a class="nav-item nav-item--forecast" href="forecast.html">Prediction</a>
+          <a class="nav-item nav-item--pos is-active" href="pos.html">POS</a>
+          <a class="nav-item nav-item--receiving" href="receiving.html">Receiving</a>
+          <a class="nav-item nav-item--inventory" href="inventory.html">Inventory</a>
+          <a class="nav-item nav-item--transactions" href="transactions.html">Transactions</a>
+        </nav>
+        <div class="sidebar__footer">
+          <div class="sidebar__college">
+            <!-- replace with: <img class="sidebar__college-logo" src="../logos/college.png" alt=""> -->
+            <span class="sidebar__college-logo"></span>
+            <span id="sidebar-college">College of Arts and Sciences</span>
+          </div>
+          <a class="nav-item nav-item--logout" href="../login.html">Log out</a>
+        </div>
+        </aside>
+        <button class="btn-done-day" id="btn-done-day" type="button">Close sales day</button>
+      </div>
+      <main class="main">
+        <div class="grid-pos">
+          <div class="stack">
+            <header class="page-header">
+              <div>
+                <h1>MMSU Auxiliary POS</h1>
+                <p class="muted text-small" id="today-label">Saturday, September 26</p>
+              </div>
+              <div class="page-header__actions">
+                <span class="badge badge--online" id="online-badge">Online</span>
+              </div>
+            </header>
+            <div class="search">
+              <input type="search" id="pos-search" placeholder="Scan barcode or search product…">
+            </div>
+            <!-- search results (barcode items: chips, drinks) replace the quick tiles while typing -->
+            <div class="tiles pos-results" id="pos-results" hidden></div>
+            <section class="card builder" id="meal-builder">
+              <h2 class="builder__title"><span class="builder__icon"></span>Meal</h2>
+
+              <div class="builder__section">
+                <h3 class="builder__heading">Meat</h3>
+                <div class="segmented">
+                  <input type="radio" name="meat-qty" id="meat-qty-1" value="1" checked>
+                  <label for="meat-qty-1">Single</label>
+                  <input type="radio" name="meat-qty" id="meat-qty-2" value="2">
+                  <label for="meat-qty-2">Double</label>
+                </div>
+                <div class="tiles">
+                  <label class="tile-radio">
+                    <input type="radio" name="meat" value="chicken">
+                    <span class="tile">
+                      <b>Chicken</b>
+                    </span>
+                  </label>
+                  <label class="tile-radio">
+                    <input type="radio" name="meat" value="pork">
+                    <span class="tile">
+                      <b>Pork</b>
+                    </span>
+                  </label>
+                  <label class="tile-radio">
+                    <input type="radio" name="meat" value="beef">
+                    <span class="tile">
+                      <b>Beef</b>
+                    </span>
+                  </label>
+                  <label class="tile-radio">
+                    <input type="radio" name="meat" value="fish">
+                    <span class="tile">
+                      <b>Fish</b>
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="builder__section">
+                <h3 class="builder__heading">Veggy <span class="muted">(optional, tap again to remove)</span></h3>
+                <div class="tiles">
+                  <label class="tile-radio">
+                    <input type="radio" name="veg" value="1">
+                    <span class="tile">
+                      <b>Solo Veggy</b>
+                    </span>
+                  </label>
+                  <label class="tile-radio">
+                    <input type="radio" name="veg" value="2">
+                    <span class="tile">
+                      <b>Double Veggies</b>
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="builder__section">
+                <h3 class="builder__heading">Rice</h3>
+                <div class="segmented">
+                  <input type="radio" name="rice-qty" id="rice-qty-0.5" value="0.5">
+                  <label for="rice-qty-0.5">Half</label>
+                  <input type="radio" name="rice-qty" id="rice-qty-1" value="1" checked>
+                  <label for="rice-qty-1">Single</label>
+                  <input type="radio" name="rice-qty" id="rice-qty-2" value="2">
+                  <label for="rice-qty-2">Double</label>
+                </div>
+                <div class="tiles">
+                  <label class="tile-radio">
+                    <input type="radio" name="rice-type" value="plain" checked>
+                    <span class="tile">
+                      <b>Plain Rice</b>
+                    </span>
+                  </label>
+                  <label class="tile-radio">
+                    <input type="radio" name="rice-type" value="fried">
+                    <span class="tile">
+                      <b>Fried Rice</b>
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="builder__preview">
+                <div>
+                  <div class="stepper">
+                    <span>Quantity</span>
+                    <button class="stepper__btn" type="button" id="qty-minus" aria-label="Less">−</button>
+                    <span id="meal-qty">1</span>
+                    <button class="stepper__btn" type="button" id="qty-plus" aria-label="More">+</button>
+                  </div>
+                  <p class="muted text-small" id="meal-summary">
+                    <span class="dot dot--budget" hidden></span>
+                    <span></span>
+                  </p>
+                </div>
+                <strong class="builder__price" id="meal-price">₱00.00</strong>
+              </div>
+
+              <div class="builder__actions">
+                <a class="btn btn--ghost" href="pos.html">SKIP</a>
+                <button class="btn btn--ghost" type="button" id="btn-add-meal">ADD</button>
+              </div>
+            </section>
+          </div>
+          <aside class="card order" id="order-panel">
+            <h3>Current Sale</h3>
+
+            <ul class="order__lines" id="order-lines">
+              <!-- JS: <li class="order__line"> name + stepper (− qty +) + <span class="order__line-amount"> </li> -->
+              <li class="order__empty">No items yet</li>
+            </ul>
+
+            <button class="btn btn--ghost" type="button" id="btn-add-box">+ Takeout box</button>
+            <p class="muted text-small" id="order-box-count">Takeout boxes: 0</p>
+
+            <div class="order__total">
+              <span>Total</span>
+              <strong id="order-total">₱0.00</strong>
+            </div>
+
+            <div class="tabset tabset--pay">
+              <input type="radio" name="pay" id="pay-0" checked>
+              <input type="radio" name="pay" id="pay-1">
+              <div class="tabset__bar">
+                <label for="pay-0">Cash</label>
+                <label for="pay-1">GCash / E-Wallet</label>
+              </div>
+              <section class="tabset__panel">
+                <label for="cash-tendered">Amount tendered</label>
+                <input type="number" id="cash-tendered" min="0" placeholder="0">
+                <div class="order__change">
+                  <span>Change</span>
+                  <strong id="order-change">₱0.00</strong>
+                </div>
+              </section>
+              <section class="tabset__panel">
+                <label for="ewallet-ref4">Last 4 digits of the e-wallet reference no. (required)</label>
+                <input type="text" id="ewallet-ref4" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" placeholder="0000">
+              </section>
+            </div>
+
+            <div class="order__buttons">
+              <button class="btn btn--block" id="btn-complete" type="button">COMPLETE SALE</button>
+              <button class="btn btn--ghost btn--block" id="btn-hold" type="button">HOLD SALE</button>
+              <button class="link-button" id="btn-resume" type="button" hidden>Resume last held sale</button>
+              <span class="order__cancel" id="btn-cancel">CANCEL SALE</span>
+            </div>
+          </aside>
+        </div>
+      </main>
+    </div>
+    <script src="../js/common.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/offline.js"></script>
+    <script src="../js/pos.js"></script>
+  </body>
+</html>

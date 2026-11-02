@@ -1,0 +1,12 @@
+/* print.css — only the report slips are printed (PDF) */
+
+@media print {
+  body { background: #fff; }
+
+  .sidebar,
+  .page-header,
+  .card:not(.report) { display: none !important; }
+
+  .report { padding: 0; border: 0; background: #fff; }
+  .slip   { page-break-after: always; }
+}

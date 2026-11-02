@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign In · MMSU Auxiliary POS</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/print.css">
+  </head>
+  <body class="page-login">
+    <main class="login">
+      <img class="login__logo" src="logos/mamasu.png" alt="MMSU seal">
+      <h1 class="login__title">Sign In</h1>
+
+      <form class="login__form" id="form-login" autocomplete="on">
+        <input class="login__input" type="text" id="username" placeholder="Username" autocomplete="username" required>
+        <input class="login__input" type="password" id="password" placeholder="Password" autocomplete="current-password" required>
+        <p class="login__error" id="login-error"></p>
+        <button class="login__button" type="submit">LOGIN</button>
+      </form>
+    </main>
+    <script src="js/common.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/login.js"></script>
+  </body>
+</html>
