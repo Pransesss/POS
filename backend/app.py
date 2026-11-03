@@ -14,12 +14,13 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 from db import connect, TIMEZONE
 from pricing import build_line, SaleError, D
-import forecast as fc
-import forecast_engine as fe
+import prediction as pred
+import prediction_engine as pe
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 FRONTEND = os.path.join(BASE, "..", "mmsu-frontend")
 UPLOADS = os.path.join(BASE, "uploads")
+MAX_LOGO_SIZE = 2_000_000
 TZ = ZoneInfo(TIMEZONE)
 SECRET = os.getenv("SECRET_KEY", "dev-secret-change-me")
 TOKEN_DAYS = 30            # long, so a cashier stays signed in while the internet is down
@@ -84,24 +85,35 @@ def today():
     return datetime.now(TZ).date()
 
 
-def active_sales_day(aux_id):
-    """The open sales day. Closing one immediately opens the following day."""
-    ensure_sales_day_table()
-    latest = q("SELECT MAX(business_date) AS day FROM sales_day_closures WHERE aux_id=%s", (aux_id,), one=True)["day"]
-    next_open = latest + timedelta(days=1) if latest else today()
-    return max(today(), next_open)
+_sales_batch_schema_ready = False
 
 
-def ensure_sales_day_table():
-    run("""CREATE TABLE IF NOT EXISTS sales_day_closures (
-        closure_id SERIAL PRIMARY KEY,
+def ensure_sales_batch_schema():
+    global _sales_batch_schema_ready
+    if _sales_batch_schema_ready:
+        return
+    run("""CREATE TABLE IF NOT EXISTS sales_batches (
+        batch_id SERIAL PRIMARY KEY,
         aux_id INTEGER NOT NULL REFERENCES auxiliaries(aux_id),
         business_date DATE NOT NULL,
-        closed_by INTEGER NOT NULL REFERENCES accounts(account_id),
-        closed_at TIMESTAMPTZ NOT NULL DEFAULT now(),
-        UNIQUE (aux_id, business_date)
+        batch_number INTEGER NOT NULL,
+        total_cash NUMERIC(10,2) NOT NULL,
+        total_ewallet NUMERIC(10,2) NOT NULL,
+        total_sales NUMERIC(10,2) NOT NULL,
+        transaction_count INTEGER NOT NULL,
+        sealed_by INTEGER NOT NULL REFERENCES accounts(account_id),
+        sealed_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+        UNIQUE (aux_id, business_date, batch_number)
     )""")
+    run("""ALTER TABLE transactions
+           ADD COLUMN IF NOT EXISTS batch_id INTEGER REFERENCES sales_batches(batch_id)""")
+    run("""ALTER TABLE remittances
+           ADD COLUMN IF NOT EXISTS batch_id INTEGER REFERENCES sales_batches(batch_id)""")
+    run("CREATE INDEX IF NOT EXISTS sales_batches_aux_date_idx ON sales_batches (aux_id, business_date)")
+    run("""CREATE UNIQUE INDEX IF NOT EXISTS remittances_batch_uq
+           ON remittances (batch_id) WHERE batch_id IS NOT NULL""")
     conn().commit()
+    _sales_batch_schema_ready = True
 
 
 def parse_day(s, default=None):
@@ -255,27 +267,111 @@ def add_aux():
 @app.post("/api/auxiliaries/<int:aux_id>/logo")
 @auth("admin")
 def upload_logo(aux_id):
+    auxiliary = q("SELECT logo_path FROM auxiliaries WHERE aux_id=%s", (aux_id,), one=True)
+    if not auxiliary:
+        return err("Auxiliary not found", 404)
+    staff_ids = q("SELECT account_id FROM accounts WHERE aux_id=%s AND role='staff'", (aux_id,))
     f = request.files.get("file")
     ext = {"image/png": ".png", "image/jpeg": ".jpg"}.get(f.mimetype if f else None)
     if not ext:
         return err("PNG or JPG only")
     data = f.read()
-    if len(data) > 1_000_000:
-        return err("File too large (max 1 MB)")
+    if not data:
+        return err("Logo file is empty")
+    if len(data) > MAX_LOGO_SIZE:
+        return err("File too large (max 2 MB)")
     os.makedirs(os.path.join(UPLOADS, "logos"), exist_ok=True)
-    name = f"{aux_id}-{secrets.token_hex(4)}{ext}"          # random name, never the original
+    name = f"aux-{aux_id}-{secrets.token_hex(4)}{ext}"      # random name, never the original
     with open(os.path.join(UPLOADS, "logos", name), "wb") as out:
         out.write(data)
-    run("UPDATE auxiliaries SET logo_path=%s WHERE aux_id=%s", (f"uploads/logos/{name}", aux_id))
+    path = f"uploads/logos/{name}"
+    run("UPDATE auxiliaries SET logo_path=%s WHERE aux_id=%s", (path, aux_id))
     audit("logo_changed", str(aux_id))
     conn().commit()
-    return jsonify({"logo_path": f"uploads/logos/{name}"})
+    _cleanup_aux_logo_files(aux_id, staff_ids, auxiliary["logo_path"], path)
+    return jsonify({"logo_path": path})
+
+
+def _remove_replaced_logo(previous_path, current_path):
+    if not previous_path or previous_path == current_path:
+        return
+    normalized = os.path.normpath(previous_path).replace("\\", "/")
+    if not normalized.startswith("uploads/logos/"):
+        return
+    filename = os.path.basename(normalized)
+    if not filename:
+        return
+    old_file = os.path.join(UPLOADS, "logos", filename)
+    try:
+        os.remove(old_file)
+    except FileNotFoundError:
+        pass
+    except OSError as exc:
+        app.logger.warning("Could not remove replaced logo %s: %s", previous_path, exc)
+
+
+def _cleanup_aux_logo_files(aux_id, staff_ids, previous_path, current_path):
+    logo_dir = os.path.join(UPLOADS, "logos")
+    current_name = os.path.basename(current_path)
+    staff_prefixes = tuple(f"account-{staff['account_id']}-" for staff in staff_ids)
+    filenames = set()
+    if previous_path:
+        normalized = os.path.normpath(previous_path).replace("\\", "/")
+        if normalized.startswith("uploads/logos/"):
+            filenames.add(os.path.basename(normalized))
+    try:
+        for name in os.listdir(logo_dir):
+            legacy_id = name.split("-", 1)[0]
+            is_legacy_aux_logo = legacy_id.isdigit() and int(legacy_id) == aux_id
+            if is_legacy_aux_logo or name.startswith(f"aux-{aux_id}-") or name.startswith(staff_prefixes):
+                filenames.add(name)
+    except OSError as exc:
+        app.logger.warning("Could not list auxiliary logo files for %s: %s", aux_id, exc)
+    for filename in filenames:
+        if filename == current_name:
+            continue
+        try:
+            os.remove(os.path.join(logo_dir, filename))
+        except FileNotFoundError:
+            pass
+        except OSError as exc:
+            app.logger.warning("Could not remove replaced auxiliary logo %s: %s", filename, exc)
+
+
+def _cleanup_account_logo_files(account_id, previous_path, current_path):
+    logo_dir = os.path.join(UPLOADS, "logos")
+    current_name = os.path.basename(current_path)
+    prefix = f"account-{account_id}-"
+    filenames = set()
+    if previous_path:
+        normalized = os.path.normpath(previous_path).replace("\\", "/")
+        if normalized.startswith("uploads/logos/"):
+            previous_name = os.path.basename(normalized)
+            if previous_name.startswith(prefix):
+                filenames.add(previous_name)
+    try:
+        filenames.update(name for name in os.listdir(logo_dir) if name.startswith(prefix))
+    except OSError as exc:
+        app.logger.warning("Could not list account logo files for %s: %s", account_id, exc)
+    for filename in filenames:
+        if filename == current_name:
+            continue
+        try:
+            os.remove(os.path.join(logo_dir, filename))
+        except FileNotFoundError:
+            pass
+        except OSError as exc:
+            app.logger.warning("Could not remove replaced account logo %s: %s", filename, exc)
 
 
 @app.post("/api/accounts/<int:aid>/logo")
 @auth("admin")
 def upload_account_logo(aid):
-    account = q("SELECT account_id, role, aux_id FROM accounts WHERE account_id=%s AND is_active", (aid,), one=True)
+    account = q("""
+        SELECT a.account_id, a.role, a.aux_id, a.logo_path, x.logo_path AS aux_logo_path
+        FROM accounts a LEFT JOIN auxiliaries x ON x.aux_id=a.aux_id
+        WHERE a.account_id=%s AND a.is_active
+    """, (aid,), one=True)
     if not account:
         return err("Account not found", 404)
     f = request.files.get("file")
@@ -285,23 +381,32 @@ def upload_account_logo(aid):
     data = f.read()
     if not data:
         return err("Logo file is empty")
-    if len(data) > 1_000_000:
-        return err("File too large (max 1 MB)")
+    if len(data) > MAX_LOGO_SIZE:
+        return err("File too large (max 2 MB)")
     if (ext == ".png" and not data.startswith(b"\x89PNG\r\n\x1a\n")) or (
         ext == ".jpg" and not data.startswith(b"\xff\xd8\xff")
     ):
         return err("The file contents do not match its image type")
     os.makedirs(os.path.join(UPLOADS, "logos"), exist_ok=True)
-    name = f"account-{aid}-{secrets.token_hex(4)}{ext}"
+    is_admin_logo = account["role"] == "admin"
+    staff_ids = [] if is_admin_logo else q(
+        "SELECT account_id FROM accounts WHERE aux_id=%s AND role='staff'", (account["aux_id"],))
+    name = f"account-{aid}-{secrets.token_hex(4)}{ext}" if is_admin_logo else (
+        f"aux-{account['aux_id']}-{secrets.token_hex(4)}{ext}")
     with open(os.path.join(UPLOADS, "logos", name), "wb") as out:
         out.write(data)
     path = f"uploads/logos/{name}"
-    if account["role"] == "admin":
+    previous_path = account["logo_path"] if is_admin_logo else account["aux_logo_path"]
+    if is_admin_logo:
         run("UPDATE accounts SET logo_path=%s WHERE account_id=%s", (path, aid))
     else:
         run("UPDATE auxiliaries SET logo_path=%s WHERE aux_id=%s", (path, account["aux_id"]))
     audit("logo_changed", str(aid))
     conn().commit()
+    if is_admin_logo:
+        _cleanup_account_logo_files(aid, previous_path, path)
+    else:
+        _cleanup_aux_logo_files(account["aux_id"], staff_ids, previous_path, path)
     return jsonify({"logo_path": path})
 
 
@@ -309,7 +414,7 @@ def upload_account_logo(aid):
 @app.get("/api/pos/bootstrap")
 @auth("staff")
 def pos_bootstrap():
-    ensure_sales_day_table()
+    ensure_sales_batch_schema()
     aux = g.user["aux_id"]
     products = q("""
         SELECT p.product_id, p.name, p.barcode, p.category, p.price, i.qty_on_hand AS qty, COALESCE(s.sold7, 0) AS sold7
@@ -320,7 +425,6 @@ def pos_bootstrap():
         WHERE p.is_active AND p.category <> 'Meals' ORDER BY p.name""", {"aux": aux, "d": today()})
     meals = {r["meal_key"]: r["qty_on_hand"] for r in q(
         "SELECT p.meal_key, i.qty_on_hand FROM products p JOIN inventory i ON i.product_id=p.product_id AND i.aux_id=%s WHERE p.category='Meals'", (aux,))}
-    day = active_sales_day(aux)
     meal_prices = {r["price_key"]: r["amount"] for r in q("SELECT price_key, amount FROM meal_prices")}
     pricing_token = pricing_ser.dumps({
         "aux_id": aux,
@@ -329,8 +433,7 @@ def pos_bootstrap():
     })
     return jsonify({"products": products, "meal_stock": meals,
                     "meal_prices": meal_prices, "pricing_token": pricing_token,
-                    "settings": settings(), "user": public_user(g.user), "server_time": datetime.now(TZ).isoformat(),
-                    "sales_day": day})
+                    "settings": settings(), "user": public_user(g.user), "server_time": datetime.now(TZ).isoformat()})
 
 
 # saving sales (also used when an offline outbox syncs)
@@ -370,9 +473,7 @@ def save_transaction(user, t, meal_ids):
         raise SaleError("bad time")
     created = (created if created.tzinfo else created.replace(tzinfo=TZ)).astimezone(TZ)
     aux = user["aux_id"]
-    # A sale made after a close belongs to the sales day opened by that close.
-    # Its timestamp remains the actual time it was punched into the POS.
-    biz = active_sales_day(aux)
+    biz = created.date()
 
     pay = t.get("payment_method")
     if pay not in ("Cash", "E-Wallet"):
@@ -445,25 +546,44 @@ def sync_transactions():
     return jsonify({"results": results})
 
 
-# sales-day closing
-@app.post("/api/sales-day/close")
+# sales batches
+@app.post("/api/sales-batches/seal")
 @auth("staff")
-def close_sales_day():
-    ensure_sales_day_table()
+def seal_sales_batch():
+    ensure_sales_batch_schema()
     d = request.get_json(silent=True) or {}
     password = str(d.get("password") or "")
     if not password:
         return err("Enter your password")
     if not check_password_hash(g.user["password_hash"], password):
         return err("Incorrect password")
-    day = active_sales_day(g.user["aux_id"])
-    if day > today():
-        return err("The next sales day is already open. Close it when you remit tomorrow.")
-    run("INSERT INTO sales_day_closures (aux_id, business_date, closed_by) VALUES (%s,%s,%s)",
-        (g.user["aux_id"], day, g.user["account_id"]))
-    audit("sales_day_closed", f"{g.user['aux_id']} {day.isoformat()}")
+    aux_id, day = g.user["aux_id"], today()
+    run("SELECT pg_advisory_xact_lock(%s)", (aux_id,))
+    rows = q("""SELECT transaction_id, payment_method, total_amount
+                FROM transactions
+                WHERE aux_id=%s AND business_date=%s AND status='completed' AND batch_id IS NULL
+                ORDER BY created_at, transaction_id
+                FOR UPDATE""", (aux_id, day))
+    if not rows:
+        conn().rollback()
+        return err("There are no new sales to seal today")
+    total_cash = sum((r["total_amount"] for r in rows if r["payment_method"] == "Cash"), D("0"))
+    total_ewallet = sum((r["total_amount"] for r in rows if r["payment_method"] == "E-Wallet"), D("0"))
+    total_sales = total_cash + total_ewallet
+    latest = q("SELECT COALESCE(MAX(batch_number),0) AS n FROM sales_batches WHERE aux_id=%s AND business_date=%s",
+               (aux_id, day), one=True)
+    batch_number = latest["n"] + 1
+    batch = q("""INSERT INTO sales_batches
+                 (aux_id, business_date, batch_number, total_cash, total_ewallet, total_sales, transaction_count, sealed_by)
+                 VALUES (%s,%s,%s,%s,%s,%s,%s,%s)
+                 RETURNING batch_id, batch_number, business_date, total_cash, total_ewallet, total_sales, transaction_count, sealed_at""",
+              (aux_id, day, batch_number, total_cash, total_ewallet, total_sales, len(rows), g.user["account_id"]), one=True)
+    run("UPDATE transactions SET batch_id=%s WHERE transaction_id=ANY(%s::uuid[])",
+        (batch["batch_id"], [str(r["transaction_id"]) for r in rows]))
+    audit("sales_batch_sealed", f"{aux_id} {day.isoformat()} batch={batch_number} transactions={len(rows)}")
     conn().commit()
-    return jsonify({"ok": True, "closed_date": day, "sales_day": day + timedelta(days=1)})
+    batch["sealed_at"] = batch["sealed_at"].astimezone(TZ).isoformat()
+    return jsonify({"ok": True, "batch": batch}), 201
 
 
 # inventory + products
@@ -676,45 +796,76 @@ def cash_summary(ids, day):
 @app.get("/api/remittances/expected")
 @auth("staff")
 def remit_expected():
-    day = active_sales_day(g.user["aux_id"])
-    n = q("""SELECT COALESCE(SUM(total_amount),0) AS n FROM transactions
-             WHERE aux_id=%s AND business_date=%s AND payment_method='Cash' AND status='completed'""",
-          (g.user["aux_id"], day), one=True)["n"]
-    return jsonify({"date": day, "expected": n})
+    batch = next_unremitted_batch(g.user["aux_id"])
+    if batch:
+        batch["first_order_at"] = batch["first_order_at"].astimezone(TZ).isoformat()
+        batch["last_order_at"] = batch["last_order_at"].astimezone(TZ).isoformat()
+    return jsonify({"date": batch["business_date"] if batch else today(), "expected": batch["total_cash"] if batch else 0,
+                    "batch_id": batch["batch_id"] if batch else None,
+                    "first_order_at": batch["first_order_at"] if batch else None,
+                    "last_order_at": batch["last_order_at"] if batch else None})
+
+
+def next_unremitted_batch(aux_id):
+    ensure_sales_batch_schema()
+    return q("""SELECT b.batch_id, b.business_date, b.total_cash,
+                       MIN(t.created_at) AS first_order_at, MAX(t.created_at) AS last_order_at
+                FROM sales_batches b JOIN transactions t ON t.batch_id=b.batch_id AND t.status='completed'
+                WHERE b.aux_id=%s AND b.total_cash > 0 AND NOT EXISTS (
+                    SELECT 1 FROM remittances r WHERE r.batch_id=b.batch_id
+                )
+                GROUP BY b.batch_id
+                ORDER BY b.business_date, b.batch_id
+                LIMIT 1""", (aux_id,), one=True)
 
 
 @app.post("/api/remittances")
 @auth("staff")
 def add_remittance():
+    batch = next_unremitted_batch(g.user["aux_id"])
+    if not batch:
+        return err("Seal a sales period before recording its remittance")
     d = request.get_json(silent=True) or {}
     try:
         amount = D(d.get("amount"))
         assert amount > 0
     except Exception:
         return err("Enter the amount handed over")
-    day = active_sales_day(g.user["aux_id"])
-    exp = remit_expected().json["expected"]
-    run("INSERT INTO remittances (aux_id, business_date, amount, expected_amount, recorded_by) VALUES (%s,%s,%s,%s,%s)",
-        (g.user["aux_id"], day, amount, exp, g.user["account_id"]))
-    audit("remittance", f"{amount}")
+    aux_id = g.user["aux_id"]
+    run("SELECT pg_advisory_xact_lock(%s)", (aux_id,))
+    current = q("""SELECT b.batch_id, b.batch_number, b.business_date, b.total_cash
+                   FROM sales_batches b
+                   WHERE b.aux_id=%s AND b.total_cash > 0 AND NOT EXISTS (
+                       SELECT 1 FROM remittances r WHERE r.batch_id=b.batch_id
+                   )
+                   ORDER BY b.business_date, b.batch_number
+                   LIMIT 1""", (aux_id,), one=True)
+    if not current or str(current["batch_id"]) != str(batch["batch_id"]) or str(d.get("batch_id") or "") != str(batch["batch_id"]):
+        conn().rollback()
+        return err("The next unremitted sales period changed. Refresh and try again.")
+    run("""INSERT INTO remittances
+           (aux_id, business_date, amount, expected_amount, recorded_by, batch_id)
+           VALUES (%s,%s,%s,%s,%s,%s)""",
+        (aux_id, batch["business_date"], amount, batch["total_cash"], g.user["account_id"], batch["batch_id"]))
+    audit("remittance", f"batch={batch['batch_number']} amount={amount}")
     conn().commit()
     return jsonify({"ok": True}), 201
 
 
 # dashboard
-@app.get("/api/forecast")
+@app.get("/api/prediction")
 @auth()
-def forecast_api():
+def prediction_api():
     ids = scope(request.args.get("aux"))
     day = parse_day(request.args.get("date"), today())
     cur = conn().cursor()
-    f = fc.get_forecast(cur, ids, day)
-    return jsonify({"aux": request.args.get("aux", "all"), **f})
+    result = pred.get_prediction(cur, ids, day)
+    return jsonify({"aux": request.args.get("aux", "all"), **result})
 
 
-# forecast for a chosen date (staff pick the date and the items)
-def _forecast_target():
-    """The canteen being forecast: staff = their own, admin = ?aux=<id>. Returns (aux_id, aux_code) or an error response."""
+# Prediction for a chosen date (staff pick the date and the items)
+def _prediction_target():
+    """The canteen being predicted: staff = their own, admin = ?aux=<id>. Returns (aux_id, aux_code) or an error response."""
     ids = scope(request.args.get("aux") if request.method == "GET" else (request.get_json(silent=True) or {}).get("aux"))
     if len(ids) != 1:
         return None, err("Choose one canteen", 400)
@@ -728,37 +879,37 @@ def _next_school_day_from(d):
     return d
 
 
-@app.get("/api/forecast/items")
+@app.get("/api/prediction/items")
 @auth()
-def forecast_items():
+def prediction_items():
     """Items the staff can choose from, with how much history each has, plus the model status."""
     kind = request.args.get("kind", "snacks")
-    if kind not in fe.KINDS:
+    if kind not in pe.KINDS:
         return err("kind must be snacks or meals")
-    t, bad = _forecast_target()
+    t, bad = _prediction_target()
     if bad:
         return bad
     aux_id, code = t
-    fe.ensure_tables(conn().cursor())
+    pe.ensure_tables(conn().cursor())
     conn().commit()
     try:
-        items = fe.catalog(conn().cursor(), aux_id, code, kind)
+        items = pe.catalog(conn().cursor(), aux_id, code, kind)
     except Exception as e:
         return err(f"Could not read the item list: {e}", 500)
-    return jsonify({"aux": code, "kind": kind, "items": items, "model": fe.model_info(code, kind),
+    return jsonify({"aux": code, "kind": kind, "items": items, "model": pe.model_info(code, kind),
                     "default_date": _next_school_day_from(today() + timedelta(days=1)).isoformat(),
                     "has_history": bool(items)})
 
 
-@app.post("/api/forecast/run")
+@app.post("/api/prediction/run")
 @auth()
-def forecast_run():
+def prediction_run():
     """Section-7 output: one row per chosen item for the chosen date."""
     d = request.get_json(silent=True) or {}
     kind = d.get("kind", "snacks")
     day = parse_day(d.get("date"))
     items = d.get("items")
-    if kind not in fe.KINDS:
+    if kind not in pe.KINDS:
         return err("kind must be snacks or meals")
     if not day:
         return err("Choose a date")
@@ -770,30 +921,30 @@ def forecast_run():
         return err("Choose at least one dish or snack")
     if len(items) > 200:
         return err("Too many items selected")
-    t, bad = _forecast_target()
+    t, bad = _prediction_target()
     if bad:
         return bad
     aux_id, code = t
     cur = conn().cursor()
     try:
-        fe.ensure_tables(cur)
-        rows, info = fe.forecast(cur, aux_id, code, kind, day, [str(i) for i in items])
-        actual = fe.actuals_for(cur, aux_id, kind, day) if day <= today() else {}
+        pe.ensure_tables(cur)
+        rows, info = pe.predict(cur, aux_id, code, kind, day, [str(i) for i in items])
+        actual = pe.actuals_for(cur, aux_id, kind, day) if day <= today() else {}
         conn().commit()
-    except fe.ForecastError as e:
+    except pe.PredictionError as e:
         conn().rollback()
         return err(str(e))
     except Exception as e:
         conn().rollback()
-        app.logger.exception("forecast failed")
-        return err(f"The forecast could not be made: {e}", 500)
+        app.logger.exception("prediction failed")
+        return err(f"The prediction could not be made: {e}", 500)
     if actual:
         for r in rows:
             r["actual_qty"] = actual.get(r["item"])
-    if info["days_since_history"] > 10 and not info["no_classes"]:
+    if info["days_since_history"] > 10:
         info["warnings"].append(f"The latest recorded sales are from {info['history_through']}. "
-                                f"The further the date is from the last record, the less reliable the forecast.")
-    audit("forecast_run", f"{code} {kind} {day.isoformat()} items={len(rows)}")
+                                f"The further the date is from the last record, the less reliable the prediction.")
+    audit("prediction_run", f"{code} {kind} {day.isoformat()} items={len(rows)}")
     conn().commit()
     return jsonify({"aux": code, "rows": rows, "info": info, "total_predicted": round(sum(r["predicted_qty"] for r in rows), 1),
                     "has_actual": bool(actual)})
@@ -805,7 +956,7 @@ def dashboard():
     ids = scope(request.args.get("aux"))
     day = parse_day(request.args.get("date"), today())
     cur = conn().cursor()
-    forecast_data = fc.get_forecast(cur, ids, day)
+    prediction_data = pred.get_prediction(cur, ids, day)
     lo = q("""SELECT COUNT(*) FILTER (WHERE i.qty_on_hand <= 0) AS out,
                      COUNT(*) FILTER (WHERE i.qty_on_hand > 0 AND i.qty_on_hand < p.low_stock_level) AS low
               FROM inventory i JOIN products p USING (product_id)
@@ -821,7 +972,7 @@ def dashboard():
                   FROM generate_series(%s::date - 6, %s::date, '1 day') d
                   LEFT JOIN transactions t ON t.business_date = d::date AND t.aux_id = ANY(%s) AND t.status='completed'
                   GROUP BY d ORDER BY d""", (day, day, ids))
-    out = {"date": day, "forecast": forecast_data, "event_tomorrow": forecast_data["event"],
+    out = {"date": day, "prediction": prediction_data, "event_tomorrow": prediction_data["event"],
            "lowout": {"low": lo["low"], "out": lo["out"], "total": lo["low"] + lo["out"]},
            "sellers": {"top_snacks": [r for r in snacks if r["qty"] > 0][:10], "low_snacks": sorted(snacks, key=lambda r: (r["qty"], r["name"]))[:10],
                        "top_meals": meals[:10], "low_meals": sorted(meals, key=lambda r: (r["qty"], r["name"]))[:10]},
@@ -839,21 +990,25 @@ def dashboard():
 @app.get("/api/transactions")
 @auth()
 def transactions():
+    ensure_sales_batch_schema()
     ids = scope(request.args.get("aux"))
     frm = parse_day(request.args.get("from"), today())
     to = parse_day(request.args.get("to"), frm)
     pay = {"cash": "Cash", "ewallet": "E-Wallet"}.get(request.args.get("pay"))
     rows = q("""
-        SELECT t.transaction_id, t.receipt_no, t.created_at, t.business_date, t.payment_method, t.ewallet_ref_last4, t.dine_type, t.total_amount,
+        SELECT t.transaction_id, t.aux_id, t.batch_id, t.receipt_no, t.created_at, t.business_date,
+               t.payment_method, t.ewallet_ref_last4, t.dine_type, t.total_amount, b.batch_number,
                a.name AS aux_name, (t.created_at AT TIME ZONE %(tz)s)::date AS created_date,
                COALESCE(SUM(l.unit_price*l.qty) FILTER (WHERE l.section='Meals'),0) AS meals_amt,
                COALESCE(SUM(l.unit_price*l.qty) FILTER (WHERE l.section='Snacks'),0) AS snacks_amt,
                STRING_AGG(l.qty || '× ' || l.item_name, ', ' ORDER BY l.line_id) FILTER (WHERE l.section='Meals') AS meals_order,
                STRING_AGG(l.qty || '× ' || l.item_name, ', ' ORDER BY l.line_id) FILTER (WHERE l.section='Snacks') AS snacks_items,
                COALESCE(BOOL_OR(l.is_budget),FALSE) AS has_budget
-        FROM transactions t JOIN auxiliaries a ON a.aux_id=t.aux_id JOIN transaction_lines l ON l.transaction_id=t.transaction_id
+        FROM transactions t JOIN auxiliaries a ON a.aux_id=t.aux_id
+        LEFT JOIN sales_batches b ON b.batch_id=t.batch_id
+        JOIN transaction_lines l ON l.transaction_id=t.transaction_id
         WHERE t.status='completed' AND t.aux_id = ANY(%(ids)s) AND t.business_date BETWEEN %(f)s AND %(t)s AND (%(pay)s::text IS NULL OR t.payment_method=%(pay)s)
-        GROUP BY t.transaction_id, a.name ORDER BY t.created_at""", {"tz": TIMEZONE, "ids": ids, "f": frm, "t": to, "pay": pay})
+        GROUP BY t.transaction_id, a.name, b.batch_id, b.batch_number ORDER BY t.created_at""", {"tz": TIMEZONE, "ids": ids, "f": frm, "t": to, "pay": pay})
     parts = {}
     if rows:
         for r in q("""SELECT l.transaction_id, p.meal_key, SUM(lp.servings * l.qty) AS s FROM line_parts lp
@@ -864,8 +1019,10 @@ def transactions():
     meals_reg, meals_car, snack_reg, snack_car = [], [], [], []
     for r in rows:
         carried = r["created_date"] < r["business_date"]
-        base = {"transaction_id": str(r["transaction_id"]), "created_at": r["created_at"].astimezone(TZ).isoformat(), "business_date": r["business_date"],
-                "ref": r["receipt_no"], "aux_name": r["aux_name"], "pay": r["payment_method"], "ref4": r["ewallet_ref_last4"]}
+        base = {"transaction_id": str(r["transaction_id"]), "aux_id": r["aux_id"], "batch_id": r["batch_id"],
+                "created_at": r["created_at"].astimezone(TZ).isoformat(), "business_date": r["business_date"],
+                "ref": r["receipt_no"], "aux_name": r["aux_name"], "pay": r["payment_method"], "ref4": r["ewallet_ref_last4"],
+                "batch_number": r["batch_number"]}
         if r["meals_amt"] > 0:
             p = parts.get(str(r["transaction_id"]), {})
             row = {**base, "order": r["meals_order"], "total": r["meals_amt"], "is_budget": r["has_budget"], "is_takeout": r["dine_type"] == "Take-out",
@@ -880,12 +1037,30 @@ def transactions():
                FROM transactions WHERE status='completed' AND aux_id=ANY(%s) AND business_date BETWEEN %s AND %s
                AND (%s::text IS NULL OR payment_method=%s)""", (ids, frm, to, pay, pay), one=True)
     kpi["remitted"] = q("SELECT COALESCE(SUM(amount),0) AS n FROM remittances WHERE aux_id=ANY(%s) AND business_date BETWEEN %s AND %s", (ids, frm, to), one=True)["n"]
-    remittances = q("""SELECT r.remittance_id, r.business_date, r.amount, r.expected_amount, r.recorded_at, a.name AS aux_name
+    remittances = q("""SELECT r.remittance_id, r.aux_id, r.batch_id, r.business_date, r.amount, r.expected_amount, r.recorded_at,
+                              a.name AS aux_name, b.batch_number
                        FROM remittances r JOIN auxiliaries a USING (aux_id)
+                       LEFT JOIN sales_batches b ON b.batch_id=r.batch_id
                        WHERE r.aux_id=ANY(%s) AND r.business_date BETWEEN %s AND %s
                        ORDER BY r.recorded_at DESC""", (ids, frm, to))
     for r in remittances:
         r["recorded_at"] = r["recorded_at"].astimezone(TZ).isoformat()
+    order_ranges = q("""SELECT t.aux_id, t.business_date, t.batch_id, b.batch_number,
+                               MIN(t.created_at) AS first_order_at, MAX(t.created_at) AS last_order_at
+                        FROM transactions t LEFT JOIN sales_batches b ON b.batch_id=t.batch_id
+                        WHERE t.aux_id=ANY(%s) AND t.business_date BETWEEN %s AND %s AND t.status='completed'
+                        GROUP BY t.aux_id, t.business_date, t.batch_id, b.batch_number
+                        ORDER BY t.business_date DESC, t.aux_id, b.batch_number""", (ids, frm, to))
+    for order_range in order_ranges:
+        order_range["first_order_at"] = order_range["first_order_at"].astimezone(TZ).isoformat()
+        order_range["last_order_at"] = order_range["last_order_at"].astimezone(TZ).isoformat()
+    batches = q("""SELECT b.batch_id, b.aux_id, b.batch_number, b.business_date, b.total_cash, b.total_ewallet,
+                          b.total_sales, b.transaction_count, b.sealed_at, a.name AS aux_name
+                   FROM sales_batches b JOIN auxiliaries a USING (aux_id)
+                   WHERE b.aux_id=ANY(%s) AND b.business_date BETWEEN %s AND %s
+                   ORDER BY b.business_date DESC, b.aux_id, b.batch_number DESC""", (ids, frm, to))
+    for batch in batches:
+        batch["sealed_at"] = batch["sealed_at"].astimezone(TZ).isoformat()
 
     # stock summary of the period (this is the paper slip: beginning / received / sold / left)
     stock = q("""SELECT p.product_id, p.name, p.category, p.meal_key, p.price,
@@ -912,7 +1087,8 @@ def transactions():
     for r in meals_car:
         for k in MEAL_ORDER:
             carried_sold[k] += r[k]
-    return jsonify({"from": frm, "to": to, "kpi": kpi, "remittances": remittances,
+    return jsonify({"from": frm, "to": to, "kpi": kpi, "remittances": remittances, "batches": batches,
+                    "order_ranges": order_ranges,
                     "meals": {"regular": meals_reg, "carried": meals_car, **ms, "carried_sold": carried_sold,
                               "regular_total": sum(r["total"] for r in meals_reg), "carried_total": sum(r["total"] for r in meals_car)},
                     "snacks": {"summary": summary, "regular": snack_reg, "carried": snack_car,

@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       $("#delivery-cash").value = current ? current.initial_cash : "";
       $("#btn-accept").disabled = !current;
       $("#table-delivery-check tbody").innerHTML = current
-        ? current.items.map((i) => `<tr><td>${esc(i.name)}${i.category === "Meals" ? " (servings)" : ""}</td><td>${num(i.listed_qty)}</td><td><input type="number" min="0" data-pid="${i.product_id}" value="${i.listed_qty}"></td></tr>`).join("")
+        ? current.items.map((i) => `<tr><td>${esc(UI.titleCase(i.name))}${i.category === "Meals" ? " (servings)" : ""}</td><td>${num(i.listed_qty)}</td><td><input type="number" min="0" data-pid="${i.product_id}" value="${i.listed_qty}"></td></tr>`).join("")
         : '<tr class="table__empty"><td colspan="3">No pending delivery</td></tr>';
       const all = await api("/api/deliveries");
       const done = all.filter((d) => d.status === "accepted");

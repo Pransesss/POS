@@ -19,7 +19,7 @@
         <span class="sidebar__label">Menu</span>
         <nav class="nav">
           <a class="nav-item nav-item--dashboard" href="dashboard.html">Dashboard</a>
-          <a class="nav-item nav-item--forecast" href="forecast.html">Prediction</a>
+          <a class="nav-item nav-item--prediction" href="prediction.html">Prediction</a>
           <a class="nav-item nav-item--pos" href="pos.html">POS</a>
           <a class="nav-item nav-item--receiving" href="receiving.html">Receiving</a>
           <a class="nav-item nav-item--inventory is-active" href="inventory.html">Inventory</a>
@@ -79,18 +79,18 @@
             <h2 class="card__title">Total products</h2>
             <p class="kpi__value" id="kpi-total">—</p>
           </section>
-          <section class="card">
+          <section class="card inventory-kpi--low">
             <h2 class="card__title">Low stock</h2>
             <p class="kpi__value" id="kpi-low">—</p>
           </section>
-          <section class="card">
+          <section class="card inventory-kpi--out">
             <h2 class="card__title">Out of stock</h2>
             <p class="kpi__value" id="kpi-out">—</p>
           </section>
         </div>
 
         <section class="card card--scroll">
-          <div class="toolbar">
+          <div class="toolbar inventory-toolbar">
             <input class="toolbar__search" type="search" id="inventory-search" placeholder="Scan barcode or search product…">
             <span class="muted text-small">Filter:</span>
             <label class="chip-toggle">

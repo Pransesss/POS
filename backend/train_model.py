@@ -1,4 +1,4 @@
-"""Train the forecast model for one canteen.
+"""Train the prediction model for one canteen.
 
     python train_model.py --aux CAS              # snacks and meals
     python train_model.py --aux CAS --kind snacks
@@ -6,13 +6,13 @@
 
 Needs history first (python import_history.py ...). Takes a few minutes on a normal laptop.
 Saves the network under backend/models/<CANTEEN>/<kind>/ and writes one line per run into `model_runs`
-(is_active stays FALSE: the staff Forecast page uses the saved model directly, the dashboard keeps its own switch).
+(is_active stays FALSE: the Prediction page uses the saved model directly, the dashboard keeps its own switch).
 Retrain whenever a few weeks of new sales have been added.
 """
 import argparse
 
 from db import connect
-import forecast_engine as fe
+import prediction_engine as pe
 
 
 def main():
@@ -25,14 +25,14 @@ def main():
     a = ap.parse_args()
     with connect() as db:
         cur = db.cursor()
-        fe.ensure_tables(cur)
+        pe.ensure_tables(cur)
         cur.execute("SELECT aux_id FROM auxiliaries WHERE code=%s", (a.aux.upper(),))
         aux = cur.fetchone()
         if not aux:
             raise SystemExit(f"No canteen with code {a.aux}")
         db.commit()
-        for kind in (fe.KINDS if a.kind == "both" else [a.kind]):
-            m = fe.train(cur, aux["aux_id"], a.aux.upper(), kind, seeds=a.seeds, epochs=a.epochs, fetch_weather=not a.no_weather)
+        for kind in (pe.KINDS if a.kind == "both" else [a.kind]):
+            m = pe.train(cur, aux["aux_id"], a.aux.upper(), kind, seeds=a.seeds, epochs=a.epochs, fetch_weather=not a.no_weather)
             cur.execute("""INSERT INTO model_runs (aux_id, algorithm, version, train_to, epochs, window_days, mape, is_active, notes)
                            VALUES (%s,%s,%s,%s,%s,%s,%s,FALSE,%s)""",
                         (aux["aux_id"], f"LSTM ({kind})", m["version"], m["trained_through"], a.epochs, m["window"], m["wape_lstm"],

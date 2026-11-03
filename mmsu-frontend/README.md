@@ -16,12 +16,12 @@ css/
   components.css      card, kpi, table, badge, dot, tabs, segmented, tiles, banner, chips, modal
   pages.css           POS meal builder, current-sale panel, receiving, report slips
   print.css           only the report slips are printed
-staff/                dashboard, pos, pos-meal, pos-meat, receiving, inventory, transactions
-admin/                dashboard, deliveries, inventory, transactions, events, settings
+staff/                dashboard, prediction, pos, pos-meal, pos-meat, receiving, inventory, transactions
+admin/                dashboard, prediction, deliveries, inventory, transactions, events, settings
 logos/mamasu.png     MMSU seal used by login + sidebar (add logos/college.png and swap the placeholder in the sidebar footer)
 js/common.js         writes TODAY's date in the headers/date filters + Online/Offline badge (no backend needed)
 js/api.js             the ONLY file that knows where data comes from (mock JSON now, Flask API later)
-mock/forecast.json    example of the JSON the API will return (contract)
+mock/prediction.json  example of the JSON the API will return (contract)
 ```
 
 ## Matches the Figma

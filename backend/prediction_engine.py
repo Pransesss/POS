@@ -1,13 +1,13 @@
-"""LSTM forecast for one canteen, one date, the dishes/snacks the staff pick.
+"""LSTM prediction for one canteen, one date, the dishes/snacks the staff pick.
 
 This is the notebook's "rotating menu" model moved into the system. Output = the notebook's Section 7 table:
-    item, forecast_for, predicted_qty, last_3school_day_avg, exam_day, event_day, method
+    item, prediction_for, predicted_qty, last_3school_day_avg, exam_day, event_day, method
 
 How it works (same as the notebook):
   * Every item's series uses only the days it was OFFERED (the menu rotates, a missing day is not zero sales).
   * The LSTM predicts a ratio (sales / the item's long-run average) from the item's last 3 offered days,
     the weekday, exam/event flags and Open-Meteo weather. 3 networks with different seeds are averaged.
-  * The model does not guess the menu. Staff choose which items they want a forecast for.
+  * The model does not guess the menu. Staff choose which items they want a prediction for.
   * Items with too little history get a plain average (pulled toward a typical item) and the `method` column says so.
 
 History comes from `sales_history` (imported CSVs, see import_history.py) plus the live POS data
@@ -44,11 +44,11 @@ _lock = threading.Lock()
 _cache = {}                   # (aux_code, kind) -> (mtime, loaded model dict)
 
 
-class ForecastError(Exception):
+class PredictionError(Exception):
     pass
 
 
-# ----------------------------------------------------------------- small helpers
+# small helpers
 def shrunk_level(total, n, pool):
     return (total + LEVEL_K * pool) / (n + LEVEL_K)
 
@@ -74,9 +74,9 @@ def model_info(aux_code, kind):
                                     "wape_lstm", "wape_item_average", "weather_source")}
 
 
-# ----------------------------------------------------------------- data
+# data
 def ensure_tables(cur):
-    """Create the forecast tables on a database that was set up before they existed (schema.sql has them too)."""
+    """Create prediction tables on a database that was set up before they existed (schema.sql has them too)."""
     cur.execute("""CREATE TABLE IF NOT EXISTS sales_history (
         history_id SERIAL PRIMARY KEY,
         aux_id INTEGER NOT NULL REFERENCES auxiliaries(aux_id),
@@ -90,7 +90,7 @@ def ensure_tables(cur):
 
 def load_series(cur, aux_id, kind, before=None):
     """One row per item per day it was offered: date, item, y (sold), left, rcvd, stockout.
-    `before` keeps only dates strictly earlier than that day (so a forecast never sees its own day)."""
+    `before` keeps only dates strictly earlier than that day (so a prediction never sees its own day)."""
     cur.execute("""SELECT business_date AS date, item_name AS item, sold_qty AS y, left_qty AS "left", prepared_qty AS rcvd
                    FROM sales_history WHERE aux_id=%s AND category=%s AND EXTRACT(ISODOW FROM business_date) < 6""",
                 (aux_id, kind))
@@ -139,7 +139,7 @@ def open_days(cur, aux_id, before=None):
 
 
 def calendar_flags(cur, dates):
-    """is_exam / is_event per date from the events table (no_classes days are not school days at all)."""
+    """Return exam and campus-event flags; no_classes events do not set either flag."""
     dates = pd.to_datetime(pd.Series(list(dates))).dt.normalize()
     cur.execute("SELECT event_date, event_type FROM events")
     ev = cur.fetchall()
@@ -184,7 +184,7 @@ def apply_scaler(sc, S, C):
     return (S - sc["s_mu"]) / sc["s_sd"], (C - sc["c_mu"]) / sc["c_sd"]
 
 
-# ----------------------------------------------------------------- the network
+# the network
 def _keras():
     os.environ.setdefault("TF_CPP_MIN_LOG_LEVEL", "2")
     import keras
@@ -211,18 +211,18 @@ def wape(y, p):
     return float(100 * np.abs(y - p).sum() / max(np.abs(y).sum(), 1e-9)) if len(y) else float("nan")
 
 
-# ----------------------------------------------------------------- training
+# training
 def train(cur, aux_id, aux_code, kind, seeds=3, epochs=150, fetch_weather=True, log=print):
     """Train the LSTM for one canteen and one kind (snacks | meals) and save it under models/<AUX>/<kind>/."""
     keras, _, _ = _keras()
     callbacks = keras.callbacks
     base_all = load_series(cur, aux_id, kind)
     if base_all.empty:
-        raise ForecastError(f"No {kind} history for {aux_code}. Run import_history.py first.")
+        raise PredictionError(f"No {kind} history for {aux_code}. Run import_history.py first.")
     days = open_days(cur, aux_id)
     n_sd = len(days)
     if n_sd < WINDOW + 20:
-        raise ForecastError(f"Only {n_sd} school days of data; need at least {WINDOW + 20}.")
+        raise PredictionError(f"Only {n_sd} school days of data; need at least {WINDOW + 20}.")
     val_start = pd.Timestamp(days[min(max(int(round(n_sd * TRAIN_FRAC)), 1), n_sd - 1)])
     min_active = max(MIN_ACTIVE_FLOOR, int(round(0.15 * n_sd)))
 
@@ -231,7 +231,7 @@ def train(cur, aux_id, aux_code, kind, seeds=3, epochs=150, fetch_weather=True, 
     keep = active[active >= min_active].index
     skipped = sorted(set(active.index) - set(keep))
     if len(keep) < 2:
-        raise ForecastError(f"Only {len(keep)} {kind} item(s) have {min_active}+ active days; not enough to train.")
+        raise PredictionError(f"Only {len(keep)} {kind} item(s) have {min_active}+ active days; not enough to train.")
     base = base_all[base_all["item"].isin(keep)]
     pool = float(base[base["date"] < val_start].groupby("item")["y"].mean().median())
     pool = pool if np.isfinite(pool) and pool > 0 else 1.0
@@ -262,7 +262,7 @@ def train(cur, aux_id, aux_code, kind, seeds=3, epochs=150, fetch_weather=True, 
     Y, D, SO, RO = (np.array(Y, "float32"), np.array(D, "datetime64[ns]"), np.array(SO, "float32"), np.array(RO, "float32"))
     tr, va = D < np.datetime64(val_start), D >= np.datetime64(val_start)
     if not tr.any() or not va.any():
-        raise ForecastError("Train or validation split is empty; add more history.")
+        raise PredictionError("Train or validation split is empty; add more history.")
     so = SO > 0
 
     item_scale = feat[feat["date"] < val_start].groupby("item")["y"].mean().reindex(classes).fillna(1.0).clip(lower=1.0).to_dict()
@@ -313,7 +313,7 @@ def train(cur, aux_id, aux_code, kind, seeds=3, epochs=150, fetch_weather=True, 
     return meta
 
 
-# ----------------------------------------------------------------- loading + predicting
+# loading + predicting
 def _load(aux_code, kind):
     f = model_path(aux_code, kind) / "meta.json"
     if not f.exists():
@@ -361,19 +361,18 @@ def catalog(cur, aux_id, aux_code, kind, as_of=None):
     return rows
 
 
-def forecast(cur, aux_id, aux_code, kind, target, items=None, log=print):
-    """Section-7 forecast for one date. `items` = names to forecast (None = every item with history)."""
+def predict(cur, aux_id, aux_code, kind, target, items=None, log=print):
+    """Section-7 prediction for one date. `items` = names to predict (None = every item with history)."""
     if kind not in KINDS:
-        raise ForecastError("kind must be snacks or meals")
+        raise PredictionError("kind must be snacks or meals")
     if target.weekday() >= 5:
-        raise ForecastError(f"{target.isoformat()} is a weekend; the canteen forecast covers Monday to Friday only.")
+        raise PredictionError(f"{target.isoformat()} is a weekend; the canteen prediction covers Monday to Friday only.")
     cur.execute("SELECT name, event_type FROM events WHERE event_date=%s ORDER BY event_id", (target,))
     ev = cur.fetchall()
-    no_classes = next((e for e in ev if e["event_type"] == "no_classes"), None)
 
     series = load_series(cur, aux_id, kind, before=target)
     if series.empty:
-        raise ForecastError(f"No {kind} history before {target.isoformat()} for {aux_code}.")
+        raise PredictionError(f"No {kind} history before {target.isoformat()} for {aux_code}.")
     known = set(series["item"])
     wanted = list(dict.fromkeys(str(i).strip() for i in items)) if items else sorted(known)
 
@@ -384,16 +383,12 @@ def forecast(cur, aux_id, aux_code, kind, target, items=None, log=print):
     last_data = series["date"].max().date()
     info = {"target": target.isoformat(), "kind": kind, "history_through": last_data.isoformat(),
             "days_since_history": (target - last_data).days, "event": [dict(e) for e in ev],
-            "no_classes": bool(no_classes), "model": None, "weather_source": None, "warnings": []}
+            "no_classes": any(e["event_type"] == "no_classes" for e in ev),
+            "model": None, "weather_source": None, "warnings": []}
 
     def avg_last(item):
         g = series[series["item"] == item].tail(W)
         return round(float(g["y"].mean()), 1) if len(g) else None
-
-    if no_classes:
-        rows = [{"item": i, "forecast_for": target.isoformat(), "predicted_qty": 0.0, key_avg: avg_last(i),
-                 "exam_day": is_exam, "event_day": is_event, "method": f"no classes: {no_classes['name']}"} for i in wanted]
-        return rows, info
 
     model = None
     try:
@@ -447,7 +442,7 @@ def forecast(cur, aux_id, aux_code, kind, target, items=None, log=print):
                 p = _predict_ratio(model["nets"], np.concatenate(seqs), np.concatenate(ctxs),
                                    np.asarray(iids, "int32").reshape(-1, 1)) * np.array([o[1] for o in order])
                 for (item, _l), v in zip(order, p):
-                    rows_by_item[item] = {"item": item, "forecast_for": target.isoformat(), "predicted_qty": max(0.0, round(float(v), 1)),
+                    rows_by_item[item] = {"item": item, "prediction_for": target.isoformat(), "predicted_qty": max(0.0, round(float(v), 1)),
                                           key_avg: avg_last(item), "exam_day": is_exam, "event_day": is_event, "method": "LSTM"}
 
     for item in wanted:                          # everything the LSTM did not cover: plain average, and say so
@@ -459,7 +454,7 @@ def forecast(cur, aux_id, aux_code, kind, target, items=None, log=print):
             why = (f"fallback: average of {int(n_)} past days" if model else f"average of {int(n_)} past days (model not trained)")
         else:
             v, why = pool, "fallback: new item, typical item average"
-        rows_by_item[item] = {"item": item, "forecast_for": target.isoformat(), "predicted_qty": max(0.0, round(float(v), 1)),
+        rows_by_item[item] = {"item": item, "prediction_for": target.isoformat(), "predicted_qty": max(0.0, round(float(v), 1)),
                               key_avg: avg_last(item), "exam_day": is_exam, "event_day": is_event, "method": why}
     return [rows_by_item[i] for i in wanted], info
 

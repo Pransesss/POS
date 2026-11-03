@@ -4,11 +4,11 @@ The model (notebook / LSTM) only has to do 3 things:
   1. read the training data           ->  SELECT * FROM v_daily_sales   (+ the events table)
   2. register the training run        ->  INSERT INTO model_runs (...)   with is_active = TRUE
   3. write tomorrow's numbers         ->  INSERT INTO predictions (...)
-The dashboard then shows them automatically (see forecast.py). Nothing else in the system changes.
+The dashboard then shows them automatically (see prediction.py). Nothing else in the system changes.
 
 This file is a working example that writes a simple moving average. Replace `predict()` with the real model.
 
-    python run_forecast.py            # predicts tomorrow for every auxiliary
+    python run_prediction.py          # predicts tomorrow for every auxiliary
 """
 from datetime import date, timedelta
 from db import connect

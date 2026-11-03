@@ -9,10 +9,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     const rows = [...selected.values()];
     $("#delivery-selected").innerHTML = rows.length ? rows.map((p) => `
       <div class="delivery-selected__row" data-pid="${p.product_id}">
-        <div class="delivery-selected__item"><strong>${esc(p.name)}</strong></div>
+        <div class="delivery-selected__item"><strong>${esc(UI.titleCase(p.name))}</strong></div>
         <div class="delivery-selected__now">${num(p.qty)}</div>
         <input type="number" min="1" step="1" data-deliver-pid="${p.product_id}" value="${p.deliver_qty || ""}" placeholder="Qty">
-        <button class="btn btn--ghost delete-action delivery-selected__remove" type="button" data-remove-pid="${p.product_id}" aria-label="Remove product" data-delete-tooltip="Remove product"><svg class="delete-action__icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 3h6l1 2h5v2H3V5h5zm-3 6h12l-1 12H7zm3 2v8h2v-8zm4 0v8h2v-8z"/></svg></button>
+        <button class="btn btn--ghost delete-action delete-action--icon delivery-selected__remove" type="button" data-remove-pid="${p.product_id}" aria-label="Remove product" data-delete-tooltip="Remove product"><svg class="delete-action__icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 3h6l1 2h5v2H3V5h5zm-3 6h12l-1 12H7zm3 2v8h2v-8zm4 0v8h2v-8z"/></svg></button>
       </div>`).join("") : `<p class="muted text-small">No products selected yet.</p>`;
   }
 
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const list = products.filter((p) => p.is_active && !chosen.has(p.product_id) && (!q || p.name.toLowerCase().includes(q)))
       .sort((a,b) => a.name.localeCompare(b.name));
     const menu = $("#delivery-product-menu");
-    menu.innerHTML = list.slice(0, 30).map((p) => `<button type="button" class="delivery-picker__option" data-pick-pid="${p.product_id}">${esc(p.name)} <span class="muted">· ${num(p.qty)} now</span></button>`).join("")
+    menu.innerHTML = list.slice(0, 30).map((p) => `<button type="button" class="delivery-picker__option" data-pick-pid="${p.product_id}"><span class="delivery-picker__name">${esc(UI.titleCase(p.name))}</span><span class="delivery-picker__stock"><span class="delivery-picker__stock-value">${num(p.qty)}</span><span>in stock</span></span></button>`).join("")
       || `<div class="delivery-picker__empty">${q ? "No matching products." : "Type to search for a product."}</div>`;
     menu.classList.add("is-open");
   }

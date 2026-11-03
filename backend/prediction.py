@@ -1,13 +1,13 @@
-"""Forecast for the dashboard.
+"""Prediction data for the dashboard.
 
 1. If the trained model has written rows into `predictions` for tomorrow (and its model_run is_active), we show those.
 2. Otherwise we show a simple baseline (7-day moving average) so the dashboard is never empty.
-   -> To plug in the real model, see run_forecast.py. The dashboard code does not change.
+   -> To plug in the real model, see run_prediction.py. The dashboard code does not change.
 """
 from datetime import timedelta
 
 
-def get_forecast(cur, aux_ids, as_of):
+def get_prediction(cur, aux_ids, as_of):
     target = as_of + timedelta(days=1)
 
     # last actual sold on the selected date + average of the last 7 days  (all products used for prediction)
@@ -27,7 +27,6 @@ def get_forecast(cur, aux_ids, as_of):
     # event tomorrow?
     cur.execute("SELECT name, event_type FROM events WHERE event_date = %s ORDER BY event_id LIMIT 1", (target,))
     event = cur.fetchone()
-    no_classes = bool(event and event["event_type"] == "no_classes")
 
     # rows written by the model
     cur.execute("""
@@ -44,8 +43,6 @@ def get_forecast(cur, aux_ids, as_of):
         else:
             n = r["days_with_sales"] or 0
             predicted = float(r["sold7"]) / n if n else 0.0     # average over the days that had sales
-        if no_classes:
-            predicted = 0.0
         if float(r["last_sold"]) == 0 and predicted == 0:
             continue
         cat = "meal" if r["category"] == "Meals" else ("drink" if r["category"] == "Drinks" else "snack")

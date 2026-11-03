@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const sr = (rank[a.status] || 4) - (rank[b.status] || 4);
         return sr || String(a.name).localeCompare(String(b.name));
       });
-    $("#table-inventory tbody").innerHTML = list.map((r) => `<tr><td>${esc(r.name)}</td><td>${esc(r.barcode || "—")}</td><td>${esc(r.category)}</td><td>${money(r.price)}</td><td>${num(r.qty)}</td>
+    $("#table-inventory tbody").innerHTML = list.map((r) => `<tr><td>${esc(UI.titleCase(r.name))}</td><td>${esc(r.barcode || "—")}</td><td>${esc(r.category)}</td><td>${money(r.price)}</td><td>${num(r.qty)}</td>
       <td><span class="badge ${badge[r.status][0]}">${badge[r.status][1]}</span></td><td>${r.is_active ? '<span class="badge badge--ok">Active</span>' : '<span class="badge badge--bad">Inactive</span>'}</td>
       ${admin ? `<td>${esc(r.aux_name)}</td><td><button class="link-button" data-edit="${rows.indexOf(r)}">Edit</button></td>` : ""}</tr>`).join("")
       || `<tr class="table__empty"><td colspan="${admin ? 9 : 7}">No items match</td></tr>`;
@@ -44,16 +44,15 @@ document.addEventListener("DOMContentLoaded", async () => {
   function productModal(p) {
     const auxId = p ? p.aux_id : aux;
     const ov = UI.modal(`<h2 class="card__title">${p ? "Edit" : "Add"} product</h2>
-      <label for="m-name">Name</label><input type="text" id="m-name" value="${esc(p ? p.name : "")}">
+      <label for="m-name">Name</label><input type="text" id="m-name" value="${esc(UI.titleCase(p ? p.name : ""))}">
       <label for="m-barcode">Barcode</label><input type="text" id="m-barcode" value="${esc(p ? p.barcode || "" : "")}">
       <label for="m-category">Category</label><select id="m-category"><option value="Snacks" ${!p || p.category === "Snacks" ? "selected" : ""}>Snacks</option><option value="Drinks" ${p && p.category === "Drinks" ? "selected" : ""}>Drinks</option></select>
       <label for="m-price">Price (₱) — applies to all auxiliaries</label><input type="number" id="m-price" min="0" step="0.01" value="${p ? p.price : ""}">
       <label for="m-stock">Stock at this auxiliary</label><input type="number" id="m-stock" min="0" value="${p ? p.qty : 0}" ${auxId === "all" ? "disabled" : ""}>
       <label for="m-status">Status</label><select id="m-status"><option value="1">Active</option><option value="0" ${p && !p.is_active ? "selected" : ""}>Inactive</option></select>
-      <p class="field-hint">${auxId === "all" ? "Choose one auxiliary in the filter to set its stock. New stock normally arrives through Deliveries." : ""}</p>
       <div class="modal__actions"><button class="btn" id="m-save" type="button">Save</button><button class="btn btn--ghost" data-close type="button">Cancel</button></div>`);
     ov.querySelector("#m-save").addEventListener("click", async () => {
-      const body = { name: $("#m-name").value, barcode: $("#m-barcode").value, category: $("#m-category").value, price: $("#m-price").value,
+      const body = { name: UI.titleCase($("#m-name").value), barcode: $("#m-barcode").value, category: $("#m-category").value, price: $("#m-price").value,
         stock: auxId === "all" ? undefined : $("#m-stock").value, aux_id: auxId === "all" ? undefined : auxId, is_active: $("#m-status").value === "1" };
       try { await api(p ? `/api/products/${p.product_id}` : "/api/products", { method: p ? "PUT" : "POST", body }); ov.remove(); UI.toast("Saved"); load(); }
       catch (e) { UI.toast(e.message); }

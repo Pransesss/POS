@@ -48,7 +48,7 @@ Running it again **wipes and rebuilds** the database.
 
 **Change these passwords** (Admin → Settings). Passwords are stored hashed, never as plain text.
 
-Optional, for charts/forecast to have something to show: `python demo_sales.py` (14 days of made-up sales).
+Optional, for charts and predictions to have something to show: `python demo_sales.py` (14 days of made-up sales).
 
 ## 5. Run
 ```bash
@@ -89,13 +89,13 @@ UPDATE model_runs SET is_active = FALSE;
 INSERT INTO model_runs (algorithm, version, is_active, rmse, mae, mape) VALUES ('LSTM','lstm_v1',TRUE, 12.3, 9.8, 8.4) RETURNING model_run_id;
 INSERT INTO predictions (model_run_id, aux_id, product_id, target_date, predicted_qty) VALUES (…);
 ```
-`backend/run_forecast.py` is a working example of exactly this (it writes a moving average). Replace its `predict()` with the LSTM, and run it every evening.
+`backend/run_prediction.py` is a working example of exactly this (it writes a moving average). Replace its `predict()` with the LSTM, and run it every evening.
 `v_daily_inventory` gives the same columns as the paper slip (beginning, received, sold, left).
 
-## 9b. Forecast page for staff (LSTM, pick a date and items)
+## 9b. Prediction page for staff and admins (LSTM, pick a canteen, date and items)
 
-Staff open **Forecast** in the sidebar, choose a Monday-Friday date, Snacks or Meals, tick the items they plan to offer,
-and press **Predict**. The result is the notebook's Section 7 table (item, forecast_for, predicted_qty,
+Staff open **Prediction** in the sidebar. Admins first choose an auxiliary. Select a Monday-Friday date, Snacks or Meals, tick the items to include,
+and press **Predict**. The result is the notebook's Section 7 table (item, prediction_for, predicted_qty,
 last_3school_day_avg, exam_day, event_day, method) and can be downloaded as CSV.
 
 One-time setup (use Python 3.10-3.12, TensorFlow has no wheel for 3.13):
@@ -110,14 +110,14 @@ python app.py
 ```
 
 * Do the same for COE with its own CSVs (`--aux COE`). Each canteen has its own model and history.
-* The staff only see their own canteen. The model does not guess the menu; staff choose the items.
-* Exam/event flags come from the **Events** page (and calendar.csv). Add the date there before forecasting it.
+* Staff only see their own canteen. Admins can choose any active canteen. The model does not guess the menu; select the items.
+* Exam/event flags come from the **Events** page (and calendar.csv). Add the date there before making a prediction.
 * Weather comes from Open-Meteo (internet needed). If it is unreachable the page says so and uses the recent average.
 * New sales entered in the POS are used automatically (products ticked *use for prediction*), but the network itself
   only learns new patterns when you run `train_model.py` again (every few weeks).
 * An item with too few records (or a new item) gets a plain average and the Method column says so.
 * Meal names in the history are Rice, Pork, Veggies, Chicken @99. POS meal servings are matched through `MEAL_ALIASES`
-  in `forecast_engine.py`; change it if your names differ.
+  in `prediction_engine.py`; change it if your names differ.
 
 ## 10. Things to confirm / change
 * **Snack prices** (banana cue, turon, kwek-kwek, kamote cue, puto, cheese stick) were **not** in the two price-list photos → sample prices. Fix in Admin → Inventory → Edit (one price for all outlets).
@@ -129,7 +129,7 @@ python app.py
 
 ## 11. Folders
 ```
-backend/   app.py (API)  db.py  pricing.py  forecast.py  run_forecast.py  schema.sql  init_db.py  demo_sales.py  requirements.txt
+backend/   app.py (API)  db.py  pricing.py  prediction.py  run_prediction.py  schema.sql  init_db.py  demo_sales.py  requirements.txt
 mmsu-frontend/   pages (unchanged HTML/CSS)  js/ (common, api, offline, pos, dashboard, inventory, receiving, deliveries, transactions, events, settings, login)  sw.js
 docs/SETUP.md
 ```

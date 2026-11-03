@@ -44,6 +44,6 @@ You need Python 3.12 and PostgreSQL installed and running.
 
    Change these starter passwords in **Admin → Settings** before real use.
 
-The trained forecast models are already in `backend/models`, so running the app does not require the training CSVs or retraining. The app can also show a moving-average forecast when it has sales history but no active forecast predictions.
+The trained prediction models are already in `backend/models`, so running the app does not require the training CSVs or retraining. The app can also show a moving-average prediction when it has sales history but no active model predictions.
 
 For deployment or model retraining, see [docs/DEPLOY.md](docs/DEPLOY.md) and [docs/SETUP.md](docs/SETUP.md).

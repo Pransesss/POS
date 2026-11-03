@@ -14,8 +14,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       ${[25, 50, 75, 100].map((y) => `<line class="chart__grid" x1="4" y1="${y}" x2="296" y2="${y}"/>`).join("")}
       ${rows.map((r, i) => {
         const h = Math.max(3, Math.round((r.qty / max) * 78)), x = i * w + 4, barW = Math.max(8, w - 8), cx = x + barW / 2;
-        const label = r.name.length > 12 ? r.name.slice(0, 11) + "…" : r.name;
-        return `<g><title>${esc(r.name)}: ${num(r.qty)}</title><rect class="chart__bar" x="${x}" y="${105 - h}" width="${barW}" height="${h}" rx="4" fill="url(#${gradientId})"/><text class="chart__value" x="${cx}" y="${99 - h}" text-anchor="middle">${num(r.qty)}</text><text class="chart__label" x="${cx}" y="126" text-anchor="middle">${esc(label)}</text></g>`;
+        const name = UI.titleCase(r.name), label = name.length > 12 ? name.slice(0, 11) + "…" : name;
+        return `<g><title>${esc(name)}: ${num(r.qty)}</title><rect class="chart__bar" x="${x}" y="${105 - h}" width="${barW}" height="${h}" rx="4" fill="url(#${gradientId})"/><text class="chart__value" x="${cx}" y="${99 - h}" text-anchor="middle">${num(r.qty)}</text><text class="chart__label" x="${cx}" y="126" text-anchor="middle">${esc(label)}</text></g>`;
       }).join("")}</svg>`;
   };
   const line = (rows) => {
@@ -37,16 +37,16 @@ document.addEventListener("DOMContentLoaded", async () => {
   };
 
   function draw() {
-    const f = data.forecast, c = data.cash;
-    $("#kpi-predicted").textContent = num(f.total_predicted);
+    const prediction = data.prediction, c = data.cash;
+    $("#kpi-predicted").textContent = num(prediction.total_predicted);
     $("#kpi-lowout").textContent = data.lowout.total;
     const ev = data.event_tomorrow, be = $("#banner-event");
     be.hidden = !ev;
-    if (ev) { const t = { no_classes: "No classes / ADM", exam: "Exam", event: "Event", other: "Other" }[ev.event_type]; be.textContent = `Tomorrow: ${ev.name} (${t})${ev.event_type === "no_classes" ? " — no production planned" : " — prediction adjusted"}`; }
+    if (ev) { const t = { no_classes: "No classes / ADM", exam: "Exam", event: "Event", other: "Other" }[ev.event_type]; be.textContent = `Tomorrow: ${ev.name} (${t})${ev.event_type === "no_classes" ? " — demand forecast still shown" : " — prediction adjusted"}`; }
     const bd = $("#banner-delivery");
     if (bd) { bd.hidden = !data.pending_deliveries; bd.textContent = `${data.pending_deliveries} delivery waiting for you to check and accept →`; }
-    const rows = openPred ? f.items : f.items.slice(0, 5);
-    $("#table-predicted tbody").innerHTML = rows.map((r) => `<tr><td>${esc(r.name)}</td><td>${num(r.last_sold)}</td><td>${num(r.predicted)}</td></tr>`).join("") || '<tr class="table__empty"><td colspan="3">No sales yet to predict from</td></tr>';
+    const rows = openPred ? prediction.items : prediction.items.slice(0, 5);
+    $("#table-predicted tbody").innerHTML = rows.map((r) => `<tr><td>${esc(UI.titleCase(r.name))}</td><td>${num(r.last_sold)}</td><td>${num(r.predicted)}</td></tr>`).join("") || '<tr class="table__empty"><td colspan="3">No sales yet to predict from</td></tr>';
     $("#cash-total").textContent = money(c.total); $("#cash-initial").textContent = num2(c.initial); $("#cash-sales").textContent = num2(c.cash_sales);
     $("#cash-ewallet").textContent = num2(c.ewallet_sales); $("#cash-remitted").textContent = num2(c.remitted); $("#cash-total-row").innerHTML = `<strong>${num2(c.total)}</strong>`;
     const s = data.sellers, nTop = openTop ? 10 : 5, nLow = openLow ? 10 : 5;

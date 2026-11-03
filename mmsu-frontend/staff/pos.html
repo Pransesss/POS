@@ -20,7 +20,7 @@
         <span class="sidebar__label">Menu</span>
         <nav class="nav">
           <a class="nav-item nav-item--dashboard" href="dashboard.html">Dashboard</a>
-          <a class="nav-item nav-item--forecast" href="forecast.html">Prediction</a>
+          <a class="nav-item nav-item--prediction" href="prediction.html">Prediction</a>
           <a class="nav-item nav-item--pos is-active" href="pos.html">POS</a>
           <a class="nav-item nav-item--receiving" href="receiving.html">Receiving</a>
           <a class="nav-item nav-item--inventory" href="inventory.html">Inventory</a>
@@ -35,7 +35,9 @@
           <a class="nav-item nav-item--logout" href="../login.html">Log out</a>
         </div>
         </aside>
-        <button class="btn-done-day" id="btn-done-day" type="button">Close sales day</button>
+        <button class="btn-done-day" id="btn-done-day" type="button">
+          Seal sales
+        </button>
       </div>
       <main class="main">
         <div class="grid-pos">
@@ -73,7 +75,6 @@
             </ul>
 
             <button class="btn btn--ghost" type="button" id="btn-add-box">+ Takeout box</button>
-            <p class="muted text-small" id="order-box-count">Takeout boxes: 0</p>
 
             <div class="order__total">
               <span>Total</span>
@@ -102,10 +103,10 @@
             </div>
 
             <div class="order__buttons">
-              <button class="btn btn--block" id="btn-complete" type="button">COMPLETE SALE</button>
-              <button class="btn btn--ghost btn--block" id="btn-hold" type="button">HOLD SALE</button>
+              <button class="btn btn--block" id="btn-complete" type="button">Complete sale</button>
+              <button class="btn btn--ghost btn--block" id="btn-hold" type="button">Hold sale</button>
               <button class="link-button" id="btn-resume" type="button" hidden>Resume last held sale</button>
-              <span class="order__cancel" id="btn-cancel">CANCEL SALE</span>
+              <span class="order__cancel" id="btn-cancel">Cancel sale</span>
             </div>
           </aside>
         </div>

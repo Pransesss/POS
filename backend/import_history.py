@@ -1,4 +1,4 @@
-"""Load the typed canteen CSVs (and the school calendar) into the database for the forecast model.
+"""Load the typed canteen CSVs (and the school calendar) into the database for the prediction model.
 
     python import_history.py --aux CAS --snacks Snacks_SY2025-26.csv --meals Meals_SY2025-26.csv --calendar calendar.csv
 
@@ -14,7 +14,7 @@ import sys
 import pandas as pd
 
 from db import connect
-import forecast_engine as fe
+import prediction_engine as pe
 
 
 def parse_dates(s):
@@ -43,7 +43,7 @@ def load_csv(path, category):
     out = out[~bad]
     wk = out["business_date"].dt.day_of_week >= 5
     if wk.any():
-        print(f"  skipped {int(wk.sum())} Saturday/Sunday rows (the canteen forecast is Mon-Fri)")
+        print(f"  skipped {int(wk.sum())} Saturday/Sunday rows (the canteen prediction is Mon-Fri)")
     out = out[~wk].copy()
     out["category"] = category
     # the same item twice on one day (e.g. two slips) -> add the quantities
@@ -60,7 +60,7 @@ def main():
         sys.exit("Give at least one of --snacks / --meals / --calendar")
     with connect() as db:
         cur = db.cursor()
-        fe.ensure_tables(cur)
+        pe.ensure_tables(cur)
         cur.execute("SELECT aux_id FROM auxiliaries WHERE code=%s", (a.aux.upper(),))
         aux = cur.fetchone()
         if not aux:

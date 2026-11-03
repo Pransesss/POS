@@ -18,16 +18,17 @@
         <span class="sidebar__label">Menu</span>
         <nav class="nav">
           <a class="nav-item nav-item--dashboard" href="dashboard.html">Dashboard</a>
-          <a class="nav-item nav-item--forecast is-active" href="forecast.html">Prediction</a>
-          <a class="nav-item nav-item--pos" href="pos.html">POS</a>
-          <a class="nav-item nav-item--receiving" href="receiving.html">Receiving</a>
+          <a class="nav-item nav-item--prediction is-active" href="prediction.html">Prediction</a>
+          <a class="nav-item nav-item--deliveries" href="deliveries.html">Deliveries</a>
           <a class="nav-item nav-item--inventory" href="inventory.html">Inventory</a>
           <a class="nav-item nav-item--transactions" href="transactions.html">Transactions</a>
+          <a class="nav-item nav-item--events" href="events.html">Events</a>
+          <a class="nav-item nav-item--settings" href="settings.html">Settings</a>
         </nav>
         <div class="sidebar__footer">
           <div class="sidebar__college">
             <span class="sidebar__college-logo"></span>
-            <span id="sidebar-college">College of Arts and Sciences</span>
+            <span id="sidebar-college">Administrator</span>
           </div>
           <a class="nav-item nav-item--logout" href="../login.html">Log out</a>
         </div>
@@ -36,6 +37,12 @@
         <header class="page-header">
           <div>
             <h1>Daily Predictions</h1>
+          </div>
+          <div class="page-header__actions">
+            <select id="fc-aux" aria-label="Select auxiliary">
+              <option value="">Select auxiliary</option>
+              <!-- JS: one option per auxiliary -->
+            </select>
           </div>
         </header>
 
@@ -66,7 +73,6 @@
 
           <div class="row fc-actions">
             <button class="btn" type="button" id="fc-run">Predict</button>
-            <span class="muted text-small" id="fc-model"></span>
           </div>
         </section>
 
@@ -83,13 +89,12 @@
             <thead></thead>
             <tbody></tbody>
           </table>
-          <p class="muted text-small" id="fc-foot"></p>
         </section>
       </main>
     </div>
     <script src="../js/common.js"></script>
     <script src="../js/api.js"></script>
     <script src="../js/offline.js"></script>
-    <script src="../js/forecast.js"></script>
+    <script src="../js/prediction.js?v=20261103-clean-item-chips"></script>
   </body>
 </html>

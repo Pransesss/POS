@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Prediction · MMSU Auxiliary POS</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/icons.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="../css/print.css">
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <img class="logo" src="../logos/mamasu.png" alt="MMSU seal">
+        <span class="sidebar__label">Menu</span>
+        <nav class="nav">
+          <a class="nav-item nav-item--dashboard" href="dashboard.html">Dashboard</a>
+          <a class="nav-item nav-item--prediction is-active" href="prediction.html">Prediction</a>
+          <a class="nav-item nav-item--pos" href="pos.html">POS</a>
+          <a class="nav-item nav-item--receiving" href="receiving.html">Receiving</a>
+          <a class="nav-item nav-item--inventory" href="inventory.html">Inventory</a>
+          <a class="nav-item nav-item--transactions" href="transactions.html">Transactions</a>
+        </nav>
+        <div class="sidebar__footer">
+          <div class="sidebar__college">
+            <span class="sidebar__college-logo"></span>
+            <span id="sidebar-college">College of Arts and Sciences</span>
+          </div>
+          <a class="nav-item nav-item--logout" href="../login.html">Log out</a>
+        </div>
+      </aside>
+      <main class="main">
+        <header class="page-header">
+          <div>
+            <h1>Daily Predictions</h1>
+          </div>
+        </header>
+
+        <section class="card">
+          <h2 class="card__title">Date and menu</h2>
+          <div class="fc-grid">
+            <div>
+              <label for="fc-date">Prediction date (Monday–Friday)</label>
+              <input type="date" id="fc-date">
+              <p class="field-hint" id="fc-date-hint"></p>
+            </div>
+            <div>
+              <label>Items to predict</label>
+              <div class="row fc-kind">
+                <label class="chip-toggle"><input type="radio" name="fc-kind" value="snacks" checked><span class="chip">Snacks</span></label>
+                <label class="chip-toggle"><input type="radio" name="fc-kind" value="meals"><span class="chip">Meals</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="toolbar fc-toolbar">
+            <div class="search toolbar__search"><input type="search" id="fc-search" placeholder="Search items"></div>
+            <button class="btn btn--ghost" type="button" id="fc-recent">On the menu lately</button>
+            <button class="btn btn--ghost" type="button" id="fc-all">Select all</button>
+            <button class="btn btn--ghost" type="button" id="fc-none">Clear</button>
+          </div>
+          <div class="fc-items" id="fc-items"><div class="loading-dots" role="status" aria-label="Loading items"><span></span><span></span><span></span></div></div>
+
+          <div class="row fc-actions">
+            <button class="btn" type="button" id="fc-run">Predict</button>
+          </div>
+        </section>
+
+        <div class="banner banner--warn" id="fc-error" hidden></div>
+
+        <section class="card" id="fc-result" hidden>
+          <div class="card__head">
+            <h2 class="card__title" id="fc-title">Prediction</h2>
+            <button class="btn btn--ghost" type="button" id="fc-csv">Download CSV</button>
+          </div>
+          <div id="fc-notes"></div>
+          <p class="kpi__value"><span id="fc-total">—</span> <span class="kpi__unit" id="fc-unit">units in total</span></p>
+          <table class="table" id="fc-table">
+            <thead></thead>
+            <tbody></tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+    <script src="../js/common.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/offline.js"></script>
+    <script src="../js/prediction.js?v=20261103-clean-item-chips"></script>
+  </body>
+</html>

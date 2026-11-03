@@ -1,12 +1,20 @@
 /* settings.js — admin: manage accounts (admin password required) and add auxiliaries. Passwords are never shown. */
 document.addEventListener("DOMContentLoaded", () => {
   const { $, esc } = UI;
-  let accounts = [], chosen = null, chosenAux = null;
+  const MAX_LOGO_SIZE = 2_000_000;
+  let accounts = [], chosen = null, chosenAux = null, predictionProducts = [];
 
   ["aux-logo", "account-logo"].forEach((id) => {
     const input = $("#" + id), filename = $("#" + id + "-name");
     input.addEventListener("change", () => {
-      filename.textContent = input.files[0]?.name || "No file chosen";
+      const file = input.files[0];
+      if (file && file.size > MAX_LOGO_SIZE) {
+        input.value = "";
+        filename.textContent = "No file chosen";
+        UI.toast("Logo file must be 2 MB or smaller");
+        return;
+      }
+      filename.textContent = file?.name || "No file chosen";
     });
   });
 
@@ -19,16 +27,60 @@ document.addEventListener("DOMContentLoaded", () => {
   }));
 
   async function loadPredictionProducts() {
-    const rows = await api("/api/prediction-products");
-    $("#table-prediction-products tbody").innerHTML = rows.map((p) => `<tr><td>${esc(p.name)}</td><td>${esc(p.category)}</td><td><label class="chip-toggle"><input type="checkbox" data-prediction-id="${p.product_id}" ${p.use_for_prediction ? "checked" : ""}><span class="chip">${p.use_for_prediction ? "Included" : "Excluded"}</span></label></td></tr>`).join("") || '<tr class="table__empty"><td colspan="3">No products yet</td></tr>';
+    predictionProducts = await api("/api/prediction-products");
+    drawPredictionProducts();
+  }
+  function filteredPredictionProducts() {
+    const search = $("#prediction-search").value.trim().toLocaleLowerCase();
+    const category = $("#prediction-category").value;
+    const status = $("#prediction-status").value;
+    return predictionProducts.filter((p) =>
+      (!search || p.name.toLocaleLowerCase().includes(search)) &&
+      (!category || p.category === category) &&
+      (!status || (p.use_for_prediction ? "included" : "excluded") === status));
+  }
+  function drawPredictionProducts() {
+    const rows = filteredPredictionProducts();
+    $("#table-prediction-products tbody").innerHTML = rows.map((p) => `<tr><td>${esc(UI.titleCase(p.name))}</td><td>${esc(p.category)}</td><td><label class="chip-toggle"><input type="checkbox" data-prediction-id="${p.product_id}" ${p.use_for_prediction ? "checked" : ""}><span class="chip">${p.use_for_prediction ? "Included" : "Excluded"}</span></label></td></tr>`).join("") || '<tr class="table__empty"><td colspan="3">No matching products</td></tr>';
+    const bulkToggle = $("#prediction-include-filtered");
+    bulkToggle.checked = rows.length > 0 && rows.every((p) => p.use_for_prediction);
+  }
+  async function setFilteredPrediction(included) {
+    const product_ids = filteredPredictionProducts().map((p) => p.product_id);
+    if (!product_ids.length) {
+      $("#prediction-include-filtered").checked = false;
+      return UI.toast("No matching products to update");
+    }
+    const bulkToggle = $("#prediction-include-filtered");
+    bulkToggle.disabled = true;
+    let updated = 0;
+    try {
+      for (const product_id of product_ids) {
+        await api(`/api/products/${product_id}/prediction`, { method: "PATCH", body: { use_for_prediction: included } });
+        updated++;
+      }
+      await loadPredictionProducts();
+      UI.toast(`${updated} products ${included ? "included" : "excluded"}`);
+    } catch (err) {
+      let refreshError = null;
+      try { await loadPredictionProducts(); } catch (e) { refreshError = e; }
+      const message = updated ? `${updated} products updated before an error: ${err.message}` : err.message;
+      UI.toast(refreshError ? `${message}. Could not refresh the list: ${refreshError.message}` : message);
+    } finally {
+      bulkToggle.disabled = false;
+    }
   }
   $("#table-prediction-products").addEventListener("change", async (e) => {
     const box = e.target.closest("[data-prediction-id]"); if (!box) return;
     try {
       await api(`/api/products/${box.dataset.predictionId}/prediction`, { method: "PATCH", body: { use_for_prediction: box.checked } });
-      loadPredictionProducts();
+      await loadPredictionProducts();
     } catch (err) { box.checked = !box.checked; UI.toast(err.message); }
   });
+  $("#prediction-search").addEventListener("input", drawPredictionProducts);
+  $("#prediction-category").addEventListener("change", drawPredictionProducts);
+  $("#prediction-status").addEventListener("change", drawPredictionProducts);
+  $("#prediction-include-filtered").addEventListener("change", (e) => setFilteredPrediction(e.target.checked));
 
   async function loadAccounts() {
     accounts = await api("/api/accounts");
@@ -40,9 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
     $("#account-name").textContent = chosen.username + (chosen.aux_name ? " — " + chosen.aux_name : "");
     $("#account-logo").value = "";
     $("#account-logo-name").textContent = "No file chosen";
-    $("#account-logo-help").textContent = chosen.role === "admin"
-      ? "This changes the logo shown for Administrator."
-      : `This changes the logo shown for ${chosen.aux_name || "this auxiliary"}.`;
     loadAccounts();
   });
   $("#form-account").addEventListener("submit", async (e) => {
@@ -84,27 +133,12 @@ document.addEventListener("DOMContentLoaded", () => {
       if (file && chosen.role === "admin") location.reload();
     } catch (err) { UI.toast(err.message); }
   });
-  $("#btn-reset-password").addEventListener("click", async () => {
-    if (!chosen) return UI.toast("Select an account first");
-    try {
-      const r = await api(`/api/accounts/${chosen.account_id}/reset`, { method: "POST", body: { admin_password: $("#admin-password").value } });
-      $("#admin-password").value = "";
-      UI.modal(`<h2 class="card__title">Temporary password</h2><p>Give this to <strong>${esc(chosen.username)}</strong>. It must be changed after signing in.</p><p class="kpi__value">${esc(r.temp_password)}</p><div class="modal__actions"><button class="btn" data-close type="button">Done</button></div>`);
-    } catch (err) { UI.toast(err.message); }
-  });
-
   /* auxiliaries: add a new outlet + its staff login (+ optional PNG/JPG logo) */
   async function loadAux() {
     const rows = await api("/api/auxiliaries");
-    $("#table-aux tbody").innerHTML = rows.map((a) => `<tr class="is-clickable ${chosenAux && chosenAux.aux_id === a.aux_id ? "is-selected" : ""}" data-aux-id="${a.aux_id}"><td>${esc(a.name)}</td><td>${esc(a.code)}</td></tr>`).join("") || '<tr class="table__empty"><td colspan="2">No active auxiliaries</td></tr>';
-    $("#btn-delete-aux").disabled = !chosenAux;
+    $("#table-aux tbody").innerHTML = rows.map((a) => `<tr class="is-clickable ${chosenAux && chosenAux.aux_id === a.aux_id ? "is-selected" : ""}" data-aux-id="${a.aux_id}"><td>${esc(a.name)}</td><td>${esc(a.code)}</td><td class="aux-delete-cell"><button class="btn btn--ghost delete-action delete-action--icon" type="button" data-delete-aux aria-label="Delete ${esc(a.name)}" data-delete-tooltip="Delete auxiliary"><svg class="delete-action__icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 3h6l1 2h5v2H3V5h5zm-3 6h12l-1 12H7zm3 2v8h2v-8zm4 0v8h2v-8z"/></svg></button></td></tr>`).join("") || '<tr class="table__empty"><td colspan="3">No active auxiliaries</td></tr>';
   }
-  $("#table-aux").addEventListener("click", (e) => {
-    const tr = e.target.closest("tr[data-aux-id]"); if (!tr) return;
-    chosenAux = { aux_id: Number(tr.dataset.auxId), name: tr.children[0].textContent, code: tr.children[1].textContent };
-    loadAux();
-  });
-  $("#btn-delete-aux").addEventListener("click", () => {
+  function deleteAuxiliary() {
     if (!chosenAux) return UI.toast("Select an auxiliary first");
     UI.modal(`<h2 class="card__title">Delete ${esc(chosenAux.name)}?</h2><p>This will deactivate the auxiliary, its staff account, and its inventory. Historical records will be kept.</p><label for="delete-aux-password">Admin password</label><input type="password" id="delete-aux-password" autocomplete="current-password"><div class="modal__actions"><button class="btn" data-close type="button">Cancel</button><button class="btn btn--danger delete-action" id="confirm-delete-aux" type="button" aria-label="Delete auxiliary" data-delete-tooltip="Delete auxiliary"><svg class="delete-action__icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 3h6l1 2h5v2H3V5h5zm-3 6h12l-1 12H7zm3 2v8h2v-8zm4 0v8h2v-8z"/></svg></button></div>`);
     setTimeout(() => $("#confirm-delete-aux")?.addEventListener("click", async () => {
@@ -119,6 +153,15 @@ document.addEventListener("DOMContentLoaded", () => {
         $("[data-close]")?.click();
       } catch (err) { UI.toast(err.message); }
     }), 0);
+  }
+  $("#table-aux").addEventListener("click", (e) => {
+    const tr = e.target.closest("tr[data-aux-id]"); if (!tr) return;
+    chosenAux = { aux_id: Number(tr.dataset.auxId), name: tr.children[0].textContent, code: tr.children[1].textContent };
+    if (e.target.closest("[data-delete-aux]")) {
+      deleteAuxiliary();
+      return;
+    }
+    loadAux();
   });
   $("#form-aux").addEventListener("submit", async (e) => {
     e.preventDefault();

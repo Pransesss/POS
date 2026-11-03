@@ -1,6 +1,6 @@
-"""Open-Meteo weather for the forecast model (same rules as the notebook).
+"""Open-Meteo weather input for the prediction model (same rules as the notebook).
 
-Past days come from the archive API, today/future days from the forecast API.
+Past days come from the archive API, today/future days from Open-Meteo's prediction API.
 Every day that was fetched is cached in the `weather_daily` table, so training and predicting never ask twice.
 If the service cannot be reached the caller gets a clear 'source' text instead of a crash.
 """
@@ -14,7 +14,7 @@ LAT = float(os.getenv("CAMPUS_LAT", "18.0575"))      # MMSU Batac campus (same a
 LON = float(os.getenv("CAMPUS_LON", "120.5645"))
 TZ = os.getenv("TIMEZONE", "Asia/Manila")
 ARCHIVE_URL = "https://archive-api.open-meteo.com/v1/archive"
-FORECAST_URL = "https://api.open-meteo.com/v1/forecast"
+PREDICTION_URL = "https://api.open-meteo.com/v1/forecast"
 DAILY_VARS = ["temperature_2m_max", "temperature_2m_min", "precipitation_sum", "weather_code"]
 RAIN_CODES = set(range(51, 68)) | set(range(71, 78)) | set(range(80, 83)) | set(range(85, 87)) | set(range(95, 100))
 HOT_C, RAIN_MM, ARCHIVE_LAG_DAYS = 32.0, 1.0, 5
@@ -58,15 +58,15 @@ def _fetch_range(url, start, end, timeout=8):
 
 
 def fetch_online(start, end):
-    """Archive for old days, forecast API for the last few days and the future. Returns (rows, source_by_date)."""
+    """Archive for old days, prediction API for the last few days and the future. Returns (rows, source_by_date)."""
     today = datetime.now(ZoneInfo(TZ)).date()
     archive_latest = today - timedelta(days=ARCHIVE_LAG_DAYS)
     rows = []
     if start <= min(end, archive_latest):
         rows += [dict(r, source="archive") for r in _fetch_range(ARCHIVE_URL, start, min(end, archive_latest))]
-    fc_start = max(start, archive_latest + timedelta(days=1))
-    if fc_start <= end:
-        rows += [dict(r, source="forecast") for r in _fetch_range(FORECAST_URL, fc_start, end)]
+    prediction_start = max(start, archive_latest + timedelta(days=1))
+    if prediction_start <= end:
+        rows += [dict(r, source="prediction") for r in _fetch_range(PREDICTION_URL, prediction_start, end)]
     return rows
 
 
@@ -85,16 +85,18 @@ def _store(cur, rows):
 def _cached(cur, start, end):
     cur.execute("""SELECT weather_date, temperature_2m_max, temperature_2m_min, precipitation_sum, is_rainy, is_hot, source
                    FROM weather_daily WHERE weather_date BETWEEN %s AND %s""", (start, end))
-    return {r["weather_date"]: {**{k: float(r[k]) for k in WEATHER_VARS}, "source": r["source"]} for r in cur.fetchall()}
+    return {r["weather_date"]: {**{k: float(r[k]) for k in WEATHER_VARS},
+                                "source": "archive" if r["source"] == "archive" else "prediction"}
+            for r in cur.fetchall()}
 
 
 def get_weather(cur, start, end, fetch=True, log=print):
     """{date: {weather vars, source}} for start..end from the cache; missing days are fetched once if `fetch`.
-    A day cached from the *forecast* API is fetched again after it has become an archive day."""
+    A day cached from the prediction API is fetched again after it has become an archive day."""
     ensure_table(cur)
     have = _cached(cur, start, end)
     today = date.today()
-    stale = lambda d: have[d]["source"] == "forecast" and d <= today - timedelta(days=ARCHIVE_LAG_DAYS)
+    stale = lambda d: have[d]["source"] != "archive" and d <= today - timedelta(days=ARCHIVE_LAG_DAYS)
     missing = [d for d in (start + timedelta(n) for n in range((end - start).days + 1))
                if d not in have or stale(d)]
     if missing and fetch:
@@ -111,7 +113,7 @@ def weather_for_date(cur, target, log=print):
     """Weather for one date -> (vars dict, source text). Falls back to the recent cached school-week average."""
     got = get_weather(cur, target, target, log=log).get(target)
     if got:
-        return {k: got[k] for k in WEATHER_VARS}, ("Open-Meteo " + ("forecast" if got["source"] == "forecast" else "archive"))
+        return {k: got[k] for k in WEATHER_VARS}, ("Open-Meteo prediction" if got["source"] == "prediction" else "archive")
     cur.execute("""SELECT AVG(temperature_2m_max) tmax, AVG(temperature_2m_min) tmin, AVG(precipitation_sum) pr,
                           AVG(is_rainy) rainy, AVG(is_hot) hot FROM (
                      SELECT * FROM weather_daily WHERE weather_date < %s ORDER BY weather_date DESC LIMIT 5) t""", (target,))

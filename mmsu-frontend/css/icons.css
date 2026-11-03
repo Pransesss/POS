@@ -15,7 +15,7 @@
   --icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Crect%20x='3'%20y='4'%20width='18'%20height='13'%20rx='2'/%3E%3Cpath%20d='M7%2013l3-3%203%202%204-4M9%2021h6'/%3E%3C/svg%3E");
 }
 
-.nav-item--forecast {
+.nav-item--prediction {
   --icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M3%2017l6-6%204%204%208-8'/%3E%3Cpath%20d='M15%207h6v6'/%3E%3C/svg%3E");
 }
 
@@ -51,7 +51,7 @@
   --icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M9%204H5a1%201%200%2000-1%201v14a1%201%200%20001%201h4M16%208l4%204-4%204M20%2012H9'/%3E%3C/svg%3E");
 }
 
-/* ---------- POS icons ---------- */
+/* POS icons */
 :root {
   --icon-bowl: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M3%2011h18a9%209%200%2001-18%200zM9%207c0-1.5%201-1.5%201-3M14%207c0-1.5%201-1.5%201-3'/%3E%3C/svg%3E");
 }

@@ -50,11 +50,11 @@ def build_line(spec, mp, product=None):
         rq = _num(spec, "rice_qty", (0.5, 1, 2), 1)
         if not meat and not veg:
             raise SaleError("choose a meat or veggy")
-        # plain rice + ONE meat + veggy = BUDGET MEAL (fixed price on the list)
-        budget = bool(meat) and mq == 1 and veg == 1 and rice_type == "plain" and rq == 1
+        # A single meat, one veggy, and one rice qualify; fried/Java rice adds only its price difference.
+        budget = bool(meat) and mq == 1 and veg == 1 and rq == 1
         rice_price = mp["fried_rice"] if rice_type == "fried" else mp["rice"]
         if budget:
-            price = mp["budget_" + meat]
+            price = mp["budget_" + meat] + (rice_price - mp["rice"])
         else:
             price = (mp[meat] * D(mq) if meat else D(0)) + mp["veg"] * D(veg) + rice_price * D(rq)
         kinds = []

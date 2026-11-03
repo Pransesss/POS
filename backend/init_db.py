@@ -11,7 +11,7 @@ from pathlib import Path
 from werkzeug.security import generate_password_hash
 from db import connect
 
-# ------------------------------------------------------------------ known data
+# known data
 SETTINGS = {
     "remit_time": "14:00",
     "open_time": "08:00",

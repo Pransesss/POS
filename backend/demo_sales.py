@@ -1,4 +1,4 @@
-"""OPTIONAL: fills the database with 14 days of made-up sales so the dashboards, charts and the forecast have something to show.
+"""OPTIONAL: fills the database with 14 days of made-up sales so the dashboards, charts and prediction have something to show.
 Run it AFTER init_db.py:      python demo_sales.py
 It goes through the same code as a real sale (prices recomputed, stock lowered, business day computed)."""
 import random, uuid

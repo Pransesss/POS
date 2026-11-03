@@ -1,11 +1,11 @@
 -- MMSU Auxiliary POS — PostgreSQL schema.  Run with:  python init_db.py   (it also loads the known data)
 -- Safe to re-run: drops everything first.
 DROP VIEW  IF EXISTS v_daily_inventory, v_daily_sales CASCADE;
-DROP TABLE IF EXISTS sales_history, weather_daily, audit_log, predictions, model_runs, events, remittances, line_parts, transaction_lines,
+DROP TABLE IF EXISTS sales_history, weather_daily, audit_log, predictions, model_runs, events, remittances, sales_batches, sales_day_closures, line_parts, transaction_lines,
                      transactions, daily_cash, stock_movements, delivery_items, deliveries, inventory,
                      products, meal_prices, settings, accounts, auxiliaries CASCADE;
 
--- ---------- setup ----------
+-- setup
 CREATE TABLE auxiliaries (
   aux_id     SERIAL PRIMARY KEY,
   code       TEXT NOT NULL UNIQUE,                 -- COE, CAS ...
@@ -34,15 +34,6 @@ CREATE UNIQUE INDEX accounts_username_uq ON accounts (lower(username));
 
 CREATE TABLE settings (key TEXT PRIMARY KEY, value TEXT NOT NULL);
 
-CREATE TABLE sales_day_closures (
-  closure_id SERIAL PRIMARY KEY,
-  aux_id INTEGER NOT NULL REFERENCES auxiliaries(aux_id),
-  business_date DATE NOT NULL,
-  closed_by INTEGER NOT NULL REFERENCES accounts(account_id),
-  closed_at TIMESTAMPTZ NOT NULL DEFAULT now(),
-  UNIQUE (aux_id, business_date)
-);
-
 CREATE TABLE meal_prices (                         -- the price list on the wall; the server computes every meal from this
   price_key TEXT PRIMARY KEY,                      -- beef, chicken, fish, pork, veg, rice, fried_rice, budget_beef ..., take_out_box
   label     TEXT NOT NULL,
@@ -69,7 +60,7 @@ CREATE TABLE inventory (                           -- current stock of one produ
   PRIMARY KEY (aux_id, product_id)
 );
 
--- ---------- deliveries (admin sends, staff counts and accepts) ----------
+-- deliveries (admin sends, staff counts and accepts)
 CREATE TABLE deliveries (
   delivery_id   SERIAL PRIMARY KEY,
   aux_id        INTEGER NOT NULL REFERENCES auxiliaries(aux_id),
@@ -115,13 +106,29 @@ CREATE TABLE daily_cash (                          -- initial cash per outlet pe
   PRIMARY KEY (aux_id, business_date)
 );
 
--- ---------- sales ----------
+-- sales
+CREATE TABLE sales_batches (
+  batch_id         SERIAL PRIMARY KEY,
+  aux_id           INTEGER NOT NULL REFERENCES auxiliaries(aux_id),
+  business_date    DATE NOT NULL,
+  batch_number     INTEGER NOT NULL,
+  total_cash       NUMERIC(10,2) NOT NULL,
+  total_ewallet    NUMERIC(10,2) NOT NULL,
+  total_sales      NUMERIC(10,2) NOT NULL,
+  transaction_count INTEGER NOT NULL,
+  sealed_by        INTEGER NOT NULL REFERENCES accounts(account_id),
+  sealed_at        TIMESTAMPTZ NOT NULL DEFAULT now(),
+  UNIQUE (aux_id, business_date, batch_number)
+);
+CREATE INDEX sales_batches_aux_date_idx ON sales_batches (aux_id, business_date);
+
 CREATE TABLE transactions (
   transaction_id    UUID PRIMARY KEY,              -- made on the device, so offline sales never clash
   receipt_no        TEXT NOT NULL,
   aux_id            INTEGER NOT NULL REFERENCES auxiliaries(aux_id),
   cashier_id        INTEGER NOT NULL REFERENCES accounts(account_id),
   device_id         TEXT,
+  batch_id          INTEGER REFERENCES sales_batches(batch_id),
   created_at        TIMESTAMPTZ NOT NULL,          -- time on the device (when the sale happened)
   received_at       TIMESTAMPTZ NOT NULL DEFAULT now(),   -- time the server got it (sync time)
   business_date     DATE NOT NULL,                 -- actual calendar sales date in the MMSU timezone
@@ -163,11 +170,13 @@ CREATE TABLE remittances (
   business_date   DATE NOT NULL,
   amount          NUMERIC(10,2) NOT NULL,
   expected_amount NUMERIC(10,2),
+  batch_id        INTEGER REFERENCES sales_batches(batch_id),
   recorded_by     INTEGER REFERENCES accounts(account_id),
   recorded_at     TIMESTAMPTZ NOT NULL DEFAULT now()
 );
+CREATE UNIQUE INDEX remittances_batch_uq ON remittances (batch_id) WHERE batch_id IS NOT NULL;
 
--- ---------- forecast ----------
+-- prediction
 CREATE TABLE events (
   event_id   SERIAL PRIMARY KEY,
   name       TEXT NOT NULL,
@@ -209,7 +218,7 @@ CREATE TABLE audit_log (
   created_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
--- ---------- views for reports and for the model notebook ----------
+-- views for reports and for the model notebook
 CREATE VIEW v_daily_sales AS                       -- units sold per outlet / product / business day  (model training data)
 SELECT m.aux_id, m.product_id, m.business_date, -SUM(m.qty) AS qty_sold
 FROM stock_movements m WHERE m.movement_type = 'sale'
@@ -230,7 +239,7 @@ FROM d
 WINDOW w_before AS (PARTITION BY aux_id, product_id ORDER BY business_date ROWS BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING),
        w_upto   AS (PARTITION BY aux_id, product_id ORDER BY business_date ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW);
 
--- ---------- forecasting (LSTM) ----------
+-- predictions (LSTM)
 CREATE TABLE sales_history (                       -- past daily sales typed from the paper slips (CSV), one row per item per day it was on the menu
   history_id    SERIAL PRIMARY KEY,
   aux_id        INTEGER NOT NULL REFERENCES auxiliaries(aux_id),

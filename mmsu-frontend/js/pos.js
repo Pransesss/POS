@@ -30,8 +30,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (t === "rice") return { name: "Plain Rice", unit: prices.rice, section: "Meals", parts: { rice: 1 } };
     if (t === "fried_rice") return { name: "Fried Rice", unit: prices.fried_rice, section: "Meals", parts: { rice: 1 } };
     const { meat, meat_qty: mq, veg_qty: veg, rice_type: rt, rice_qty: rq } = spec;
-    const budget = !!meat && mq === 1 && veg === 1 && rt === "plain" && rq === 1;
-    const unit = budget ? prices["budget_" + meat] : (meat ? prices[meat] * mq : 0) + prices.veg * veg + (rt === "fried" ? prices.fried_rice : prices.rice) * rq;
+    const budget = !!meat && mq === 1 && veg === 1 && rq === 1;
+    const unit = budget ? prices["budget_" + meat] + (rt === "fried" ? prices.fried_rice - prices.rice : 0) : (meat ? prices[meat] * mq : 0) + prices.veg * veg + (rt === "fried" ? prices.fried_rice : prices.rice) * rq;
     const riceTxt = (rq === 0.5 ? "½ " : rq === 2 ? "Double " : "") + (rt === "fried" ? "Fried rice" : "Rice");
     const name = budget ? `Budget Meal (Rice, ${cap(meat)} & Vegetable)` : [riceTxt, meat && (mq === 2 ? "Double " : "") + cap(meat), veg && (veg === 2 ? "Double " : "") + "Vegetable"].filter(Boolean).join(" + ");
     const parts = { rice: rq }; if (meat) parts[meat] = mq; if (veg) parts.veg = veg;
@@ -84,21 +84,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     const next = cart.map((l) => ({ ...l })), found = next.find((l) => keyOf(l) === keyOf(spec));
     found ? (found.qty += spec.qty) : next.push({ ...spec });
     const lack = shortItem(next);
-    if (lack) { UI.toast("Not enough stock: " + lack); return false; }
+    if (lack) { UI.toast("Not enough stock: " + UI.titleCase(lack)); return false; }
     cart = next; saveCart(); render(); refreshProductDisplays(); return true;
   }
   function render() {
     const ul = $("#order-lines");
     ul.innerHTML = cart.length ? cart.map((l, i) => { const p = priced(l);
-      return `<li class="order__line"><span>${UI.esc(p.name)}</span><span class="stepper"><button class="stepper__btn" type="button" data-dec="${i}">−</button><span>${l.qty}</span><button class="stepper__btn" type="button" data-inc="${i}">+</button></span><span class="order__line-amount">${UI.money(p.unit * l.qty)}</span></li>`; }).join("")
+      return `<li class="order__line"><span>${UI.esc(UI.titleCase(p.name))}</span><span class="stepper"><button class="stepper__btn" type="button" data-dec="${i}"><span>−</span></button><span>${l.qty}</span><button class="stepper__btn" type="button" data-inc="${i}"><span>+</span></button></span><span class="order__line-amount">${UI.money(p.unit * l.qty)}</span></li>`; }).join("")
       : '<li class="order__empty">No items yet</li>';
-    const boxLine = cart.find((l) => l.type === "takeout_box");
-    $("#order-box-count").textContent = `Takeout boxes: ${boxLine ? boxLine.qty : 0}`;
     $("#order-total").textContent = UI.money(grand());
     const given = parseFloat($("#cash-tendered").value || 0);
     $("#order-change").textContent = UI.money(Math.max(0, given - grand()));
     $("#btn-resume").hidden = !held.length;
-    $("#btn-hold").textContent = held.length ? `HOLD SALE (${held.length} held)` : "HOLD SALE";
+    $("#btn-hold").textContent = held.length ? `Hold sale (${held.length} held)` : "Hold sale";
   }
   $("#order-lines").addEventListener("click", (e) => {
     const inc = e.target.dataset.inc, dec = e.target.dataset.dec;
@@ -141,7 +139,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const ewallet = $("#pay-1").checked, tendered = parseFloat($("#cash-tendered").value || 0), ref4 = $("#ewallet-ref4").value, t = grand();
     if (ewallet && !/^\d{4}$/.test(ref4)) return UI.toast("Enter the last 4 digits of the e-wallet reference number");
     if (!ewallet && tendered < t) return UI.toast("Amount tendered is less than the total");
-    const lack = shortItem(cart); if (lack) return UI.toast("Not enough stock: " + lack);
+    const lack = shortItem(cart); if (lack) return UI.toast("Not enough stock: " + UI.titleCase(lack));
     const now = UI.isoNow(), code = UI.session().user.aux_code;
     const txn = { id: UI.uuid(), receipt_no: `${code}-${now.slice(0, 10).replace(/-/g, "")}-${UI.uuid().slice(0, 4).toUpperCase()}`, created_at: now,
       payment_method: ewallet ? "E-Wallet" : "Cash", amount_tendered: ewallet ? null : tendered, ewallet_ref4: ewallet ? ref4 : null,
@@ -178,20 +176,37 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (cartPricing) mp = cartPricing.meal_prices;
   updateMealPrices();
   const doneBtn = $("#btn-done-day");
-  const closeKey = `sales-day-closed:${UI.session().user.aux_id}:${boot.sales_day}`;
-  if (localStorage.getItem(closeKey)) { doneBtn.disabled = true; doneBtn.textContent = "Sales day closed"; }
   doneBtn.addEventListener("click", async () => {
     if (doneBtn.disabled) return;
     if (cart.length) return UI.toast("Finish or cancel the current sale first");
-    const ov = UI.modal(`<h2 class="card__title">Close sales day?</h2><p class="muted text-small">This finalizes the current sales day for remittance. You can keep using the POS; new sales will be recorded under the next sales day.</p><label for="close-day-password">Confirm with your password</label><input type="password" id="close-day-password" autocomplete="current-password" placeholder="Password"><div class="modal__actions"><button class="btn" id="close-day-confirm" type="button">Confirm</button><button class="btn btn--ghost" data-close type="button">Cancel</button></div>`);
-    ov.querySelector("#close-day-confirm").addEventListener("click", async () => {
-      const password = ov.querySelector("#close-day-password").value;
+    if (!navigator.onLine) return UI.toast("Connect to the internet before sealing sales");
+    doneBtn.disabled = true;
+    let pending, rejected;
+    try {
+      await Sync.flush();
+      pending = await Sync.pending();
+      rejected = await Sync.rejected();
+    } catch (e) {
+      doneBtn.disabled = false;
+      return UI.toast(e.message);
+    }
+    doneBtn.disabled = false;
+    if (pending.length || rejected.length) return UI.toast("Sync or resolve all waiting sales before sealing");
+    const ov = UI.modal(`<h2 class="card__title">Seal these sales?</h2><p class="muted text-small">This groups today's synced sales into a separate period without changing the sales date. Sales still waiting on another device will not be included.</p><label for="batch-password">Confirm with your password</label><input type="password" id="batch-password" autocomplete="current-password" placeholder="Password"><div class="modal__actions"><button class="btn" id="batch-confirm" type="button">Seal sales</button><button class="btn btn--ghost" data-close type="button">Cancel</button></div>`);
+    ov.querySelector("#batch-confirm").addEventListener("click", async (event) => {
+      const confirmBtn = event.currentTarget;
+      const password = ov.querySelector("#batch-password").value;
       if (!password) return UI.toast("Enter your password");
+      confirmBtn.disabled = true;
       try {
-        const result = await api("/api/sales-day/close", { method: "POST", body: { password } });
-        localStorage.setItem(closeKey, "1"); doneBtn.disabled = true; doneBtn.textContent = "Sales day closed";
-        ov.remove(); UI.toast(`Sales day closed. New sales are recorded for ${result.sales_day}.`);
-      } catch (e) { UI.toast(e.message); }
+        const result = await api("/api/sales-batches/seal", { method: "POST", body: { password } });
+        const batch = result.batch;
+        ov.remove();
+        UI.toast(`Sales sealed · ${batch.transaction_count} transactions · ${UI.money(batch.total_sales)}`);
+      } catch (e) {
+        confirmBtn.disabled = false;
+        UI.toast(e.message);
+      }
     });
   });
   if (localStorage.getItem("pos_pay") === "ewallet") $("#pay-1").checked = true;
@@ -214,11 +229,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     const qty = Number(p.qty);
     const punchBadge = mealPunchBadge(punchCount);
     const stock = Number.isFinite(qty) && qty <= 4
-      ? `<span class="pos-product__stock">${qty > 0 ? `${qty} left` : "Out of stock"}</span>`
+      ? `<span class="pos-product__stock${qty > 0 ? "" : " pos-product__stock--out"}">${qty > 0 ? `${qty} left` : "Out of stock"}</span>`
       : "";
     const listed = cartPricing && cartPricing.products.find((item) => item.product_id === p.product_id);
     const name = listed ? listed.name : p.name, price = listed ? listed.price : p.price;
-    return `<button class="tile pos-product" type="button" data-product="${p.product_id}"><b class="pos-product__name">${UI.esc(name)}</b>${punchBadge}<span class="tile__price pos-product__price">${UI.money(price)}</span>${stock}</button>`;
+    return `<button class="tile pos-product" type="button" data-product="${p.product_id}"><b class="pos-product__name">${UI.esc(UI.titleCase(name))}</b>${punchBadge}<span class="tile__price pos-product__price">${UI.money(price)}</span>${stock}</button>`;
   }
   function drawCatalog() {
     if (!posProducts) return;
@@ -307,7 +322,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       $("#meal-qty").textContent = q;
       $("#meal-price").textContent = p ? UI.money(p.unit * q) : "₱00.00";
       $("#meal-summary").children[0].hidden = !(p && p.budget);
-      $("#meal-summary").children[1].textContent = p ? p.name + (p.budget ? " — Budget meal" : "") : "";
+      $("#meal-summary").children[1].textContent = p ? p.name : "";
     }
     $("#qty-minus").addEventListener("click", () => { q = Math.max(1, q - 1); update(); });
     $("#qty-plus").addEventListener("click", () => { q++; update(); });

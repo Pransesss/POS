@@ -19,7 +19,7 @@
         <span class="sidebar__label">Menu</span>
         <nav class="nav">
           <a class="nav-item nav-item--dashboard" href="dashboard.html">Dashboard</a>
-          <a class="nav-item nav-item--forecast" href="forecast.html">Prediction</a>
+          <a class="nav-item nav-item--prediction" href="prediction.html">Prediction</a>
           <a class="nav-item nav-item--pos" href="pos.html">POS</a>
           <a class="nav-item nav-item--receiving" href="receiving.html">Receiving</a>
           <a class="nav-item nav-item--inventory" href="inventory.html">Inventory</a>
@@ -63,7 +63,7 @@
 
         <div class="grid-kpi">
           <section class="card">
-            <h2 class="card__title">Total sales (both tables)</h2>
+            <h2 class="card__title">Total sales</h2>
             <p class="kpi__value" id="kpi-sales">—</p>
           </section>
           <section class="card">
@@ -83,8 +83,16 @@
         <section class="card card--scroll">
           <h2 class="card__title">Remittance history</h2>
           <table class="table" id="table-remittances">
-            <thead><tr><th>Date &amp; time</th><th>Sales day</th><th>Amount handed over</th><th>Cash sales at remittance</th></tr></thead>
+            <thead><tr><th>Date &amp; time</th><th>Sales period</th><th>Amount handed over</th><th>Cash sales at remittance</th></tr></thead>
             <tbody><tr class="table__empty"><td colspan="4">No remittances in this date range</td></tr></tbody>
+          </table>
+        </section>
+
+        <section class="card card--scroll">
+          <h2 class="card__title">Sealed sales periods</h2>
+          <table class="table" id="table-batches">
+            <thead><tr><th>Time sealed</th><th>Sales period</th><th>Transactions</th><th>Cash</th><th>E-wallet</th><th>Total sales</th></tr></thead>
+            <tbody><tr class="table__empty"><td colspan="6">No sealed sales periods in this date range</td></tr></tbody>
           </table>
         </section>
 
@@ -102,62 +110,12 @@
             <div class="legend">
               <span><span class="dot dot--budget"></span>Budget meal</span>
             </div>
-            <h3 class="table-title">Sales entered on this sales day</h3>
-            <table class="table" id="table-meals-regular">
-              <thead>
-                <tr>
-                  <th>Date &amp; time</th>
-                  <th>Ref</th>
-                  <th>Order</th>
-                  <th>Pay</th>
-                  <th>E-wallet ref #</th>
-                  <th>Rice</th>
-                  <th>Pork</th>
-                  <th>Beef</th>
-                  <th>Chicken</th>
-                  <th>Fish</th>
-                  <th>Vegs</th>
-                  <th>Total</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="table__empty"><td colspan="13">No data yet</td></tr>
-              </tbody>
-              <tfoot>
-                <tr><td colspan="5">Quantity received</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td colspan="5">Quantity sold</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td colspan="5">Quantity left</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td colspan="11">Total sales</td><td></td><td></td></tr>
-              </tfoot>
+            <h3 class="table-title">Meal inventory summary</h3>
+            <table class="table">
+              <thead><tr><th></th><th>Rice</th><th>Pork</th><th>Beef</th><th>Chicken</th><th>Fish</th><th>Vegs</th></tr></thead>
+              <tbody id="table-meals-summary"></tbody>
             </table>
-            <h3 class="table-title">Sales carried over from the previous day</h3>
-            <table class="table" id="table-meals-carried">
-              <thead>
-                <tr>
-                  <th>Date &amp; time</th>
-                  <th>Ref</th>
-                  <th>Order</th>
-                  <th>Pay</th>
-                  <th>E-wallet ref #</th>
-                  <th>Rice</th>
-                  <th>Pork</th>
-                  <th>Beef</th>
-                  <th>Chicken</th>
-                  <th>Fish</th>
-                  <th>Vegs</th>
-                  <th>Total</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="table__empty"><td colspan="13">No data yet</td></tr>
-              </tbody>
-              <tfoot>
-                <tr><td colspan="5">Quantity sold</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td colspan="11">Total sales</td><td></td><td></td></tr>
-              </tfoot>
-            </table>
+            <div id="meal-batch-tables"></div>
           </section>
           <section class="tabset__panel">
             <h3 class="table-title">Item summary (requisition slip)</h3>
@@ -178,38 +136,7 @@
                 <tr class="table__empty"><td colspan="8">No data yet</td></tr>
               </tbody>
             </table>
-            <h3 class="table-title">Sales entered on this sales day</h3>
-            <table class="table" id="table-snack-regular">
-              <thead>
-                <tr>
-                  <th>Date &amp; time</th>
-                  <th>Ref</th>
-                  <th>Items</th>
-                  <th>Pay</th>
-                  <th>E-wallet ref #</th>
-                  <th>Total</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="table__empty"><td colspan="6">No data yet</td></tr>
-              </tbody>
-            </table>
-            <h3 class="table-title">Sales carried over from the previous day</h3>
-            <table class="table" id="table-snack-carried">
-              <thead>
-                <tr>
-                  <th>Date &amp; time</th>
-                  <th>Ref</th>
-                  <th>Items</th>
-                  <th>Pay</th>
-                  <th>E-wallet ref #</th>
-                  <th>Total</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="table__empty"><td colspan="6">No data yet</td></tr>
-              </tbody>
-            </table>
+            <div id="snack-batch-tables"></div>
           </section>
         </section>
       </main>
@@ -217,6 +144,6 @@
     <script src="../js/common.js"></script>
     <script src="../js/api.js"></script>
     <script src="../js/offline.js"></script>
-    <script src="../js/transactions.js?v=20261029-remittance"></script>
+    <script src="../js/transactions.js?v=20261103-remove-aux-column"></script>
   </body>
 </html>
