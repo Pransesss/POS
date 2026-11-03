@@ -5,10 +5,13 @@ Every day that was fetched is cached in the `weather_daily` table, so training a
 If the service cannot be reached the caller gets a clear 'source' text instead of a crash.
 """
 import os
+import logging
 from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
 
 import requests
+
+logger = logging.getLogger(__name__)
 
 LAT = float(os.getenv("CAMPUS_LAT", "18.0575"))      # MMSU Batac campus (same as the notebook)
 LON = float(os.getenv("CAMPUS_LON", "120.5645"))
@@ -90,9 +93,10 @@ def _cached(cur, start, end):
             for r in cur.fetchall()}
 
 
-def get_weather(cur, start, end, fetch=True, log=print):
+def get_weather(cur, start, end, fetch=True, log=None):
     """{date: {weather vars, source}} for start..end from the cache; missing days are fetched once if `fetch`.
     A day cached from the prediction API is fetched again after it has become an archive day."""
+    log = logger.warning if log is None else log
     ensure_table(cur)
     have = _cached(cur, start, end)
     today = date.today()
@@ -105,15 +109,18 @@ def get_weather(cur, start, end, fetch=True, log=print):
             _store(cur, rows)
             have.update(_cached(cur, start, end))
         except Exception as e:                     # offline, blocked, timeout ...
-            log(f"weather: Open-Meteo not reachable ({type(e).__name__}); using cached/average values")
+            log(f"weather: fetch/cache update failed for {min(missing)}..{max(missing)} "
+                f"({type(e).__name__}: {e}); using cached/average values")
     return have
 
 
-def weather_for_date(cur, target, log=print):
+def weather_for_date(cur, target, log=None):
     """Weather for one date -> (vars dict, source text). Falls back to the recent cached school-week average."""
+    log = logger.warning if log is None else log
     got = get_weather(cur, target, target, log=log).get(target)
     if got:
         return {k: got[k] for k in WEATHER_VARS}, ("Open-Meteo prediction" if got["source"] == "prediction" else "archive")
+    log(f"weather: no weather row for {target} after fetch/cache lookup; using recent cached average if available")
     cur.execute("""SELECT AVG(temperature_2m_max) tmax, AVG(temperature_2m_min) tmin, AVG(precipitation_sum) pr,
                           AVG(is_rainy) rainy, AVG(is_hot) hot FROM (
                      SELECT * FROM weather_daily WHERE weather_date < %s ORDER BY weather_date DESC LIMIT 5) t""", (target,))

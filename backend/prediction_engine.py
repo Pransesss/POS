@@ -14,6 +14,7 @@ History comes from `sales_history` (imported CSVs, see import_history.py) plus t
 (stock_movements) for products ticked "use for prediction". Live data wins when both have the same day.
 """
 import json
+import logging
 import os
 import threading
 from datetime import date, timedelta
@@ -23,6 +24,8 @@ import numpy as np
 import pandas as pd
 
 import weather as wx
+
+logger = logging.getLogger(__name__)
 
 MODEL_DIR = Path(os.getenv("MODEL_DIR", Path(__file__).parent / "models"))
 WINDOW = 3                    # past OFFERED days the LSTM sees
@@ -361,8 +364,9 @@ def catalog(cur, aux_id, aux_code, kind, as_of=None):
     return rows
 
 
-def predict(cur, aux_id, aux_code, kind, target, items=None, log=print):
+def predict(cur, aux_id, aux_code, kind, target, items=None, log=None):
     """Section-7 prediction for one date. `items` = names to predict (None = every item with history)."""
+    log = logger.warning if log is None else log
     if kind not in KINDS:
         raise PredictionError("kind must be snacks or meals")
     if target.weekday() >= 5:
