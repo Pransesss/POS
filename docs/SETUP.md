@@ -62,6 +62,8 @@ Open **http://localhost:5000** and sign in. (Opening the HTML files directly wit
 3. **Staff → POS**: sell. **Staff → Transactions → Record remittance** at 2:00 PM.
 4. **Admin**: dashboard (all or one outlet), inventory, events, report slips (Print / Excel), settings.
 
+Pending deliveries can be edited or cancelled by the admin; staff can cancel a pending delivery for their own auxiliary. After staff accepts a delivery, the admin and staff can review the listed and counted quantities. Accepted deliveries cannot be cancelled because their received quantities have already been added to inventory.
+
 ## 7. Offline mode — how it works and how to test it
 1. Open the POS **online once** → the products, prices and stock are copied into the browser (IndexedDB).
 2. Every COMPLETE SALE is saved in the browser **first** (`outbox`), with a UUID made on the device. The receipt prints at once.

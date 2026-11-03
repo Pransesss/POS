@@ -61,12 +61,12 @@ CREATE TABLE inventory (                           -- current stock of one produ
 );
 
 -- deliveries (admin sends, staff counts and accepts)
-CREATE TABLE deliveries (
+CREATE TABLE deliveries (                           -- pending deliveries can be cancelled; accepted deliveries remain auditable
   delivery_id   SERIAL PRIMARY KEY,
   aux_id        INTEGER NOT NULL REFERENCES auxiliaries(aux_id),
   delivery_date DATE NOT NULL,
   initial_cash  NUMERIC(10,2) NOT NULL DEFAULT 0,  -- listed by admin
-  status        TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending','accepted')),
+  status        TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending','accepted','cancelled')),
   created_by    INTEGER REFERENCES accounts(account_id),
   created_at    TIMESTAMPTZ NOT NULL DEFAULT now(),
   accepted_by   INTEGER REFERENCES accounts(account_id),

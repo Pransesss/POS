@@ -90,6 +90,7 @@
 }
 
 .pos-product__stock {
+  display: block;
   font-size: 11px;
   color: var(--orange);
 }
@@ -382,6 +383,17 @@
 
 #delivery-history .rows__item:last-child { border-bottom: 0; }
 #delivery-history .badge { flex: none; }
+#delivery-history .delivery-history__entry,
+.delivery-log__details {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+#delivery-history .delivery-history__entry summary,
+.delivery-log__details summary { cursor: pointer; }
+#delivery-history .delivery-history__entry .table,
+.delivery-log__details .table { margin: 8px 0; }
+.delivery-log__details { min-width: 240px; }
+.delivery-log__details p { margin-top: 8px; color: var(--muted); font-size: 11px; }
 
 /* report preview (print layout) */
 .slip {

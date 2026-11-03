@@ -41,8 +41,44 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   async function loadLog() {
     const rows = await api("/api/deliveries");
-    $("#table-delivery-log tbody").innerHTML = rows.map((r) => `<tr><td>${UI.mdy(r.delivery_date)}</td><td>${esc(r.aux_name)}</td><td><span class="badge ${r.status === "pending" ? "badge--warn" : r.has_mismatch ? "badge--bad" : "badge--ok"}">${r.status === "pending" ? "Waiting for staff" : r.has_mismatch ? "Accepted — mismatch" : "Accepted"}</span></td></tr>`).join("") || '<tr class="table__empty"><td colspan="3">No deliveries yet</td></tr>';
+    $("#table-delivery-log tbody").innerHTML = rows.map((r) => {
+      const status = r.status === "pending" ? "Waiting for staff" : r.status === "cancelled" ? "Cancelled" : r.has_mismatch ? "Accepted — mismatch" : "Accepted";
+      const badge = r.status === "pending" || r.has_mismatch ? "badge--warn" : r.status === "cancelled" ? "badge--bad" : "badge--ok";
+      const items = r.items.length ? `<details class="delivery-log__details"><summary>Review delivered items</summary><table class="table"><thead><tr><th>Item</th><th>Sent</th><th>Received</th></tr></thead><tbody>${r.items.map((i) => `<tr><td>${esc(UI.titleCase(i.name))}</td><td>${num(i.listed_qty)}</td><td>${i.counted_qty == null ? "—" : num(i.counted_qty)}</td></tr>`).join("")}</tbody></table><p>Initial cash: ${UI.money(r.initial_cash)} · Counted: ${r.cash_counted == null ? "—" : UI.money(r.cash_counted)}</p></details>` : `<span class="muted text-small">No items listed · cash ${UI.money(r.initial_cash)}</span>`;
+      const actions = r.status === "pending" ? `<button class="link-button" type="button" data-edit-delivery="${r.delivery_id}">Edit</button><button class="link-button delete-action" type="button" data-cancel-delivery="${r.delivery_id}">Cancel</button>` : "—";
+      return `<tr><td>${UI.mdy(r.delivery_date)}</td><td>${esc(r.aux_name)}</td><td><span class="badge ${badge}">${status}</span></td><td>${items}</td><td>${actions}</td></tr>`;
+    }).join("") || '<tr class="table__empty"><td colspan="5">No deliveries yet</td></tr>';
   }
+
+  async function editDelivery(id) {
+    const delivery = (await api("/api/deliveries")).find((row) => row.delivery_id === id);
+    if (!delivery || delivery.status !== "pending") return UI.toast("Only pending deliveries can be edited");
+    const rows = delivery.items.map((item) => `<label for="edit-delivery-${item.product_id}">${esc(UI.titleCase(item.name))}</label><input id="edit-delivery-${item.product_id}" type="number" min="0" step="1" data-edit-pid="${item.product_id}" value="${item.listed_qty}">`).join("");
+    const modal = UI.modal(`<h2 class="card__title">Edit pending delivery · ${esc(delivery.aux_name)}</h2>
+      <label for="edit-delivery-date">Delivery date</label><input type="date" id="edit-delivery-date" value="${String(delivery.delivery_date).slice(0, 10)}">
+      <label for="edit-delivery-cash">Initial cash (₱)</label><input type="number" min="0" step="0.01" id="edit-delivery-cash" value="${delivery.initial_cash}">
+      <h3 class="table-title">Listed quantities (set 0 to remove)</h3>${rows}
+      <div class="modal__actions"><button class="btn" type="button" id="save-delivery-edit">Save changes</button><button class="btn btn--ghost" type="button" data-close>Cancel</button></div>`);
+    modal.querySelector("#save-delivery-edit").addEventListener("click", async () => {
+      const items = [...modal.querySelectorAll("[data-edit-pid]")].map((input) => ({ product_id: +input.dataset.editPid, qty: input.value }));
+      try {
+        await api(`/api/deliveries/${id}`, { method: "PATCH", body: { date: modal.querySelector("#edit-delivery-date").value, initial_cash: modal.querySelector("#edit-delivery-cash").value, items } });
+        modal.remove(); UI.toast("Pending delivery updated"); await loadLog();
+      } catch (e) { UI.toast(e.message); }
+    });
+  }
+
+  $("#table-delivery-log").addEventListener("click", async (e) => {
+    const edit = e.target.closest("[data-edit-delivery]");
+    const cancel = e.target.closest("[data-cancel-delivery]");
+    try {
+      if (edit) await editDelivery(+edit.dataset.editDelivery);
+      if (cancel && confirm("Cancel this pending delivery? The auxiliary will no longer be able to receive it.")) {
+        await api(`/api/deliveries/${cancel.dataset.cancelDelivery}/cancel`, { method: "POST" });
+        UI.toast("Delivery cancelled"); await loadLog();
+      }
+    } catch (error) { UI.toast(error.message); }
+  });
 
   $("#delivery-aux").addEventListener("change", loadProducts);
   $("#delivery-product-search").addEventListener("input", drawMenu);

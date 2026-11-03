@@ -43,6 +43,8 @@ ser = URLSafeTimedSerializer(SECRET)
 pricing_ser = URLSafeTimedSerializer(SECRET, salt="pos-pricing-v1")
 _account_logo_schema_ready = False
 _account_logo_schema_lock = threading.Lock()
+_delivery_status_schema_ready = False
+_delivery_status_schema_lock = threading.Lock()
 
 
 # database helpers
@@ -703,9 +705,30 @@ def set_product_prediction(pid):
 MEAL_ORDER = ["rice", "pork", "beef", "chicken", "fish", "veg"]
 
 
+def ensure_delivery_status_schema():
+    global _delivery_status_schema_ready
+    if _delivery_status_schema_ready:
+        return
+    with _delivery_status_schema_lock:
+        if _delivery_status_schema_ready:
+            return
+        cur = conn().cursor()
+        cur.execute("SELECT pg_advisory_xact_lock(68143219)")
+        cur.execute("""SELECT pg_get_constraintdef(oid) AS definition FROM pg_constraint
+                       WHERE conrelid='deliveries'::regclass AND conname='deliveries_status_check'""")
+        constraint = cur.fetchone()
+        if not constraint or "'cancelled'" not in constraint["definition"]:
+            cur.execute("ALTER TABLE deliveries DROP CONSTRAINT IF EXISTS deliveries_status_check")
+            cur.execute("""ALTER TABLE deliveries ADD CONSTRAINT deliveries_status_check
+                           CHECK (status IN ('pending','accepted','cancelled'))""")
+        conn().commit()
+        _delivery_status_schema_ready = True
+
+
 @app.post("/api/deliveries")
 @auth("admin")
 def create_delivery():
+    ensure_delivery_status_schema()
     d = request.get_json(silent=True) or {}
     aux, day = d.get("aux_id"), parse_day(d.get("date"), today())
     if not aux:
@@ -733,16 +756,28 @@ def create_delivery():
 @app.get("/api/deliveries")
 @auth()
 def list_deliveries():
+    ensure_delivery_status_schema()
     ids = scope(request.args.get("aux"))
     rows = q("""SELECT d.delivery_id, d.delivery_date, d.status, d.has_mismatch, d.initial_cash, d.cash_counted, a.name AS aux_name
                 FROM deliveries d JOIN auxiliaries a ON a.aux_id = d.aux_id WHERE d.aux_id = ANY(%s)
                 ORDER BY d.delivery_date DESC, d.delivery_id DESC LIMIT 60""", (ids,))
+    if rows:
+        item_rows = q("""SELECT di.delivery_id, di.product_id, p.name, p.category, di.listed_qty, di.counted_qty
+                         FROM delivery_items di JOIN products p USING (product_id)
+                         WHERE di.delivery_id = ANY(%s)
+                         ORDER BY (p.category='Meals') DESC, p.name""", ([r["delivery_id"] for r in rows],))
+        items_by_delivery = {}
+        for item in item_rows:
+            items_by_delivery.setdefault(item["delivery_id"], []).append(item)
+        for row in rows:
+            row["items"] = items_by_delivery.get(row["delivery_id"], [])
     return jsonify(rows)
 
 
 @app.get("/api/deliveries/pending")
 @auth("staff")
 def pending_deliveries():
+    ensure_delivery_status_schema()
     out = []
     for d in q("SELECT delivery_id, delivery_date, initial_cash FROM deliveries WHERE aux_id=%s AND status='pending' ORDER BY delivery_date, delivery_id", (g.user["aux_id"],)):
         d["items"] = q("""SELECT di.product_id, p.name, p.category, di.listed_qty FROM delivery_items di JOIN products p USING (product_id)
@@ -751,11 +786,84 @@ def pending_deliveries():
     return jsonify(out)
 
 
+@app.patch("/api/deliveries/<int:did>")
+@auth("admin")
+def edit_delivery(did):
+    ensure_delivery_status_schema()
+    d = request.get_json(silent=True) or {}
+    items = d.get("items")
+    if not isinstance(items, list):
+        return err("Provide the delivery items to save")
+    day = parse_day(d.get("date"))
+    if not day:
+        return err("Choose a valid delivery date")
+    try:
+        cash = D(d.get("initial_cash"))
+        if not cash.is_finite():
+            return err("Initial cash must be a finite number")
+        parsed_items = {}
+        for item in items:
+            product_id = int(item["product_id"])
+            qty = D(item["qty"])
+            if not qty.is_finite():
+                return err("Quantities must be finite numbers")
+            if qty < 0:
+                return err("Quantities cannot be negative")
+            if product_id in parsed_items:
+                return err("A product can only appear once")
+            parsed_items[product_id] = qty
+    except (InvalidOperation, TypeError, ValueError, KeyError):
+        return err("Enter valid cash and product quantities")
+    if cash < 0:
+        return err("Initial cash cannot be negative")
+    if not parsed_items and cash == 0:
+        return err("A delivery must include items or initial cash")
+    existing = q("SELECT status FROM deliveries WHERE delivery_id=%s FOR UPDATE", (did,), one=True)
+    if not existing or existing["status"] != "pending":
+        conn().rollback()
+        return err("Only pending deliveries can be edited", 409)
+    product_ids = list(parsed_items)
+    found = q("SELECT product_id FROM products WHERE product_id=ANY(%s)", (product_ids,))
+    if len(found) != len(product_ids):
+        conn().rollback()
+        return err("One or more products no longer exist")
+    run("UPDATE deliveries SET delivery_date=%s, initial_cash=%s WHERE delivery_id=%s", (day, cash, did))
+    run("DELETE FROM delivery_items WHERE delivery_id=%s", (did,))
+    for product_id, qty in parsed_items.items():
+        if qty > 0:
+            run("INSERT INTO delivery_items (delivery_id, product_id, listed_qty) VALUES (%s,%s,%s)",
+                (did, product_id, qty))
+    audit("delivery_edited", f"{did} items={sum(qty > 0 for qty in parsed_items.values())}")
+    conn().commit()
+    return jsonify({"ok": True})
+
+
+@app.post("/api/deliveries/<int:did>/cancel")
+@auth()
+def cancel_delivery(did):
+    ensure_delivery_status_schema()
+    delivery = q("SELECT aux_id, status FROM deliveries WHERE delivery_id=%s FOR UPDATE", (did,), one=True)
+    if not delivery:
+        conn().rollback()
+        return err("Delivery not found", 404)
+    if g.user["role"] == "staff" and delivery["aux_id"] != g.user["aux_id"]:
+        conn().rollback()
+        return err("Not allowed", 403)
+    if delivery["status"] != "pending":
+        conn().rollback()
+        return err("Only pending deliveries can be cancelled", 409)
+    run("UPDATE deliveries SET status='cancelled' WHERE delivery_id=%s", (did,))
+    audit("delivery_cancelled", str(did))
+    conn().commit()
+    return jsonify({"ok": True})
+
+
 @app.post("/api/deliveries/<int:did>/accept")
 @auth("staff")
 def accept_delivery(did):
+    ensure_delivery_status_schema()
     d = request.get_json(silent=True) or {}
-    dl = q("SELECT * FROM deliveries WHERE delivery_id=%s AND aux_id=%s AND status='pending'", (did, g.user["aux_id"]), one=True)
+    dl = q("SELECT * FROM deliveries WHERE delivery_id=%s AND aux_id=%s AND status='pending' FOR UPDATE", (did, g.user["aux_id"]), one=True)
     if not dl:
         return err("Delivery not found or already accepted", 404)
     counts = d.get("counts") or {}

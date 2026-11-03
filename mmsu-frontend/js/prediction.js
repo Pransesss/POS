@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const { $, $$, esc, num } = UI;
   let kind = "snacks", items = [], picked = new Set(), last = null;
-  const COLS = ["item", "prediction_for", "predicted_qty", "last_3school_day_avg", "exam_day", "event_day", "method"];   // = Section 7 of the notebook
+  const COLS = ["item", "prediction_for", "predicted_qty", "exam_day", "event_day"];
 
   const dateInput = $("#fc-date");
   const auxSelect = $("#fc-aux");
@@ -57,9 +57,9 @@ document.addEventListener("DOMContentLoaded", () => {
     $("#fc-notes").innerHTML = notes;
     $("#fc-total").textContent = num(res.total_predicted);
     $("#fc-unit").textContent = kind === "meals" ? "servings in total" : "pieces in total";
-    const head = ["Item", "Predicted qty", "Last 3 on-menu days avg", "Exam day", "Event day", "Method"].concat(withActual ? ["Actual sold"] : []);
+    const head = ["Item", "Predicted qty", "Exam day", "Event day"].concat(withActual ? ["Actual sold"] : []);
     $("#fc-table thead").innerHTML = `<tr>${head.map((h) => `<th>${h}</th>`).join("")}</tr>`;
-    $("#fc-table tbody").innerHTML = res.rows.map((r) => `<tr><td>${esc(UI.titleCase(displayItem(r.item)))}</td><td><strong>${num(r.predicted_qty)}</strong></td><td>${r.last_3school_day_avg ?? "—"}</td><td>${r.exam_day ? "Yes" : "—"}</td><td>${r.event_day ? "Yes" : "—"}</td><td class="${r.method === "LSTM" || r.method.startsWith("no classes") ? "" : "muted"}">${esc(r.method)}</td>${withActual ? `<td>${r.actual_qty == null ? "not on menu" : num(r.actual_qty)}</td>` : ""}</tr>`).join("");
+    $("#fc-table tbody").innerHTML = res.rows.map((r) => `<tr><td>${esc(UI.titleCase(displayItem(r.item)))}</td><td><strong>${num(r.predicted_qty)}</strong></td><td>${r.exam_day ? "Yes" : "—"}</td><td>${r.event_day ? "Yes" : "—"}</td>${withActual ? `<td>${r.actual_qty == null ? "not on menu" : num(r.actual_qty)}</td>` : ""}</tr>`).join("");
     $("#fc-result").hidden = false;
     $("#fc-result").scrollIntoView({ behavior: "smooth", block: "start" });
   }

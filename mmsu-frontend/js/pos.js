@@ -17,6 +17,18 @@ document.addEventListener("DOMContentLoaded", async () => {
   const updateMealPrices = () => UI.$$("[data-price]").forEach((el) => {
     el.textContent = UI.money(mp[el.dataset.price.replace("_only", "")]);
   });
+  const mealStockTag = (key) => {
+    const qty = Number(boot && boot.meal_stock[key] || 0);
+    return `<span class="pos-product__stock${qty > 0 ? "" : " pos-product__stock--out"}" data-meal-stock="${key}">${qty > 0 ? `${UI.num(qty)} left` : "Out of stock"}</span>`;
+  };
+  function updateMealStockHints() {
+    if (!boot) return;
+    UI.$$("[data-meal-stock]").forEach((el) => {
+      const qty = Number(boot.meal_stock[el.dataset.mealStock] || 0);
+      el.textContent = qty > 0 ? `${UI.num(qty)} left` : "Out of stock";
+      el.classList.toggle("pos-product__stock--out", qty <= 0);
+    });
+  }
 
   /* price preview (same rules as backend/pricing.py, using the active cart's signed snapshot) */
   function priced(spec) {
@@ -162,6 +174,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   boot = await Sync.bootstrap();
   if (!boot) { UI.toast("Connect to the internet once to download the products and prices."); return; }
   mp = boot.meal_prices;
+  updateMealStockHints();
   if (cart.length && (!cartPricing || !cartPricing.token)) {
     legacyCartNeedsPriceConfirmation = true;
     if (boot.pricing_token && confirm("This saved cart predates price locking. Apply the current prices to it?")) {
@@ -237,8 +250,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
   function drawCatalog() {
     if (!posProducts) return;
+    const mealEmpty = ["rice", "pork", "beef", "chicken", "fish", "veg"].every((key) => Number(boot.meal_stock[key] || 0) <= 0);
     const mealTiles = activeCategory === "All" || activeCategory === "Meals" ? `
-      <a class="tile pos-category-tile" href="pos-meal.html">${mealPunchBadge(cartQuantity((line) => line.type === "meal"))}<b>Meal</b></a>
+      <a class="tile pos-category-tile" href="pos-meal.html">${mealPunchBadge(cartQuantity((line) => line.type === "meal"))}<b>Meal</b>${mealEmpty ? '<span class="pos-product__stock pos-product__stock--out">Out of stock</span>' : ""}</a>
       <a class="tile pos-category-tile" href="pos-meat.html">${mealPunchBadge(cartQuantity(
         (line) => line.type === "meat" || (line.type === "meal" && !!line.meat),
         (line) => line.type === "meal" ? line.meat_qty * line.qty : line.qty
@@ -246,15 +260,15 @@ document.addEventListener("DOMContentLoaded", async () => {
       <button class="tile" type="button" data-add="veggy">${mealPunchBadge(cartQuantity(
         (line) => line.type === "veg" || (line.type === "meal" && line.veg_qty > 0),
         (line) => line.type === "meal" ? line.veg_qty * line.qty : line.qty
-      ))}<b>Veggy</b><span class="tile__price">${UI.money(mp.veg)}</span></button>
+      ))}<b>Veggy</b>${mealStockTag("veg")}<span class="tile__price">${UI.money(mp.veg)}</span></button>
       <button class="tile" type="button" data-add="rice">${mealPunchBadge(cartQuantity(
         (line) => line.type === "rice" || (line.type === "meal" && line.rice_type !== "fried"),
         (line) => line.type === "meal" ? line.rice_qty * line.qty : line.qty
-      ))}<b>Rice</b><span class="tile__price">${UI.money(mp.rice)}</span></button>
+      ))}<b>Rice</b>${mealStockTag("rice")}<span class="tile__price">${UI.money(mp.rice)}</span></button>
       <button class="tile" type="button" data-add="fried-rice">${mealPunchBadge(cartQuantity(
         (line) => line.type === "fried_rice" || (line.type === "meal" && line.rice_type === "fried"),
         (line) => line.type === "meal" ? line.rice_qty * line.qty : line.qty
-      ))}<b>Fried Rice</b><span class="tile__price">${UI.money(mp.fried_rice)}</span></button>` : "";
+      ))}<b>Fried Rice</b>${mealStockTag("rice")}<span class="tile__price">${UI.money(mp.fried_rice)}</span></button>` : "";
     const products = boot.products
       .filter((p) => (activeCategory === "All" && (p.category === "Snacks" || p.category === "Drinks")) || p.category === activeCategory)
       .sort((a, b) => {
@@ -275,6 +289,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   function refreshProductDisplays() {
     drawCatalog();
     if (!results.hidden) drawSearchResults(search.value);
+    updateMealStockHints();
   }
   posFilters.forEach((button) => button.addEventListener("click", () => {
     activeCategory = button.dataset.posFilter;
@@ -318,6 +333,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const val = (n) => (UI.$(`input[name=${n}]:checked`) || {}).value;
     const spec = () => ({ type: "meal", meat: val("meat") || null, meat_qty: +(val("meat-qty") || 1), veg_qty: +(val("veg") || 0), rice_type: val("rice-type") || "plain", rice_qty: +(val("rice-qty") || 1), qty: q });
     function update() {
+      updateMealStockHints();
       const s = spec(), none = !s.meat && !s.veg_qty, p = none ? null : priced(s);
       $("#meal-qty").textContent = q;
       $("#meal-price").textContent = p ? UI.money(p.unit * q) : "₱00.00";
