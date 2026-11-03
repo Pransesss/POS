@@ -7,7 +7,7 @@ RUN pip install --no-cache-dir -r backend/requirements.txt
 COPY --chown=user . .
 RUN mkdir -p backend/uploads/logos && chown -R user /app
 USER user
-ENV PORT=7860 TF_CPP_MIN_LOG_LEVEL=2
-EXPOSE 7860
+ENV PORT=10000 TF_CPP_MIN_LOG_LEVEL=2
+EXPOSE 10000
 WORKDIR /app/backend
-CMD ["gunicorn", "-b", "0.0.0.0:7860", "-w", "1", "--threads", "4", "--timeout", "180", "app:app"]
+CMD ["sh", "-c", "exec gunicorn -b 0.0.0.0:${PORT:-10000} -w 1 --threads 4 --timeout 180 app:app"]
