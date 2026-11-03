@@ -54,7 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let notes = "";
     if (info.no_classes) notes += noteHtml("banner--info", `No classes that day (${info.event.filter((e) => e.event_type === "no_classes").map((e) => e.name).join(", ")}). Demand forecast is still shown.`);
     else info.event.forEach((e) => { notes += noteHtml("banner--info", `${e.event_type === "exam" ? "Exam day" : "Event"}: ${e.name} — the model accounts for it.`); });
-    (info.warnings || []).forEach((w) => { notes += noteHtml("banner--warn", w); });
     $("#fc-notes").innerHTML = notes;
     $("#fc-total").textContent = num(res.total_predicted);
     $("#fc-unit").textContent = kind === "meals" ? "servings in total" : "pieces in total";
