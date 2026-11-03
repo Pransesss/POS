@@ -1042,6 +1042,37 @@
   color: #34443a;
 }
 
+:root[data-theme="light"] .delivery-picker__menu {
+  border-color: #dce4de;
+  background: #fff;
+  color: #26312a;
+  box-shadow: 0 12px 28px rgba(32, 54, 39, 0.16);
+}
+
+:root[data-theme="light"] .delivery-picker__option {
+  color: #34443a;
+}
+
+:root[data-theme="light"] .delivery-picker__option:hover {
+  background: #edf5ef;
+  color: #245c30;
+}
+
+:root[data-theme="light"] .delivery-picker__stock {
+  border-color: #dce4de;
+  background: #f7f9f8;
+  color: #68746c;
+}
+
+:root[data-theme="light"] .delivery-picker__stock-value {
+  color: #28783a;
+}
+
+:root[data-theme="light"] .delivery-selected__row {
+  border-color: #dce4de;
+  background: #fff;
+}
+
 :root[data-theme="light"] .order__buttons .btn--ghost:not(:disabled):hover,
 :root[data-theme="light"] .order__buttons .btn--ghost:not(:disabled):active {
   border-color: #a9c8b0;
