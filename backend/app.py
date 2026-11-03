@@ -890,8 +890,6 @@ def prediction_items():
     if bad:
         return bad
     aux_id, code = t
-    pe.ensure_tables(conn().cursor())
-    conn().commit()
     try:
         items = pe.catalog(conn().cursor(), aux_id, code, kind)
     except Exception as e:
@@ -927,7 +925,6 @@ def prediction_run():
     aux_id, code = t
     cur = conn().cursor()
     try:
-        pe.ensure_tables(cur)
         rows, info = pe.predict(cur, aux_id, code, kind, day, [str(i) for i in items])
         actual = pe.actuals_for(cur, aux_id, kind, day) if day <= today() else {}
         conn().commit()
