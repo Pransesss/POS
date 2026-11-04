@@ -117,33 +117,29 @@
 
   .nav-item.is-active { background: transparent; box-shadow: none; }
 
-  .nav:has(> .nav-item:nth-child(1).is-active),
-  .nav:has(> .nav-item:nth-child(1):hover),
+  .nav:has(> .nav-item:nth-child(1).is-active) { --nav-offset: 0px; }
+  .nav:has(> .nav-item:nth-child(2).is-active) { --nav-offset: 38px; }
+  .nav:has(> .nav-item:nth-child(3).is-active) { --nav-offset: 76px; }
+  .nav:has(> .nav-item:nth-child(4).is-active) { --nav-offset: 114px; }
+  .nav:has(> .nav-item:nth-child(5).is-active) { --nav-offset: 152px; }
+  .nav:has(> .nav-item:nth-child(6).is-active) { --nav-offset: 190px; }
+  .nav:has(> .nav-item:nth-child(7).is-active) { --nav-offset: 228px; }
+
   .nav:has(> .nav-item:nth-child(1):focus-visible) { --nav-offset: 0px; }
-
-  .nav:has(> .nav-item:nth-child(2).is-active),
-  .nav:has(> .nav-item:nth-child(2):hover),
   .nav:has(> .nav-item:nth-child(2):focus-visible) { --nav-offset: 38px; }
-
-  .nav:has(> .nav-item:nth-child(3).is-active),
-  .nav:has(> .nav-item:nth-child(3):hover),
   .nav:has(> .nav-item:nth-child(3):focus-visible) { --nav-offset: 76px; }
-
-  .nav:has(> .nav-item:nth-child(4).is-active),
-  .nav:has(> .nav-item:nth-child(4):hover),
   .nav:has(> .nav-item:nth-child(4):focus-visible) { --nav-offset: 114px; }
-
-  .nav:has(> .nav-item:nth-child(5).is-active),
-  .nav:has(> .nav-item:nth-child(5):hover),
   .nav:has(> .nav-item:nth-child(5):focus-visible) { --nav-offset: 152px; }
-
-  .nav:has(> .nav-item:nth-child(6).is-active),
-  .nav:has(> .nav-item:nth-child(6):hover),
   .nav:has(> .nav-item:nth-child(6):focus-visible) { --nav-offset: 190px; }
-
-  .nav:has(> .nav-item:nth-child(7).is-active),
-  .nav:has(> .nav-item:nth-child(7):hover),
   .nav:has(> .nav-item:nth-child(7):focus-visible) { --nav-offset: 228px; }
+
+  .nav:has(> .nav-item:nth-child(1):hover) { --nav-offset: 0px; }
+  .nav:has(> .nav-item:nth-child(2):hover) { --nav-offset: 38px; }
+  .nav:has(> .nav-item:nth-child(3):hover) { --nav-offset: 76px; }
+  .nav:has(> .nav-item:nth-child(4):hover) { --nav-offset: 114px; }
+  .nav:has(> .nav-item:nth-child(5):hover) { --nav-offset: 152px; }
+  .nav:has(> .nav-item:nth-child(6):hover) { --nav-offset: 190px; }
+  .nav:has(> .nav-item:nth-child(7):hover) { --nav-offset: 228px; }
 }
 
 .sidebar__footer {
@@ -215,6 +211,11 @@
   stroke-linecap: round;
   stroke-linejoin: round;
   transition: transform 160ms ease, filter 160ms ease;
+}
+
+.ui-switch .circle .ui-switch__moon {
+  fill: currentColor;
+  stroke: none;
 }
 
 .ui-switch__input:checked + .slider,
