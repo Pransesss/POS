@@ -100,15 +100,15 @@ def load_series(cur, aux_id, kind, before=None):
     hist = pd.DataFrame(cur.fetchall(), columns=["date", "item", "y", "left", "rcvd"])
 
     # live POS data (only completed days, never today) for products ticked "use for prediction"
-    cat = "Snacks" if kind == "snacks" else "Meals"
+    cats = ["Snacks", "Drinks"] if kind == "snacks" else ["Meals"]      # drinks are counted with snacks (the POS has no separate drinks model)
     cur.execute("""
         SELECT m.business_date AS date, p.name, p.meal_key,
                COALESCE(SUM(-m.qty) FILTER (WHERE m.movement_type='sale'), 0) AS y,
                COALESCE(SUM(m.qty)  FILTER (WHERE m.movement_type='delivery'), 0) AS rcvd
         FROM stock_movements m JOIN products p ON p.product_id = m.product_id
-        WHERE m.aux_id=%s AND p.category=%s AND p.use_for_prediction AND m.business_date < CURRENT_DATE
+        WHERE m.aux_id=%s AND p.category = ANY(%s) AND p.use_for_prediction AND m.business_date < CURRENT_DATE
               AND EXTRACT(ISODOW FROM m.business_date) < 6
-        GROUP BY m.business_date, p.name, p.meal_key""", (aux_id, cat))
+        GROUP BY m.business_date, p.name, p.meal_key""", (aux_id, cats))
     live = pd.DataFrame(cur.fetchall(), columns=["date", "name", "meal_key", "y", "rcvd"])
     if len(live):
         live["item"] = [MEAL_ALIASES.get(k, n) if kind == "meals" else n for n, k in zip(live["name"], live["meal_key"])]

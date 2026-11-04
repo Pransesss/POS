@@ -19,6 +19,7 @@ from db import connect, TIMEZONE
 from pricing import build_line, SaleError, D
 import prediction as pred
 import prediction_engine as pe
+import auto_train
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 FRONTEND = os.path.join(BASE, "..", "mmsu-frontend")
@@ -76,6 +77,11 @@ _account_logo_schema_ready = False
 _account_logo_schema_lock = threading.Lock()
 _delivery_status_schema_ready = False
 _delivery_status_schema_lock = threading.Lock()
+
+
+@app.before_request
+def _start_auto_train():
+    auto_train.start()          # retrain the prediction models every 14 days in the background (once per process)
 
 
 # database helpers
@@ -733,7 +739,9 @@ def add_product():
         name, barcode, cat, price = _product_fields(d)
         if barcode and q("SELECT 1 FROM products WHERE barcode=%s", (barcode,), one=True):
             return err("That barcode already exists")
-        pid = run("INSERT INTO products (name, barcode, category, price) VALUES (%s,%s,%s,%s) RETURNING product_id", (name, barcode, cat, price)).fetchone()["product_id"]
+        # use_for_prediction: its future POS sales feed the model (and the automatic retraining) even though it has none yet
+        pid = run("INSERT INTO products (name, barcode, category, price, use_for_prediction) VALUES (%s,%s,%s,%s,%s) RETURNING product_id",
+                  (name, barcode, cat, price, bool(d.get("use_for_prediction")))).fetchone()["product_id"]
         run("INSERT INTO inventory (aux_id, product_id) SELECT aux_id, %s FROM auxiliaries", (pid,))
         aux = d.get("aux_id")
         if aux and D(d.get("stock") or 0) > 0:
