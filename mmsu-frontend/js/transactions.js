@@ -102,6 +102,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       const period = displayPeriod(exp.date, exp.first_order_at, exp.last_order_at);
       const ov = UI.modal(`<h2 class="card__title">Record remittance · ${period}</h2><p class="muted text-small">Cash sales in this period: <strong>${money(exp.expected)}</strong></p><label for="m-amount">Amount handed over (₱)</label><input type="number" id="m-amount" min="0" value="${exp.expected}"><div class="modal__actions"><button class="btn" id="m-save" type="button">Save</button><button class="btn btn--ghost" data-close type="button">Cancel</button></div>`);
       ov.querySelector("#m-save").addEventListener("click", async () => {
+        const amount = parseFloat($("#m-amount").value);
+        if (!(amount > 0)) return UI.toast("Enter the amount handed over");
+        if (amount > Number(exp.expected) + 1000) return UI.toast(`Amount is too high — it cannot exceed the cash sales by more than ${money(1000)}`);
         try { await api("/api/remittances", { method: "POST", body: { amount: $("#m-amount").value, batch_id: exp.batch_id } }); ov.remove(); UI.toast("Remittance recorded"); load(); } catch (e) { UI.toast(e.message); }
       });
     });

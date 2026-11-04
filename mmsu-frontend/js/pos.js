@@ -1,11 +1,15 @@
 /* pos.js — the cashier screen. Used by pos.html, pos-meal.html and pos-meat.html (they share ONE cart, kept in this device).
    Each cart keeps a signed price snapshot; the server recomputes and validates its lines from that snapshot on sync. */
+const MAX_CHANGE = 1000;   // same limit as the server: change can never exceed one ₱1,000 bill
 document.addEventListener("DOMContentLoaded", async () => {
   const $ = UI.$, load = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } }, save = (k, v) => localStorage.setItem(k, JSON.stringify(v));
   let boot = null, mp = {}, cart = load("pos_cart", []), held = load("pos_held", []);
   let cartPricing = load("pos_cart_pricing", null), heldPricing = load("pos_held_pricing", []);
   let legacyCartNeedsPriceConfirmation = false;
   if (!Array.isArray(heldPricing)) heldPricing = [];
+  let heldAt = load("pos_held_at", []);
+  if (!Array.isArray(heldAt)) heldAt = [];
+  while (heldAt.length < held.length) heldAt.unshift(null);            // sales held before this list existed have no time
   const MEATS = ["beef", "chicken", "fish", "pork"], cap = (s) => s[0].toUpperCase() + s.slice(1);
   const catalogFor = (data) => ({
     aux_id: data.user.aux_id,
@@ -108,7 +112,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const given = parseFloat($("#cash-tendered").value || 0);
     $("#order-change").textContent = UI.money(Math.max(0, given - grand()));
     $("#btn-resume").hidden = !held.length;
-    $("#btn-hold").textContent = held.length ? `Hold sale (${held.length} held)` : "Hold sale";
+    $("#btn-resume").textContent = `View held sales (${held.length})`;
+    $("#btn-hold").textContent = "Hold sale";
   }
   $("#order-lines").addEventListener("click", (e) => {
     const inc = e.target.dataset.inc, dec = e.target.dataset.dec;
@@ -126,21 +131,60 @@ document.addEventListener("DOMContentLoaded", async () => {
   $("#ewallet-ref4").addEventListener("input", (e) => (e.target.value = e.target.value.replace(/\D/g, "").slice(0, 4)));
   function $$all(s) { return UI.$$(s); }
 
-  $("#btn-hold").addEventListener("click", () => { if (!cart.length) return; held.push(cart); heldPricing.push(cartPricing); cart = []; cartPricing = null; mp = boot.meal_prices; save("pos_held", held); save("pos_held_pricing", heldPricing); saveCart(); render(); refreshProductDisplays(); UI.toast("Sale put on hold"); });
-  $("#btn-resume").addEventListener("click", () => {
-    if (!held.length || cart.length) return UI.toast(cart.length ? "Finish or hold the current sale first" : "");
-    const savedPricing = heldPricing[heldPricing.length - 1];
-    if (savedPricing && savedPricing.aux_id !== boot.user.aux_id) return UI.toast("Sign in to the outlet that owns this held sale");
-    if (!boot.pricing_token) return UI.toast("Connect to refresh the signed price list before resuming a sale.");
-    if ((!savedPricing || !savedPricing.token) && !confirm("This held sale has no saved price snapshot. Resume it at current prices?")) return;
-    cart = held.pop();
-    cartPricing = heldPricing.pop() || null;
-    if (!cartPricing || !cartPricing.token) cartPricing = catalogFor(boot);
+  /* held sales: any number can wait; the cashier picks which one to resume from a list */
+  const saveHeld = () => { save("pos_held", held); save("pos_held_pricing", heldPricing); save("pos_held_at", heldAt); };
+  function holdCurrent() {
+    held.push(cart); heldPricing.push(cartPricing); heldAt.push(new Date().toISOString());
+    cart = []; cartPricing = null; legacyCartNeedsPriceConfirmation = false; mp = boot.meal_prices;
+    saveHeld(); saveCart();
+  }
+  function heldSummary(i) {            // items + total of held sale i, priced with ITS OWN saved snapshot
+    const active = cartPricing;
+    cartPricing = heldPricing[i] && heldPricing[i].meal_prices ? heldPricing[i] : null;
+    try {
+      const lines = held[i].map((l) => ({ name: UI.titleCase(priced(l).name), qty: l.qty }));
+      return { lines, total: held[i].reduce((n, l) => n + priced(l).unit * l.qty, 0) };
+    } finally { cartPricing = active; }
+  }
+  function resumeHeld(i) {
+    const savedPricing = heldPricing[i];
+    if (savedPricing && savedPricing.aux_id !== boot.user.aux_id) { UI.toast("Sign in to the outlet that owns this held sale"); return false; }
+    if (!boot.pricing_token) { UI.toast("Connect to refresh the signed price list before resuming a sale."); return false; }
+    if ((!savedPricing || !savedPricing.token) && !confirm("This held sale has no saved price snapshot. Resume it at current prices?")) return false;
+    const [next] = held.splice(i, 1), [nextPricing] = heldPricing.splice(i, 1); heldAt.splice(i, 1);
+    if (cart.length) holdCurrent();                                     // the sale on screen goes to the list instead of being lost
+    cart = next;
+    cartPricing = nextPricing && nextPricing.token ? nextPricing : catalogFor(boot);
     legacyCartNeedsPriceConfirmation = false;
     mp = cartPricing.meal_prices;
-    save("pos_held", held); save("pos_held_pricing", heldPricing); saveCart();
+    saveHeld(); saveCart();
+    $("#cash-tendered").value = ""; $("#ewallet-ref4").value = "";
     updateMealPrices(); render(); refreshProductDisplays();
-  });
+    return true;
+  }
+  function heldList() {
+    if (!held.length) return UI.toast("No held sales");
+    const time = (iso) => iso ? new Date(iso).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }) : "—";
+    const ov = UI.modal(`<h2 class="card__title">Held sales (${held.length})</h2>
+      ${cart.length ? '<p class="muted text-small">The sale on screen will be held when you resume another one.</p>' : ""}
+      <ul class="held-list">${held.map((_, i) => { const s = heldSummary(i);
+        return `<li class="held-list__item">
+          <div class="held-list__info"><strong>#${i + 1} · ${UI.money(s.total)}</strong><span class="muted text-small">Held ${time(heldAt[i])}</span>
+            <span class="text-small">${s.lines.map((l) => `${UI.esc(l.name)} ×${l.qty}`).join(", ")}</span></div>
+          <div class="held-list__actions"><button class="btn" type="button" data-resume="${i}">Resume</button>
+            <button class="link-button delete-action" type="button" data-discard="${i}">Remove</button></div></li>`; }).join("")}</ul>
+      <div class="modal__actions"><button class="btn btn--ghost" data-close type="button">Close</button></div>`);
+    ov.addEventListener("click", (e) => {
+      const r = e.target.closest("[data-resume]"), d = e.target.closest("[data-discard]");
+      if (r && resumeHeld(Number(r.dataset.resume))) ov.remove();
+      if (d && confirm("Remove this held sale? It will be cancelled.")) {
+        const i = Number(d.dataset.discard); held.splice(i, 1); heldPricing.splice(i, 1); heldAt.splice(i, 1);
+        saveHeld(); render(); ov.remove(); if (held.length) heldList();
+      }
+    });
+  }
+  $("#btn-hold").addEventListener("click", () => { if (!cart.length) return; holdCurrent(); $("#cash-tendered").value = ""; $("#ewallet-ref4").value = ""; updateMealPrices(); render(); refreshProductDisplays(); UI.toast(`Sale put on hold (${held.length} held)`); });
+  $("#btn-resume").addEventListener("click", () => { if (boot) heldList(); });
   $("#btn-cancel").addEventListener("click", () => { if (cart.length && !confirm("Cancel this sale?")) return; cart = []; cartPricing = null; legacyCartNeedsPriceConfirmation = false; mp = boot.meal_prices; saveCart(); $("#cash-tendered").value = ""; $("#ewallet-ref4").value = ""; updateMealPrices(); render(); refreshProductDisplays(); });
 
   /* complete sale: save on the device first, then sync */
@@ -150,7 +194,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (cartPricing.aux_id !== boot.user.aux_id) return UI.toast("This sale belongs to another outlet. Sign in to that outlet to complete it.");
     const ewallet = $("#pay-1").checked, tendered = parseFloat($("#cash-tendered").value || 0), ref4 = $("#ewallet-ref4").value, t = grand();
     if (ewallet && !/^\d{4}$/.test(ref4)) return UI.toast("Enter the last 4 digits of the e-wallet reference number");
-    if (!ewallet && tendered < t) return UI.toast("Amount tendered is less than the total");
+    if (!ewallet && !(tendered >= t)) return UI.toast("Amount tendered is less than the total");
+    if (!ewallet && tendered - t > MAX_CHANGE) return UI.toast(`Amount tendered is too high — change cannot exceed ${UI.money(MAX_CHANGE)}`);
     const lack = shortItem(cart); if (lack) return UI.toast("Not enough stock: " + UI.titleCase(lack));
     const now = UI.isoNow(), code = UI.session().user.aux_code;
     const txn = { id: UI.uuid(), receipt_no: `${code}-${now.slice(0, 10).replace(/-/g, "")}-${UI.uuid().slice(0, 4).toUpperCase()}`, created_at: now,

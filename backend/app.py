@@ -119,6 +119,9 @@ def today():
 _sales_batch_schema_ready = False
 
 
+MAX_CHANGE = 1000   # largest peso bill: a customer never hands over a whole extra ₱1,000 (stops typos like ₱9,000,000)
+
+
 def ensure_sales_batch_schema():
     global _sales_batch_schema_ready
     if _sales_batch_schema_ready:
@@ -535,6 +538,8 @@ def save_transaction(user, t, meal_ids):
             raise SaleError("cash tendered must be a valid amount")
         if not tendered.is_finite() or tendered < total:
             raise SaleError("cash tendered is less than the sale total")
+        if tendered - total > MAX_CHANGE:
+            raise SaleError(f"cash tendered is too high (change cannot exceed ₱{MAX_CHANGE:,})")
 
     run("""INSERT INTO transactions (transaction_id, receipt_no, aux_id, cashier_id, device_id, created_at, business_date,
                                       payment_method, amount_tendered, ewallet_ref_last4, dine_type, total_amount)
@@ -945,14 +950,14 @@ def remit_expected():
 
 def next_unremitted_batch(aux_id):
     ensure_sales_batch_schema()
-    return q("""SELECT b.batch_id, b.business_date, b.total_cash,
+    return q("""SELECT b.batch_id, b.batch_number, b.business_date, b.total_cash,
                        MIN(t.created_at) AS first_order_at, MAX(t.created_at) AS last_order_at
                 FROM sales_batches b JOIN transactions t ON t.batch_id=b.batch_id AND t.status='completed'
                 WHERE b.aux_id=%s AND b.total_cash > 0 AND NOT EXISTS (
                     SELECT 1 FROM remittances r WHERE r.batch_id=b.batch_id
                 )
                 GROUP BY b.batch_id
-                ORDER BY b.business_date, b.batch_id
+                ORDER BY b.business_date, b.batch_number
                 LIMIT 1""", (aux_id,), one=True)
 
 
@@ -965,9 +970,11 @@ def add_remittance():
     d = request.get_json(silent=True) or {}
     try:
         amount = D(d.get("amount"))
-        assert amount > 0
+        assert amount.is_finite() and amount > 0
     except Exception:
         return err("Enter the amount handed over")
+    if amount > D(batch["total_cash"]) + MAX_CHANGE:
+        return err(f"Amount is too high — it cannot exceed the cash sales by more than ₱{MAX_CHANGE:,}")
     aux_id = g.user["aux_id"]
     run("SELECT pg_advisory_xact_lock(%s)", (aux_id,))
     current = q("""SELECT b.batch_id, b.batch_number, b.business_date, b.total_cash

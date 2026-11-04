@@ -36,10 +36,12 @@ const Sync = {
 
   /* send everything waiting; safe to call any time */
   async flush() {
-    if (!navigator.onLine || this.busy || !UI.session() || UI.session().user.role !== "staff") return this.badge();
+    if (this.busy) { this.again = true; return this.badge(); }            // a sale made during a sync is sent right after it
+    if (!navigator.onLine || !UI.session() || UI.session().user.role !== "staff") return this.badge();
     const rows = await this.pending();
     if (!rows.length) return this.badge();
     this.busy = true;
+    this.again = false;
     let firstFailure = "";
     try {
       const res = await api("/api/sync/transactions", { method: "POST", body: { device_id: this.deviceId(), transactions: rows.map((r) => r.payload) } });
@@ -57,13 +59,18 @@ const Sync = {
     this.busy = false;
     window.dispatchEvent(new Event("outbox-changed"));
     if (firstFailure) UI.toast(`Sale not synced: ${firstFailure}. It remains saved on this device.`);
+    if (this.again) return this.flush();
     return this.badge();
   },
 
+  /* only the newest call writes the badge, so an older, slower read can never put back a stale "waiting to sync" */
+  badgeSeq: 0,
   async badge() {
     const el = UI.$("#online-badge");
     if (!el) return;
+    const seq = ++this.badgeSeq;
     const n = (await this.pending()).length;
+    if (seq !== this.badgeSeq) return;
     el.className = "badge " + (navigator.onLine ? "badge--online" : "badge--warn");
     el.textContent = (navigator.onLine ? "Online" : "Offline") + (n ? ` · ${n} waiting to sync` : "");
   },
@@ -92,6 +99,8 @@ const Sync = {
   },
 };
 
-window.addEventListener("online", () => Sync.flush());
+// the connection is often not usable the instant "online" fires, so try again a few seconds later too
+window.addEventListener("online", () => { Sync.flush(); setTimeout(() => Sync.flush(), 3000); setTimeout(() => Sync.flush(), 10000); });
 window.addEventListener("offline", () => Sync.badge());
-document.addEventListener("DOMContentLoaded", () => { Sync.badge(); Sync.flush(); setInterval(() => Sync.flush(), 30000); });
+document.addEventListener("visibilitychange", () => { if (!document.hidden) Sync.flush(); });
+document.addEventListener("DOMContentLoaded", () => { Sync.badge(); Sync.flush(); setInterval(() => Sync.flush(), 15000); });

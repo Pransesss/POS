@@ -732,3 +732,10 @@
 #table-aux .is-selected td:first-child { box-shadow: inset 2px 0 var(--green-soft); }
 .admin-section[hidden] { display:none !important; }
 @media (max-width:700px) { .delivery-selected__row { grid-template-columns:1fr 70px; } .delivery-selected__remove { grid-column:2; justify-self:end; } }
+
+/* held sales list (POS) */
+.held-list { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 8px; }
+.held-list__item { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 10px 12px; border: 1px solid var(--line, rgba(127,127,127,.25)); border-radius: 10px; }
+.held-list__info { display: grid; gap: 2px; min-width: 0; }
+.held-list__info .text-small:last-child { overflow-wrap: anywhere; }
+.held-list__actions { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; }

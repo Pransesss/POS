@@ -48,12 +48,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       <label for="m-barcode">Barcode</label><input type="text" id="m-barcode" value="${esc(p ? p.barcode || "" : "")}">
       <label for="m-category">Category</label><select id="m-category"><option value="Snacks" ${!p || p.category === "Snacks" ? "selected" : ""}>Snacks</option><option value="Drinks" ${p && p.category === "Drinks" ? "selected" : ""}>Drinks</option></select>
       <label for="m-price">Price (₱) — applies to all auxiliaries</label><input type="number" id="m-price" min="0" step="0.01" value="${p ? p.price : ""}">
-      <label for="m-stock">Stock at this auxiliary</label><input type="number" id="m-stock" min="0" value="${p ? p.qty : 0}" ${auxId === "all" ? "disabled" : ""}>
+      ${p ? `<label for="m-stock">Stock at this auxiliary</label><input type="number" id="m-stock" min="0" value="${p.qty}" ${auxId === "all" ? "disabled" : ""}>` : ""}
       <label for="m-status">Status</label><select id="m-status"><option value="1">Active</option><option value="0" ${p && !p.is_active ? "selected" : ""}>Inactive</option></select>
       <div class="modal__actions"><button class="btn" id="m-save" type="button">Save</button><button class="btn btn--ghost" data-close type="button">Cancel</button></div>`);
     ov.querySelector("#m-save").addEventListener("click", async () => {
       const body = { name: UI.titleCase($("#m-name").value), barcode: $("#m-barcode").value, category: $("#m-category").value, price: $("#m-price").value,
-        stock: auxId === "all" ? undefined : $("#m-stock").value, aux_id: auxId === "all" ? undefined : auxId, is_active: $("#m-status").value === "1" };
+        stock: !p || auxId === "all" ? undefined : $("#m-stock").value, aux_id: auxId === "all" ? undefined : auxId, is_active: $("#m-status").value === "1" };
       try { await api(p ? `/api/products/${p.product_id}` : "/api/products", { method: p ? "PUT" : "POST", body }); ov.remove(); UI.toast("Saved"); load(); }
       catch (e) { UI.toast(e.message); }
     });
