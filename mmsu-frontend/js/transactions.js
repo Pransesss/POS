@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const amount = parseFloat($("#m-amount").value);
         if (!(amount > 0)) return UI.toast("Enter the amount handed over");
         if (amount > Number(exp.expected) + 1000) return UI.toast(`Amount is too high — it cannot exceed the cash sales by more than ${money(1000)}`);
-        try { await api("/api/remittances", { method: "POST", body: { amount: $("#m-amount").value, batch_id: exp.batch_id } }); ov.remove(); UI.toast("Remittance recorded"); load(); } catch (e) { UI.toast(e.message); }
+        try { await api("/api/remittances", { method: "POST", body: { amount: $("#m-amount").value, batch_id: exp.batch_id } }); ov.remove(); UI.toast("Remittance recorded", "ok"); load(); } catch (e) { UI.toast(e.message); }
       });
     });
   }

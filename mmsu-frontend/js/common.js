@@ -30,10 +30,14 @@ const UI = {
   root: () => (UI.inFolder() ? "../" : ""),
 
   /* small widgets */
-  toast(msg) {
+  /* type: "warn" (default, yellow) for warnings / errors, "ok" (green) for a finished action */
+  toast(msg, type = "warn") {
+    if (!msg) return;
     const t = document.createElement("div");
-    t.className = "toast"; t.textContent = msg; document.body.appendChild(t);
-    setTimeout(() => t.remove(), 2600);
+    t.className = "toast toast--" + (type === "ok" ? "ok" : "warn"); t.textContent = msg;
+    t.setAttribute("role", type === "ok" ? "status" : "alert");
+    document.body.appendChild(t);
+    setTimeout(() => t.remove(), type === "ok" ? 2600 : 4000);   // warnings stay a bit longer so they can be read
   },
   /* modal: .modal-overlay > .card.modal  (same markup as components.html) */
   modal(html) {

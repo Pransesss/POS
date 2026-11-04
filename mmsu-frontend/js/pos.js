@@ -217,7 +217,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     });
   }
-  $("#btn-hold").addEventListener("click", () => { if (!cart.length) return; holdCurrent(); $("#cash-tendered").value = ""; $("#ewallet-ref4").value = ""; updateMealPrices(); render(); refreshProductDisplays(); UI.toast(`Sale put on hold (${held.length} held)`); });
+  $("#btn-hold").addEventListener("click", () => { if (!cart.length) return; holdCurrent(); $("#cash-tendered").value = ""; $("#ewallet-ref4").value = ""; updateMealPrices(); render(); refreshProductDisplays(); UI.toast(`Sale put on hold (${held.length} held)`, "ok"); });
   $("#btn-resume").addEventListener("click", () => { if (boot) heldList(); });
   $("#btn-cancel").addEventListener("click", () => { if (cart.length && !confirm("Cancel this sale?")) return; cart = []; cartPricing = null; legacyCartNeedsPriceConfirmation = false; mp = boot.meal_prices; saveCart(); $("#cash-tendered").value = ""; $("#ewallet-ref4").value = ""; updateMealPrices(); render(); refreshProductDisplays(); });
 
@@ -295,7 +295,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const result = await api("/api/sales-batches/seal", { method: "POST", body: { password } });
         const batch = result.batch;
         ov.remove();
-        UI.toast(`Sales sealed · ${batch.transaction_count} transactions · ${UI.money(batch.total_sales)}`);
+        UI.toast(`Sales sealed · ${batch.transaction_count} transactions · ${UI.money(batch.total_sales)}`, "ok");
       } catch (e) {
         confirmBtn.disabled = false;
         UI.toast(e.message);

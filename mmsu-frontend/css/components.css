@@ -616,7 +616,9 @@
   border-radius: 9px;
   background: var(--green-bg);
   transform: translateX(-50%);
+  max-width: calc(100vw - 32px);
 }
+.toast--warn { background: #463a18; color: var(--amber); border: 1px solid rgba(224, 164, 60, 0.45); }
 
 /* admin delivery picker */
 .delivery-picker { position: relative; }

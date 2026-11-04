@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     ov.querySelector("#m-save").addEventListener("click", async () => {
       const body = { name: UI.titleCase($("#m-name").value), barcode: $("#m-barcode").value, category: $("#m-category").value, price: $("#m-price").value,
         stock: !p || auxId === "all" ? undefined : $("#m-stock").value, aux_id: auxId === "all" ? undefined : auxId, is_active: $("#m-status").value === "1" };
-      try { await api(p ? `/api/products/${p.product_id}` : "/api/products", { method: p ? "PUT" : "POST", body }); ov.remove(); UI.toast("Saved"); load(); }
+      try { await api(p ? `/api/products/${p.product_id}` : "/api/products", { method: p ? "PUT" : "POST", body }); ov.remove(); UI.toast("Saved", "ok"); load(); }
       catch (e) { UI.toast(e.message); }
     });
   }

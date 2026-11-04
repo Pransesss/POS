@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const items = [...modal.querySelectorAll("[data-edit-pid]")].map((input) => ({ product_id: +input.dataset.editPid, qty: input.value }));
       try {
         await api(`/api/deliveries/${id}`, { method: "PATCH", body: { date: modal.querySelector("#edit-delivery-date").value, initial_cash: modal.querySelector("#edit-delivery-cash").value, items } });
-        modal.remove(); UI.toast("Pending delivery updated"); await loadLog();
+        modal.remove(); UI.toast("Pending delivery updated", "ok"); await loadLog();
       } catch (e) { UI.toast(e.message); }
     });
   }
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (edit) await editDelivery(+edit.dataset.editDelivery);
       if (cancel && confirm("Cancel this pending delivery? The auxiliary will no longer be able to receive it.")) {
         await api(`/api/deliveries/${cancel.dataset.cancelDelivery}/cancel`, { method: "POST" });
-        UI.toast("Delivery cancelled"); await loadLog();
+        UI.toast("Delivery cancelled", "ok"); await loadLog();
       }
     } catch (error) { UI.toast(error.message); }
   });
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!items.length && !Object.values(meals).some((v) => +v > 0)) return UI.toast("Add at least one delivery quantity");
     try {
       await api("/api/deliveries", { method: "POST", body: { aux_id: $("#delivery-aux").value, date: $("#delivery-date-input").value, initial_cash: $("#initial-cash").value, meals, items } });
-      UI.toast("Delivery sent — waiting for the staff to accept");
+      UI.toast("Delivery sent — waiting for the staff to accept", "ok");
       ["initial-cash", "meal-rice", "meal-pork", "meal-beef", "meal-chicken", "meal-fish", "meal-veg"].forEach((i) => ($("#" + i).value = ""));
       selected.clear(); drawSelected(); loadLog();
     } catch (e) { UI.toast(e.message); }

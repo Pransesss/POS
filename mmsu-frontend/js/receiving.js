@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const counts = {}; UI.$$("#table-delivery-check input[data-pid]").forEach((i) => (counts[i.dataset.pid] = i.value));
     try {
       const r = await api(`/api/deliveries/${current.delivery_id}/accept`, { method: "POST", body: { cash_counted: $("#delivery-cash").value, counts } });
-      UI.toast(r.has_mismatch ? "Accepted — a mismatch was recorded for the admin" : "Delivery accepted, stock updated");
+      UI.toast(r.has_mismatch ? "Accepted — a mismatch was recorded for the admin" : "Delivery accepted, stock updated", r.has_mismatch ? "warn" : "ok");
       load();
     } catch (e) { UI.toast(e.message); }
   });
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!current || !confirm("Cancel this delivery? It will be returned to the admin as cancelled.")) return;
     try {
       await api(`/api/deliveries/${current.delivery_id}/cancel`, { method: "POST" });
-      UI.toast("Delivery cancelled"); await load();
+      UI.toast("Delivery cancelled", "ok"); await load();
     } catch (e) { UI.toast(e.message); }
   });
   load();

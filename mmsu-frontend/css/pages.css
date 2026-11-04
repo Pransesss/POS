@@ -945,6 +945,7 @@
 :root[data-theme="light"] .badge--ok { background: #e3f2e6; }
 :root[data-theme="light"] .badge--warn,
 :root[data-theme="light"] .banner--warn { background: #fff3d8; }
+:root[data-theme="light"] .toast--warn { background: #fff3d8; color: #8a5a00; border-color: #e8c27a; }
 :root[data-theme="light"] .badge--bad { background: #fbe8e6; }
 :root[data-theme="light"] .badge--info,
 :root[data-theme="light"] .banner--info { background: #e8f1fb; }

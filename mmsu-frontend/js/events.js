@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     try {
       await api("/api/events", { method: "POST", body: { date: $("#event-date").value, type: $("#event-type").value, name: $("#event-name").value, notes: $("#event-notes").value } });
-      $("#event-name").value = ""; $("#event-notes").value = ""; UI.toast("Event added"); load();
+      $("#event-name").value = ""; $("#event-notes").value = ""; UI.toast("Event added", "ok"); load();
     } catch (err) { UI.toast(err.message); }
   });
   $("#table-events").addEventListener("click", async (e) => {

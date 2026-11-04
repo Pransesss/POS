@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
         updated++;
       }
       await loadPredictionProducts();
-      UI.toast(`${updated} products ${included ? "included" : "excluded"}`);
+      UI.toast(`${updated} products ${included ? "included" : "excluded"}`, "ok");
     } catch (err) {
       let refreshError = null;
       try { await loadPredictionProducts(); } catch (e) { refreshError = e; }
@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       ["new-username", "new-password", "confirm-password", "admin-password", "account-logo"].forEach((i) => { if ($( "#" + i)) $("#" + i).value = ""; });
       $("#account-logo-name").textContent = "No file chosen";
-      UI.toast(file ? "Account and logo updated" : "Account updated"); loadAccounts();
+      UI.toast(file ? "Account and logo updated" : "Account updated", "ok"); loadAccounts();
       if (file && chosen.role === "admin") location.reload();
     } catch (err) { UI.toast(err.message); }
   });
@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!password) return UI.toast("Enter the admin password");
         await api(`/api/auxiliaries/${chosenAux.aux_id}/delete`, { method: "POST", body: { admin_password: password } });
         chosenAux = null;
-        UI.toast("Auxiliary deleted");
+        UI.toast("Auxiliary deleted", "ok");
         loadAux(); loadAccounts();
         $("#delete-aux-password").value = "";
         $("[data-close]")?.click();
@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (file) { const fd = new FormData(); fd.append("file", file); await api(`/api/auxiliaries/${r.aux_id}/logo`, { method: "POST", body: fd }); }
       e.target.reset();
       $("#aux-logo-name").textContent = "No file chosen";
-      UI.toast("Auxiliary added"); loadAux(); loadAccounts();
+      UI.toast("Auxiliary added", "ok"); loadAux(); loadAccounts();
     } catch (err) { UI.toast(err.message); }
   });
   loadAccounts(); loadAux(); loadPredictionProducts();
