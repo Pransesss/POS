@@ -110,7 +110,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       : '<li class="order__empty">No items yet</li>';
     $("#order-total").textContent = UI.money(grand());
     const given = parseFloat($("#cash-tendered").value || 0);
-    $("#order-change").textContent = UI.money(Math.max(0, given - grand()));
+    // if items were removed after the amount was typed, the change can be over the limit: say so instead of showing it
+    $("#order-change").textContent = given - grand() > MAX_CHANGE ? "Too high" : UI.money(Math.max(0, given - grand()));
     $("#btn-resume").hidden = !held.length;
     $("#btn-resume").textContent = `View held sales (${held.length})`;
     $("#btn-hold").textContent = "Hold sale";
@@ -127,7 +128,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
   $("#btn-add-box").addEventListener("click", () => addSpec({ type: "takeout_box", qty: 1 }));
   $$all("input[name=pay]").forEach((r) => r.addEventListener("change", () => localStorage.setItem("pos_pay", $("#pay-1").checked ? "ewallet" : "cash")));
-  $("#cash-tendered").addEventListener("input", render);
+  /* amount tendered: never more than the total + ₱1,000 — so the change can never run away */
+  $("#cash-tendered").addEventListener("input", (e) => {
+    const el = e.target, max = Math.round((grand() + MAX_CHANGE) * 100) / 100;
+    if (parseFloat(el.value) > max) { el.value = String(max); UI.toast(`Amount tendered cannot exceed ${UI.money(max)} (change up to ${UI.money(MAX_CHANGE)})`); }
+    render();
+  });
+  $("#cash-tendered").addEventListener("keydown", (e) => { if (["e", "E", "+", "-"].includes(e.key)) e.preventDefault(); });
   $("#ewallet-ref4").addEventListener("input", (e) => (e.target.value = e.target.value.replace(/\D/g, "").slice(0, 4)));
   function $$all(s) { return UI.$$(s); }
 
