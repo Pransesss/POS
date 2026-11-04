@@ -1,11 +1,18 @@
 -- MMSU Auxiliary POS — PostgreSQL schema.  Run with:  python init_db.py   (it also loads the known data)
 -- Safe to re-run: drops everything first.
 DROP VIEW  IF EXISTS v_daily_inventory, v_daily_sales CASCADE;
-DROP TABLE IF EXISTS sales_history, weather_daily, audit_log, predictions, model_runs, events, remittances, sales_batches, sales_day_closures, line_parts, transaction_lines,
+DROP TABLE IF EXISTS logo_files, sales_history, weather_daily, audit_log, predictions, model_runs, events, remittances, sales_batches, sales_day_closures, line_parts, transaction_lines,
                      transactions, daily_cash, stock_movements, delivery_items, deliveries, inventory,
                      products, meal_prices, settings, accounts, auxiliaries CASCADE;
 
 -- setup
+CREATE TABLE logo_files (                          -- logo images live in the database so redeploys never lose them
+  name       TEXT PRIMARY KEY,                     -- matches the end of logo_path: uploads/logos/<name>
+  mime       TEXT NOT NULL,
+  data       BYTEA NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
 CREATE TABLE auxiliaries (
   aux_id     SERIAL PRIMARY KEY,
   code       TEXT NOT NULL UNIQUE,                 -- COE, CAS ...

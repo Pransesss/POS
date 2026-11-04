@@ -13,6 +13,8 @@ from flask_cors import CORS
 from itsdangerous import URLSafeTimedSerializer, BadSignature, SignatureExpired
 from werkzeug.security import generate_password_hash, check_password_hash
 
+import psycopg2
+from flask import Response
 from db import connect, TIMEZONE
 from pricing import build_line, SaleError, D
 import prediction as pred
@@ -114,6 +116,63 @@ def settings():
 
 def today():
     return datetime.now(TZ).date()
+
+
+_logo_store_ready = False
+_logo_store_lock = threading.Lock()
+LOGO_MIME = {".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg"}
+
+
+def ensure_logo_store():
+    """Logo images live IN the database (logo_files), so a redeploy / system update that wipes the
+    uploads folder can no longer remove them. logo_path keeps its old shape: uploads/logos/<name>.
+    The first time this runs it copies any logo still on disk into the database."""
+    global _logo_store_ready
+    if _logo_store_ready:
+        return
+    with _logo_store_lock:
+        if _logo_store_ready:
+            return
+        run("""CREATE TABLE IF NOT EXISTS logo_files (
+                 name       TEXT PRIMARY KEY,
+                 mime       TEXT NOT NULL,
+                 data       BYTEA NOT NULL,
+                 created_at TIMESTAMPTZ NOT NULL DEFAULT now())""")
+        ensure_account_logo_schema()
+        used = q("""SELECT logo_path FROM auxiliaries WHERE logo_path LIKE 'uploads/logos/%%'
+                    UNION SELECT logo_path FROM accounts WHERE logo_path LIKE 'uploads/logos/%%'""")
+        for r in used:
+            name = os.path.basename(r["logo_path"])
+            if not q("SELECT 1 FROM logo_files WHERE name=%s", (name,), one=True):
+                _import_logo_from_disk(name)
+        conn().commit()
+        _logo_store_ready = True
+
+
+def _import_logo_from_disk(name):
+    mime = LOGO_MIME.get(os.path.splitext(name)[1].lower())
+    path = os.path.join(UPLOADS, "logos", name)
+    if not mime or not os.path.isfile(path):
+        return None
+    with open(path, "rb") as f:
+        data = f.read()
+    run("INSERT INTO logo_files (name, mime, data) VALUES (%s,%s,%s) ON CONFLICT (name) DO NOTHING",
+        (name, mime, psycopg2.Binary(data)))
+    return mime, data
+
+
+def save_logo(name, ext, data):
+    ensure_logo_store()
+    run("INSERT INTO logo_files (name, mime, data) VALUES (%s,%s,%s) ON CONFLICT (name) DO UPDATE SET data=EXCLUDED.data, mime=EXCLUDED.mime",
+        (name, LOGO_MIME[ext], psycopg2.Binary(data)))
+
+
+def prune_logos():
+    """drop stored logos that no auxiliary / account points to any more (call after a change is committed)"""
+    run("""DELETE FROM logo_files f
+           WHERE NOT EXISTS (SELECT 1 FROM auxiliaries x WHERE x.logo_path = 'uploads/logos/' || f.name)
+             AND NOT EXISTS (SELECT 1 FROM accounts a WHERE a.logo_path = 'uploads/logos/' || f.name)""")
+    conn().commit()
 
 
 _sales_batch_schema_ready = False
@@ -314,14 +373,17 @@ def upload_logo(aux_id):
         return err("Logo file is empty")
     if len(data) > MAX_LOGO_SIZE:
         return err("File too large (max 2 MB)")
-    os.makedirs(os.path.join(UPLOADS, "logos"), exist_ok=True)
+    if (ext == ".png" and not data.startswith(b"\x89PNG\r\n\x1a\n")) or (
+        ext == ".jpg" and not data.startswith(b"\xff\xd8\xff")
+    ):
+        return err("The file contents do not match its image type")
     name = f"aux-{aux_id}-{secrets.token_hex(4)}{ext}"      # random name, never the original
-    with open(os.path.join(UPLOADS, "logos", name), "wb") as out:
-        out.write(data)
+    save_logo(name, ext, data)                              # stored in the database, not the uploads folder
     path = f"uploads/logos/{name}"
     run("UPDATE auxiliaries SET logo_path=%s WHERE aux_id=%s", (path, aux_id))
     audit("logo_changed", str(aux_id))
     conn().commit()
+    prune_logos()
     _cleanup_aux_logo_files(aux_id, staff_ids, auxiliary["logo_path"], path)
     return jsonify({"logo_path": path})
 
@@ -421,14 +483,12 @@ def upload_account_logo(aid):
         ext == ".jpg" and not data.startswith(b"\xff\xd8\xff")
     ):
         return err("The file contents do not match its image type")
-    os.makedirs(os.path.join(UPLOADS, "logos"), exist_ok=True)
     is_admin_logo = account["role"] == "admin"
     staff_ids = [] if is_admin_logo else q(
         "SELECT account_id FROM accounts WHERE aux_id=%s AND role='staff'", (account["aux_id"],))
     name = f"account-{aid}-{secrets.token_hex(4)}{ext}" if is_admin_logo else (
         f"aux-{account['aux_id']}-{secrets.token_hex(4)}{ext}")
-    with open(os.path.join(UPLOADS, "logos", name), "wb") as out:
-        out.write(data)
+    save_logo(name, ext, data)                              # stored in the database, not the uploads folder
     path = f"uploads/logos/{name}"
     previous_path = account["logo_path"] if is_admin_logo else account["aux_logo_path"]
     if is_admin_logo:
@@ -437,6 +497,7 @@ def upload_account_logo(aid):
         run("UPDATE auxiliaries SET logo_path=%s WHERE aux_id=%s", (path, account["aux_id"]))
     audit("logo_changed", str(aid))
     conn().commit()
+    prune_logos()
     if is_admin_logo:
         _cleanup_account_logo_files(aid, previous_path, path)
     else:
@@ -1319,6 +1380,17 @@ def reset_account(aid):
 # frontend files
 @app.get("/uploads/<path:p>")
 def uploads(p):
+    if p.startswith("logos/") and "/" not in p[6:]:
+        ensure_logo_store()
+        name = p[6:]
+        row = q("SELECT mime, data FROM logo_files WHERE name=%s", (name,), one=True)
+        found = (row["mime"], bytes(row["data"])) if row else _import_logo_from_disk(name)
+        if not found:
+            return err("Logo not found", 404)
+        conn().commit()
+        res = Response(found[1], mimetype=found[0])
+        res.headers["Cache-Control"] = "public, max-age=31536000, immutable"   # every new logo gets a new random name
+        return res
     return send_from_directory(UPLOADS, p)
 
 
