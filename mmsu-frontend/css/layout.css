@@ -214,8 +214,9 @@
 }
 
 .ui-switch .circle .ui-switch__moon {
-  fill: currentColor;
-  stroke: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
 }
 
 .ui-switch__input:checked + .slider,

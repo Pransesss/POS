@@ -1,5 +1,6 @@
 """MMSU Auxiliary POS — Flask API + serves the frontend.   Run:  python app.py   then open http://localhost:5000"""
 import os, re, uuid, secrets
+import shutil
 import threading
 from datetime import datetime, date, time, timedelta
 from decimal import Decimal, InvalidOperation
@@ -19,7 +20,8 @@ import prediction_engine as pe
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 FRONTEND = os.path.join(BASE, "..", "mmsu-frontend")
-UPLOADS = os.path.join(BASE, "uploads")
+LEGACY_UPLOADS = os.path.join(BASE, "uploads")
+UPLOADS = os.path.abspath(os.getenv("UPLOADS_DIR") or LEGACY_UPLOADS)
 MAX_LOGO_SIZE = 2_000_000
 TZ = ZoneInfo(TIMEZONE)
 SECRET = os.getenv("SECRET_KEY", "dev-secret-change-me")
@@ -39,6 +41,33 @@ class Provider(DefaultJSONProvider):
 app = Flask(__name__, static_folder=None)
 app.json = Provider(app)
 CORS(app)
+
+
+def migrate_legacy_uploads():
+    if os.path.normcase(UPLOADS) == os.path.normcase(LEGACY_UPLOADS):
+        return
+
+    os.makedirs(UPLOADS, exist_ok=True)
+    marker = os.path.join(UPLOADS, ".legacy-uploads-migrated")
+    if os.path.isfile(marker) or not os.path.isdir(LEGACY_UPLOADS):
+        return
+
+    for root, _, filenames in os.walk(LEGACY_UPLOADS):
+        relative = os.path.relpath(root, LEGACY_UPLOADS)
+        destination = UPLOADS if relative == "." else os.path.join(UPLOADS, relative)
+        os.makedirs(destination, exist_ok=True)
+        for filename in filenames:
+            source_file = os.path.join(root, filename)
+            destination_file = os.path.join(destination, filename)
+            if not os.path.exists(destination_file):
+                shutil.copy2(source_file, destination_file)
+
+    with open(marker, "w", encoding="utf-8") as migrated:
+        migrated.write("Legacy uploads copied.\n")
+    app.logger.info("Copied legacy uploads from %s to %s", LEGACY_UPLOADS, UPLOADS)
+
+
+migrate_legacy_uploads()
 ser = URLSafeTimedSerializer(SECRET)
 pricing_ser = URLSafeTimedSerializer(SECRET, salt="pos-pricing-v1")
 _account_logo_schema_ready = False

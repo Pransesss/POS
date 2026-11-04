@@ -17,11 +17,12 @@ Never put the database password in a file that is committed. Use secrets/environ
 ## 2. Hugging Face Space (API + pages)
 1. Create a Space: SDK **Docker**, public.
 2. Space repo = this repo's files. Copy `deploy/HF_SPACE_README.md` to the Space as `README.md`. Include `backend/models/` (the trained files from step 1.2): remove nothing from `.gitignore`, then `git add backend/models`.
-3. Space > Settings > Secrets: `DATABASE_URL` (the pooler string) and `SECRET_KEY` (any long random text).
-4. Wait for the build. API + pages: `https://<user>-<space>.hf.space`.
+3. Create a private [Storage Bucket](https://huggingface.co/new-bucket) for uploaded logos, then attach it to the Space as a **read-write volume** mounted at `/data`. See the [Spaces storage guide](https://huggingface.co/docs/hub/spaces-storage).
+4. Space > Settings > Secrets: `DATABASE_URL` (the pooler string) and `SECRET_KEY` (any long random text). The Docker image sets `UPLOADS_DIR=/data/uploads`; keep that value so logo files are written to the mounted volume.
+5. Wait for the build. API + pages: `https://<user>-<space>.hf.space`.
 
 ## 3. Vercel (pages only, optional)
 1. In `mmsu-frontend/js/api.js` set `REMOTE_API = "https://<user>-<space>.hf.space"`.
 2. Vercel > New Project > import the repo > Root Directory `mmsu-frontend`, no build command. Deploy.
 
-The free Space sleeps when idle and its disk resets (uploaded logos are lost); the database and trained model files are safe.
+The Space's local disk is ephemeral, so uploaded logos are stored in the mounted bucket instead. For local deployments, `UPLOADS_DIR` can point to another persistent directory; if unset, uploads remain in `backend/uploads`. When a legacy `backend/uploads` directory is available on first startup with a different `UPLOADS_DIR`, its files are copied once to the new location. Existing files on an already-deployed Space's ephemeral disk cannot be recovered after that disk resets; restore them from a backup or upload the logos again.
