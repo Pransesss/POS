@@ -43,10 +43,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     const rows = await api("/api/deliveries");
     $("#table-delivery-log tbody").innerHTML = rows.map((r) => {
       const status = r.status === "pending" ? "Waiting for staff" : r.status === "cancelled" ? "Cancelled" : r.has_mismatch ? "Accepted — mismatch" : "Accepted";
-      const badge = r.status === "pending" || r.has_mismatch ? "badge--warn" : r.status === "cancelled" ? "badge--bad" : "badge--ok";
-      const items = r.items.length ? `<details class="delivery-log__details"><summary>Review delivered items</summary><table class="table"><thead><tr><th>Item</th><th>Sent</th><th>Received</th></tr></thead><tbody>${r.items.map((i) => `<tr><td>${esc(UI.titleCase(i.name))}</td><td>${num(i.listed_qty)}</td><td>${i.counted_qty == null ? "—" : num(i.counted_qty)}</td></tr>`).join("")}</tbody></table><p>Initial cash: ${UI.money(r.initial_cash)} · Counted: ${r.cash_counted == null ? "—" : UI.money(r.cash_counted)}</p></details>` : `<span class="muted text-small">No items listed · cash ${UI.money(r.initial_cash)}</span>`;
+      // status = a dot only: green when accepted cleanly, yellow for everything that needs attention (hover / screen reader gives the words)
+      const dot = r.status !== "pending" && r.status !== "cancelled" && !r.has_mismatch ? "ok" : "warn";
+      const cash = `Initial cash ${UI.money(r.initial_cash)} · Counted ${r.cash_counted == null ? "—" : UI.money(r.cash_counted)}`;
+      const items = r.items.length
+        ? `<details class="delivery-review"><summary>Review <span class="delivery-review__count">${r.items.length}</span></summary>
+            <div class="delivery-review__card"><ul class="delivery-review__list">
+              <li class="delivery-review__head"><span>Item</span><span>Sent</span><span>Rcvd</span></li>
+              ${r.items.map((i) => { const off = i.counted_qty != null && Number(i.counted_qty) !== Number(i.listed_qty);
+                return `<li${off ? ' class="is-off"' : ""}><span>${esc(UI.titleCase(i.name))}</span><span>${num(i.listed_qty)}</span><span>${i.counted_qty == null ? "—" : num(i.counted_qty)}</span></li>`; }).join("")}
+            </ul><p class="delivery-review__cash">${cash}</p></div></details>`
+        : `<span class="muted text-small">No items · ${UI.money(r.initial_cash)}</span>`;
       const actions = r.status === "pending" ? `<button class="link-button" type="button" data-edit-delivery="${r.delivery_id}">Edit</button><button class="link-button delete-action" type="button" data-cancel-delivery="${r.delivery_id}">Cancel</button>` : "—";
-      return `<tr><td>${UI.mdy(r.delivery_date)}</td><td>${esc(r.aux_name)}</td><td><span class="badge ${badge}">${status}</span></td><td>${items}</td><td>${actions}</td></tr>`;
+      return `<tr><td>${UI.mdy(r.delivery_date)}</td><td class="delivery-log__aux">${esc(r.aux_name)}</td><td><span class="status-dot status-dot--${dot}" role="img" title="${status}" aria-label="${status}"></span></td><td>${items}</td><td class="delivery-log__actions">${actions}</td></tr>`;
     }).join("") || '<tr class="table__empty"><td colspan="5">No deliveries yet</td></tr>';
   }
 

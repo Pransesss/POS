@@ -49,8 +49,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       <label for="m-category">Category</label><select id="m-category"><option value="Snacks" ${!p || p.category === "Snacks" ? "selected" : ""}>Snacks</option><option value="Drinks" ${p && p.category === "Drinks" ? "selected" : ""}>Drinks</option></select>
       <label for="m-price">Price (₱) — applies to all auxiliaries</label><input type="number" id="m-price" min="0" step="0.01" value="${p ? p.price : ""}">
       ${p ? `<label for="m-stock">Stock at this auxiliary</label><input type="number" id="m-stock" min="0" value="${p.qty}" ${auxId === "all" ? "disabled" : ""}>` : ""}
-      ${p ? "" : `<label for="m-prediction">Prediction</label><select id="m-prediction"><option value="0">Don't include</option><option value="1">Include — its future sales train the model</option></select>
-      <p class="muted text-small">New items have no sales yet. Once included, every sale punched in the POS is added to the prediction automatically (retrained every 2 weeks).</p>`}
+      ${p ? "" : `<label for="m-prediction">Prediction</label><select id="m-prediction"><option value="0">Don't include</option><option value="1">Include — its future sales train the model</option></select>`}
       <label for="m-status">Status</label><select id="m-status"><option value="1">Active</option><option value="0" ${p && !p.is_active ? "selected" : ""}>Inactive</option></select>
       <div class="modal__actions"><button class="btn" id="m-save" type="button">Save</button><button class="btn btn--ghost" data-close type="button">Cancel</button></div>`);
     ov.querySelector("#m-save").addEventListener("click", async () => {
