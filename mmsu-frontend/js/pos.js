@@ -2,7 +2,33 @@
    Each cart keeps a signed price snapshot; the server recomputes and validates its lines from that snapshot on sync. */
 const MAX_CHANGE = 1000;   // same limit as the server: change can never exceed one ₱1,000 bill
 document.addEventListener("DOMContentLoaded", async () => {
-  const $ = UI.$, load = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } }, save = (k, v) => localStorage.setItem(k, JSON.stringify(v));
+  /* the cart and held sales are kept PER OUTLET on this device (key "pos_held:<aux_id>"),
+     so CAS never sees COE's held sales when both sign in on the same browser */
+  const outlet = UI.session().user.aux_id;
+  const raw = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } };
+  const $ = UI.$, load = (k, d) => raw(`${k}:${outlet}`, d), save = (k, v) => localStorage.setItem(`${k}:${outlet}`, JSON.stringify(v));
+  (function moveSharedSalesToTheirOutlet() {   // one time: older versions kept one cart / held list for everybody
+    if (localStorage.getItem("pos_cart") === null && localStorage.getItem("pos_held") === null) return;
+    const owner = (pricing) => (pricing && pricing.aux_id) || outlet;
+    const add = (aux, lines, pricing, at) => {
+      const h = raw(`pos_held:${aux}`, []), hp = raw(`pos_held_pricing:${aux}`, []), ha = raw(`pos_held_at:${aux}`, []);
+      while (ha.length < h.length) ha.unshift(null);
+      h.push(lines); hp.push(pricing || null); ha.push(at || null);
+      localStorage.setItem(`pos_held:${aux}`, JSON.stringify(h)); localStorage.setItem(`pos_held_pricing:${aux}`, JSON.stringify(hp)); localStorage.setItem(`pos_held_at:${aux}`, JSON.stringify(ha));
+    };
+    const oldHeld = raw("pos_held", []), oldPricing = raw("pos_held_pricing", []), oldAt = raw("pos_held_at", []);
+    if (Array.isArray(oldHeld)) oldHeld.forEach((lines, i) => {
+      if (Array.isArray(lines) && lines.length) add(owner(oldPricing[i]), lines, oldPricing[i], oldAt[i - (oldHeld.length - oldAt.length)]);
+    });
+    const oldCart = raw("pos_cart", []), oldCartPricing = raw("pos_cart_pricing", null);
+    if (Array.isArray(oldCart) && oldCart.length) {
+      const aux = owner(oldCartPricing);
+      if (!raw(`pos_cart:${aux}`, []).length) {
+        localStorage.setItem(`pos_cart:${aux}`, JSON.stringify(oldCart)); localStorage.setItem(`pos_cart_pricing:${aux}`, JSON.stringify(oldCartPricing));
+      } else add(aux, oldCart, oldCartPricing, null);
+    }
+    ["pos_cart", "pos_cart_pricing", "pos_held", "pos_held_pricing", "pos_held_at"].forEach((k) => localStorage.removeItem(k));
+  })();
   let boot = null, mp = {}, cart = load("pos_cart", []), held = load("pos_held", []);
   let cartPricing = load("pos_cart_pricing", null), heldPricing = load("pos_held_pricing", []);
   let legacyCartNeedsPriceConfirmation = false;
@@ -78,7 +104,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (navigator.onLine) {
         try {
           boot = await api("/api/pos/bootstrap", { timeout: 5000 });
-          await Store.put("cache", { key: "bootstrap", value: boot, at: Date.now() });
+          await Store.put("cache", { key: Sync.bootKey(), value: boot, at: Date.now() });
         } catch (e) {
           if (!isOffline(e)) { UI.toast(e.message); return false; }
         }
@@ -210,7 +236,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const txn = { id: UI.uuid(), receipt_no: `${code}-${now.slice(0, 10).replace(/-/g, "")}-${UI.uuid().slice(0, 4).toUpperCase()}`, created_at: now,
       payment_method: ewallet ? "E-Wallet" : "Cash", amount_tendered: ewallet ? null : tendered, ewallet_ref4: ewallet ? ref4 : null,
       dine: "in", pricing_token: cartPricing.token, lines: cart.map((l) => ({ ...l })) };
-    await Store.put("outbox", { id: txn.id, payload: txn, status: "pending" });       // 1. safe on the device
+    await Store.put("outbox", { id: txn.id, payload: txn, status: "pending", aux_id: boot.user.aux_id });   // 1. safe on the device
     await Sync.useStock(needOf(cart));                                                // lower the saved stock
     Object.entries(needOf(cart)).forEach(([k, v]) => {
       if (k.startsWith("meal:")) boot.meal_stock[k.slice(5)] -= v;

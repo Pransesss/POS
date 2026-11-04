@@ -31,8 +31,11 @@ const Sync = {
   busy: false,
   deviceId() { let d = localStorage.getItem("device_id"); if (!d) { d = UI.uuid(); localStorage.setItem("device_id", d); } return d; },
 
-  async pending() { return (await Store.all("outbox")).filter((r) => r.status === "pending"); },
-  async rejected() { return (await Store.all("outbox")).filter((r) => r.status === "rejected"); },
+  /* only the signed-in outlet's sales: another outlet's waiting sale on this device is left alone until that outlet signs in
+     (sending it with the wrong login would get it rejected). Rows from before aux_id was saved count as the current outlet's. */
+  mine(r) { const s = UI.session(); return r.aux_id == null || (s && r.aux_id === s.user.aux_id); },
+  async pending() { return (await Store.all("outbox")).filter((r) => r.status === "pending" && this.mine(r)); },
+  async rejected() { return (await Store.all("outbox")).filter((r) => r.status === "rejected" && this.mine(r)); },
 
   /* send everything waiting; safe to call any time */
   async flush(probe = false) {       // probe = try the server even if it recently timed out
@@ -75,21 +78,23 @@ const Sync = {
     el.textContent = (navigator.onLine ? "Online" : "Offline") + (n ? ` · ${n} waiting to sync` : "");
   },
 
+  bootKey() { const s = UI.session(); return "bootstrap:" + (s ? s.user.aux_id : ""); },   // one saved copy per outlet
+
   /* products, prices and stock for the POS. Online = fresh copy from the server (saved on the device). Offline = the saved copy. */
   async bootstrap() {
     try {
       const data = await api("/api/pos/bootstrap", { timeout: 5000 });
-      await Store.put("cache", { key: "bootstrap", value: data, at: Date.now() });
+      await Store.put("cache", { key: Sync.bootKey(), value: data, at: Date.now() });
       return data;
     } catch (e) {
       if (!isOffline(e)) throw e;
-      const c = await Store.get("cache", "bootstrap");
+      const c = await Store.get("cache", Sync.bootKey());
       return c ? c.value : null;
     }
   },
   /* after a sale: lower the saved stock too, so the POS cannot oversell while offline */
   async useStock(used) {
-    const c = await Store.get("cache", "bootstrap");
+    const c = await Store.get("cache", Sync.bootKey());
     if (!c) return;
     for (const [key, qty] of Object.entries(used)) {
       if (key.startsWith("meal:")) c.value.meal_stock[key.slice(5)] -= qty;
