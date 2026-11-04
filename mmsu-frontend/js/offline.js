@@ -37,14 +37,26 @@ const Sync = {
   async pending() { return (await Store.all("outbox")).filter((r) => r.status === "pending" && this.mine(r)); },
   async rejected() { return (await Store.all("outbox")).filter((r) => r.status === "rejected" && this.mine(r)); },
 
-  /* send everything waiting; safe to call any time */
-  async flush(probe = false) {       // probe = try the server even if it recently timed out
-    if (this.busy) { this.again = true; return this.badge(); }            // a sale made during a sync is sent right after it
-    if (!navigator.onLine || !UI.session() || UI.session().user.role !== "staff") return this.badge();
+  /* send everything waiting; safe to call any time.
+     If a sync is already running, the caller waits for it (plus one more pass for sales made meanwhile),
+     so "await Sync.flush()" always means: everything that could be sent has been sent. */
+  running: null,
+  flush(probe = false) {             // probe = try the server even if it recently timed out
+    if (this.running) { this.again = true; this.againProbe = this.againProbe || probe; return this.running; }
+    this.running = (async () => {
+      try {
+        let p = probe;
+        do { this.again = false; this.againProbe = false; await this.sendOnce(p); p = p || this.againProbe; } while (this.again);
+      } finally { this.running = null; }
+      return this.badge();
+    })();
+    return this.running;
+  },
+  async sendOnce(probe) {
+    if (!navigator.onLine || !UI.session() || UI.session().user.role !== "staff") return;
     const rows = await this.pending();
-    if (!rows.length) return this.badge();
+    if (!rows.length) return;
     this.busy = true;
-    this.again = false;
     let firstFailure = "";
     try {
       const res = await api("/api/sync/transactions", { method: "POST", timeout: 15000, probe, body: { device_id: this.deviceId(), transactions: rows.map((r) => r.payload) } });
@@ -62,8 +74,6 @@ const Sync = {
     this.busy = false;
     window.dispatchEvent(new Event("outbox-changed"));
     if (firstFailure) UI.toast(`Sale not synced: ${firstFailure}. It remains saved on this device.`);
-    if (this.again) return this.flush();
-    return this.badge();
   },
 
   /* only the newest call writes the badge, so an older, slower read can never put back a stale "waiting to sync" */

@@ -136,8 +136,18 @@ document.addEventListener("DOMContentLoaded", async () => {
       : '<li class="order__empty">No items yet</li>';
     $("#order-total").textContent = UI.money(grand());
     const given = parseFloat($("#cash-tendered").value || 0);
-    // if items were removed after the amount was typed, the change can be over the limit: say so instead of showing it
-    $("#order-change").textContent = given - grand() > MAX_CHANGE ? "Too high" : UI.money(Math.max(0, given - grand()));
+    // over the limit: keep what was typed, show the error under the box and no change amount
+    const tooHigh = given - grand() > MAX_CHANGE;
+    $("#order-change").textContent = tooHigh ? "—" : UI.money(Math.max(0, given - grand()));
+    let tenderErr = $("#tendered-error");
+    if (!tenderErr) {
+      tenderErr = document.createElement("p");
+      tenderErr.id = "tendered-error"; tenderErr.className = "text-small text-warn tendered-error"; tenderErr.setAttribute("role", "alert");
+      $("#cash-tendered").after(tenderErr);
+    }
+    tenderErr.hidden = !tooHigh;
+    tenderErr.textContent = tooHigh ? `Too high — change cannot exceed ${UI.money(MAX_CHANGE)}. Maximum for this sale: ${UI.money(grand() + MAX_CHANGE)}` : "";
+    $("#cash-tendered").classList.toggle("is-invalid", tooHigh);
     $("#btn-resume").hidden = !held.length;
     $("#btn-resume").textContent = `View held sales (${held.length})`;
     $("#btn-hold").textContent = "Hold sale";
@@ -154,11 +164,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
   $("#btn-add-box").addEventListener("click", () => addSpec({ type: "takeout_box", qty: 1 }));
   $$all("input[name=pay]").forEach((r) => r.addEventListener("change", () => localStorage.setItem("pos_pay", $("#pay-1").checked ? "ewallet" : "cash")));
-  /* amount tendered: 6 digits at most, and never more than the total + ₱1,000 — so the change can never run away */
+  /* amount tendered: 6 digits at most. Over total + ₱1,000 is NOT changed — it is shown as an error and Complete sale is refused. */
   $("#cash-tendered").addEventListener("input", (e) => {
-    const el = e.target, max = Math.round((grand() + MAX_CHANGE) * 100) / 100;
+    const el = e.target;
     if (/^\d{7,}/.test(el.value)) el.value = el.value.replace(/^(\d{6})\d+/, "$1");   // at most 6 digits before the decimal point
-    if (parseFloat(el.value) > max) { el.value = String(max); UI.toast(`Amount tendered cannot exceed ${UI.money(max)} (change up to ${UI.money(MAX_CHANGE)})`); }
     render();
   });
   $("#cash-tendered").addEventListener("keydown", (e) => { if (["e", "E", "+", "-"].includes(e.key)) e.preventDefault(); });
@@ -268,6 +277,26 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (cartPricing && cartPricing.aux_id !== boot.user.aux_id) UI.toast("This saved cart belongs to another outlet. Sign in to that outlet to complete it.");
   if (cartPricing) mp = cartPricing.meal_prices;
   updateMealPrices();
+  /* sales the server refused (e.g. made under another outlet's login): they block sealing, so show them and let the cashier clear them */
+  function rejectedList(rows) {
+    const ov = UI.modal(`<h2 class="card__title">${rows.length} sale${rows.length > 1 ? "s" : ""} not accepted by the server</h2>
+      <p class="muted text-small">These are saved on this device only and are not in the records. Sealing waits until they are cleared.</p>
+      <ul class="held-list">${rows.map((r) => {
+        const total = r.payload.lines.reduce((n, l) => n + (Number(l.unit_price) || 0) * l.qty, 0);
+        return `<li class="held-list__item"><div class="held-list__info"><strong>${UI.esc(r.payload.receipt_no || r.id)}</strong>
+          <span class="muted text-small">${UI.esc(new Date(r.payload.created_at).toLocaleString())}${total ? " · " + UI.money(total) : ""}</span>
+          <span class="text-small text-warn">${UI.esc(r.reason || "Rejected")}</span></div>
+          <div class="held-list__actions"><button class="link-button delete-action" type="button" data-drop="${UI.esc(r.id)}">Remove</button></div></li>`; }).join("")}</ul>
+      <div class="modal__actions"><button class="btn btn--ghost" data-close type="button">Close</button></div>`);
+    ov.addEventListener("click", async (e) => {
+      const b = e.target.closest("[data-drop]");
+      if (!b || !confirm("Remove this sale from the device? It was never recorded on the server.")) return;
+      await Store.del("outbox", b.dataset.drop);
+      b.closest("li").remove();
+      Sync.badge();
+      if (!ov.querySelector("li")) { ov.remove(); UI.toast("Cleared — you can seal the sales now", "ok"); }
+    });
+  }
   const doneBtn = $("#btn-done-day");
   doneBtn.addEventListener("click", async () => {
     if (doneBtn.disabled) return;
@@ -276,7 +305,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     doneBtn.disabled = true;
     let pending, rejected;
     try {
-      await Sync.flush();
+      await Sync.flush(true);                 // waits for a sync already running, and tries even after a recent timeout
       pending = await Sync.pending();
       rejected = await Sync.rejected();
     } catch (e) {
@@ -284,7 +313,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       return UI.toast(e.message);
     }
     doneBtn.disabled = false;
-    if (pending.length || rejected.length) return UI.toast("Sync or resolve all waiting sales before sealing");
+    if (pending.length) return UI.toast(`${pending.length} sale${pending.length > 1 ? "s are" : " is"} still waiting to sync — the server could not be reached. Try again in a moment.`);
+    if (rejected.length) return rejectedList(rejected);
     const ov = UI.modal(`<h2 class="card__title">Seal these sales?</h2><p class="muted text-small">This groups today's synced sales into a separate period without changing the sales date. Sales still waiting on another device will not be included.</p><label for="batch-password">Confirm with your password</label><input type="password" id="batch-password" autocomplete="current-password" placeholder="Password"><div class="modal__actions"><button class="btn" id="batch-confirm" type="button">Seal sales</button><button class="btn btn--ghost" data-close type="button">Cancel</button></div>`);
     ov.querySelector("#batch-confirm").addEventListener("click", async (event) => {
       const confirmBtn = event.currentTarget;
