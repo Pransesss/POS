@@ -309,6 +309,15 @@
 
 .tabset--pay > .tabset__bar { margin-bottom: 14px; }
 
+/* payment tabs: both panels sit in the same spot, so the area keeps the height of the taller (Cash) one
+   and the amount tendered / reference number inputs are on the same level — nothing moves when switching */
+.tabset--pay { display: grid; grid-template-columns: minmax(0, 1fr); }
+.tabset--pay > .tabset__bar { grid-row: 1; grid-column: 1; }
+.tabset--pay > .tabset__panel { display: block; grid-row: 2; grid-column: 1; align-self: start; visibility: hidden; }
+.tabset--pay > input:nth-of-type(1):checked ~ .tabset__panel:nth-of-type(1),
+.tabset--pay > input:nth-of-type(2):checked ~ .tabset__panel:nth-of-type(2) { visibility: visible; }
+.tabset--pay > .tabset__panel > label { line-height: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
 /* segmented control (Single / Double, Dine in / Take out, All / Cash / E-Wallet) */
 .segmented {
   position: relative;
