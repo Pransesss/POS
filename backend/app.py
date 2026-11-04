@@ -599,6 +599,8 @@ def save_transaction(user, t, meal_ids):
             raise SaleError("cash tendered must be a valid amount")
         if not tendered.is_finite() or tendered < total:
             raise SaleError("cash tendered is less than the sale total")
+        if tendered >= 1_000_000:
+            raise SaleError("cash tendered can have at most 6 digits")
         if tendered - total > MAX_CHANGE:
             raise SaleError(f"cash tendered is too high (change cannot exceed ₱{MAX_CHANGE:,})")
 

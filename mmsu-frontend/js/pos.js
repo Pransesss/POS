@@ -128,9 +128,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
   $("#btn-add-box").addEventListener("click", () => addSpec({ type: "takeout_box", qty: 1 }));
   $$all("input[name=pay]").forEach((r) => r.addEventListener("change", () => localStorage.setItem("pos_pay", $("#pay-1").checked ? "ewallet" : "cash")));
-  /* amount tendered: never more than the total + ₱1,000 — so the change can never run away */
+  /* amount tendered: 6 digits at most, and never more than the total + ₱1,000 — so the change can never run away */
   $("#cash-tendered").addEventListener("input", (e) => {
     const el = e.target, max = Math.round((grand() + MAX_CHANGE) * 100) / 100;
+    if (/^\d{7,}/.test(el.value)) el.value = el.value.replace(/^(\d{6})\d+/, "$1");   // at most 6 digits before the decimal point
     if (parseFloat(el.value) > max) { el.value = String(max); UI.toast(`Amount tendered cannot exceed ${UI.money(max)} (change up to ${UI.money(MAX_CHANGE)})`); }
     render();
   });
@@ -202,6 +203,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const ewallet = $("#pay-1").checked, tendered = parseFloat($("#cash-tendered").value || 0), ref4 = $("#ewallet-ref4").value, t = grand();
     if (ewallet && !/^\d{4}$/.test(ref4)) return UI.toast("Enter the last 4 digits of the e-wallet reference number");
     if (!ewallet && !(tendered >= t)) return UI.toast("Amount tendered is less than the total");
+    if (!ewallet && tendered >= 1000000) return UI.toast("Amount tendered can have at most 6 digits");
     if (!ewallet && tendered - t > MAX_CHANGE) return UI.toast(`Amount tendered is too high — change cannot exceed ${UI.money(MAX_CHANGE)}`);
     const lack = shortItem(cart); if (lack) return UI.toast("Not enough stock: " + UI.titleCase(lack));
     const now = UI.isoNow(), code = UI.session().user.aux_code;
