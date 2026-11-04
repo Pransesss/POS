@@ -18,7 +18,23 @@ async function api(path, options = {}) {
   if (options.body instanceof FormData) { delete headers["Content-Type"]; init.body = options.body; }
   else if (options.body !== undefined) init.body = JSON.stringify(options.body);
 
-  const response = await fetch(url, init);                 // throws TypeError when there is no connection (= offline)
+  /* options.timeout (ms): give up instead of waiting forever. Wi-Fi / data with no real internet does not fail —
+     it just hangs — so the POS calls use a timeout and then work from the copy saved on the device.
+     After one timeout, those calls fail at once for a short while instead of hanging on every page. */
+  let response;
+  if (options.timeout) {
+    if (!options.probe && Number(sessionStorage.getItem("net_down_until") || 0) > Date.now()) throw new TypeError("Server not reachable");
+    const ctrl = new AbortController(), timer = setTimeout(() => ctrl.abort(), options.timeout);
+    init.signal = ctrl.signal;
+    try { response = await fetch(url, init); }
+    catch (e) {
+      if (e.name === "AbortError") { sessionStorage.setItem("net_down_until", String(Date.now() + 20000)); throw new TypeError("Server not reachable"); }
+      throw e;
+    } finally { clearTimeout(timer); }
+    sessionStorage.removeItem("net_down_until");
+  } else {
+    response = await fetch(url, init);                     // throws TypeError when there is no connection (= offline)
+  }
   let data = null;
   try { data = await response.json(); } catch { /* no body */ }
   if (response.status === 401 && !path.includes("/auth/login")) {          // signed out / token expired

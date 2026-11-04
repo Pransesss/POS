@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!cart.length) {
       if (navigator.onLine) {
         try {
-          boot = await api("/api/pos/bootstrap");
+          boot = await api("/api/pos/bootstrap", { timeout: 5000 });
           await Store.put("cache", { key: "bootstrap", value: boot, at: Date.now() });
         } catch (e) {
           if (!isOffline(e)) { UI.toast(e.message); return false; }

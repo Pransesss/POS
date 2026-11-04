@@ -1,7 +1,12 @@
 /* sw.js — service worker: lets the pages open without internet (the POS data itself is kept by offline.js in IndexedDB).
    Every page / css / js / image is saved when the worker installs, so every tab opens offline — even ones never visited online.
-   Pages / css / js / images: network first, falls back to the saved copy. The API is never cached here. */
-const CACHE = "mmsu-pos-v23";
+   Pages / css / js / images: network first, falls back to the saved copy. The API is never cached here.
+   Wi-Fi or data with no real internet does not fail, it HANGS. So a request that takes longer than WAIT is cancelled
+   (stuck requests would block the browser's few connections) and the saved copy is used; after that, saved copies
+   are served straight away for a while instead of waiting again on every file. */
+const CACHE = "mmsu-pos-v25";
+const WAIT = 2500, SLOW_FOR = 20000;
+let slowUntil = 0;
 const FILES = [
   "login.html",
   "staff/dashboard.html", "staff/pos.html", "staff/pos-meal.html", "staff/pos-meat.html", "staff/inventory.html",
@@ -22,8 +27,21 @@ self.addEventListener("activate", (e) => e.waitUntil(caches.keys().then((ks) => 
 self.addEventListener("fetch", (e) => {
   const url = new URL(e.request.url);
   if (e.request.method !== "GET" || url.pathname.startsWith("/api/") || url.origin !== location.origin) return;
-  e.respondWith(fetch(e.request).then((res) => {
-    if (res.ok) { const copy = res.clone(); caches.open(CACHE).then((c) => c.put(e.request, copy)); }
-    return res;
-  }).catch(() => caches.match(e.request).then((hit) => hit || caches.match(e.request, { ignoreSearch: true }))));
+  e.respondWith((async () => {
+    const cache = await caches.open(CACHE);
+    const saved = (await cache.match(e.request)) || (await cache.match(e.request, { ignoreSearch: true }));
+    if (saved && Date.now() < slowUntil) return saved;                  // the network just hung: do not wait on it again
+    const ctrl = new AbortController();
+    const net = fetch(e.request.url, { signal: ctrl.signal, credentials: "same-origin" }).then((res) => {   // by URL: a page-navigation request cannot be re-sent with a signal
+      if (res.ok) cache.put(e.request, res.clone());
+      slowUntil = 0;
+      return res;
+    });
+    if (!saved) return net;                                             // nothing saved: the network is the only option
+    let timer;
+    const late = new Promise((resolve) => { timer = setTimeout(() => { slowUntil = Date.now() + SLOW_FOR; ctrl.abort(); resolve(saved); }, WAIT); });
+    try { return await Promise.race([net, late]); }
+    catch { return saved; }                                             // truly offline: fails at once
+    finally { clearTimeout(timer); }
+  })());
 });

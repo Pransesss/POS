@@ -35,7 +35,7 @@ const Sync = {
   async rejected() { return (await Store.all("outbox")).filter((r) => r.status === "rejected"); },
 
   /* send everything waiting; safe to call any time */
-  async flush() {
+  async flush(probe = false) {       // probe = try the server even if it recently timed out
     if (this.busy) { this.again = true; return this.badge(); }            // a sale made during a sync is sent right after it
     if (!navigator.onLine || !UI.session() || UI.session().user.role !== "staff") return this.badge();
     const rows = await this.pending();
@@ -44,7 +44,7 @@ const Sync = {
     this.again = false;
     let firstFailure = "";
     try {
-      const res = await api("/api/sync/transactions", { method: "POST", body: { device_id: this.deviceId(), transactions: rows.map((r) => r.payload) } });
+      const res = await api("/api/sync/transactions", { method: "POST", timeout: 15000, probe, body: { device_id: this.deviceId(), transactions: rows.map((r) => r.payload) } });
       for (const r of res.results) {
         if (r.status === "saved" || r.status === "duplicate") await Store.del("outbox", r.id);
         else {
@@ -78,7 +78,7 @@ const Sync = {
   /* products, prices and stock for the POS. Online = fresh copy from the server (saved on the device). Offline = the saved copy. */
   async bootstrap() {
     try {
-      const data = await api("/api/pos/bootstrap");
+      const data = await api("/api/pos/bootstrap", { timeout: 5000 });
       await Store.put("cache", { key: "bootstrap", value: data, at: Date.now() });
       return data;
     } catch (e) {
@@ -100,7 +100,7 @@ const Sync = {
 };
 
 // the connection is often not usable the instant "online" fires, so try again a few seconds later too
-window.addEventListener("online", () => { Sync.flush(); setTimeout(() => Sync.flush(), 3000); setTimeout(() => Sync.flush(), 10000); });
+window.addEventListener("online", () => { sessionStorage.removeItem("net_down_until"); Sync.flush(true); setTimeout(() => Sync.flush(true), 3000); setTimeout(() => Sync.flush(true), 10000); });
 window.addEventListener("offline", () => Sync.badge());
 document.addEventListener("visibilitychange", () => { if (!document.hidden) Sync.flush(); });
-document.addEventListener("DOMContentLoaded", () => { Sync.badge(); Sync.flush(); setInterval(() => Sync.flush(), 15000); });
+document.addEventListener("DOMContentLoaded", () => { Sync.badge(); Sync.flush(); setInterval(() => Sync.flush(true), 15000); });
